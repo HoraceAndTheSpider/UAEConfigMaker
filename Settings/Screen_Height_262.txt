@@ -12,3 +12,4 @@ Putty
 RevengeOfMutantCamels
 RevengeOfMutantCamels2
 Settlers
+Superfrog
