@@ -1,0 +1,164 @@
+config_description=<<fullgame>>
+config_hardware=true
+config_host=true
+config_version=2.8.1
+
+; original paths
+pandora.rom_path=/home/pi/RetroPie/BIOS/
+pandora.floppy_path=/home/pi/RetroPie/roms/amiga//Games_ADF/
+pandora.hardfile_path=/home/pi/RetroPie/roms/amiga/Games_HDF/
+pandora.cd_path=/home/pi/RetroPie/roms/amiga//Games_CD32/
+
+; Controller Config
+joyport0=joy2
+joyport0autofire=none
+joyport0mode=<<port0mode>>
+joyportname0=JOY2
+joyport1=joy1
+joyport1autofire=none
+joyport1mode=<<port1mode>>
+joyportname1=JOY1
+;joyportfriendlyname0=A SPEED-LINK Competition Pro
+;joyportfriendlyname1=A SPEED-LINK Competition Pro
+
+input.config=0
+input.joymouse_speed_analog=2
+input.joymouse_speed_digital=10
+input.joymouse_deadzone=33
+input.joystick_deadzone=33
+input.analog_joystick_multiplier=15
+input.analog_joystick_offset=-1
+input.mouse_speed=100
+input.autofire_speed=2496
+input.autofire=8
+
+key_for_menu=293
+key_for_quit=0
+button_for_menu=<<menubutton>>
+button_for_quit=<<quitbutton>>
+
+
+; host-specific
+pandora.cpu_speed=600
+pandora.joy_conf=0
+pandora.joy_port=0
+pandora.stylus_offset=0
+pandora.tap_delay=10
+pandora.custom_controls=0
+pandora.custom_dpad=0
+pandora.custom_up=-5
+pandora.custom_down=-6
+pandora.custom_left=-7
+pandora.custom_right=-8
+pandora.custom_a=-3
+pandora.custom_b=-4
+pandora.custom_x=0
+pandora.custom_y=0
+pandora.custom_l=0
+pandora.custom_r=0
+
+pandora.move_x=<<offset_x>>
+pandora.move_y=<<offset_y>>
+
+pandora.button1=2
+pandora.button2=1
+pandora.autofire_button=3
+
+pandora.jump=-1
+
+; Common
+use_gui=no
+kickstart_rom_file=$(FILE_PATH)/<<kickstart>>
+kickstart_ext_rom_file=$(FILE_PATH)/<<extkickstart>>
+
+; Floppy Drives
+
+;floppy0=/home/pi/RetroPie/roms/amiga/<<diskpath0>>/<<disk0>>
+;floppy0type=<<disktype0>>
+;floppy1=/home/pi/RetroPie/roms/amiga/<<diskpath1>>/<<disk1>>
+;floppy1type=<<disktype1>>
+;floppy2=/home/pi/RetroPie/roms/amiga/<<diskpath2>>/<<disk2>>
+;floppy2type=<<disktype2>>
+;floppy3=/home/pi/RetroPie/roms/amiga/<<diskpath3>>/<<disk3>>
+;floppy3type=<<disktype3>>
+nr_floppies=<<totaldisks>>
+floppy_speed=<<floppyspeed>>
+
+; Hard Drives
+filesystem2=rw,DH0:DH0:/home/pi/RetroPie/roms/amiga/_BootWHD/,10
+uaehf1=dir,rw,DH0:DH0:/home/pi/RetroPie/roms/amiga/_BootWHD/,10
+
+filesystem2=rw,DH1:games:/home/pi/RetroPie/roms/amiga/<<hdpath>>/<<game>>/,0
+uaehf0=dir,rw,DH1:games:/home/pi/RetroPie/roms/amiga/<<hdpath>>/<<game>>/,0
+
+filesystem2=rw,DH2:HDFGame:/home/pi/RetroPie/roms/amiga/<<hdpath>>/<<game>>,32,1,2,512,50,,uae
+hardfile2=dir,rw,DH2:HDFGame:/home/pi/RetroPie/roms/amiga/<<hdpath>>/<<game>>,32,1,2,512,50,,uae
+
+; CD32
+cd32cd=<<cd32mode>>
+cdimage0=/home/pi/RetroPie/roms/amiga/<<hdpath>>/<<game>>/<<game>>.cue,image
+
+; Display / Screen Setup
+gfx_framerate=0
+gfx_width=<<screenwidth>>
+gfx_height=<<screenheight>>
+gfx_width_windowed=320
+gfx_height_windowed=240
+gfx_width_fullscreen=640
+gfx_height_fullscreen=480
+gfx_lores=false
+gfx_resolution=hires
+gfx_correct_aspect=<<43aspect>>
+ntsc=<<ntsc>>
+
+; CPU options
+cpu_type=<<cputype>>
+cpu_speed=<<cpuspeed>>
+finegrain_cpu_speed=<<clockspeed>>
+;cpu_model=<<cpumodel>>
+cpu_compatible=<<cpucompatible>>
+cpu_24bit_addressing=<<24bitaddress>>
+cachesize=<<jitcache>>
+cpu_cycle_exact=<<cycleexact>>
+
+
+; Memory 
+a1000ram=false
+chipmem_size=<<chipmem>>
+bogomem_size=0
+fastmem_size=<<fastmem>>
+z3mem_size=<<z3mem>>
+z3mem_start=0x1000000
+
+; Chipset 
+chipset=<<chipset>>
+chipset_refreshrate=0.000000
+collision_level=<<spritecollision>>
+fast_copper=<<fastcopper>>
+immediate_blits=<<immediateblitter>>
+
+rtg_nocustom=true
+rtg_modes=0x502
+gfxcard_size=0
+gfxcard_type=ZorroIII
+
+; Misc
+bsdsocket_emu=<<bsdsocket>>
+show_leds=false
+kbd_led_num=-1
+kbd_led_scr=-1
+kbd_led_cap=-1
+
+; Sound
+sound_output=exact
+sound_channels=stereo
+sound_stereo_separation=7
+sound_stereo_mixing_delay=0
+sound_frequency=44100
+sound_interpol=none
+sound_filter=off
+sound_filter_type=standard
+sound_volume_cd=20
+sound_auto=yes
+synchronize_clock=yes
+

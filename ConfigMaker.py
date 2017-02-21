@@ -197,8 +197,9 @@ def AddSpace(inBit,pos):
 
 
 def DownloadUpdate(infile):
-
-    GetFile = "http://www.djcresswell.com/RetroPie/ConfigMaker/" +infile
+    
+ #   GetFile = "http://www.djcresswell.com/RetroPie/ConfigMaker/" +infile
+    GetFile = "https://raw.githubusercontent.com/HoraceAndTheSpider/UAEConfigMaker/master/" +infile
     PutFile = "" + infile
     
     try:
@@ -555,8 +556,10 @@ def DoScan(inputdir,pathname):
                     #' 24 bit addressing / compatible CPU / JIT Cache
                     _24BitAddress = not ChexList("CPU_No24BitAddress.txt",thisfile)
                     CompatibleCpu = ChexList("CPU_Compatible.txt",thisfile)
+                    CycleExact = ChexList("CPU_CycleExact.txt",thisfile)
                     UseJIT = not ChexList("CPU_NoJIT.txt",thisfile)
-
+                    #UseJIT =ChexList("CPU_ForceJIT.txt",thisfile)
+                    
                     #'======== DISPLAY SETTINGS ======= 
                     #' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                     #' screen Y/X Offsets
@@ -684,7 +687,8 @@ def DoScan(inputdir,pathname):
             
                         ConfigText = ConfigText.replace("<<clockspeed>>",str(ClockSpeed))
                         ConfigText = ConfigText.replace("<<cpucompatible>>",str(bool(0-CompatibleCpu)))
-                        ConfigText = ConfigText.replace("<<24bitaddress>>",str(bool(0-_24BitAddress)))
+                        ConfigText = ConfigText.replace("<<cycleexact>>",str(bool(0-CompatibleCpu)))
+                        ConfigText = ConfigText.replace("<<24bitaddress>>",str(bool(0-CycleExact)))
                         if UseJIT==False:
                             ConfigText = ConfigText.replace("<<jitcache>>","0")
                         else:
@@ -795,23 +799,25 @@ if os.path.isfile("uaeconfig.uaetemp")==False:
 print()
 
 ## go through the paths
-##DoScan(inputdir,"Games_WHDLoad")
-DoScan(inputdir,"Games_WHDLoad_DomTest")
-##DoScan(inputdir,"Games_WHDLoad_AGA")
-##DoScan(inputdir,"Games_WHDLoad_CDTV")
-##DoScan(inputdir,"Games_WHDLoad_CD32")
-##DoScan(inputdir,"Games_WHDLoad_DemoVersions")
-##DoScan(inputdir,"Games_WHDLoad_AltVersions")
-##DoScan(inputdir,"Games_WHDLoad_AltLanguage")
-##DoScan(inputdir,"Games_WHDLoad_AGACD32_AltLanguage")
-##DoScan(inputdir,"Games_WHDLoad_AGACD32_AltVersions")
-##DoScan(inputdir,"Games_WHDLoad_Unofficial")
-##DoScan(inputdir,"Games_HDF")
+##DoScan(inputdir,"Games_WHDLoad_DomTest")
+
+DoScan(inputdir,"Games_WHDLoad")
+DoScan(inputdir,"Games_WHDLoad_AGA")
+DoScan(inputdir,"Games_WHDLoad_CDTV")
+DoScan(inputdir,"Games_WHDLoad_CD32")
+DoScan(inputdir,"Games_WHDLoad_DemoVersions")
+DoScan(inputdir,"Games_WHDLoad_AltVersions")
+DoScan(inputdir,"Games_WHDLoad_AltLanguage")
+DoScan(inputdir,"Games_WHDLoad_AGACD32_AltLanguage")
+DoScan(inputdir,"Games_WHDLoad_AGACD32_AltVersions")
+DoScan(inputdir,"Games_WHDLoad_Unofficial")
+DoScan(inputdir,"Games_HDF")
 DoScan(inputdir,"Games_CD32")
-##DoScan(inputdir,"Games_CDTV")
-##DoScan(inputdir,"Games_ADF")
-##DoScan(inputdir,"Games_Script_Unreleased")
-##DoScan(inputdir,"Demos_WHDLoad")
+#DoScan(inputdir,"Games_CDTV")
+#DoScan(inputdir,"Games_ADF")
+#DoScan(inputdir,"Games_Script_Unreleased")
+
+DoScan(inputdir,"Demos_WHDLoad")
 
 raise SystemExit
 

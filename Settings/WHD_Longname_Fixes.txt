@@ -140,6 +140,7 @@ Dragons Lair Escape|Dragon's Lair - Escape From Singe's Castle
 Dragon Scape|DragonScape
 Eagles Rider|Eagle's Rider
 Elf Micro Value|Elf (MicroValue)
+Elf Ocean|Elf (Ocean)
 Elvira Arcade|Elvira - The Arcade Game
 EMotion|E-Motion
 Elvira|Elvira - Mistress of the Dark
@@ -452,6 +453,7 @@ Alien Breed TA [AGA]|Alien Breed Tower Assault [AGA]
 Alien Breed TA 11 [AGA]|Alien Breed Tower Assault (v1.1) [AGA]
 Charlie JCool [AGA]|Charlie J Cool [AGA]
 Dennis [AGA] Desktop Dynamite|Dennis [AGA] (Desktop Dynamite)
+Dream Web [AGA]|DreamWeb [AGA]
 James Pond 2 [AGA]|James Pond 2 - Robocod[AGA]
 James Pond 3 [AGA]|James Pond 3 - Operation Starfish [AGA]
 Kick Off 3 EC_ [AGA]|Kick Off 3 - European Challenge [AGA]
