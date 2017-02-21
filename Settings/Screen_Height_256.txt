@@ -2,7 +2,8 @@ AlienBreed
 AlienBreed2
 AlienBreed2AGA
 AlienBreed3D2AGA4MB
-AlienBreed3D2AGA4MBAlienBreed3DAGAFixed
+AlienBreed3D2AGA4MB
+AlienBreed3DAGAFixed
 AlienBreedSpecialEdition
 AlienBreedTA
 AlienBreedTowerAssaultAGA
@@ -26,7 +27,15 @@ DragonsLair&EscapeFast
 DragonsLair&EscapeSlow
 GuySpy
 GuySpyCD32
+SantasXmasCaper
 SensibleGolf
 SensibleWorldOfSoccer
 SensibleWorldOfSoccer9596
 SensibleWorldOfSoccer9697
+SolomonsKey2
+SuprTennisChmps
+Switchblade2
+TennisChamps
+TipOff
+Turrican
+WizNLiz
