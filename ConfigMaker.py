@@ -821,6 +821,7 @@ print()
 
 ## go through the paths
 ##DoScan(inputdir,"Games_WHDLoad_DomTest")
+##raise SystemExit
 
 DoScan(inputdir,"Games_WHDLoad")
 DoScan(inputdir,"Games_WHDLoad_AGA")
