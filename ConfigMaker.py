@@ -272,7 +272,11 @@ def DoScan(inputdir,pathname):
 
 ##' what type of scan is it  --  default , Whdload folder 
 
-    if pathname.find("WHDLoad")>-1:
+    if pathname.find("WHDLoad_HDF")>-1 and pathname.lower().find(".hdf"):
+        scanmode="WHDLoadHDF"
+        hdsettings=",0"
+        
+    elif pathname.find("WHDLoad")>-1:
         scanmode="WHDLoad"
         hdsettings=",0"
 
@@ -735,10 +739,27 @@ def DoScan(inputdir,pathname):
                         else:
                             ConfigText = ConfigText.replace("<<cd32mode>>","0")                           
 
-
                         # controls (TO BE WORKED ON)                           
                         if UseMouse1==True:
                             ConfigText = ConfigText.replace("pandora.custom_dpad=1",pathname)
+                            ConfigText = ConfigText.replace("<<port0>>","mouse")
+                            ConfigText = ConfigText.replace("<<port0mode>>","mousenowheel")
+
+##                        if UseMouse2==True:
+##                            ConfigText = ConfigText.replace("<<port1>>","mouse")
+##                            ConfigText = ConfigText.replace("<<port1mode>>","mousenowheel")
+
+                        if UseCD32Pad==True:
+                            ConfigText = ConfigText.replace("<<port0>>","joy2")
+                            ConfigText = ConfigText.replace("<<port0mode>>","cd32joy")
+                            ConfigText = ConfigText.replace("<<port1>>","joy1")
+                            ConfigText = ConfigText.replace("<<port1mode>>","cd32joy")
+                        else:
+                            ConfigText = ConfigText.replace("<<port0>>","joy2")
+                            ConfigText = ConfigText.replace("<<port0mode>>","djoy")
+                            ConfigText = ConfigText.replace("<<port1>>","joy1")
+                            ConfigText = ConfigText.replace("<<port1mode>>","djoy")
+                                                    
 
                     # save out the config changes
                         text_file = open(fname, "w")
@@ -813,6 +834,7 @@ DoScan(inputdir,"Games_WHDLoad_AGACD32_AltVersions")
 DoScan(inputdir,"Games_WHDLoad_Unofficial")
 DoScan(inputdir,"Games_HDF")
 DoScan(inputdir,"Games_CD32")
+DoScan(inputdir,"Games_WHDLoad_HDF")
 #DoScan(inputdir,"Games_CDTV")
 #DoScan(inputdir,"Games_ADF")
 #DoScan(inputdir,"Games_Script_Unreleased")

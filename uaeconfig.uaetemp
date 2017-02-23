@@ -10,15 +10,16 @@ pandora.hardfile_path=/home/pi/RetroPie/roms/amiga/Games_HDF/
 pandora.cd_path=/home/pi/RetroPie/roms/amiga//Games_CD32/
 
 ; Controller Config
-joyport0=joy2
+joyport0=<<port0>>
 joyport0autofire=none
 joyport0mode=<<port0mode>>
 joyportname0=JOY2
-joyport1=joy1
+;joyportfriendlyname0=A SPEED-LINK Competition Pro
+
+joyport1=<<port1>>
 joyport1autofire=none
 joyport1mode=<<port1mode>>
 joyportname1=JOY1
-;joyportfriendlyname0=A SPEED-LINK Competition Pro
 ;joyportfriendlyname1=A SPEED-LINK Competition Pro
 
 input.config=0
