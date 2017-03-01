@@ -4,6 +4,7 @@ from urllib.request import *
 import urllib
 import ssl
 import os
+import sys
 import math
 import shutil
 
@@ -197,7 +198,6 @@ def AddSpace(inBit,pos):
 
 
 def DownloadUpdate(infile):
-    
  #   GetFile = "http://www.djcresswell.com/RetroPie/ConfigMaker/" +infile
     GetFile = "https://raw.githubusercontent.com/HoraceAndTheSpider/UAEConfigMaker/master/" +infile
     PutFile = "" + infile
@@ -773,6 +773,33 @@ def DoScan(inputdir,pathname):
     print ()
     return
 
+def DoScanBase(inputdir):
+    ## go through the paths
+    ##DoScan(inputdir,"Games_WHDLoad_DomTest")
+    ##raise SystemExit
+
+    DoScan(inputdir,"Games_WHDLoad")
+    DoScan(inputdir,"Games_WHDLoad_AGA")
+    DoScan(inputdir,"Games_WHDLoad_CDTV")
+    DoScan(inputdir,"Games_WHDLoad_CD32")
+    DoScan(inputdir,"Games_WHDLoad_DemoVersions")
+    DoScan(inputdir,"Games_WHDLoad_AltVersions")
+    DoScan(inputdir,"Games_WHDLoad_AltLanguage")
+    DoScan(inputdir,"Games_WHDLoad_AGACD32_AltLanguage")
+    DoScan(inputdir,"Games_WHDLoad_AGACD32_AltVersions")
+    DoScan(inputdir,"Games_WHDLoad_Unofficial")
+    DoScan(inputdir,"Games_HDF")
+    DoScan(inputdir,"Games_CD32")
+    DoScan(inputdir,"Games_WHDLoad_HDF")
+    #DoScan(inputdir,"Games_CDTV")
+    #DoScan(inputdir,"Games_ADF")
+    #DoScan(inputdir,"Games_Script_Unreleased")
+
+    DoScan(inputdir,"Demos_WHDLoad")
+
+
+
+
 
 ## main section starting here...
 
@@ -786,18 +813,30 @@ try:
         ssl._create_default_https_context = ssl._create_unverified_context
 except:
         pass
-    
-## -------- input dir  ... i.e. where we will scan for Sub-Folders
-if platform.system()=="Darwin":
-    inputdir="/Volumes/roms/amiga/"
-    inputdir = "/Users/horaceandthespider/Documents/Gaming/AmigaWHD/WorkingFolder2/"
 
- ## -------- I SEE YOU AINGER! o_o
-elif platform.node()=="RAVEN":
-    inputdir="C:\\Users\\oaing\\Desktop\\whdload\\"
+
+inputdirs = list()
+
+for i in range(1, len(sys.argv)):
+    arg = sys.argv[i]
+    if arg.startswith("--"):
+        continue
+    if os.path.isdir(arg):
+        inputdirs.append(os.path.abspath(arg) + "/")
+
+if not inputdirs:
     
-else:
-    inputdir="//home/pi/RetroPie/roms/amiga/"
+    ## -------- input dir  ... i.e. where we will scan for Sub-Folders
+    if platform.system()=="Darwin":
+        #inputdir="/Volumes/roms/amiga/"
+        inputdirs.append("/Users/horaceandthespider/Documents/Gaming/AmigaWHD/WorkingFolder2/")
+
+    ## -------- I SEE YOU AINGER! o_o
+    elif platform.node()=="RAVEN":
+        inputdirs.append("C:\\Users\\oaing\\Desktop\\whdload\\")
+    
+    else:
+        inputdirs.append("//home/pi/RetroPie/roms/amiga/")
     
 # paths/folders if needed
 os.makedirs("Settings", exist_ok=True)
@@ -819,28 +858,8 @@ if os.path.isfile("uaeconfig.uaetemp")==False:
 
 print()
 
-## go through the paths
-##DoScan(inputdir,"Games_WHDLoad_DomTest")
-##raise SystemExit
-
-DoScan(inputdir,"Games_WHDLoad")
-DoScan(inputdir,"Games_WHDLoad_AGA")
-DoScan(inputdir,"Games_WHDLoad_CDTV")
-DoScan(inputdir,"Games_WHDLoad_CD32")
-DoScan(inputdir,"Games_WHDLoad_DemoVersions")
-DoScan(inputdir,"Games_WHDLoad_AltVersions")
-DoScan(inputdir,"Games_WHDLoad_AltLanguage")
-DoScan(inputdir,"Games_WHDLoad_AGACD32_AltLanguage")
-DoScan(inputdir,"Games_WHDLoad_AGACD32_AltVersions")
-DoScan(inputdir,"Games_WHDLoad_Unofficial")
-DoScan(inputdir,"Games_HDF")
-DoScan(inputdir,"Games_CD32")
-DoScan(inputdir,"Games_WHDLoad_HDF")
-#DoScan(inputdir,"Games_CDTV")
-#DoScan(inputdir,"Games_ADF")
-#DoScan(inputdir,"Games_Script_Unreleased")
-
-DoScan(inputdir,"Demos_WHDLoad")
+for inputdir in inputdirs:
+    DoScanBase(inputdir)
 
 raise SystemExit
 
