@@ -198,8 +198,10 @@ def AddSpace(inBit,pos):
 
 
 def DownloadUpdate(infile):
+    
     # If we're developing don't overwrite our changes.
     if "--no-update" in sys.argv:
+        print ("No update request for " + bcolors.WARNING + infile + bcolors.ENDC +  ". (Manual override)")
         return
 
  #   GetFile = "http://www.djcresswell.com/RetroPie/ConfigMaker/" +infile
@@ -308,6 +310,10 @@ def DoScan(inputdir,pathname):
     count = 1
     SkipAll = 0
 
+    # command line forcing of overwrite of files
+    if "--force-config-overwrite" in sys.argv:
+        SkipAll = 1
+        
     QuitButton = FindHostOption("button_for_quit")
     MenuButton = FindHostOption("button_for_menu")
     
@@ -649,9 +655,17 @@ def DoScan(inputdir,pathname):
                         text_file.close()
 
 
-                     # all the major find/replaces
-                        ConfigText = ConfigText.replace("<<inputdir>>",inputdir)
+                     # all the major find/replaces from below....
+                     
+                     # I needed an "override" option 
+                     #    to force //home/pi/RetroPie/roms/amiga/ on
+                     #      external machines (allowing WHD packs to be created on external machines)
 
+                        if not "--force-pi-paths" in sys.argv:
+                            ConfigText = ConfigText.replace("<<inputdir>>",inputdir)
+                        else:
+                            ConfigText = ConfigText.replace("<<inputdir>>","//home/pi/RetroPie/roms/amiga/")
+                        
                         # game / path
                         ConfigText = ConfigText.replace("<<game>>",thisfile)
                             
@@ -835,14 +849,14 @@ if not inputdirs:
     ## -------- input dir  ... i.e. where we will scan for Sub-Folders
     if platform.system()=="Darwin":
         #inputdir="/Volumes/roms/amiga/"
-        inputdirs.append("/Users/horaceandthespider/Documents/Gaming/AmigaWHD/WorkingFolder2/")
+        inputdirs.append("/Users/horaceandthespider/Documents/Gaming/AmigaWHD/WorkingFolder2/Test/")
 
     ## -------- I SEE YOU AINGER! o_o
     elif platform.node()=="RAVEN":
         inputdirs.append("C:\\Users\\oaing\\Desktop\\whdload\\")
     
     else:
-        inputdirs.append("//home/pi/RetroPie/roms/amiga/")
+        inputdirs.append("/home/pi/RetroPie/roms/amiga/")
     
 # paths/folders if needed
 os.makedirs("Settings", exist_ok=True)
