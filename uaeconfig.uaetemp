@@ -5,9 +5,9 @@ config_version=2.8.1
 
 ; original paths
 pandora.rom_path=/home/pi/RetroPie/BIOS/
-pandora.floppy_path=/home/pi/RetroPie/roms/amiga//Games_ADF/
-pandora.hardfile_path=/home/pi/RetroPie/roms/amiga/Games_HDF/
-pandora.cd_path=/home/pi/RetroPie/roms/amiga//Games_CD32/
+pandora.floppy_path=<<inputdir>>Games_ADF/
+pandora.hardfile_path=<<inputdir>>Games_HDF/
+pandora.cd_path=<<inputdir>>Games_CD32/
 
 ; Controller Config
 joyport0=<<port0>>
@@ -74,30 +74,30 @@ kickstart_ext_rom_file=$(FILE_PATH)/<<extkickstart>>
 
 ; Floppy Drives
 
-;floppy0=/home/pi/RetroPie/roms/amiga/<<diskpath0>>/<<disk0>>
+;floppy0=<<inputdir>><<diskpath0>>/<<disk0>>
 ;floppy0type=<<disktype0>>
-;floppy1=/home/pi/RetroPie/roms/amiga/<<diskpath1>>/<<disk1>>
+;floppy1=<<inputdir>><<diskpath1>>/<<disk1>>
 ;floppy1type=<<disktype1>>
-;floppy2=/home/pi/RetroPie/roms/amiga/<<diskpath2>>/<<disk2>>
+;floppy2=<<inputdir>><<diskpath2>>/<<disk2>>
 ;floppy2type=<<disktype2>>
-;floppy3=/home/pi/RetroPie/roms/amiga/<<diskpath3>>/<<disk3>>
+;floppy3=<<inputdir>><<diskpath3>>/<<disk3>>
 ;floppy3type=<<disktype3>>
 nr_floppies=<<totaldisks>>
 floppy_speed=<<floppyspeed>>
 
 ; Hard Drives
-filesystem2=rw,DH0:DH0:/home/pi/RetroPie/roms/amiga/_BootWHD/,10
-uaehf1=dir,rw,DH0:DH0:/home/pi/RetroPie/roms/amiga/_BootWHD/,10
+filesystem2=rw,DH0:DH0:<<inputdir>>_BootWHD/,10
+uaehf1=dir,rw,DH0:DH0:<<inputdir>>_BootWHD/,10
 
-filesystem2=rw,DH1:games:/home/pi/RetroPie/roms/amiga/<<hdpath>>/<<game>>/,0
-uaehf0=dir,rw,DH1:games:/home/pi/RetroPie/roms/amiga/<<hdpath>>/<<game>>/,0
+filesystem2=rw,DH1:games:<<inputdir>><<hdpath>>/<<game>>/,0
+uaehf0=dir,rw,DH1:games:<<inputdir>><<hdpath>>/<<game>>/,0
 
-filesystem2=rw,DH2:HDFGame:/home/pi/RetroPie/roms/amiga/<<hdpath>>/<<game>>,32,1,2,512,50,,uae
-hardfile2=dir,rw,DH2:HDFGame:/home/pi/RetroPie/roms/amiga/<<hdpath>>/<<game>>,32,1,2,512,50,,uae
+filesystem2=rw,DH2:HDFGame:<<inputdir>><<hdpath>>/<<game>>,32,1,2,512,50,,uae
+hardfile2=dir,rw,DH2:HDFGame:<<inputdir>><<hdpath>>/<<game>>,32,1,2,512,50,,uae
 
 ; CD32
 cd32cd=<<cd32mode>>
-cdimage0=/home/pi/RetroPie/roms/amiga/<<hdpath>>/<<game>>/<<game>>.cue,image
+cdimage0=<<inputdir>><<hdpath>>/<<game>>/<<game>>.cue,image
 
 ; Display / Screen Setup
 gfx_framerate=0
