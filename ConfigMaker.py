@@ -198,6 +198,10 @@ def AddSpace(inBit,pos):
 
 
 def DownloadUpdate(infile):
+    # If we're developing don't overwrite our changes.
+    if "--no-update" in sys.argv:
+        return
+
  #   GetFile = "http://www.djcresswell.com/RetroPie/ConfigMaker/" +infile
     GetFile = "https://raw.githubusercontent.com/HoraceAndTheSpider/UAEConfigMaker/master/" +infile
     PutFile = "" + infile
@@ -646,6 +650,8 @@ def DoScan(inputdir,pathname):
 
 
                      # all the major find/replaces
+                        ConfigText = ConfigText.replace("<<inputdir>>",inputdir)
+
                         # game / path
                         ConfigText = ConfigText.replace("<<game>>",thisfile)
                             
