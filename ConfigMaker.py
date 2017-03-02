@@ -7,6 +7,9 @@ import os
 import sys
 import math
 import shutil
+import argparse
+import utils
+
 
 class bcolors:
     HEADER = '\033[95m'
@@ -30,11 +33,14 @@ class bcolors:
 def left(s, amount):
     return s[:amount]
 
+
 def right(s, amount):
     return s[-amount:]
 
+
 def mid(s, point, amount):
     return s[point:point+amount]
+
 
 def midAMOS(s, point, amount):
     if point==0:
@@ -200,7 +206,7 @@ def AddSpace(inBit,pos):
 def DownloadUpdate(infile):
     
     # If we're developing don't overwrite our changes.
-    if "--no-update" in sys.argv:
+    if NO_UPDATE is True:
         print ("No update request for " + bcolors.WARNING + infile + bcolors.ENDC +  ". (Manual override)")
         return
 
@@ -311,9 +317,9 @@ def DoScan(inputdir,pathname):
     SkipAll = 0
 
     # command line forcing of overwrite of files
-    if "--force-config-overwrite" in sys.argv:
+    if FORCE_OVERWRITE is True:
         SkipAll = 1
-        
+
     QuitButton = FindHostOption("button_for_quit")
     MenuButton = FindHostOption("button_for_menu")
     
@@ -661,10 +667,10 @@ def DoScan(inputdir,pathname):
                      #    to force //home/pi/RetroPie/roms/amiga/ on
                      #      external machines (allowing WHD packs to be created on external machines)
 
-                        if not "--force-pi-paths" in sys.argv:
-                            ConfigText = ConfigText.replace("<<inputdir>>",inputdir)
+                        if FORCE_PI_PATHS is False:
+                            ConfigText = ConfigText.replace("<<inputdir>>", inputdir)
                         else:
-                            ConfigText = ConfigText.replace("<<inputdir>>","//home/pi/RetroPie/roms/amiga/")
+                            ConfigText = ConfigText.replace("<<inputdir>>", "//home/pi/RetroPie/roms/amiga/")
                         
                         # game / path
                         ConfigText = ConfigText.replace("<<game>>",thisfile)
@@ -834,37 +840,60 @@ try:
 except:
         pass
 
+#
+# Setup Commandline Argument Parsing
+#
 
-inputdirs = list()
+parser = argparse.ArgumentParser(description='Create UAE Configs for WHDLoad Packs.')
+parser.add_argument('--scandirs', '-s',  # command line argument
+                    nargs='*',  # any number of space seperated arguments
+                    help='Directories to Scan',
+                    default=['/home/pi/RetroPie/roms/amiga/']  # Default directory if none supplied
+                    )
 
-for i in range(1, len(sys.argv)):
-    arg = sys.argv[i]
-    if arg.startswith("--"):
-        continue
-    if os.path.isdir(arg):
-        inputdirs.append(os.path.abspath(arg) + "/")
+parser.add_argument('--no-update', '-n',  # command line argument
+                    action="store_true",  # if argument present, store value as True otherwise False
+                    help="Disable the updater"
+                    )
 
-if not inputdirs:
-    
-    ## -------- input dir  ... i.e. where we will scan for Sub-Folders
-    if platform.system()=="Darwin":
-        #inputdir="/Volumes/roms/amiga/"
-        inputdirs.append("/Users/horaceandthespider/Documents/Gaming/AmigaWHD/WorkingFolder2/Test/")
+parser.add_argument('--force-config-overwrite', # command line argument
+                    action="store_true",  # if argument present, store value as True otherwise False
+                    help="Force Overwrite of the UAE configs"
+                    )
 
-    ## -------- I SEE YOU AINGER! o_o
-    elif platform.node()=="RAVEN":
-        inputdirs.append("C:\\Users\\oaing\\Desktop\\whdload\\")
-    
-    else:
-        inputdirs.append("/home/pi/RetroPie/roms/amiga/")
-    
+parser.add_argument('--force-pi-paths',  # command line argument
+                    action="store_true",  # if argument present, store value as True otherwise False
+                    help="Force Retropie Paths"
+                    )
+
+# Parse all command line arguments
+args = parser.parse_args()
+
+# Get the directories to scan (or default)
+inputdirs = args.scandirs
+
+# Dom's special directory override :P
+if platform.system() == "Darwin":
+    inputdirs = ["/Users/horaceandthespider/Documents/Gaming/AmigaWHD/WorkingFolder2/Test/"]
+
+# Check Directories are valid
+inputdirs = utils.check_inputdirs(inputdirs)
+
+# Setup Bool Constant for No Update
+NO_UPDATE = args.no_update
+
+# Setup Bool Constant for Config Overwrite
+FORCE_OVERWRITE = args.force_config_overwrite
+
+# Setup Bool Constant for Pi Paths
+FORCE_PI_PATHS = args.force_pi_paths
+
 # paths/folders if needed
 os.makedirs("Settings", exist_ok=True)
 
 
 ## we can go through all files in 'settings' and attempt a download of the file
 for filename in glob.glob('Settings/*.txt'):
-
     DownloadUpdate(filename)
         
 ## do similar for 
