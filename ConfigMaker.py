@@ -9,6 +9,7 @@ import shutil
 import argparse
 import utils
 import text_utils
+import re
 
 
 class FontColours:
@@ -67,12 +68,14 @@ def make_full_name(in_name):
             # two underscores ... ignore
             elif prev_char == 95 and prev_char_2 == 95:
                 pass
+            elif prev_char == 92 and prev_char_2 == 92:
+                pass
             # previous is a capital A, but not part of AGA
             elif prev_char == 65 and this_char != 71 and next_char != 65:
                 in_name = text_utils.add_space(in_name, A)
                 A += 1
                 B += 1
-                # and the previous letter is not a space , and not also capital, or dash
+            # and the previous letter is not a space , and not also capital, or dash
             elif prev_char != 32 and prev_char != 45 and not (65 <= prev_char <= 90):
                 in_name = text_utils.add_space(in_name, A)
                 A += 1
@@ -275,19 +278,20 @@ def do_scan(input_directory, pathname):
         menu_button = -1
 
     # cycle through all folders / files
-    for file_name in glob.glob(input_directory + pathname + "/*"):
+    for file in glob.glob(input_directory + pathname + "/*"):
         # WHDLOAD mode needs folders, the rest need files
         if scan_mode == "WHDLoad":
-            typetest = os.path.isdir(file_name)
+            typetest = os.path.isdir(file)
         else:
-            typetest = os.path.isfile(file_name)
+            typetest = os.path.isfile(file)
 
-        this_file = file_name.replace(input_directory + pathname + "/", "")
+        #this_file = file.replace(input_directory + pathname + "/", "")
+        this_file = os.path.basename(file)
 
         # type filter applies
         # elif scan_mode == "CD32" and (right(this_file.lower(),4) != ".iso" and right(this_file.lower(),4) != ".cue"):
         # not a folder and no sub cue or iso file
-        # elif scan_mode == "CD32" and (os.path.isdir(file_name) == False or os.path.isfile(file_name + "/" + this_file + ".cue")==False):
+        # elif scan_mode == "CD32" and (os.path.isdir(file) == False or os.path.isfile(file + "/" + this_file + ".cue")==False):
         #   pass
 
         # name filter applies
@@ -301,15 +305,15 @@ def do_scan(input_directory, pathname):
         # CD32 folders need sub file with extension as .cue
 
         # TODO: Can this be simplified? Really long elif statement, hard to read.
-        elif (scan_mode == "WHDLoad" and os.path.isfile(file_name) is True
+        elif (scan_mode == "WHDLoad" and os.path.isfile(file) is True
               and text_utils.right(this_file.lower(), 4) == ".zip") or \
-                (scan_mode == "WHDLoad" and os.path.isdir(file_name) is True) or \
-                (scan_mode == "HDF" and os.path.isfile(file_name) is True
+                (scan_mode == "WHDLoad" and os.path.isdir(file) is True) or \
+                (scan_mode == "HDF" and os.path.isfile(file) is True
                  and text_utils.right(this_file.lower(), 4) == ".hdf") or \
-                (scan_mode == "CD32" and os.path.isfile(file_name) is True
+                (scan_mode == "CD32" and os.path.isfile(file) is True
                  and text_utils.right(this_file.lower(), 4) == ".iso") or \
-                (scan_mode == "CD32" and os.path.isdir(file_name) is True
-                 and os.path.isfile(file_name + "/" + this_file + ".cue") is True):
+                (scan_mode == "CD32" and os.path.isdir(file) is True
+                 and os.path.isfile(file + "/" + this_file + ".cue") is True):
 
             # print ("Processed: "  + bcolors.OKBLUE +str(count)  + bcolors.ENDC )
             # print ()
@@ -619,16 +623,16 @@ def do_scan(input_directory, pathname):
                 # ' ....
 
                 # print("we are making a config ....")
-                file_name = input_directory + full_game_name + ".uae"
-                shutil.copyfile("uaeconfig.uaetemp", file_name)
+                file = input_directory + full_game_name + ".uae"
+                shutil.copyfile("uaeconfig.uaetemp", file)
 
-                if os.path.isfile(file_name) is False:
+                if os.path.isfile(file) is False:
                     print(FontColours.FAIL + "Error creating config." + FontColours.ENDC)
                 else:
-                    print("     Editing File: " + FontColours.HEADER + file_name + FontColours.ENDC)
+                    print("     Editing File: " + FontColours.HEADER + file + FontColours.ENDC)
 
                     # put the text from the file into a string
-                    text_file = open(file_name, "r")
+                    text_file = open(file, "r")
                     config_text = text_file.read()
                     text_file.close()
 
@@ -760,7 +764,7 @@ def do_scan(input_directory, pathname):
                         config_text = config_text.replace("<<port1mode>>", "djoy")
 
                     # save out the config changes
-                    text_file = open(file_name, "w")
+                    text_file = open(file, "w")
                     text_file.write(config_text)
                     text_file.close()
 

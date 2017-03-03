@@ -28,7 +28,7 @@ Space Ranger Arcadia|Space Ranger (Arcadia)
 Table Hockey Arcadia|Table Hockey (Arcadia)
 Ten Pin Bowling Arcadia|Ten Pin Bowling (Arcadia)
 World Trophy Soccer Arcadia|World Trophy Soccer (Arcadia)
-Aquanaut F 1 Licenceware|Aquanaut (F1 Licenceware)Archer Macleans Billard Amcn| Archer Macleans's Le Billard AmericainArcher Macleans|Archer Maclean'sArkanoidReve|Arkanoid - ReveArmour Geddon|Armour-Geddon
+Aquanaut F 1 Licenceware|Aquanaut (F1 Licenceware)Archer Macleans Billard Amcn|Archer Macleans's Le Billard AmericainArcher Macleans|Archer Maclean'sArkanoidReve|Arkanoid - ReveArmour Geddon|Armour-Geddon
 Armour Geddon 2|Armour-Geddon 2
 Asterix Op Getafix|Asterix - Operation Getafix
 Alien Breed 2|Alien Breed II - The Horror ContinuesA TF2|Advanced Tactical Fighter II
@@ -338,7 +338,7 @@ Pro Soccer 2190|ProSoccer 2190
 Robo Sport|RoboSport
 Prophecy 1 Viking Child|Prophecy I - Viking ChildPuffys Saga|Puffy's Saga
 QBic|Q-BicQuest For Glory 2|Quest For Glory IIQuik Thunder Rabbit|Quik - The Thunder Rabbit
-Questron 2|Questron IIRType 2|R-Type IIRType|R-Type|Rackneys Island|Rackney's Island
+Questron 2|Questron IIRType 2|R-Type IIRType|R-TypeRackneys Island|Rackney's Island
 Rage CA D|Rage (CAD)Rage V 2|Rage (v2.0)
 Ran X|Ranx
 Rogue|Rogue - The Adventure GameRBI 2 Baseball|R.B.I. Two BaseballRick Dangerous 25|Rick Dangerous 2.5
