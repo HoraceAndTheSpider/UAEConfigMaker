@@ -7,9 +7,9 @@ import os
 import math
 import shutil
 import argparse
-import utils
-import text_utils
 import re
+import CM.utils 
+import CM.text_utils 
 
 
 class FontColours:
@@ -50,12 +50,12 @@ def make_full_name(in_name):
     while A < len(in_name) and A < B:
         A += 1
 
-        prev_char_2 = ord(text_utils.mid_amos(in_name, A - 2, 1))
-        prev_char = ord(text_utils.mid_amos(in_name, A - 1, 1))
-        this_char = ord(text_utils.mid_amos(in_name, A, 1))
-        next_char = ord(text_utils.mid_amos(in_name, A + 1, 1))
+        prev_char_2 = ord(CM.text_utils.mid_amos(in_name, A - 2, 1))
+        prev_char = ord(CM.text_utils.mid_amos(in_name, A - 1, 1))
+        this_char = ord(CM.text_utils.mid_amos(in_name, A, 1))
+        next_char = ord(CM.text_utils.mid_amos(in_name, A + 1, 1))
         # never used?
-        # next_char_2 = ord(text_utils.mid_amos(in_name, A + 2, 1))
+        # next_char_2 = ord(CM.text_utils.mid_amos(in_name, A + 2, 1))
 
         #  ===== add spaces
 
@@ -72,12 +72,12 @@ def make_full_name(in_name):
                 pass
             # previous is a capital A, but not part of AGA
             elif prev_char == 65 and this_char != 71 and next_char != 65:
-                in_name = text_utils.add_space(in_name, A)
+                in_name = CM.text_utils.add_space(in_name, A)
                 A += 1
                 B += 1
             # and the previous letter is not a space , and not also capital, or dash
             elif prev_char != 32 and prev_char != 45 and not (65 <= prev_char <= 90):
-                in_name = text_utils.add_space(in_name, A)
+                in_name = CM.text_utils.add_space(in_name, A)
                 A += 1
                 B += 1
 
@@ -85,7 +85,7 @@ def make_full_name(in_name):
         elif 48 <= this_char <= 57:
             # and previous number was not a number and not a space
             if not (48 <= prev_char <= 57) and prev_char != 32:
-                in_name = text_utils.add_space(in_name, A)
+                in_name = CM.text_utils.add_space(in_name, A)
                 A += 1
                 B += 1
 
@@ -127,33 +127,33 @@ def make_full_name(in_name):
 
     for this_line in content:
         if this_line.find("|") > -1:
-            find_part = text_utils.left(this_line, this_line.find("|"))
-            replace_part = text_utils.right(this_line, len(this_line) - this_line.find("|") - 1)
+            find_part = CM.text_utils.left(this_line, this_line.find("|"))
+            replace_part = CM.text_utils.right(this_line, len(this_line) - this_line.find("|") - 1)
 
             if in_name == find_part:
                 in_name = replace_part
 
     # language rules
-    language = text_utils.right(in_name, 3)
+    language = CM.text_utils.right(in_name, 3)
 
     if language == " De":
-        in_name = text_utils.left(in_name, len(in_name) - 3) + " (Deutsch)"
+        in_name = CM.text_utils.left(in_name, len(in_name) - 3) + " (Deutsch)"
     elif language == " Pl":
-        in_name = text_utils.left(in_name, len(in_name) - 3) + " (Polski)"
+        in_name = CM.text_utils.left(in_name, len(in_name) - 3) + " (Polski)"
     elif language == " It":
-        in_name = text_utils.left(in_name, len(in_name) - 3) + " (Italiano)"
+        in_name = CM.text_utils.left(in_name, len(in_name) - 3) + " (Italiano)"
     elif language == " Dk":
-        in_name = text_utils.left(in_name, len(in_name) - 3) + " (Dansk)"
+        in_name = CM.text_utils.left(in_name, len(in_name) - 3) + " (Dansk)"
     elif language == " Es":
-        in_name = text_utils.left(in_name, len(in_name) - 3) + " (Espanol)"
+        in_name = CM.text_utils.left(in_name, len(in_name) - 3) + " (Espanol)"
     elif language == " Fr":
-        in_name = text_utils.left(in_name, len(in_name) - 3) + " (Francais)"
+        in_name = CM.text_utils.left(in_name, len(in_name) - 3) + " (Francais)"
     elif language == " Cz":
-        in_name = text_utils.left(in_name, len(in_name) - 3) + " (Czech)"
+        in_name = CM.text_utils.left(in_name, len(in_name) - 3) + " (Czech)"
     elif language == " Se":
-        in_name = text_utils.left(in_name, len(in_name) - 3) + " (Svenska)"
+        in_name = CM.text_utils.left(in_name, len(in_name) - 3) + " (Svenska)"
     elif language == " Fi":
-        in_name = text_utils.left(in_name, len(in_name) - 3) + " (Finnish)"
+        in_name = CM.text_utils.left(in_name, len(in_name) - 3) + " (Finnish)"
 
     return in_name
 
@@ -213,7 +213,7 @@ def find_host_option(in_option):
     answer = ""
 
     for this_line in content:
-        if text_utils.left(this_line, len(in_option)) == in_option:
+        if CM.text_utils.left(this_line, len(in_option)) == in_option:
             answer = this_line.replace(in_option, "")
             answer = answer.replace("=", "").strip()
             break
@@ -306,12 +306,12 @@ def do_scan(input_directory, pathname):
 
         # TODO: Can this be simplified? Really long elif statement, hard to read.
         elif (scan_mode == "WHDLoad" and os.path.isfile(file) is True
-              and text_utils.right(this_file.lower(), 4) == ".zip") or \
+              and CM.text_utils.right(this_file.lower(), 4) == ".zip") or \
                 (scan_mode == "WHDLoad" and os.path.isdir(file) is True) or \
                 (scan_mode == "HDF" and os.path.isfile(file) is True
-                 and text_utils.right(this_file.lower(), 4) == ".hdf") or \
+                 and CM.text_utils.right(this_file.lower(), 4) == ".hdf") or \
                 (scan_mode == "CD32" and os.path.isfile(file) is True
-                 and text_utils.right(this_file.lower(), 4) == ".iso") or \
+                 and CM.text_utils.right(this_file.lower(), 4) == ".iso") or \
                 (scan_mode == "CD32" and os.path.isdir(file) is True
                  and os.path.isfile(file + "/" + this_file + ".cue") is True):
 
@@ -322,14 +322,14 @@ def do_scan(input_directory, pathname):
                   ": Processing Game: " + FontColours.BOLD + temp_name + FontColours.ENDC)
 
             if this_file.lower().endswith(".zip"):
-                this_file = text_utils.left(this_file, len(this_file) - 4)
+                this_file = CM.text_utils.left(this_file, len(this_file) - 4)
 
             # standard 'expand name' thing
             if scan_mode == "WHDLoad":
                 full_game_name = make_full_name(this_file)
 
             elif scan_mode == "CD32":
-                full_game_name = text_utils.make_full_cd32_name(this_file)
+                full_game_name = CM.text_utils.make_full_cd32_name(this_file)
 
             # there may be alternative one for TOSEC CD32 images....
             print()
@@ -853,7 +853,7 @@ if platform.system() == "Darwin":
     inputdirs = ["/Users/horaceandthespider/Documents/Gaming/AmigaWHD/WorkingFolder2/Test/"]
 
 # Check Directories are valid
-inputdirs = utils.check_inputdirs(inputdirs)
+inputdirs = CM.utils.check_inputdirs(inputdirs)
 
 # Setup Bool Constant for No Update
 NO_UPDATE = args.no_update
