@@ -26,7 +26,7 @@ def add_space(in_bit, pos):
 
 def make_full_cd32_name(in_name):
     # check the txt file
-    file_name = "Settings/CD32ISO_Longname_Fixes.txt"
+    file_name = "settings/CD32ISO_Longname_Fixes.txt"
     content = ""
 
     if os.path.isfile(file_name):

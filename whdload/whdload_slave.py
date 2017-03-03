@@ -4,7 +4,25 @@ import binascii
 
 
 class WHDLoadSlave:
-    header_offset = 0x020  # 32 bytes
+    _header_offset = 0x020  # 32 bytes
+    _flags_dict = {
+        1: 'Disk',
+        2: 'NoError',
+        4: 'EmulTrap',
+        8: 'NoDivZero',
+        16: 'Req68020',
+        32: 'ReqAGA',
+        64: 'NoKbd',
+        128: 'EmulLineA',
+        256: 'EmulTrapV',
+        512: 'EmEmulChkul',
+        1024: 'EmulPriv',
+        2048: 'EmulLineF',
+        4096: 'ClearMem',
+        8192: 'Examine',
+        16384: 'EmulDivZero',
+        32768: 'EmulIllegal'
+    }
 
     def __init__(self, path):
         self.Path = path
@@ -38,22 +56,23 @@ class WHDLoadSlave:
         self.Info = None
         self.KickstartName = None
         self.Flags = []
+        self._read_data()
 
-    def read_data(self):
-        self.get_file_size()
+    def _read_data(self):
+        self._get_file_size()
 
         with open(self.Path, 'rb') as f:
-            f.seek(WHDLoadSlave.header_offset, 0)
+            f.seek(self._header_offset, 0)
             self.Data = bytearray(f.read())
 
-        self.parse_data()
-        self.parse_flags()
+        self._parse_data()
+        self._parse_flags()
 
-    def get_file_size(self):
+    def _get_file_size(self):
         self.Size = os.path.getsize(self.Path)
-        self.DataLength = self.Size - WHDLoadSlave.header_offset
+        self.DataLength = self.Size - self._header_offset
 
-    def parse_data(self):
+    def _parse_data(self):
         self.Security = struct.unpack_from('>L', self.Data[0:])[0]
         self.Id = struct.unpack_from('8s', self.Data[4:])[0].decode('iso-8859-1')
         self.Version = struct.unpack_from('>H', self.Data[12:])[0]
@@ -79,19 +98,19 @@ class WHDLoadSlave:
                 self.Id
             ))
 
-        self.CurrentDir = self.read_string(self.CurrentDirOffset)
-        self.DontCache = self.read_string(self.DontCacheOffset)
+        self.CurrentDir = self._read_string(self.CurrentDirOffset)
+        self.DontCache = self._read_string(self.DontCacheOffset)
 
         if self.Version >= 10:
-            self.Name = self.read_string(self.NameOffset)
-            self.Copy = self.read_string(self.CopyOffset)
-            self.Info = self.read_string(self.InfoOffset)
+            self.Name = self._read_string(self.NameOffset)
+            self.Copy = self._read_string(self.CopyOffset)
+            self.Info = self._read_string(self.InfoOffset)
 
         if self.Version >= 16:
-            self.KickstartName = self.read_string(self.KickNameOffset)
+            self.KickstartName = self._read_string(self.KickNameOffset)
 
         if self.Version >= 17:
-            self.Config = self.read_string(self.ConfigOffset)
+            self.Config = self._read_string(self.ConfigOffset)
 
     def display_data(self):
         print("WHDLoad Version: {}".format(self.Version))
@@ -100,6 +119,8 @@ class WHDLoadSlave:
             int(self.BaseMemSize / 1024),
             hex(self.BaseMemSize)
         ))
+        print("Current Directory: {}".format(self.CurrentDir))
+        print("Don't Cache: {}".format(self.DontCache))
 
         if self.Version >= 4:
             print("Debug Key: {}".format(self.KeyDebug))
@@ -127,7 +148,7 @@ class WHDLoadSlave:
             ))
             print("Kickstart CRC: {}".format(self.KickCRC))
 
-    def read_string(self, offset):
+    def _read_string(self, offset):
         if offset == 0:
             return ""
         length = 0
@@ -138,55 +159,8 @@ class WHDLoadSlave:
 
         return struct.unpack_from('{}s'.format(length), self.Data[offset:])[0].decode('iso-8859-1')
 
-    def parse_flags(self):
-
-        if self.FlagsValue & 1:
-            self.Flags.append('Disk')
-
-        if self.FlagsValue & 2:
-            self.Flags.append('NoError')
-
-        if self.FlagsValue & 4:
-            self.Flags.append('EmulTrap')
-
-        if self.FlagsValue & 8:
-            self.Flags.append('NoDivZero')
-
-        if self.FlagsValue & 16:
-            self.Flags.append('Req68020')
-
-        if self.FlagsValue & 32:
-            self.Flags.append('ReqAGA')
-
-        if self.FlagsValue & 64:
-            self.Flags.append('NoKbd')
-
-        if self.FlagsValue & 128:
-            self.Flags.append('EmulLineA')
-
-        if self.FlagsValue & 256:
-            self.Flags.append('EmulTrapV')
-
-        if self.FlagsValue & 512:
-            self.Flags.append('EmulChk')
-
-        if self.FlagsValue & 1024:
-            self.Flags.append('EmulPriv')
-
-        if self.FlagsValue & 2048:
-            self.Flags.append('EmulLineF')
-
-        if self.FlagsValue & 4096:
-            self.Flags.append('ClearMem')
-
-        if self.FlagsValue & 8192:
-            self.Flags.append('Examine')
-
-        if self.FlagsValue & 16384:
-            self.Flags.append('EmulDivZero')
-
-        if self.FlagsValue & 32768:
-            self.Flags.append('EmulIllegal')
-
-
+    def _parse_flags(self):
+        for key, value in self._flags_dict.items():
+            if self.FlagsValue & key:
+                self.Flags.append(value)
 
