@@ -110,7 +110,7 @@ class WHDLoadSlave:
             self.kickstart_name = self._read_string(self.kick_name_offset)
 
         if self.version >= 17:
-            self.config = self._read_string(self.config_offset)
+            self.config = self._read_string(self.config_offset).split(';')
 
     def _read_string(self, offset):
         if offset == 0:
@@ -164,9 +164,13 @@ class WHDLoadSlave:
             ))
             print("Kickstart CRC: {}".format(self.kickstart_crc))
 
+        if self.version >= 17:
+            print("Config:")
+            for config_line in self.config:
+                print("\t{}".format(config_line))
+
     def requires_aga(self):
         return "ReqAGA" in self.flags
 
     def requires_68020(self):
         return "Req68020" in self.flags
-
