@@ -2,6 +2,7 @@ import os
 import struct
 import binascii
 import re
+import time
 
 
 class WHDLoadSlave:
@@ -27,6 +28,7 @@ class WHDLoadSlave:
 
     def __init__(self, path):
         self.path = path
+        self.created_time = time.ctime(os.path.getctime(path))
         self.size = None
         self.data_length = None
         self.data = None
@@ -130,6 +132,8 @@ class WHDLoadSlave:
                 self.flags.append(value)
 
     def display_data(self):
+        print("Path: {}".format(self.path))
+        print("Created Time: {}".format(self.created_time))
         print("WHDLoad Version: {}".format(self.version))
         print("Flags: {}".format(self.flags))
         print("Base Memory Size: {} KiB ({})".format(
