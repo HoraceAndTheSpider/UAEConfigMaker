@@ -9,6 +9,7 @@ import urllib
 import urllib.request
 from utils import text_utils
 from utils import general_utils
+from whdload import whdload_slave
 
 
 class FontColours:
@@ -278,44 +279,48 @@ def do_scan(input_directory, pathname):
 
     # cycle through all folders / files
     for file in glob.glob(input_directory + pathname + "/*"):
-        # WHDLOAD mode needs folders, the rest need files
-        if scan_mode == "WHDLoad":
-            typetest = os.path.isdir(file)
-        else:
-            typetest = os.path.isfile(file)
 
-        #this_file = file.replace(input_directory + pathname + "/", "")
+        # remove the long filepath 
         this_file = os.path.basename(file)
 
-        # type filter applies
-        # elif scan_mode == "CD32" and (right(this_file.lower(),4) != ".iso" and right(this_file.lower(),4) != ".cue"):
-        # not a folder and no sub cue or iso file
-        # elif scan_mode == "CD32" and (os.path.isdir(file) == False or os.path.isfile(file + "/" + this_file + ".cue")==False):
-        #   pass
+        # Set criteria for each scan type
+        scan_pass = False
+
+        # WHDLOAD scanmode needs folders, mostly
+        if (scan_mode == "WHDLoad" and os.path.isdir(file) is True):
+            scan_pass = True
+            
+        # WHDLOAD scanmode will accept .zip
+        if (scan_mode == "WHDLoad" and os.path.isfile(file) is True
+            and text_utils.right(this_file.lower(), 4) == ".zip"):
+            scan_pass = True
+
+        # HDF scanmode must have file extension as .hdf
+        if (scan_mode == "HDF" and os.path.isfile(file) is True
+            and text_utils.right(this_file.lower(), 4) == ".hdf"):
+            scan_pass = True
+
+        # CD32 scanmode can have file extension as .iso
+        if (scan_mode == "CD32" and os.path.isfile(file) is True
+            and text_utils.right(this_file.lower(), 4) == ".iso"):
+            scan_pass = True
+
+        # CD32 folders need sub file with extension as .cue
+        if (scan_mode == "CD32" and os.path.isdir(file) is True
+            and os.path.isfile(file + "/" + this_file + ".cue") is True):
+            scan_pass = True
+
+        # TODO: Can this be simplified? Really long elif statement, hard to read.
+        # yes... now replaced :D
 
         # name filter applies
         if the_filter != '' and this_file.find(the_filter) < 0:
             pass
 
-        # WHDLOAD will accept .zip
-        # WHDLOAD mode needs folders, mostly
-        # HDF file extension must be .hdf
-        # CD32 file extension must be .iso
-        # CD32 folders need sub file with extension as .cue
+        # we passed the 'type' scan
+        elif scan_pass == True:
 
-        # TODO: Can this be simplified? Really long elif statement, hard to read.
-        elif (scan_mode == "WHDLoad" and os.path.isfile(file) is True
-              and text_utils.right(this_file.lower(), 4) == ".zip") or \
-                (scan_mode == "WHDLoad" and os.path.isdir(file) is True) or \
-                (scan_mode == "HDF" and os.path.isfile(file) is True
-                 and text_utils.right(this_file.lower(), 4) == ".hdf") or \
-                (scan_mode == "CD32" and os.path.isfile(file) is True
-                 and text_utils.right(this_file.lower(), 4) == ".iso") or \
-                (scan_mode == "CD32" and os.path.isdir(file) is True
-                 and os.path.isfile(file + "/" + this_file + ".cue") is True):
-
-            # print ("Processed: "  + bcolors.OKBLUE +str(count)  + bcolors.ENDC )
-            # print ()
+            # horrible work around for annoying game name
             temp_name = this_file.replace("R³sselsheim", "Russelsheim")
             print(FontColours.OKBLUE + str(count) + FontColours.ENDC +
                   ": Processing Game: " + FontColours.BOLD + temp_name + FontColours.ENDC)
@@ -323,18 +328,19 @@ def do_scan(input_directory, pathname):
             if this_file.lower().endswith(".zip"):
                 this_file = text_utils.left(this_file, len(this_file) - 4)
 
-            # standard 'expand name' thing
+            # standard 'expand name' for WHDLoad folders
             if scan_mode == "WHDLoad":
                 full_game_name = make_full_name(this_file)
 
+            # there is an alternative name changing for TOSEC CD32 images....
             elif scan_mode == "CD32":
                 full_game_name = text_utils.make_full_cd32_name(this_file)
 
-            # there may be alternative one for TOSEC CD32 images....
             print()
             print("     Full Name: " + FontColours.OKGREEN + full_game_name + FontColours.ENDC)
 
-            # normal method for selection
+
+            # normal method for machine selection
             if full_game_name.find("AGA") > -1:
                 machine_type = "A1200/020"
 
@@ -347,7 +353,6 @@ def do_scan(input_directory, pathname):
                 machine_type = "A600+"
 
             # check if config already exists - yes/no to overwrite
-
             create_config = True
             answer = ""
 
@@ -385,7 +390,7 @@ def do_scan(input_directory, pathname):
             #            elif skip_all == -1:
             #                 create_config = False
 
-            # this is where we start the code to actually build the config with chnages
+            # this is where we start the code to actually build the config with changes
             if create_config is True:
                 #  check other parameters
                 #  hardware options
