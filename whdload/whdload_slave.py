@@ -181,7 +181,7 @@ class WHDLoadSlave:
             for config_item in self.config:
                 config_item_values = config_item.split(':')
                 try:
-                    if re.match("^.*CD32\sControls?.*$", config_item_values[2]):
+                    if re.match("^.*[Cc][Dd]32.*$", config_item_values[2]):
                         return True
                 except IndexError:
                     pass
