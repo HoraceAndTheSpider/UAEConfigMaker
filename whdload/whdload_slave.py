@@ -1,6 +1,7 @@
 import os
 import struct
 import binascii
+import re
 
 
 class WHDLoadSlave:
@@ -174,3 +175,14 @@ class WHDLoadSlave:
 
     def requires_68020(self):
         return "Req68020" in self.flags
+
+    def has_cd32_controls_patch(self):
+        if self.config is not None:
+            for config_item in self.config:
+                config_item_values = config_item.split(':')
+                try:
+                    if re.match("^.*CD32\sControls?.*$", config_item_values[2]):
+                        return True
+                except IndexError:
+                    pass
+        return False
