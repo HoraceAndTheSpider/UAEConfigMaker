@@ -164,7 +164,9 @@ class WHDLoadSlave:
             ))
             print("Kickstart CRC: {}".format(self.kickstart_crc))
 
-if __name__ == "__main__":
-    slave_file = "D:\\roms\\amiga\\Games_WHDLoad\\3DConstructionKit\\3DConstructionKit.Slave"
-    slave_details = WHDLoadSlave(slave_file)
-    slave_details.display_data()
+    def requires_aga(self):
+        return "ReqAGA" in self.flags
+
+    def requires_68020(self):
+        return "Req68020" in self.flags
+
