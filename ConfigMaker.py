@@ -448,7 +448,7 @@ def do_scan(input_directory, pathname):
                             # created date for slave will be needed for updates                            
                             #whd_dated = mySlave.created_time
                             whd_names.append(file)
-                            whd_dates.append(mySlave.created_time)
+                            whd_dates.append(mySlave.modified_time)
                 
                 #  check other parameters
                 #  hardware options
