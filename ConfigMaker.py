@@ -336,6 +336,12 @@ def do_scan(input_directory, pathname):
             elif scan_mode == "CD32":
                 full_game_name = text_utils.make_full_cd32_name(this_file)
 
+            # there will probably an alternative name changing for TOSEC ADF files if we ever add it....
+            elif scan_mode == "ADF":
+                continue
+
+
+            # DISPLAY!
             print()
             print("     Full Name: " + FontColours.OKGREEN + full_game_name + FontColours.ENDC)
 
@@ -346,6 +352,9 @@ def do_scan(input_directory, pathname):
 
             elif scan_mode == "CD32":
                 machine_type = "CD32"
+                
+                if full_game_name.find(" [CD32]")<0:
+                        full_game_name += " [CD32] [ISO]"
 
             elif full_game_name.find("AGA") > -1:
                 machine_type = "A1200/020"
@@ -370,7 +379,7 @@ def do_scan(input_directory, pathname):
                 print(FontColours.OKBLUE + "     Skipping existing file." + FontColours.ENDC)
                 print()
 
-                # process the answers
+            # process the answers
             if answer == "N":
                 create_config = False
 
@@ -383,15 +392,64 @@ def do_scan(input_directory, pathname):
             elif answer == "S":
                 skip_all = -1
 
-                # what to do 'automatically'
+            # what to do 'automatically'
             if skip_all == 1:
                 create_config = True
 
-            #            elif skip_all == -1:
-            #                 create_config = False
 
             # this is where we start the code to actually build the config with changes
             if create_config is True:
+
+                # lets do some work, based on what slave files we find.
+
+                whd_chip_ram = 0
+                whd_fast_ram = 0
+                whd_aga = False
+                whd_020 = False
+                whd_cd32 = False
+                whd_kicks = ['']
+                
+                whd_names = [None]
+                whd_dates = [None]
+                whd_names.clear()
+                whd_dates.clear()
+                
+                if scan_mode=="WHDLoad":
+                     
+                    for slave_file in glob.glob(file + "/*"):
+                        if slave_file.lower().endswith(".slave") == True:
+                        
+                            mySlave = whdload_slave.WHDLoadSlave(slave_file)
+                            #print (mySlave.name)
+                            
+                            # minimum chip ram
+                            round_up = int(mySlave.base_mem_size/524288) + (mySlave.base_mem_size % 524288 >0)
+                            if round_up >= whd_chip_ram: whd_chip_ram = round_up                                                                                      
+                            if whd_chip_ram>4: whd_chip_ram = 4
+
+                           # minimum fast ram
+                            round_up = int(mySlave.exp_mem/1048576) + (mySlave.exp_mem % 1048576 >0)                            
+                            if round_up >= whd_fast_ram: whd_fast_ram = round_up
+
+                            # AGA needed
+                            if mySlave.requires_aga == True: whd_aga = True
+
+                            # 020 needed
+                            if mySlave.requires_68020 == True: whd_020 = True
+
+                            # CD32 controls patch is available
+                            if mySlave.has_cd32_controls_patch == True: whd_cd32 = True
+
+                            # Kickstarts (files needed to be checked in _BootWHD/devs/kickstarts
+                            #  and a warning produced if not present.
+                            #   put on hold until bugfix implemented
+                            # (mySlave.kickstart_name)
+
+                            # created date for slave will be needed for updates                            
+                            #whd_dated = mySlave.created_time
+                            whd_names.append(file)
+                            whd_dates.append(mySlave.created_time)
+                
                 #  check other parameters
                 #  hardware options
 
@@ -408,7 +466,12 @@ def do_scan(input_directory, pathname):
                     machine_type = "CD32"
 
                 # PRESETS:  CPU / chipset/ kickstart
-                # TODO: Convert settings to a dictionary or object
+
+                # WHD overrides are easier if we look at a base machine type                
+                if whd_020 == True and machine_type == "A500": machine_type = "A600+"
+                if whd_aga == True and (machine_type == "A500" or machine_type == "A600+") : machine_type = "A1200/020"
+
+                # TODO: Convert settings to a dictionary or object ... yeah.... i'll leave this to you ;)
                 z3_ram = 0
                 if machine_type == "A500":
                     chipset = "OCS"
@@ -464,6 +527,7 @@ def do_scan(input_directory, pathname):
                     fast_ram = 0
                     clock_speed = 14
 
+
                 # '======== MEMORY SETTINGS =======
                 # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 # ' when we want different chip ram!!
@@ -479,6 +543,9 @@ def do_scan(input_directory, pathname):
                         break
                     chip_ram = old_chip_ram
 
+                # whd chip-memory overwrite
+                if whd_chip_ram >= chip_ram: chip_ram = whd_chip_ram
+
                 # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 # ' when we want different fast ram!!
 
@@ -489,6 +556,10 @@ def do_scan(input_directory, pathname):
                         break
                     fast_ram = old_fast_ram
 
+                # whd fast-memory overwrite
+                if whd_fast_ram >= fast_ram and whd_fast_ram <= 8 : chip_ram = whd_chip_ram
+
+
                 # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 # ' when we want different Z3 ram!!
 
@@ -497,6 +568,10 @@ def do_scan(input_directory, pathname):
                     if check_list("Memory_Z3Ram_" + str(z3_ram) + ".txt", this_file) is True:
                         break
                     z3_ram = 0
+
+                # whd z3-memory overwrite
+                if whd_fast_ram >= z3_ram and whd_fast_ram > 8 : z3_ram = whd_chip_ram
+                
 
                 # '======== CHIPSET SETTINGS =======
                 # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -726,7 +801,7 @@ def do_scan(input_directory, pathname):
                         config_text = config_text.replace("<<diskpath" + str(i) + ">>", pathname)
                         config_text = config_text.replace("<<disk" + str(i) + ">>", disk[i])
 
-                        #                            print ("disk... "+disk[i])
+                        #print ("disk... "+disk[i])
                         if disk[i] == "":
                             disk_on = "0"
                         else:
@@ -745,6 +820,7 @@ def do_scan(input_directory, pathname):
                         config_text = config_text.replace("<<cd32mode>>", "1")
                     else:
                         config_text = config_text.replace("<<cd32mode>>", "0")
+                        config_text = config_text.replace("cdimage0=", ";cdimage0=")
 
                         # controls (TO BE WORKED ON)
                     if use_mouse1 is True:
@@ -752,9 +828,9 @@ def do_scan(input_directory, pathname):
                         config_text = config_text.replace("<<port0>>", "mouse")
                         config_text = config_text.replace("<<port0mode>>", "mousenowheel")
 
-                    #                        if use_mouse2==True:
-                    #                            config_text = config_text.replace("<<port1>>","mouse")
-                    #                            config_text = config_text.replace("<<port1mode>>","mousenowheel")
+                    #    if use_mouse2==True:
+                    #      config_text = config_text.replace("<<port1>>","mouse")
+                    #      config_text = config_text.replace("<<port1mode>>","mousenowheel")
 
                     if use_cd32_pad is True:
                         config_text = config_text.replace("<<port0>>", "joy2")
