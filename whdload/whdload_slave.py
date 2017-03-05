@@ -202,5 +202,19 @@ class WHDLoadSlave:
         return False
 
 if __name__ == "__main__":
-    slave = WHDLoadSlave("D:\\roms\\amiga\\Games_WHDLoad\\Speedball2\\Speedball2.Slave")
-    print(slave.modified_time)
+    import argparse
+    parser = argparse.ArgumentParser(description='Parse details of WHDLoad Slave')
+    parser.add_argument('--slave', '-s',  # command line argument
+                        nargs='*',  # any number of space seperated arguments
+                        help='Slave(s) to Scan',
+                        )
+    args = parser.parse_args()
+    slaves_to_scan = args.slave
+    for slave_file in slaves_to_scan:
+        slave_path = os.path.abspath(slave_file)
+        if os.path.isfile(slave_path):
+            slave_info = WHDLoadSlave(slave_file)
+            slave_info.display_data()
+            print('')
+        else:
+            print("'{}' is not a slave file".format(slave_file))
