@@ -1,15 +1,21 @@
 To be added:
-
-- Update of command line code to use more suitable methodin integration [Olly]
 - Clean up of main code to Python style requirements [Olly]
-- Improve / Fix CD32 ISO/CUE scanning [Dom]
 - Scanning of WHDLoad folders as self-contained HDF files [Dom]
 - Check for WHDLoad slave updates and provide warning (ZIPs) or perform update (Folders/HDFs) [Dom]
-- Check WHDLoad slaves for higher configuration requirements (e.g. EXPMEM, Kickstart files etc) [Dom]
-
+- Check WHDLoad slaves for kickstart requirements [Dom]
+- Generate auto-startup file for WHD Booter if access is available. [Dom]
 
 
 Conceptual / Investigation only:
 - Integrate UAE Config Maker as a Retropie script (.sh) with automatic updating of main script if possible.
-- Check WHDLoad slaves for CD32 control options, and switch to CD32 pad mode 
+- If WHDLoad used CD32 pad mode, include option in auto-startup
 - Graphical GUI 
+- Read all potential 'options' from hostconfig file
+
+
+Done:
+- Update of command line code to use more suitable method in integration [Olly]
+- Read in WHDLoad Slave information [Olly]
+- Improve / Fix CD32 ISO/CUE scanning [Dom]
+- Check WHDLoad slaves for additional settings requirements (Expmem etc) [Dom]
+- Check WHDLoad slaves for CD32 control options, and switch to CD32 pad mode [Dom]
