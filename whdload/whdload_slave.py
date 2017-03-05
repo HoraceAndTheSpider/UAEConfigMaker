@@ -43,21 +43,21 @@ class WHDLoadSlave:
         self.dont_cache_offset = None
         self.key_debug = None
         self.key_exit = None
-        self.exp_mem = None
+        self.exp_mem = 0
         self.name_offset = None
         self.copy_offset = None
         self.info_offset = None
         self.kick_name_offset = None
-        self.kickstart_size = None
+        self.kickstart_size = 0
         self.kickstart_crc = None
         self.config_offset = None
         self.current_dir = None
-        self.config = None
+        self.config = [""]
         self.dont_cache = None
         self.name = None
         self.copy = None
         self.info = None
-        self.kickstart_name = None
+        self.kickstart_name = ""
         self.flags = []
         self._read_data()
 
@@ -85,16 +85,26 @@ class WHDLoadSlave:
         self.game_loader = struct.unpack_from('>H', self.data[24:])[0]
         self.current_dir_offset = struct.unpack_from('>H', self.data[26:])[0]
         self.dont_cache_offset = struct.unpack_from('>H', self.data[28:])[0]
-        self.key_debug = binascii.hexlify(struct.unpack_from('c', self.data[30:])[0]).decode('iso-8859-1')
-        self.key_exit = binascii.hexlify(struct.unpack_from('c', self.data[31:])[0]).decode('iso-8859-1')
-        self.exp_mem = struct.unpack_from('>L', self.data[32:])[0]
-        self.name_offset = struct.unpack_from('>H', self.data[36:])[0]
-        self.copy_offset = struct.unpack_from('>H', self.data[38:])[0]
-        self.info_offset = struct.unpack_from('>H', self.data[40:])[0]
-        self.kick_name_offset = struct.unpack_from('>H', self.data[42:])[0]
-        self.kickstart_size = struct.unpack_from('>L', self.data[44:])[0]
-        self.kickstart_crc = hex(struct.unpack_from('>H', self.data[48:])[0])
-        self.config_offset = struct.unpack_from('>H', self.data[50:])[0]
+
+        if self.version >= 4:
+            self.key_debug = binascii.hexlify(struct.unpack_from('c', self.data[30:])[0]).decode('iso-8859-1')
+            self.key_exit = binascii.hexlify(struct.unpack_from('c', self.data[31:])[0]).decode('iso-8859-1')
+
+        if self.version >= 8:
+            self.exp_mem = struct.unpack_from('>L', self.data[32:])[0]
+
+        if self.version >= 10:
+            self.name_offset = struct.unpack_from('>H', self.data[36:])[0]
+            self.copy_offset = struct.unpack_from('>H', self.data[38:])[0]
+            self.info_offset = struct.unpack_from('>H', self.data[40:])[0]
+
+        if self.version >= 16:
+            self.kick_name_offset = struct.unpack_from('>H', self.data[42:])[0]
+            self.kickstart_size = struct.unpack_from('>L', self.data[44:])[0]
+            self.kickstart_crc = hex(struct.unpack_from('>H', self.data[48:])[0])
+
+        if self.version >= 17:
+            self.config_offset = struct.unpack_from('>H', self.data[50:])[0]
 
         if self.id != "WHDLOADS":
             raise Exception("Failed to read header: Id is not valid '{}'".format(
