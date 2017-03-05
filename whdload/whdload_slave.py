@@ -1,9 +1,8 @@
 import os
-import platform
 import struct
 import binascii
 import re
-import time
+import datetime
 
 
 class WHDLoadSlave:
@@ -29,7 +28,7 @@ class WHDLoadSlave:
 
     def __init__(self, path):
         self.path = path
-        self.modified_time = time.ctime(os.path.getmtime(path))
+        self.modified_time = datetime.datetime.fromtimestamp(os.path.getmtime(path))
         self.size = None
         self.data_length = None
         self.data = None
@@ -201,3 +200,7 @@ class WHDLoadSlave:
                 except IndexError:
                     pass
         return False
+
+if __name__ == "__main__":
+    slave = WHDLoadSlave("D:\\roms\\amiga\\Games_WHDLoad\\Speedball2\\Speedball2.Slave")
+    print(slave.modified_time)

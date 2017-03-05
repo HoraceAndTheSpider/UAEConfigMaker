@@ -184,15 +184,12 @@ def do_scan(input_directory, pathname):
             and os.path.isfile(file + "/" + this_file + ".cue") is True):
             scan_pass = True
 
-        # TODO: Can this be simplified? Really long elif statement, hard to read.
-        # yes... now replaced :D
-
         # name filter applies
         if the_filter != '' and this_file.find(the_filter) < 0:
             pass
 
         # we passed the 'type' scan
-        elif scan_pass == True:
+        elif scan_pass is True:
 
             # horrible work around for annoying game name
             temp_name = this_file.replace("R³sselsheim", "Russelsheim")
@@ -214,11 +211,9 @@ def do_scan(input_directory, pathname):
             elif scan_mode == "ADF":
                 continue
 
-
             # DISPLAY!
             print()
             print("     Full Name: " + FontColours.OKGREEN + full_game_name + FontColours.ENDC)
-
 
             # normal method for machine selection
             if full_game_name.find("AGA") > -1:
@@ -240,10 +235,10 @@ def do_scan(input_directory, pathname):
             answer = ""
 
             if os.path.isfile(input_directory + full_game_name + ".uae") == True and skip_all == 0:
-
                 while answer != "Y" and answer != "N" and answer != "S" and answer != "A":
                     answer = input(
-                        FontColours.OKBLUE + "     Config already exists - overwrite? " + "(Yes/No/Always/Skip) " + FontColours.ENDC)
+                        FontColours.OKBLUE + "     Config already exists - overwrite? " + "(Yes/No/Always/Skip) "
+                        + FontColours.ENDC)
                     if answer == "a" or answer == "s" or answer == "n" or answer == "y":
                         answer = answer.upper()
                     print()
@@ -270,7 +265,6 @@ def do_scan(input_directory, pathname):
             if skip_all == 1:
                 create_config = True
 
-
             # this is where we start the code to actually build the config with changes
             if create_config is True:
 
@@ -288,41 +282,43 @@ def do_scan(input_directory, pathname):
                 whd_names.clear()
                 whd_dates.clear()
                 
-                if scan_mode=="WHDLoad":
-                     
+                if scan_mode == "WHDLoad":
                     for slave_file in glob.glob(file + "/*"):
-                        if slave_file.lower().endswith(".slave") == True:
+                        if slave_file.lower().endswith(".slave"):
                         
-                            mySlave = whdload_slave.WHDLoadSlave(slave_file)
-                            #print (mySlave.name)
+                            this_slave = whdload_slave.WHDLoadSlave(slave_file)
+                            # print (this_slave.name)
                             
                             # minimum chip ram
-                            round_up = int(mySlave.base_mem_size/524288) + (mySlave.base_mem_size % 524288 >0)
-                            if round_up >= whd_chip_ram: whd_chip_ram = round_up                                                                                      
-                            if whd_chip_ram>4: whd_chip_ram = 4
+                            round_up = int(this_slave.base_mem_size/524288) + (this_slave.base_mem_size % 524288 > 0)
+                            if round_up >= whd_chip_ram:
+                                whd_chip_ram = round_up
 
-                           # minimum fast ram
-                            round_up = int(mySlave.exp_mem/1048576) + (mySlave.exp_mem % 1048576 >0)                            
+                            if whd_chip_ram > 4:
+                                whd_chip_ram = 4
+
+                            # minimum fast ram
+                            round_up = int(this_slave.exp_mem/1048576) + (this_slave.exp_mem % 1048576 >0)
                             if round_up >= whd_fast_ram: whd_fast_ram = round_up
 
                             # AGA needed
-                            if mySlave.requires_aga == True: whd_aga = True
+                            if this_slave.requires_aga == True: whd_aga = True
 
                             # 020 needed
-                            if mySlave.requires_68020 == True: whd_020 = True
+                            if this_slave.requires_68020 == True: whd_020 = True
 
                             # CD32 controls patch is available
-                            if mySlave.has_cd32_controls_patch == True: whd_cd32 = True
+                            if this_slave.has_cd32_controls_patch == True: whd_cd32 = True
 
                             # Kickstarts (files needed to be checked in _BootWHD/devs/kickstarts
-                            #  and a warning produced if not present.
-                            #   put on hold until bugfix implemented
-                            # (mySlave.kickstart_name)
+                            # and a warning produced if not present.
+                            # put on hold until bugfix implemented
+                            # (this_slave.kickstart_name)
 
                             # created date for slave will be needed for updates                            
-                            #whd_dated = mySlave.created_time
+                            # whd_dated = this_slave.created_time
                             whd_names.append(file)
-                            whd_dates.append(mySlave.modified_time)
+                            whd_dates.append(this_slave.modified_time)
                 
                 #  check other parameters
                 #  hardware options
@@ -342,8 +338,11 @@ def do_scan(input_directory, pathname):
                 # PRESETS:  CPU / chipset/ kickstart
 
                 # WHD overrides are easier if we look at a base machine type                
-                if whd_020 == True and machine_type == "A500": machine_type = "A600+"
-                if whd_aga == True and (machine_type == "A500" or machine_type == "A600+") : machine_type = "A1200/020"
+                if whd_020 is True and machine_type == "A500":
+                    machine_type = "A600+"
+
+                if whd_aga is True and (machine_type == "A500" or machine_type == "A600+"):
+                    machine_type = "A1200/020"
 
                 # TODO: Convert settings to a dictionary or object ... yeah.... i'll leave this to you ;)
                 z3_ram = 0
