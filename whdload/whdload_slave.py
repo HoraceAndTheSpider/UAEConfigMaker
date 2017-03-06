@@ -59,7 +59,7 @@ class WHDLoadSlave:
         self.name = None
         self.copy = None
         self.info = None
-        self.kickstarts = None
+        self.kickstarts = []
         self.kick_name_offset = None
         self.kickstart_size = 0
         self.flags = []
@@ -141,16 +141,15 @@ class WHDLoadSlave:
             if _kickstart_crc == 65535:
                 self._parse_multiple_kickstarts(self.kick_name_offset, data)
             elif _kickstart_crc != 0:
-                self.kickstarts = [Kickstart(
+                self.kickstarts.append(Kickstart(
                     name=self._read_string(self.kick_name_offset, data),
                     crc=hex(_kickstart_crc)
-                )]
+                ))
 
         if self.version >= 17:
             self.config = self._read_string(self.config_offset, data).split(';')
 
     def _parse_multiple_kickstarts(self, offset, data):
-        self.kickstarts = []
         offset_counter = offset
         while True:
             kick_crc = struct.unpack_from('>H', data[offset_counter:])[0]
@@ -200,7 +199,7 @@ class WHDLoadSlave:
                 print("\t{}".format(line))
 
         if self.version >= 16:
-            if self.kickstarts is not None:
+            if len(self.kickstarts) > 0:
                 print("Kickstarts:")
                 for kickstart in self.kickstarts:
                     print("\tName: {}".format(kickstart.name))
