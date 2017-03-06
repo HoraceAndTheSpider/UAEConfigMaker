@@ -54,7 +54,7 @@ class WHDLoadSlave:
         self.info_offset = None
         self.config_offset = None
         self.current_dir = None
-        self.config = [""]
+        self.config = []
         self.dont_cache = None
         self.name = None
         self.copy = None
@@ -138,6 +138,7 @@ class WHDLoadSlave:
             self.info = self._read_string(self.info_offset, data)
 
         if self.version >= 16:
+            # The crc flag is set to indicate that there a multiple supported kickstarts
             if _kickstart_crc == 65535:
                 self._parse_multiple_kickstarts(self.kick_name_offset, data)
             elif _kickstart_crc != 0:
@@ -222,7 +223,7 @@ class WHDLoadSlave:
         return "Req68020" in self.flags
 
     def has_cd32_controls_patch(self):
-        if self.config is not None:
+        if len(self.config) > 0:
             for config_item in self.config:
                 config_item_values = config_item.split(':')
                 try:
