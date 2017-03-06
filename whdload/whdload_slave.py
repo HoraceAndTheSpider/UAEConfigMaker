@@ -5,6 +5,12 @@ import re
 import datetime
 
 
+class Kickstart:
+    def __init__(self, name, crc):
+        self.name = name
+        self.crc = crc
+
+
 class WHDLoadSlave:
     _header_offset = 0x020  # 32 bytes
     _flags_dict = {
@@ -46,9 +52,6 @@ class WHDLoadSlave:
         self.name_offset = None
         self.copy_offset = None
         self.info_offset = None
-        self.kick_name_offset = None
-        self.kickstart_size = 0
-        self.kickstart_crc = None
         self.config_offset = None
         self.current_dir = None
         self.config = [""]
@@ -56,7 +59,9 @@ class WHDLoadSlave:
         self.name = None
         self.copy = None
         self.info = None
-        self.kickstart_name = ""
+        self.kickstarts = None
+        self.kick_name_offset = None
+        self.kickstart_size = 0
         self.flags = []
         self._read_data()
 
@@ -97,6 +102,8 @@ class WHDLoadSlave:
         self.current_dir_offset = struct.unpack_from('>H', data[26:])[0]
         self.dont_cache_offset = struct.unpack_from('>H', data[28:])[0]
 
+        _kickstart_crc = 0x0000
+
         if self.version >= 4:
             self.key_debug = binascii.hexlify(struct.unpack_from('c', data[30:])[0]).decode('iso-8859-1')
             self.key_exit = binascii.hexlify(struct.unpack_from('c', data[31:])[0]).decode('iso-8859-1')
@@ -112,7 +119,7 @@ class WHDLoadSlave:
         if self.version >= 16:
             self.kick_name_offset = struct.unpack_from('>H', data[42:])[0]
             self.kickstart_size = struct.unpack_from('>L', data[44:])[0]
-            self.kickstart_crc = hex(struct.unpack_from('>H', data[48:])[0])
+            _kickstart_crc = struct.unpack_from('>H', data[48:])[0]
 
         if self.version >= 17:
             self.config_offset = struct.unpack_from('>H', data[50:])[0]
@@ -131,10 +138,31 @@ class WHDLoadSlave:
             self.info = self._read_string(self.info_offset, data)
 
         if self.version >= 16:
-            self.kickstart_name = self._read_string(self.kick_name_offset, data)
+            if _kickstart_crc == 65535:
+                self._parse_multiple_kickstarts(self.kick_name_offset, data)
+            elif _kickstart_crc != 0:
+                self.kickstarts = [Kickstart(
+                    name=self._read_string(self.kick_name_offset, data),
+                    crc=hex(_kickstart_crc)
+                )]
 
         if self.version >= 17:
             self.config = self._read_string(self.config_offset, data).split(';')
+
+    def _parse_multiple_kickstarts(self, offset, data):
+        self.kickstarts = []
+        offset_counter = offset
+        while True:
+            kick_crc = struct.unpack_from('>H', data[offset_counter:])[0]
+            if kick_crc == 0:
+                break
+            offset_counter += 2
+            kick_name = self._read_string(struct.unpack_from('>H', data[offset_counter:])[0], data)
+            offset_counter += 2
+            self.kickstarts.append(Kickstart(
+                name=kick_name,
+                crc=hex(kick_crc)
+            ))
 
     def _parse_flags(self):
         for key, value in self._flags_dict.items():
@@ -172,12 +200,16 @@ class WHDLoadSlave:
                 print("\t{}".format(line))
 
         if self.version >= 16:
-            print("Kickstart Name: {}".format(self.kickstart_name))
-            print("Kickstart Size: {} KiB ({})".format(
-                int(self.kickstart_size / 1024),
-                hex(self.kickstart_size)
-            ))
-            print("Kickstart CRC: {}".format(self.kickstart_crc))
+            if self.kickstarts is not None:
+                print("Kickstarts:")
+                for kickstart in self.kickstarts:
+                    print("\tName: {}".format(kickstart.name))
+                    print("\tCRC: {}".format(kickstart.crc))
+
+                print("Kickstart Size: {} KiB ({})".format(
+                    int(self.kickstart_size / 1024),
+                    hex(self.kickstart_size)
+                ))
 
         if self.version >= 17:
             print("Config:")
