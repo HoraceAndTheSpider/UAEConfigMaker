@@ -31,7 +31,6 @@ class WHDLoadSlave:
         self.modified_time = datetime.datetime.fromtimestamp(os.path.getmtime(path))
         self.size = None
         self.data_length = None
-        self.data = None
         self.security = None
         self.id = None
         self.version = None
@@ -61,80 +60,81 @@ class WHDLoadSlave:
         self.flags = []
         self._read_data()
 
+    @staticmethod
+    def _read_string(offset, data):
+        if offset == 0:
+            return ""
+        length = 0
+        for byte in data[offset:]:
+            if byte == 0:
+                break
+            length += 1
+
+        return struct.unpack_from('{}s'.format(length), data[offset:])[0].decode('iso-8859-1')
+
     def _read_data(self):
         self._get_file_size()
 
         with open(self.path, 'rb') as f:
             f.seek(self._header_offset, 0)
-            self.data = bytearray(f.read())
+            _data = bytearray(f.read())
 
-        self._parse_data()
+        self._parse_data(_data)
         self._parse_flags()
 
     def _get_file_size(self):
         self.size = os.path.getsize(self.path)
         self.data_length = self.size - self._header_offset
 
-    def _parse_data(self):
-        self.security = struct.unpack_from('>L', self.data[0:])[0]
-        self.id = struct.unpack_from('8s', self.data[4:])[0].decode('iso-8859-1')
-        self.version = struct.unpack_from('>H', self.data[12:])[0]
-        self.flags_value = struct.unpack_from('>H', self.data[14:])[0]
-        self.base_mem_size = struct.unpack_from('>L', self.data[16:])[0]
-        self.exec_install = struct.unpack_from('>L', self.data[20:])[0]
-        self.game_loader = struct.unpack_from('>H', self.data[24:])[0]
-        self.current_dir_offset = struct.unpack_from('>H', self.data[26:])[0]
-        self.dont_cache_offset = struct.unpack_from('>H', self.data[28:])[0]
+    def _parse_data(self, data):
+        self.security = struct.unpack_from('>L', data[0:])[0]
+        self.id = struct.unpack_from('8s', data[4:])[0].decode('iso-8859-1')
+        self.version = struct.unpack_from('>H', data[12:])[0]
+        self.flags_value = struct.unpack_from('>H', data[14:])[0]
+        self.base_mem_size = struct.unpack_from('>L', data[16:])[0]
+        self.exec_install = struct.unpack_from('>L', data[20:])[0]
+        self.game_loader = struct.unpack_from('>H', data[24:])[0]
+        self.current_dir_offset = struct.unpack_from('>H', data[26:])[0]
+        self.dont_cache_offset = struct.unpack_from('>H', data[28:])[0]
 
         if self.version >= 4:
-            self.key_debug = binascii.hexlify(struct.unpack_from('c', self.data[30:])[0]).decode('iso-8859-1')
-            self.key_exit = binascii.hexlify(struct.unpack_from('c', self.data[31:])[0]).decode('iso-8859-1')
+            self.key_debug = binascii.hexlify(struct.unpack_from('c', data[30:])[0]).decode('iso-8859-1')
+            self.key_exit = binascii.hexlify(struct.unpack_from('c', data[31:])[0]).decode('iso-8859-1')
 
         if self.version >= 8:
-            self.exp_mem = struct.unpack_from('>L', self.data[32:])[0]
+            self.exp_mem = struct.unpack_from('>L', data[32:])[0]
 
         if self.version >= 10:
-            self.name_offset = struct.unpack_from('>H', self.data[36:])[0]
-            self.copy_offset = struct.unpack_from('>H', self.data[38:])[0]
-            self.info_offset = struct.unpack_from('>H', self.data[40:])[0]
+            self.name_offset = struct.unpack_from('>H', data[36:])[0]
+            self.copy_offset = struct.unpack_from('>H', data[38:])[0]
+            self.info_offset = struct.unpack_from('>H', data[40:])[0]
 
         if self.version >= 16:
-            self.kick_name_offset = struct.unpack_from('>H', self.data[42:])[0]
-            self.kickstart_size = struct.unpack_from('>L', self.data[44:])[0]
-            self.kickstart_crc = hex(struct.unpack_from('>H', self.data[48:])[0])
+            self.kick_name_offset = struct.unpack_from('>H', data[42:])[0]
+            self.kickstart_size = struct.unpack_from('>L', data[44:])[0]
+            self.kickstart_crc = hex(struct.unpack_from('>H', data[48:])[0])
 
         if self.version >= 17:
-            self.config_offset = struct.unpack_from('>H', self.data[50:])[0]
+            self.config_offset = struct.unpack_from('>H', data[50:])[0]
 
         if self.id != "WHDLOADS":
             raise Exception("Failed to read header: Id is not valid '{}'".format(
                 self.id
             ))
 
-        self.current_dir = self._read_string(self.current_dir_offset)
-        self.dont_cache = self._read_string(self.dont_cache_offset)
+        self.current_dir = self._read_string(self.current_dir_offset, data)
+        self.dont_cache = self._read_string(self.dont_cache_offset, data)
 
         if self.version >= 10:
-            self.name = self._read_string(self.name_offset)
-            self.copy = self._read_string(self.copy_offset)
-            self.info = self._read_string(self.info_offset)
+            self.name = self._read_string(self.name_offset, data)
+            self.copy = self._read_string(self.copy_offset, data)
+            self.info = self._read_string(self.info_offset, data)
 
         if self.version >= 16:
-            self.kickstart_name = self._read_string(self.kick_name_offset)
+            self.kickstart_name = self._read_string(self.kick_name_offset, data)
 
         if self.version >= 17:
-            self.config = self._read_string(self.config_offset).split(';')
-
-    def _read_string(self, offset):
-        if offset == 0:
-            return ""
-        length = 0
-        for byte in self.data[offset:]:
-            if byte == 0:
-                break
-            length += 1
-
-        return struct.unpack_from('{}s'.format(length), self.data[offset:])[0].decode('iso-8859-1')
+            self.config = self._read_string(self.config_offset, data).split(';')
 
     def _parse_flags(self):
         for key, value in self._flags_dict.items():
@@ -200,6 +200,7 @@ class WHDLoadSlave:
                 except IndexError:
                     pass
         return False
+
 
 if __name__ == "__main__":
     import argparse
