@@ -102,7 +102,7 @@ class WHDLoadSlave:
         self.current_dir_offset = struct.unpack_from('>H', data[26:])[0]
         self.dont_cache_offset = struct.unpack_from('>H', data[28:])[0]
 
-        _kickstart_crc = 0x0000
+        _kickstart_crc = 0
 
         if self.version >= 4:
             self.key_debug = binascii.hexlify(struct.unpack_from('c', data[30:])[0]).decode('iso-8859-1')
