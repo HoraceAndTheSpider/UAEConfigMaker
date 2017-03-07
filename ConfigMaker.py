@@ -212,7 +212,8 @@ def do_scan(input_directory, pathname):
 
             # stock name for HDF files
             elif scan_mode == "HDF":
-                full_game_name = text_utils.left(this_file, len(this_file) - 4)
+                if this_file.lower().endswith(".hdf"):
+                    full_game_name = text_utils.left(this_file, len(this_file) - 4)
 
             # there will probably an alternative name changing for TOSEC ADF files if we ever add it....
             elif scan_mode == "ADF":
