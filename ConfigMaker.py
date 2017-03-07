@@ -107,7 +107,7 @@ def do_scan(input_directory, pathname):
         return
 
     # what type of scan is it  --  default , WHDLOAD folder
-    if pathname.find("WHDLoad_HDF") > -1 and pathname.lower().find(".hdf"):
+    if pathname.find("WHDLoad") > -1 and pathname.find("_HDF") > -1:
         scan_mode = "WHDLoadHDF"
         hdsettings = ",0"
 
@@ -115,15 +115,15 @@ def do_scan(input_directory, pathname):
         scan_mode = "WHDLoad"
         hdsettings = ",0"
 
-    elif pathname.find("Games_HDF") > -1:
+    elif pathname.find("_HDF") > -1:
         scan_mode = "HDF"
         hdsettings = ",32,1,2,512,50,,uae"
 
-    elif pathname.lower().find(".hdf") > -1:
-        scan_mode = "HDF"
-        hdsettings = ",32,1,2,512,50,,uae"
+##    elif pathname.lower().find(".hdf") > -1:
+##        scan_mode = "HDF"
+##        hdsettings = ",32,1,2,512,50,,uae"
 
-    elif pathname.lower().find(".adf") > -1:
+    elif pathname.lower().find("_ADF") > -1:
         scan_mode = "ADF"
 
     elif pathname.lower().find("cd32") > -1:
@@ -173,6 +173,11 @@ def do_scan(input_directory, pathname):
             and text_utils.right(this_file.lower(), 4) == ".zip"):
             scan_pass = True
 
+        # WHDLOAD HDF scanmode must have file extension as .hdf
+        if (scan_mode == "WHDLoadHDF" and os.path.isfile(file) is True
+            and text_utils.right(this_file.lower(), 4) == ".hdf"):
+            scan_pass = True
+                               
         # HDF scanmode must have file extension as .hdf
         if (scan_mode == "HDF" and os.path.isfile(file) is True
             and text_utils.right(this_file.lower(), 4) == ".hdf"):
@@ -205,6 +210,13 @@ def do_scan(input_directory, pathname):
             # standard 'expand name' for WHDLoad folders
             if scan_mode == "WHDLoad":
                 full_game_name = text_utils.make_full_name(this_file)
+
+            # standard 'expand name' for WHDLoad folders
+            if scan_mode == "WHDLoadHDF":
+               full_game_name = text_utils.make_full_name(this_file)
+                               
+               if this_file.lower().endswith(".hdf"):
+                    full_game_name = text_utils.left(this_file, len(this_file) - 4)
 
             # there is an alternative name changing for TOSEC CD32 images....
             elif scan_mode == "CD32":
@@ -285,12 +297,20 @@ def do_scan(input_directory, pathname):
                 whd_cd32 = False
                 whd_kicks = ['']
                 
-                whd_names = [None]
-                whd_dates = [None]
-                whd_names.clear()
-                whd_dates.clear()
+##                whd_names = [None]
+##                whd_dates = [None]
+##                whd_names.clear()
+##                whd_dates.clear()
+                whd_longname = ""
+                whd_realname = ""
+                whd_infoname = ""
+                whd_date = None
+                whd_page = ""
+                
                 
                 if scan_mode == "WHDLoad":
+                    
+                    whd_update_message = ""
                     for slave_file in glob.glob(file + "/*"):
                         if slave_file.lower().endswith(".slave"):
                         
@@ -323,10 +343,40 @@ def do_scan(input_directory, pathname):
                             # put on hold until bugfix implemented
                             # (this_slave.kickstart_name)
 
+
                             # created date for slave will be needed for updates                            
-                            # whd_dated = this_slave.created_time
-                            whd_names.append(file)
-                            whd_dates.append(this_slave.modified_time)
+                            # whd_dated = this_slave.created_timex
+                            whd_longname = slave_file
+                            whd_realname = os.path.basename(slave_file)
+                            whd_infoname = this_slave.name
+                            whd_date = this_slave.modified_time
+
+                            # +++ Lets scan for updates shall we? +++
+
+                            # first, we'll find the WHDLoad web-page from the list
+                            whd_page = text_utils.get_whdload_page(whd_realname)
+
+#                             print(whd_realname + " === " + str(whd_infoname) + " === " + whd_page)
+
+                            if whd_page == "":
+                                whd_update_message += whd_realname + " not found on master WHDLoad page list" + chr(10)
+                                break
+
+                            
+                            # here's where we start checking again the WHDload page (OLLY!!!)
+
+
+                    # slave loop is finished
+                    if whd_update_message !="":
+                        text_file = open(file + "/whdupdate_message", "w+")
+                        text_file.write(whd_update_message)
+                        text_file.close()
+                        print()
+                        print("     "+whd_update_message)
+                        
+                                            
+                        continue
+                            
                 
                 #  check other parameters
                 #  hardware options
@@ -672,7 +722,19 @@ def do_scan(input_directory, pathname):
                         config_text = config_text.replace("<<diskpath0>>", pathname)
                         config_text = config_text.replace("<<disk0>>", this_file.replace(".hdf", "") + "_savedisk.adf")
                         config_text = config_text.replace("<<disktype0>>", "0")
+                    # WHDLoad HDF scanning
+                    elif scan_mode == "WHDLoadHDF":
 
+                        # remove the file-system (folder) DH1:
+                        config_text = config_text.replace("uaehf0=dir,rw,DH1", ";uaehf0=dir,rw,DH1")
+                        config_text = config_text.replace("filesystem2=rw,DH1", ";filesystem2=rw,DH1")
+
+                        # adjust parameters for DH2 to become DH1:
+                        config_text = config_text.replace(",32,1,2,512,50,,uae", ",32,1,2,512,0,,uae")
+                        config_text = config_text.replace("filesystem2=rw,DH2:HDFGame", "filesystem2=rw,DH1:games")
+                        config_text = config_text.replace("hardfile2=dir,rw,DH2:HDFGame", "hardfile2=dir,rw,DH1:games")
+
+                               
                     # disable the HDF parameter
                     else:
                         config_text = config_text.replace("hardfile2=", ";hardfile2=")
