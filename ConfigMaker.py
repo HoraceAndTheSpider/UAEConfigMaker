@@ -199,9 +199,6 @@ def do_scan(input_directory, pathname):
             print(FontColours.OKBLUE + str(count) + FontColours.ENDC +
                   ": Processing Game: " + FontColours.BOLD + temp_name + FontColours.ENDC)
 
-            if this_file.lower().endswith(".hdf"):
-                this_file = text_utils.left(this_file, len(this_file) - 4)
-
             if this_file.lower().endswith(".zip"):
                 this_file = text_utils.left(this_file, len(this_file) - 4)
 
@@ -215,7 +212,7 @@ def do_scan(input_directory, pathname):
 
             # stock name for HDF files
             elif scan_mode == "HDF":
-                full_game_name = this_file.replace('.hdf', '').replace('.HDF', '')
+                full_game_name = text_utils.left(this_file, len(this_file) - 4)
 
             # there will probably an alternative name changing for TOSEC ADF files if we ever add it....
             elif scan_mode == "ADF":
