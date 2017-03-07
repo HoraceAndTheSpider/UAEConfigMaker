@@ -115,6 +115,10 @@ def do_scan(input_directory, pathname):
         scan_mode = "WHDLoad"
         hdsettings = ",0"
 
+    elif pathname.find("Games_HDF") > -1:
+        scan_mode = "HDF"
+        hdsettings = ",32,1,2,512,50,,uae"
+
     elif pathname.lower().find(".hdf") > -1:
         scan_mode = "HDF"
         hdsettings = ",32,1,2,512,50,,uae"
@@ -190,11 +194,13 @@ def do_scan(input_directory, pathname):
 
         # we passed the 'type' scan
         elif scan_pass is True:
-
             # horrible work around for annoying game name
             temp_name = this_file.replace("R³sselsheim", "Russelsheim")
             print(FontColours.OKBLUE + str(count) + FontColours.ENDC +
                   ": Processing Game: " + FontColours.BOLD + temp_name + FontColours.ENDC)
+
+            if this_file.lower().endswith(".hdf"):
+                this_file = text_utils.left(this_file, len(this_file) - 4)
 
             if this_file.lower().endswith(".zip"):
                 this_file = text_utils.left(this_file, len(this_file) - 4)
@@ -206,6 +212,10 @@ def do_scan(input_directory, pathname):
             # there is an alternative name changing for TOSEC CD32 images....
             elif scan_mode == "CD32":
                 full_game_name = text_utils.make_full_cd32_name(this_file)
+
+            # stock name for HDF files
+            elif scan_mode == "HDF":
+                full_game_name = this_file.replace('.hdf', '').replace('.HDF', '')
 
             # there will probably an alternative name changing for TOSEC ADF files if we ever add it....
             elif scan_mode == "ADF":
