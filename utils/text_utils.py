@@ -171,3 +171,30 @@ def make_full_name(in_name):
         in_name = left(in_name, len(in_name) - 3) + " (Finnish)"
 
     return in_name
+
+
+def get_whdload_page(in_name):
+    # check the txt file
+    file_name = "settings/WHD_PageList.txt"
+    content = ""
+    out_page = ""
+
+
+    if os.path.isfile(file_name):
+        with open(file_name) as f:
+            content = f.readlines()
+            content = [x.strip() for x in content]
+        f.close()
+
+    for this_line in content:
+        if this_line.find("|") > -1:
+            find_part = left(this_line, this_line.find("|"))
+            replace_part = right(this_line, len(this_line) - this_line.find("|") - 1)
+
+            if in_name.lower() == find_part.lower():
+                out_page = replace_part
+
+    return out_page
+
+
+print(get_whdload_page("Lemmings21mb.slave"))
