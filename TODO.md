@@ -1,6 +1,5 @@
 To be added:
 - Clean up of main code to Python style requirements [Olly]
-- Scanning of WHDLoad folders as self-contained HDF files [Dom]
 - Check for WHDLoad slave updates and provide warning (ZIPs) or perform update (Folders/HDFs) [Dom]
 - Check WHDLoad slaves for kickstart requirements [Dom]
 - Generate auto-startup file for WHD Booter if access is available. [Dom]
@@ -19,3 +18,4 @@ Done:
 - Improve / Fix CD32 ISO/CUE scanning [Dom]
 - Check WHDLoad slaves for additional settings requirements (Expmem etc) [Dom]
 - Check WHDLoad slaves for CD32 control options, and switch to CD32 pad mode [Dom]
+- Scanning of WHDLoad folders as self-contained HDF files **UNTESTED** [Dom]
