@@ -871,9 +871,13 @@ args = parser.parse_args()
 # Get the directories to scan (or default)
 inputdirs = args.scandirs
 
+# check hostconfig for directories to scan
+if find_host_option("scandir") !="":
+    inputdirs = [find_host_option("scandir")]
+
 # Dom's special directory override :P
-if platform.system() == "Darwin":
-    inputdirs = ["/Users/horaceandthespider/Documents/Gaming/AmigaWHD/WorkingFolder2/Test/"]
+#if platform.system() == "Darwin":
+#    inputdirs = ["/Users/horaceandthespider/Documents/Gaming/AmigaWHD/WorkingFolder2/Test/"]
 
 # Check Directories are valid
 inputdirs = general_utils.check_inputdirs(inputdirs)
@@ -881,11 +885,20 @@ inputdirs = general_utils.check_inputdirs(inputdirs)
 # Setup Bool Constant for No Update
 NO_UPDATE = args.no_update
 
+# if hostconfig specifies no_update, use as override
+if text_utils.str2bool(find_host_option("no_update")) == True : NO_UPDATE = True
+
 # Setup Bool Constant for Config Overwrite
 FORCE_OVERWRITE = args.force_config_overwrite
 
+# if hostconfig specifies force_config_overwrite, use as override
+if text_utils.str2bool(find_host_option("force_config_overwrite")) == True : FORCE_OVERWRITE = True
+
 # Setup Bool Constant for Pi Paths
 FORCE_PI_PATHS = args.force_pi_paths
+
+# if hostconfig specifies force_config_overwrite, use as override
+if text_utils.str2bool(find_host_option("force_pi_paths")) == True : FORCE_PI_PATHS = True
 
 # paths/folders if needed
 os.makedirs("settings", exist_ok=True)
