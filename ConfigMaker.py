@@ -314,7 +314,7 @@ def do_scan(input_directory, pathname):
                     for slave_file in glob.glob(file + "/*"):
                         if slave_file.lower().endswith(".slave"):
                         
-                            this_slave = whdload_slave.WHDLoadSlave(slave_file)
+                            this_slave = whdload_slave.WHDLoadSlaveFile(slave_file)
                             # print (this_slave.name)
                             
                             # minimum chip ram

@@ -1,17 +1,11 @@
 import os
 import struct
 import binascii
-import re
 import datetime
+import re
 
 
-class Kickstart:
-    def __init__(self, name, crc):
-        self.name = name
-        self.crc = crc
-
-
-class WHDLoadSlave:
+class WHDLoadSlaveBase(object):
     _header_offset = 0x020  # 32 bytes
     _flags_dict = {
         1: 'Disk',
@@ -32,9 +26,9 @@ class WHDLoadSlave:
         32768: 'EmulIllegal'
     }
 
-    def __init__(self, path):
-        self.path = path
-        self.modified_time = datetime.datetime.fromtimestamp(os.path.getmtime(path))
+    def __init__(self):
+        self.path = None
+        self.modified_time = None
         self.size = None
         self.data_length = None
         self.security = None
@@ -63,6 +57,83 @@ class WHDLoadSlave:
         self.kick_name_offset = None
         self.kickstart_size = 0
         self.flags = []
+
+    def display_data(self):
+        print("Path: {}".format(self.path))
+        print("Created Time: {}".format(self.modified_time))
+        print("WHDLoad Version: {}".format(self.version))
+        print("Flags: {}".format(self.flags))
+        print("Base Memory Size: {} KiB ({})".format(
+            int(self.base_mem_size / 1024),
+            hex(self.base_mem_size)
+        ))
+        print("Current Directory: {}".format(self.current_dir))
+        print("Don't Cache: {}".format(self.dont_cache))
+
+        if self.version >= 4:
+            print("Debug Key: {}".format(self.key_debug))
+            print("Exit Key: {}".format(self.key_exit))
+
+        if self.version >= 8:
+            print("Expansion Memory: {} KiB ({})".format(
+                int(self.exp_mem / 1024),
+                hex(self.exp_mem)
+            ))
+
+        if self.version >= 10:
+            print("Name: {}".format(self.name))
+            print("Copyright: {}".format(self.copy))
+            print("Info:")
+            info_lines = [line for line in self.info.split('\n') if line.strip() != '']
+            for line in info_lines:
+                print("\t{}".format(line))
+
+        if self.version >= 16:
+            if len(self.kickstarts) > 0:
+                print("Kickstarts:")
+                for kickstart in self.kickstarts:
+                    print("\tName: {}".format(kickstart.name))
+                    print("\tCRC: {}".format(kickstart.crc))
+
+                print("Kickstart Size: {} KiB ({})".format(
+                    int(self.kickstart_size / 1024),
+                    hex(self.kickstart_size)
+                ))
+
+        if self.version >= 17:
+            print("Config:")
+            for config_line in self.config:
+                print("\t{}".format(config_line))
+
+    def requires_aga(self):
+        return "ReqAGA" in self.flags
+
+    def requires_68020(self):
+        return "Req68020" in self.flags
+
+    def has_cd32_controls_patch(self):
+        if len(self.config) > 0:
+            for config_item in self.config:
+                config_item_values = config_item.split(':')
+                try:
+                    if re.match("^.*[Cc][Dd]32.*$", config_item_values[2]):
+                        return True
+                except IndexError:
+                    pass
+        return False
+
+
+class Kickstart(object):
+    def __init__(self, name, crc):
+        self.name = name
+        self.crc = crc
+
+
+class WHDLoadSlaveFile(WHDLoadSlaveBase):
+    def __init__(self, path):
+        WHDLoadSlaveBase.__init__(self)
+        self.path = path
+        self.modified_time = datetime.datetime.fromtimestamp(os.path.getmtime(path))
         self._read_data()
 
     @staticmethod
@@ -169,70 +240,63 @@ class WHDLoadSlave:
             if self.flags_value & key:
                 self.flags.append(value)
 
-    def display_data(self):
-        print("Path: {}".format(self.path))
-        print("Created Time: {}".format(self.modified_time))
-        print("WHDLoad Version: {}".format(self.version))
-        print("Flags: {}".format(self.flags))
-        print("Base Memory Size: {} KiB ({})".format(
-            int(self.base_mem_size / 1024),
-            hex(self.base_mem_size)
-        ))
-        print("Current Directory: {}".format(self.current_dir))
-        print("Don't Cache: {}".format(self.dont_cache))
 
-        if self.version >= 4:
-            print("Debug Key: {}".format(self.key_debug))
-            print("Exit Key: {}".format(self.key_exit))
+class WHDLoadDeSlave(WHDLoadSlaveBase):
+    def __init__(self, html):
+        WHDLoadSlaveBase.__init__(self)
+        self._parse_html(html)
 
-        if self.version >= 8:
-            print("Expansion Memory: {} KiB ({})".format(
-                int(self.exp_mem / 1024),
-                hex(self.exp_mem)
-            ))
+    def _parse_html(self, html):
+        _kickstarts = []
+        _kickstarts_crc = []
 
-        if self.version >= 10:
-            print("Name: {}".format(self.name))
-            print("Copyright: {}".format(self.copy))
-            print("Info:")
-            info_lines = [line for line in self.info.split('\n') if line.strip() != '']
-            for line in info_lines:
-                print("\t{}".format(line))
+        for col in html:
+            if len(col) == 1:
+                self.path = col[0].find('b').string
+            else:
+                if col[0].string == "required WHDLoad version":
+                    self.version = int(col[1].string)
 
-        if self.version >= 16:
-            if len(self.kickstarts) > 0:
-                print("Kickstarts:")
-                for kickstart in self.kickstarts:
-                    print("\tName: {}".format(kickstart.name))
-                    print("\tCRC: {}".format(kickstart.crc))
+                if col[0].string == "flags":
+                    self.flags = col[1].string.split()
 
-                print("Kickstart Size: {} KiB ({})".format(
-                    int(self.kickstart_size / 1024),
-                    hex(self.kickstart_size)
-                ))
+                if col[0].string == "required Chip Memory":
+                    values = col[1].string.split()
+                    self.base_mem_size = int(values[0]) * 1024
 
-        if self.version >= 17:
-            print("Config:")
-            for config_line in self.config:
-                print("\t{}".format(config_line))
+                if col[0].string == "Expansion Memory":
+                    values = col[1].string.split()
+                    self.base_mem_size = int(values[0]) * 1024
 
-    def requires_aga(self):
-        return "ReqAGA" in self.flags
+                if col[0].string == "info name":
+                    self.name = col[1].string
 
-    def requires_68020(self):
-        return "Req68020" in self.flags
+                if col[0].string == "info copy":
+                    self.copy = col[1].string
 
-    def has_cd32_controls_patch(self):
-        if len(self.config) > 0:
-            for config_item in self.config:
-                config_item_values = config_item.split(':')
-                try:
-                    if re.match("^.*[Cc][Dd]32.*$", config_item_values[2]):
-                        return True
-                except IndexError:
-                    pass
-        return False
+                if col[0].string == "info install":
+                    self.info = ""
 
+                if col[0].string == "Kickstart name":
+                    _kickstarts = col[1].string.split()
+
+                if col[0].string == "Kickstart size":
+                    values = col[1].string.split()
+                    self.base_mem_size = int(values[0]) * 1024
+
+                if col[0].string == "Kickstart checksum":
+                    _kickstarts_crc = col[1].string.split()
+
+                if col[0].string == "Configuration":
+                    self.config = col[1].string.split(';')
+
+                for kickstart in zip(_kickstarts, _kickstarts_crc):
+                    self.kickstarts.append(
+                        Kickstart(
+                            name=kickstart[0],
+                            crc=kickstart[1].replace('$', '0x')
+                        )
+                    )
 
 if __name__ == "__main__":
     import argparse
@@ -241,13 +305,50 @@ if __name__ == "__main__":
                         nargs='*',  # any number of space seperated arguments
                         help='Slave(s) to Scan',
                         )
+    parser.add_argument('-u', '--url',
+                        nargs='*',  # any number of space seperated arguments
+                        help='Pages to scrape',
+                        )
     args = parser.parse_args()
     slaves_to_scan = args.slave
-    for slave_file in slaves_to_scan:
-        slave_path = os.path.abspath(slave_file)
-        if os.path.isfile(slave_path):
-            slave_info = WHDLoadSlave(slave_file)
-            slave_info.display_data()
-            print('')
-        else:
-            print("'{}' is not a slave file".format(slave_file))
+    if slaves_to_scan is not None:
+        for slave_file in slaves_to_scan:
+            slave_path = os.path.abspath(slave_file)
+            if os.path.isfile(slave_path):
+                slave_info = WHDLoadSlaveFile(slave_file)
+                slave_info.display_data()
+                print('')
+            else:
+                print("'{}' is not a slave file".format(slave_file))
+
+    # urls_to_parse = args.url
+    # if urls_to_parse is not None:
+    #     from bs4 import BeautifulSoup
+    #     import requests
+    #
+    #     for url in urls_to_parse:
+    #         r = requests.request("GET", url)
+    #         soup = BeautifulSoup(r.text, 'html.parser')
+    #
+    #         slave_info_table = soup.find('table', class_='TT')
+    #         slave_rows = slave_info_table.find_all('tr')
+    #
+    #         html_data = []
+    #         html_slaves = []
+    #
+    #         for row in slave_rows:
+    #             cols = row.find_all('td')
+    #             if len(cols) == 1 and len(html_data) > 0:
+    #                 this_slave = WHDLoadDeSlave(html=html_data)
+    #                 html_slaves.append(this_slave)
+    #                 html_data = []
+    #             if len(cols) > 0:
+    #                 html_data.append(cols)
+    #
+    #         html_slaves.append(WHDLoadDeSlave(html=html_data))
+    #
+    #         for slave in html_slaves:
+    #             slave.display_data()
+    #             print('')
+
+
