@@ -3,6 +3,7 @@ To be added:
 - Check for WHDLoad slave updates and provide warning (ZIPs/HDFs) or perform update (Folders) [Dom]
 - Check WHDLoad slaves for kickstart requirements [Dom]
 - Generate auto-startup file for WHD Booter if access is available. [Dom]
+- Recursive scanning of InputDirs
 
 
 Conceptual / Investigation only:
