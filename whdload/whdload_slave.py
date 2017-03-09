@@ -4,6 +4,8 @@ import binascii
 import datetime
 import re
 from collections import OrderedDict
+import urllib.request
+
 
 
 class Kickstart(object):
@@ -311,6 +313,11 @@ class WHDLoadDeSlave(WHDLoadSlaveBase):
         for col in html:
             if len(col) == 1:
                 self.path = col[0].find('b').string
+                _modified_time = col[0].text.replace("{} - ".format(self.path), "")
+                _regex_pattern = re.compile(".*(\s-\s\d+\sbytes)$")
+                _bytes_string = _regex_pattern.match(_modified_time)
+                _modified_time = _modified_time.replace(_bytes_string.group(1), '')
+                self.modified_time = _modified_time
             else:
                 if col[0].string == "required WHDLoad version":
                     self.version = int(col[1].string)
@@ -362,10 +369,10 @@ def whdload_factory(location):
         # Return List or Single Slave depending on how
         # many Slaves are listed on the page
         from bs4 import BeautifulSoup
-        import requests
 
-        r = requests.request("GET", location)
-        soup = BeautifulSoup(r.text, 'html.parser')
+        with urllib.request.urlopen(location) as response:
+            html = response.read().decode('iso-8859-1')
+        soup = BeautifulSoup(html, 'html.parser')
 
         slave_info_table = soup.find('table', class_='TT')
         slave_rows = slave_info_table.find_all('tr')
