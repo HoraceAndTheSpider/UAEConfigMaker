@@ -2,23 +2,13 @@ import argparse
 import glob
 import math
 import os
-import platform
 import shutil
-import ssl
 
 from utils import general_utils
 from utils import text_utils
 from utils import update_utils
-
-try:
-    from utils.text_utils import FontColours
-except:
-    from text_utils import FontColours
-
-    
+from utils.text_utils import FontColours
 from whdload import whdload_slave
-
-
 
 
 def check_list(in_file, game_name):
