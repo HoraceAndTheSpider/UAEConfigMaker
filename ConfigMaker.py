@@ -2,9 +2,7 @@ import argparse
 import glob
 import math
 import os
-import platform
 import shutil
-import ssl
 
 from utils import general_utils
 from utils import text_utils
@@ -258,6 +256,7 @@ def do_scan(input_directory, pathname):
             if create_config is True:
 
                 # lets do some work, based on what slave files we find.
+# ===================                
 
                 whd_chip_ram = 0
                 whd_fast_ram = 0
@@ -266,24 +265,20 @@ def do_scan(input_directory, pathname):
                 whd_cd32 = False
                 whd_kicks = ['']
                 
-##                whd_names = [None]
-##                whd_dates = [None]
-##                whd_names.clear()
-##                whd_dates.clear()
                 whd_longname = ""
                 whd_realname = ""
                 whd_infoname = ""
                 whd_date = None
                 whd_page = ""
-                
-                
+               
+               # note that this *only* works with WHDLoad folder scanning.
                 if scan_mode == "WHDLoad":
                     
                     whd_update_message = ""
                     for slave_file in glob.glob(file + "/*"):
                         if slave_file.lower().endswith(".slave"):
                         
-                            this_slave = whdload_slave.WHDLoadSlaveFile(slave_file)
+                            this_slave = whdload_slave.whdload_factory(slave_file)
                             # print (this_slave.name)
                             
                             # minimum chip ram
@@ -317,8 +312,7 @@ def do_scan(input_directory, pathname):
                             # whd_dated = this_slave.created_timex
                             whd_longname = slave_file
                             whd_realname = os.path.basename(slave_file)
-                            whd_infoname = this_slave.name
-                            whd_date = this_slave.modified_time
+
 
                             # +++ Lets scan for updates shall we? +++
 
@@ -329,24 +323,55 @@ def do_scan(input_directory, pathname):
 
                             if whd_page == "":
                                 whd_update_message += whd_realname + " not found on master WHDLoad page list" + chr(10)
+                                print ("     Slave file: " + FontColours.OKBLUE + whd_realname + FontColours.ENDC + " not found on master WHDLoad page list" + chr(10))
                                 break
-
                             
                             # here's where we start checking again the WHDload page (OLLY!!!)
 
+ #                           print("whd page:" + whd_page)
+                            
+                            have_found_slave = False
 
-                    # slave loop is finished
+                            web_slaves = whdload_slave.whdload_factory(whd_page) 
+                            
+                            if isinstance(web_slaves,list):
+                                for web_slave in web_slaves:
+                                    if web_slave.name == this_slave.name:
+                                        have_found_slave = True
+                                        break
+                            else:
+                                web_slave = web_slaves 
+                                if web_slave.name == this_slave.name:
+                                    have_found_slave = True
+
+                            
+                            if have_found_slave == True and web_slave.modified_time > this_slave.modified_time:
+                                print()
+                                print("     Slave file: " + FontColours.OKBLUE + whd_realname + FontColours.ENDC + " is an older version.")
+                                print("     This version: " + FontColours.FAIL + str(this_slave.modified_time) + FontColours.ENDC
+                                                            + "  New Version: " +  FontColours.OKGREEN + str(web_slave.modified_time) + FontColours.ENDC)
+                                print()
+                                
+                                # delete old slave
+
+                                # copy in new slave
+
+                                # delete auto-startup (if included)
+
+
+                    # web_slaveslave loop is finished
                     if whd_update_message !="":
                         text_file = open(file + "/whdupdate_message", "w+")
                         text_file.write(whd_update_message)
                         text_file.close()
                         print()
-                        print("     "+whd_update_message)
+                        #print("     "+whd_update_message)
                         
                                             
                         continue
                             
-                
+# ===================
+
                 #  check other parameters
                 #  hardware options
 

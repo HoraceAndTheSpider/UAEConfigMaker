@@ -310,8 +310,8 @@ class WHDLoadDeSlave(WHDLoadSlaveBase):
                 if col[0].string == "Kickstart checksum":
                     _kickstarts_crc = col[1].string.split()
 
-                if col[0].string == "Configuration":
-                    self.config = col[1].string.split(';')
+#                if col[0].string == "Configuration":
+#                    self.config = col[1].string.split(';')
 
                 for kickstart in zip(_kickstarts, _kickstarts_crc):
                     self.kickstarts.append(
