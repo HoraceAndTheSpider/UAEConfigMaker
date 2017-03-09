@@ -5,11 +5,10 @@ import os
 import platform
 import shutil
 import ssl
-import urllib
-import urllib.request
 
 from utils import general_utils
 from utils import text_utils
+from utils import update_utils
 from whdload import whdload_slave
 
 
@@ -31,25 +30,6 @@ class FontColours:
         self.FAIL = ''
         self.ENDC = ''
 
-
-def download_update(in_file):
-    # If we're developing don't overwrite our changes.
-    if NO_UPDATE is True:
-        print("No update request for " + FontColours.WARNING + in_file + FontColours.ENDC + ". (Manual override)")
-        return
-
-    # get_file = "http://www.djcresswell.com/RetroPie/ConfigMaker/" +infile
-    get_file = "https://raw.githubusercontent.com/HoraceAndTheSpider/UAEConfigMaker/master/" + in_file
-    put_file = "" + in_file
-
-    try:
-        urllib.request.urlretrieve(get_file, put_file)
-        print("Update downloaded for " + FontColours.OKBLUE + in_file + FontColours.ENDC + ".")
-    except:
-        print("No update downloaded for " + FontColours.FAIL + in_file + FontColours.ENDC + ". (Web Page not found)")
-    # except urllib.error.HTTPError as err:
-    # print ("No update downloaded for " + bcolors.FAIL + infile + bcolors.ENDC +  ". (Web Page not found)")
-    return
 
 
 def check_list(in_file, game_name):
@@ -488,7 +468,7 @@ def do_scan(input_directory, pathname):
                     fast_ram = old_fast_ram
 
                 # whd fast-memory overwrite
-                if whd_fast_ram >= fast_ram and whd_fast_ram <= 8 : chip_ram = whd_chip_ram
+                if whd_fast_ram >= fast_ram and whd_fast_ram <= 8 : fast_ram = whd_fast_ram
 
 
                 # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -903,12 +883,18 @@ if text_utils.str2bool(find_host_option("force_pi_paths")) == True : FORCE_PI_PA
 # paths/folders if needed
 os.makedirs("settings", exist_ok=True)
 
-# we can go through all files in 'settings' and attempt a download of the file
-for filename in glob.glob('settings/*.txt'):
-    download_update(filename)
+# If we're developing don't overwrite our changes.
+if NO_UPDATE is True:
+     print(FontColours.FAIL + "No update requests. (Manual override)"+ FontColours.ENDC)
+   
+else:
+    # we can go through all files in 'settings' and attempt a download of the file
+    for filename in glob.glob('settings/*.txt'):
+        update_utils.download_update(filename)
 
-# do similar for
-download_update("uaeconfig.uaetemp")
+    # do similar for
+    update_utils.download_update("uaeconfig.uaetemp")
+
 
 if os.path.isfile("uaeconfig.uaetemp") is False:
     print(

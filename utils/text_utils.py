@@ -200,4 +200,3 @@ def get_whdload_page(in_name):
     return out_page
 
 
-print(get_whdload_page("Lemmings21mb.slave"))
