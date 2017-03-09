@@ -23,6 +23,9 @@ def add_space(in_bit, pos):
     in_bit = left(in_bit, pos - 1) + " " + right(in_bit, len(in_bit) - pos + 1)
     return in_bit
 
+def str2bool(v):
+  return v.lower() in ("yes", "true", "t", "1")
+
 
 def make_full_cd32_name(in_name):
     # check the txt file
