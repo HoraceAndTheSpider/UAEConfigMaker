@@ -3,19 +3,11 @@ import urllib
 import urllib.request
 
 try:
-    from utils.text_utils import FontColours
+    ssl._create_default_https_context = ssl._create_unverified_context
 except:
-    from text_utils import FontColours
+    pass
 
 def download_update(in_file):
-
-
-    try:
-        ssl._create_default_https_context = ssl._create_unverified_context
-    except:
-        pass
-
-
     # get_file = "http://www.djcresswell.com/RetroPie/ConfigMaker/" +infile
     get_file = "https://raw.githubusercontent.com/HoraceAndTheSpider/UAEConfigMaker/master/" + in_file
     put_file = "" + in_file
@@ -29,8 +21,7 @@ def download_update(in_file):
 
 
 def main():
-
-# initialisations
+    # initialisations
 
     print()
     print(
@@ -39,7 +30,7 @@ def main():
         FontColours.FAIL + "www.ultimateamiga.co.uk" + FontColours.ENDC)
     print()
 
-# and these are the files to update
+    # and these are the files to update
     download_update("ConfigMaker.py")
     download_update("README.md")
     download_update("TODO.md")
@@ -51,5 +42,7 @@ def main():
     return
 
 if __name__ == "__main__":
-     main()
-
+    from utils.text_utils import FontColours
+    main()
+else:
+    from .text_utils import FontColours
