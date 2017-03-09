@@ -9,26 +9,10 @@ import ssl
 from utils import general_utils
 from utils import text_utils
 from utils import update_utils
+from utils.text_utils import FontColours
+
 from whdload import whdload_slave
 
-
-class FontColours:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-
-    def disable(self):
-        self.HEADER = ''
-        self.OKBLUE = ''
-        self.OKGREEN = ''
-        self.WARNING = ''
-        self.FAIL = ''
-        self.ENDC = ''
 
 
 
@@ -813,12 +797,6 @@ print(
 print()
 
 # initialisations
-
-try:
-    ssl._create_default_https_context = ssl._create_unverified_context
-except:
-    pass
-
 #
 # Setup Commandline Argument Parsing
 #

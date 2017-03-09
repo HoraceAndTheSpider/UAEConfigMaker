@@ -1,11 +1,10 @@
+import ssl
 import urllib
 import urllib.request
+from text_utils import FontColours
+
 
 def download_update(in_file):
-    
- #   if NO_UPDATE is True:
-#        print("No update request for " + FontColours.WARNING + in_file + FontColours.ENDC + ". (Manual override)")
-#        return
 
     # get_file = "http://www.djcresswell.com/RetroPie/ConfigMaker/" +infile
     get_file = "https://raw.githubusercontent.com/HoraceAndTheSpider/UAEConfigMaker/master/" + in_file
@@ -16,13 +15,20 @@ def download_update(in_file):
         print("Update downloaded for " + FontColours.OKBLUE + in_file + FontColours.ENDC + ".")
     except:
         print("No update downloaded for " + FontColours.FAIL + in_file + FontColours.ENDC + ". (Web Page not found)")
-    # except urllib.error.HTTPError as err:
-    # print ("No update downloaded for " + bcolors.FAIL + infile + bcolors.ENDC +  ". (Web Page not found)")
     return
 
 
 def main():
 
+# initialisations
+
+    try:
+        ssl._create_default_https_context = ssl._create_unverified_context
+    except:
+        pass
+
+
+# and these are the files to update
     download_update("ConfigMaker.py")
     download_update("README.md")
     download_update("TODO.md")
