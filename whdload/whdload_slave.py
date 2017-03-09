@@ -3,6 +3,16 @@ import struct
 import binascii
 import datetime
 import re
+from collections import OrderedDict
+
+
+class Kickstart(object):
+    def __init__(self, name, crc):
+        self.name = name
+        self.crc = crc
+
+    def __str__(self):
+        return "{}: {}".format(self.name, self.crc)
 
 
 class WHDLoadSlaveBase(object):
@@ -25,6 +35,24 @@ class WHDLoadSlaveBase(object):
         16384: 'EmulDivZero',
         32768: 'EmulIllegal'
     }
+
+    property_friendly_names = OrderedDict([
+        ("path", "Path"),
+        ("name", "Name"),
+        ("copy", "Copyright"),
+        ("info", "Info"),
+        ("modified_time", "Modified Time"),
+        ("base_mem_size", "Base Memory Size"),
+        ("flags", "Flags"),
+        ("current_dir", "Current Directory"),
+        ("dont_cache", "Don't Cache"),
+        ("debug_key", "Debug Key"),
+        ("exit_key", "Exit Key"),
+        ("exp_mem", "Expansion Memory Size"),
+        ("kickstarts", "Kickstarts"),
+        ("kickstart_size", "Kickstart Size"),
+        ("config", "Config")
+    ])
 
     def __init__(self):
         self.path = None
@@ -58,9 +86,39 @@ class WHDLoadSlaveBase(object):
         self.kickstart_size = 0
         self.flags = []
 
+    def __str__(self):
+        string_builder = ""
+        for key, friendly_name in self.property_friendly_names.items():
+            if hasattr(self, key):
+                value = getattr(self, key)
+
+                # Display Memory Sizes in Friendly Format
+                if friendly_name.find("Size") > 0:
+                    value = "{} KiB ({})".format(
+                        int(value / 1024),
+                        hex(value)
+                    )
+
+                # Display Kickstart Objects Correctly
+                if key == "kickstarts":
+                    old_value = value
+                    value = ""
+                    for kickstart in old_value:
+                        value += "\n\tName: {}\n\tCRC: {}".format(
+                            kickstart.name,
+                            kickstart.crc
+                        )
+
+                string_builder += "{}: {}\n".format(
+                    friendly_name,
+                    value
+                )
+
+        return string_builder
+
     def display_data(self):
         print("Path: {}".format(self.path))
-        print("Created Time: {}".format(self.modified_time))
+        print("Modified Time: {}".format(self.modified_time))
         print("WHDLoad Version: {}".format(self.version))
         print("Flags: {}".format(self.flags))
         print("Base Memory Size: {} KiB ({})".format(
@@ -123,12 +181,6 @@ class WHDLoadSlaveBase(object):
         return False
 
 
-class Kickstart(object):
-    def __init__(self, name, crc):
-        self.name = name
-        self.crc = crc
-
-
 class WHDLoadSlaveFile(WHDLoadSlaveBase):
     def __init__(self, path):
         WHDLoadSlaveBase.__init__(self)
@@ -147,6 +199,9 @@ class WHDLoadSlaveFile(WHDLoadSlaveBase):
             length += 1
 
         return struct.unpack_from('{}s'.format(length), data[offset:])[0].decode('iso-8859-1')
+
+    def __str__(self):
+        return "=== WHDLoad Slave File ===\n" + super().__str__()
 
     def _read_data(self):
         self._get_file_size()
@@ -206,7 +261,7 @@ class WHDLoadSlaveFile(WHDLoadSlaveBase):
         if self.version >= 10:
             self.name = self._read_string(self.name_offset, data)
             self.copy = self._read_string(self.copy_offset, data)
-            self.info = self._read_string(self.info_offset, data)
+            self.info = self._read_string(self.info_offset, data).replace("\n", ", ")
 
         if self.version >= 16:
             # The crc flag is set to indicate that there a multiple supported kickstarts
@@ -245,6 +300,9 @@ class WHDLoadDeSlave(WHDLoadSlaveBase):
     def __init__(self, html):
         WHDLoadSlaveBase.__init__(self)
         self._parse_html(html)
+
+    def __str__(self):
+        return "=== WHDLoad.de Slave Details ===\n" + super().__str__()
 
     def _parse_html(self, html):
         _kickstarts = []
@@ -298,16 +356,55 @@ class WHDLoadDeSlave(WHDLoadSlaveBase):
                         )
                     )
 
+
+def whdload_factory(location):
+    if str(location).startswith("http"):
+        # Return List or Single Slave depending on how
+        # many Slaves are listed on the page
+        from bs4 import BeautifulSoup
+        import requests
+
+        r = requests.request("GET", location)
+        soup = BeautifulSoup(r.text, 'html.parser')
+
+        slave_info_table = soup.find('table', class_='TT')
+        slave_rows = slave_info_table.find_all('tr')
+
+        html_data = []
+        html_slaves = []
+
+        for row in slave_rows:
+            cols = row.find_all('td')
+            if len(cols) == 1 and len(html_data) > 0:
+                this_slave = WHDLoadDeSlave(html=html_data)
+                html_slaves.append(this_slave)
+                html_data = []
+            if len(cols) > 0:
+                html_data.append(cols)
+
+        html_slaves.append(WHDLoadDeSlave(html=html_data))
+
+        if len(html_slaves) > 1:
+            # Return List of Slaves
+            return html_slaves
+        else:
+            # Return Single Slave
+            return html_slaves[0]
+
+    # Return Single File Slave
+    return WHDLoadSlaveFile(location)
+
+
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description='Parse details of WHDLoad Slave')
-    parser.add_argument('--slave', '-s',  # command line argument
-                        nargs='*',  # any number of space seperated arguments
+    parser.add_argument('--slave', '-s',    # command line argument
+                        nargs='*',          # any number of space seperated arguments
                         help='Slave(s) to Scan',
                         )
-    parser.add_argument('-u', '--url',
-                        nargs='*',  # any number of space seperated arguments
-                        help='Pages to scrape',
+    parser.add_argument('-u', '--url',      # command line argument
+                        nargs='*',          # any number of space seperated arguments
+                        help='WHDLoad.de URLs to scrape',
                         )
     args = parser.parse_args()
     slaves_to_scan = args.slave
@@ -315,40 +412,19 @@ if __name__ == "__main__":
         for slave_file in slaves_to_scan:
             slave_path = os.path.abspath(slave_file)
             if os.path.isfile(slave_path):
-                slave_info = WHDLoadSlaveFile(slave_file)
-                slave_info.display_data()
-                print('')
+                slave = whdload_factory(location=slave_file)
+                print(slave)
             else:
                 print("'{}' is not a slave file".format(slave_file))
 
-    # urls_to_parse = args.url
-    # if urls_to_parse is not None:
-    #     from bs4 import BeautifulSoup
-    #     import requests
-    #
-    #     for url in urls_to_parse:
-    #         r = requests.request("GET", url)
-    #         soup = BeautifulSoup(r.text, 'html.parser')
-    #
-    #         slave_info_table = soup.find('table', class_='TT')
-    #         slave_rows = slave_info_table.find_all('tr')
-    #
-    #         html_data = []
-    #         html_slaves = []
-    #
-    #         for row in slave_rows:
-    #             cols = row.find_all('td')
-    #             if len(cols) == 1 and len(html_data) > 0:
-    #                 this_slave = WHDLoadDeSlave(html=html_data)
-    #                 html_slaves.append(this_slave)
-    #                 html_data = []
-    #             if len(cols) > 0:
-    #                 html_data.append(cols)
-    #
-    #         html_slaves.append(WHDLoadDeSlave(html=html_data))
-    #
-    #         for slave in html_slaves:
-    #             slave.display_data()
-    #             print('')
+    urls_to_parse = args.url
+    if urls_to_parse is not None:
+        for url in urls_to_parse:
+            slaves = whdload_factory(location=url)
+            if len(slaves) > 1:
+                for slave in slaves:
+                    print(slave)
+            else:
+                print(slaves)
 
 
