@@ -118,53 +118,6 @@ class WHDLoadSlaveBase(object):
 
         return string_builder
 
-    def display_data(self):
-        print("Path: {}".format(self.path))
-        print("Modified Time: {}".format(self.modified_time))
-        print("WHDLoad Version: {}".format(self.version))
-        print("Flags: {}".format(self.flags))
-        print("Base Memory Size: {} KiB ({})".format(
-            int(self.base_mem_size / 1024),
-            hex(self.base_mem_size)
-        ))
-        print("Current Directory: {}".format(self.current_dir))
-        print("Don't Cache: {}".format(self.dont_cache))
-
-        if self.version >= 4:
-            print("Debug Key: {}".format(self.key_debug))
-            print("Exit Key: {}".format(self.key_exit))
-
-        if self.version >= 8:
-            print("Expansion Memory: {} KiB ({})".format(
-                int(self.exp_mem / 1024),
-                hex(self.exp_mem)
-            ))
-
-        if self.version >= 10:
-            print("Name: {}".format(self.name))
-            print("Copyright: {}".format(self.copy))
-            print("Info:")
-            info_lines = [line for line in self.info.split('\n') if line.strip() != '']
-            for line in info_lines:
-                print("\t{}".format(line))
-
-        if self.version >= 16:
-            if len(self.kickstarts) > 0:
-                print("Kickstarts:")
-                for kickstart in self.kickstarts:
-                    print("\tName: {}".format(kickstart.name))
-                    print("\tCRC: {}".format(kickstart.crc))
-
-                print("Kickstart Size: {} KiB ({})".format(
-                    int(self.kickstart_size / 1024),
-                    hex(self.kickstart_size)
-                ))
-
-        if self.version >= 17:
-            print("Config:")
-            for config_line in self.config:
-                print("\t{}".format(config_line))
-
     def requires_aga(self):
         return "ReqAGA" in self.flags
 
@@ -306,6 +259,15 @@ class WHDLoadDeSlave(WHDLoadSlaveBase):
     def __str__(self):
         return "=== WHDLoad.de Slave Details ===\n" + super().__str__()
 
+    def _parse_date(self, string):
+        _temp_string = string.replace("{} - ".format(self.path), "")
+        _regex_pattern = re.compile(".*(\s-\s\d+\sbytes)$")
+        _bytes_string = _regex_pattern.match(_temp_string)
+        _temp_string = _temp_string.replace(_bytes_string.group(1), '')
+        _strptime_format = "%d.%m.%Y %H:%M:%S"
+        _modified_time = datetime.datetime.strptime(_temp_string, _strptime_format)
+        return _modified_time
+
     def _parse_html(self, html):
         _kickstarts = []
         _kickstarts_crc = []
@@ -313,11 +275,7 @@ class WHDLoadDeSlave(WHDLoadSlaveBase):
         for col in html:
             if len(col) == 1:
                 self.path = col[0].find('b').string
-                _modified_time = col[0].text.replace("{} - ".format(self.path), "")
-                _regex_pattern = re.compile(".*(\s-\s\d+\sbytes)$")
-                _bytes_string = _regex_pattern.match(_modified_time)
-                _modified_time = _modified_time.replace(_bytes_string.group(1), '')
-                self.modified_time = _modified_time
+                self.modified_time = self._parse_date(col[0].text)
             else:
                 if col[0].string == "required WHDLoad version":
                     self.version = int(col[1].string)
