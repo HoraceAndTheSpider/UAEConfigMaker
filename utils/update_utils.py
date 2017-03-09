@@ -32,12 +32,12 @@ def main():
 
 # initialisations
 
-print()
-print(
-    FontColours.BOLD + FontColours.OKBLUE + "HoraceAndTheSpider" + FontColours.ENDC + "'s " + FontColours.BOLD +
-    "UAE Configuration Maker" + FontColours.ENDC + FontColours.OKGREEN + " (Auto-Update)" + FontColours.ENDC + " | " + "" +
-    FontColours.FAIL + "www.ultimateamiga.co.uk" + FontColours.ENDC)
-print()
+    print()
+    print(
+        FontColours.BOLD + FontColours.OKBLUE + "HoraceAndTheSpider" + FontColours.ENDC + "'s " + FontColours.BOLD +
+        "UAE Configuration Maker" + FontColours.ENDC + FontColours.OKGREEN + " (Auto-Update)" + FontColours.ENDC + " | " + "" +
+        FontColours.FAIL + "www.ultimateamiga.co.uk" + FontColours.ENDC)
+    print()
 
 # and these are the files to update
     download_update("ConfigMaker.py")
