@@ -1,10 +1,20 @@
 import ssl
 import urllib
 import urllib.request
-from text_utils import FontColours
 
+try:
+    from utils.text_utils import FontColours
+except:
+    from text_utils import FontColours
 
 def download_update(in_file):
+
+
+    try:
+        ssl._create_default_https_context = ssl._create_unverified_context
+    except:
+        pass
+
 
     # get_file = "http://www.djcresswell.com/RetroPie/ConfigMaker/" +infile
     get_file = "https://raw.githubusercontent.com/HoraceAndTheSpider/UAEConfigMaker/master/" + in_file
@@ -21,11 +31,6 @@ def download_update(in_file):
 def main():
 
 # initialisations
-
-    try:
-        ssl._create_default_https_context = ssl._create_unverified_context
-    except:
-        pass
 
 
 # and these are the files to update
