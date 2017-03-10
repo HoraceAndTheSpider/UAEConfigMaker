@@ -39,6 +39,7 @@ class WHDLoadSlaveBase(object):
 
     property_friendly_names = OrderedDict([
         ("path", "Path"),
+        ("file_name", "File Name"),
         ("name", "Name"),
         ("copy", "Copyright"),
         ("info", "Info"),
@@ -57,6 +58,7 @@ class WHDLoadSlaveBase(object):
 
     def __init__(self):
         self.path = None
+        self.file_name = None
         self.modified_time = None
         self.size = None
         self.data_length = None
@@ -139,6 +141,7 @@ class WHDLoadSlaveFile(WHDLoadSlaveBase):
     def __init__(self, path):
         WHDLoadSlaveBase.__init__(self)
         self.path = path
+        self.file_name = os.path.basename(path)
         self.modified_time = datetime.datetime.fromtimestamp(os.path.getmtime(path))
         self._read_data()
 
@@ -259,7 +262,7 @@ class WHDLoadDeSlave(WHDLoadSlaveBase):
         return "=== WHDLoad.de Slave Details ===\n" + super().__str__()
 
     def _parse_date(self, string):
-        _temp_string = string.replace("{} - ".format(self.path), "")
+        _temp_string = string.replace("{} - ".format(self.file_name), "")
         _regex_pattern = re.compile(".*(\s-\s\d+\sbytes)$")
         _bytes_string = _regex_pattern.match(_temp_string)
         _temp_string = _temp_string.replace(_bytes_string.group(1), '')
@@ -273,7 +276,7 @@ class WHDLoadDeSlave(WHDLoadSlaveBase):
 
         for col in html:
             if len(col) == 1:
-                self.path = col[0].find('b').string
+                self.file_name = col[0].find('b').string
                 self.modified_time = self._parse_date(col[0].text)
             else:
                 if col[0].string == "required WHDLoad version":
