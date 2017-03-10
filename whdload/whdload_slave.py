@@ -143,6 +143,37 @@ class WHDLoadSlaveBase(object):
                     pass
         return False
 
+    def compare_property(self, other_slave, property_name):
+        try:
+            this_property = getattr(self, property_name)
+            other_slave_property = getattr(other_slave, property_name)
+            if this_property == other_slave_property:
+                return True
+        except AttributeError:
+            return False
+
+        return False
+
+    def compare_names(self, other_slave):
+        return self.compare_property(other_slave, "name")
+
+    def compare_file_names(self, other_slave):
+        return self.compare_property(other_slave, "file_name")
+
+    def compare_all(self, other_slave):
+        compare_list = [
+            self.compare_names,
+            self.compare_file_names,
+        ]
+
+        compare = True
+        for compare_func in compare_list:
+            compare = compare_func(other_slave)
+            if compare is False:
+                break
+
+        return compare
+
 
 class WHDLoadSlaveFile(WHDLoadSlaveBase):
     def __init__(self, path):
@@ -394,10 +425,5 @@ if __name__ == "__main__":
     if urls_to_parse is not None:
         for url in urls_to_parse:
             slaves = whdload_factory(location=url)
-            if len(slaves) > 1:
-                for slave in slaves:
-                    print(slave)
-            else:
-                print(slaves)
-
-
+            for slave in slaves:
+                print(slave)
