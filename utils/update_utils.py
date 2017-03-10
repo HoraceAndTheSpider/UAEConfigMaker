@@ -1,11 +1,13 @@
 import ssl
 import urllib
 import urllib.request
+from .text_utils import FontColours
 
 try:
     ssl._create_default_https_context = ssl._create_unverified_context
 except:
     pass
+
 
 def download_update(in_file):
     # get_file = "http://www.djcresswell.com/RetroPie/ConfigMaker/" +infile
@@ -20,7 +22,7 @@ def download_update(in_file):
     return
 
 
-def main():
+def run_updater():
     # initialisations
 
     print()
@@ -40,9 +42,3 @@ def main():
     download_update("utils/update_utils.py")
     
     return
-
-if __name__ == "__main__":
-    from utils.text_utils import FontColours
-    main()
-else:
-    from .text_utils import FontColours
