@@ -7,7 +7,6 @@ from collections import OrderedDict
 import urllib.request
 
 
-
 class Kickstart(object):
     def __init__(self, name, crc):
         self.name = name
@@ -78,7 +77,7 @@ class WHDLoadSlaveBase(object):
         self.info_offset = None
         self.config_offset = None
         self.current_dir = None
-        self.config = []
+        self.config = None
         self.dont_cache = None
         self.name = None
         self.copy = None
@@ -125,7 +124,7 @@ class WHDLoadSlaveBase(object):
         return "Req68020" in self.flags
 
     def has_cd32_controls_patch(self):
-        if len(self.config) > 0:
+        if self.config is not None and len(self.config) > 0:
             for config_item in self.config:
                 config_item_values = config_item.split(':')
                 try:
@@ -298,7 +297,7 @@ class WHDLoadDeSlave(WHDLoadSlaveBase):
                     self.copy = col[1].string
 
                 if col[0].string == "info install":
-                    self.info = ""
+                    self.info = col[1].text
 
                 if col[0].string == "Kickstart name":
                     _kickstarts = col[1].string.split()
@@ -310,8 +309,9 @@ class WHDLoadDeSlave(WHDLoadSlaveBase):
                 if col[0].string == "Kickstart checksum":
                     _kickstarts_crc = col[1].string.split()
 
-#                if col[0].string == "Configuration":
-#                    self.config = col[1].string.split(';')
+                if col[0].string == "Configuration":
+                    if col[1].string is not None:
+                        self.config = col[1].string.split(';')
 
                 for kickstart in zip(_kickstarts, _kickstarts_crc):
                     self.kickstarts.append(
