@@ -102,6 +102,13 @@ class WHDLoadSlaveBase(object):
                         hex(value)
                     )
 
+                # Disply Info Indented:
+                if key == "info":
+                    old_value = value
+                    value = ""
+                    for line in old_value.split('\n'):
+                        value += "\n\t{}".format(line)
+
                 # Display Kickstart Objects Correctly
                 if key == "kickstarts":
                     old_value = value
@@ -218,7 +225,8 @@ class WHDLoadSlaveFile(WHDLoadSlaveBase):
         if self.version >= 10:
             self.name = self._read_string(self.name_offset, data)
             self.copy = self._read_string(self.copy_offset, data)
-            self.info = self._read_string(self.info_offset, data).replace("\n", ", ")
+            _info = self._read_string(self.info_offset, data)
+            self.info = "\n".join(([x for x in _info.split('\n') if x != ""]))
 
         if self.version >= 16:
             # The crc flag is set to indicate that there a multiple supported kickstarts
@@ -300,7 +308,10 @@ class WHDLoadDeSlave(WHDLoadSlaveBase):
                     self.copy = col[1].string
 
                 if col[0].string == "info install":
-                    self.info = col[1].text
+                    _info = ""
+                    for info_string in col[1].strings:
+                        _info += "{}\n".format(info_string)
+                    self.info = _info.rstrip('\n')
 
                 if col[0].string == "Kickstart name":
                     _kickstarts = col[1].string.split()
