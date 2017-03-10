@@ -338,8 +338,7 @@ class WHDLoadDeSlave(WHDLoadSlaveBase):
 
 def whdload_factory(location):
     if str(location).startswith("http"):
-        # Return List or Single Slave depending on how
-        # many Slaves are listed on the page
+        # Return List of Slaves from URL
         from bs4 import BeautifulSoup
 
         with urllib.request.urlopen(location) as response:
@@ -363,12 +362,7 @@ def whdload_factory(location):
 
         html_slaves.append(WHDLoadDeSlave(html=html_data))
 
-        if len(html_slaves) > 1:
-            # Return List of Slaves
-            return html_slaves
-        else:
-            # Return Single Slave
-            return html_slaves[0]
+        return html_slaves
 
     # Return Single File Slave
     return WHDLoadSlaveFile(location)
