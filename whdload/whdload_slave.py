@@ -322,7 +322,8 @@ class WHDLoadDeSlave(WHDLoadSlaveBase):
                     self.version = int(col[1].string)
 
                 if col[0].string == "flags":
-                    self.flags = col[1].string.split()
+                    if col[1].string is not None:
+                        self.flags = col[1].string.split()
 
                 if col[0].string == "required Chip Memory":
                     values = col[1].string.split()
