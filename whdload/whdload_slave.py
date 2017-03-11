@@ -378,6 +378,11 @@ def whdload_factory(location):
         soup = BeautifulSoup(html, 'html.parser')
 
         slave_info_table = soup.find('table', class_='TT')
+
+        if slave_info_table is None:
+            # no slave info on this page
+            return []
+
         slave_rows = slave_info_table.find_all('tr')
 
         html_data = []
