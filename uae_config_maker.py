@@ -357,10 +357,8 @@ def do_scan(input_directory, pathname):
                         text_file.write(whd_update_message)
                         text_file.close()
                         print()
-                        #print("     "+whd_update_message)
-                        
-                                            
-                        continue
+                        #print("     "+whd_update_message)                                            
+                        #continue
                             
 # ===================
 
