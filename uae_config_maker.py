@@ -54,9 +54,9 @@ def find_host_option(in_option):
     return answer
 
 
-def do_scan(input_directory, pathname):
+def do_scan(input_directory, pathname,output_directory):
     if os.path.isdir(input_directory + pathname):
-        print("Config Save Path: " + FontColours.OKBLUE + input_directory + FontColours.ENDC)
+        print("Config Save Path: " + FontColours.OKBLUE + output_directory + FontColours.ENDC)
         print("Games Files Path: " + FontColours.BOLD + FontColours.OKBLUE + pathname + FontColours.ENDC)
         print()
     else:
@@ -213,7 +213,7 @@ def do_scan(input_directory, pathname):
             create_config = True
             answer = ""
 
-            if os.path.isfile(input_directory + full_game_name + ".uae") == True and skip_all == 0:
+            if os.path.isfile(output_directory + full_game_name + ".uae") == True and skip_all == 0:
                 while answer != "Y" and answer != "N" and answer != "S" and answer != "A":
                     answer = input(
                         FontColours.OKBLUE + "     Config already exists - overwrite? " + "(Yes/No/Always/Skip) "
@@ -222,7 +222,7 @@ def do_scan(input_directory, pathname):
                         answer = answer.upper()
                     print()
 
-            elif os.path.isfile(input_directory + full_game_name + ".uae") == True and skip_all == -1:
+            elif os.path.isfile(output_directory + full_game_name + ".uae") == True and skip_all == -1:
                 create_config = False
                 print(FontColours.OKBLUE + "     Skipping existing file." + FontColours.ENDC)
                 print()
@@ -617,7 +617,7 @@ def do_scan(input_directory, pathname):
                 # ' ....
 
                 # print("we are making a config ....")
-                file = input_directory + full_game_name + ".uae"
+                file = output_directory + full_game_name + ".uae"
                 shutil.copyfile("uaeconfig.uaetemp", file)
 
                 if os.path.isfile(file) is False:
@@ -639,7 +639,7 @@ def do_scan(input_directory, pathname):
                     if FORCE_PI_PATHS is False:
                         config_text = config_text.replace("<<inputdir>>", input_directory)
                     else:
-                        config_text = config_text.replace("<<inputdir>>", "//home/pi/RetroPie/roms/amiga/")
+                        config_text = config_text.replace("<<inputdir>>", "/home/pi/RetroPie/roms/amiga-data/")
 
                     # game / path
                     config_text = config_text.replace("<<game>>", this_file)
@@ -783,7 +783,7 @@ def do_scan(input_directory, pathname):
     return
 
 
-def do_scan_base(inputdir):
+def do_scan_base(inputdir,outputdir):
     # go through the paths
 
     # DoScan(inputdir,"Games_WHDLoad_DomTest")
@@ -791,20 +791,28 @@ def do_scan_base(inputdir):
     # DoScan(inputdir,"Games_ADF")
     # DoScan(inputdir,"Games_Script_Unreleased")
 
-    do_scan(inputdir, "Games_WHDLoad")
-    do_scan(inputdir, "Games_WHDLoad_AGA")
-    do_scan(inputdir, "Games_WHDLoad_CDTV")
-    do_scan(inputdir, "Games_WHDLoad_CD32")
-    do_scan(inputdir, "Games_WHDLoad_DemoVersions")
-    do_scan(inputdir, "Games_WHDLoad_AltVersions")
-    do_scan(inputdir, "Games_WHDLoad_AltLanguage")
-    do_scan(inputdir, "Games_WHDLoad_AGACD32_AltLanguage")
-    do_scan(inputdir, "Games_WHDLoad_AGACD32_AltVersions")
-    do_scan(inputdir, "Games_WHDLoad_Unofficial")
-    do_scan(inputdir, "Games_HDF")
-    do_scan(inputdir, "Games_CD32")
-    do_scan(inputdir, "Games_WHDLoad_HDF")
-    do_scan(inputdir, "Demos_WHDLoad")
+    do_scan(inputdir, "Games_WHDLoad", outputdir)
+    do_scan(inputdir, "Games_WHDLoad_AGA", outputdir)
+    do_scan(inputdir, "Games_WHDLoad_CDTV", outputdir)
+    do_scan(inputdir, "Games_WHDLoad_CD32", outputdir)
+    do_scan(inputdir, "Games_WHDLoad_DemoVersions", outputdir)
+    
+    do_scan(inputdir, "Games_WHDLoad_AltVersions", outputdir)
+    do_scan(inputdir, "Games_WHDLoad_AltLanguage", outputdir)
+    do_scan(inputdir, "Games_WHDLoad_AGACD32_AltLanguage", outputdir)
+    do_scan(inputdir, "Games_WHDLoad_AGACD32_AltVersions", outputdir)
+    do_scan(inputdir, "Games_WHDLoad_Unofficial", outputdir)
+
+    do_scan(inputdir, "Games_WHDLoad_HDF", outputdir)
+    do_scan(inputdir, "Games_WHDLoad_HDF_AGA", outputdir)
+    do_scan(inputdir, "Games_WHDLoad_HDF_CDTV", outputdir)
+    do_scan(inputdir, "Games_WHDLoad_HDF_DemoVersions", outputdir)
+    do_scan(inputdir, "Games_WHDLoad_HDF_AltLanguage", outputdir)
+    
+    do_scan(inputdir, "Games_HDF", outputdir)
+    do_scan(inputdir, "Games_CD32", outputdir)
+
+    do_scan(inputdir, "Demos_WHDLoad", outputdir)
     # raise SystemExit
 
 # main section starting here...
@@ -825,6 +833,11 @@ parser = argparse.ArgumentParser(description='Create UAE Configs for WHDLoad Pac
 parser.add_argument('--scandirs', '-s',  # command line argument
                     nargs='*',  # any number of space seperated arguments
                     help='Directories to Scan',
+                    default=['/home/pi/RetroPie/roms/amiga-data/']  # Default directory if none supplied
+                    )
+
+parser.add_argument('--outputdir', '-o',  # command line argument
+                    help='Target output path',
                     default=['/home/pi/RetroPie/roms/amiga/']  # Default directory if none supplied
                     )
 
@@ -859,6 +872,13 @@ if find_host_option("scandir") !="":
 
 # Check Directories are valid
 inputdirs = general_utils.check_inputdirs(inputdirs)
+
+# set an output follder for .uae location
+outputdir = args.outputdir
+
+# Check Directories are valid
+outputdir = general_utils.check_singledir(outputdir)
+
 
 # Setup Bool Constant for No Update
 NO_UPDATE = args.no_update
@@ -903,6 +923,6 @@ if os.path.isfile("uaeconfig.uaetemp") is False:
 print()
 
 for inputdir in inputdirs:
-    do_scan_base(inputdir)
+    do_scan_base(inputdir,outputdir)
 
 raise SystemExit
