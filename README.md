@@ -44,7 +44,7 @@ From Linux Command Line or via SSH, use the following:
 
 Install/ Running
   cd /home/pi
-  wget https://github.com/HoraceAndThe…/UAEConfigMaker/…/master.zip
+  wget https://github.com/HoraceAndTheSpider/UAEConfigMaker/archive/master.zip
   unzip master.zip
   rm master.zip
   mv UAEConfigMaker-master .uaeconfigmaker
