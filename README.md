@@ -19,14 +19,39 @@ Command Line options now available:
 
 [none]  
   Specify any paths which are wanted to be scanned.
-  Defaults to /home/pi/RetroPie/roms/amiga/ if not stated.
+  Defaults to /home/pi/RetroPie/roms/amiga-data/ if not stated.
 
---no-update
+--outputdir -o
+  Specify which path the .uae files are to be outputted to
+  Defaults to /home/pi/RetroPie/roms/amiga/ if not stated.
+  
+--no-update -n
   stop config maker from downloading the text data from github (for development purposes)
 
 --force-pi-paths
-  forces input paths to be made into '/home/pi/RetroPie/roms/amiga/' regardless of source.
+  forces input paths to be made into '/home/pi/RetroPie/roms/amiga-data/' within .uae file regardless of source.
   default behaviour will use actual path
   
 --force-config-overwrite
   don't wait for user input before wiping all Config Files with new ones. This may be used for integration with RetroPie
+  
+  
+Installation:
+  
+  https://www.facebook.com/groups/1854320841462593?view=permalink&id=1940407532853923
+  
+From Linux Command Line or via SSH, use the following:
+
+Install/ Running
+  cd /home/pi
+  wget https://github.com/HoraceAndThe…/UAEConfigMaker/…/master.zip
+  unzip master.zip
+  rm master.zip
+  mv UAEConfigMaker-master .uaeconfigmaker
+
+Updating/Running:
+
+  cd /home/pi
+  cd .uaeconfigmaker
+  python3 utils/update_utils.py
+  python3 ConfigMaker.py 
