@@ -714,7 +714,7 @@ def do_scan(input_directory, pathname,output_directory):
                         config_text = config_text.replace("filesystem2=rw,DH1", ";filesystem2=rw,DH1")
 
                         # adjust parameters for DH2 to become DH1:
-                        config_text = config_text.replace(",32,1,2,512,50,,uae", ",32,1,2,512,0,,uae")
+                        config_text = config_text.replace(",32,1,2,512,50,,uae", ",0,1,2,512,50,,uae")
                         config_text = config_text.replace("filesystem2=rw,DH2:HDFGame", "filesystem2=rw,DH1:games")
                         config_text = config_text.replace("hardfile2=dir,rw,DH2:HDFGame", "hardfile2=dir,rw,DH1:games")
 
