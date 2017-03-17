@@ -1,3 +1,6 @@
 button_for_menu=-1
 button_for_quit=16
+key_for_menu=293
+key_for_quit=0
 gfx_correct_aspect=False
+gfx_framerate=1

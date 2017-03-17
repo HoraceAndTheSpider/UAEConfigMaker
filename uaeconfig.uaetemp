@@ -33,13 +33,12 @@ input.mouse_speed=100
 input.autofire_speed=2496
 input.autofire=8
 
-key_for_menu=293
-key_for_quit=0
+; host-specific
+key_for_menu=<<menukey>>
+key_for_quit=<<quitkey>>
 button_for_menu=<<menubutton>>
 button_for_quit=<<quitbutton>>
 
-
-; host-specific
 pandora.cpu_speed=600
 pandora.joy_conf=0
 pandora.joy_port=0
@@ -100,7 +99,7 @@ cd32cd=<<cd32mode>>
 cdimage0=<<inputdir>><<hdpath>>/<<game>>/<<game>>.cue,image
 
 ; Display / Screen Setup
-gfx_framerate=0
+gfx_framerate=<<frameskip>>
 gfx_width=<<screenwidth>>
 gfx_height=<<screenheight>>
 gfx_width_windowed=320

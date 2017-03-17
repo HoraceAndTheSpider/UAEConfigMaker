@@ -107,12 +107,21 @@ def do_scan(input_directory, pathname,output_directory):
 
     quit_button = find_host_option("button_for_quit")
     menu_button = find_host_option("button_for_menu")
-
+    quit_key = find_host_option("key_for_quit")
+    menu_key = find_host_option("key_for_menu")
+    
     if quit_button == "":
         quit_button = -1
 
     if menu_button == "":
         menu_button = -1
+
+    if quit_key == "":
+        quit_key = 0
+
+    if menu_key == "":
+        menu_key = 293
+
 
     # cycle through all folders / files
     for file in glob.glob(input_directory + pathname + "/*"):
@@ -582,6 +591,10 @@ def do_scan(input_directory, pathname,output_directory):
                 if find_host_option("gfx_correct_aspect") != "":
                     aspect_ratio = find_host_option("gfx_correct_aspect")
 
+                use_frameskip = 0
+                if find_host_option("gfx_framerate") != "":
+                    use_frameskip = find_host_option("gfx_framerate")
+
                 use_ntsc = check_list("Screen_ForceNTSC.txt", this_file)
 
                 # '======== CONTROL SETTINGS =======
@@ -657,6 +670,7 @@ def do_scan(input_directory, pathname,output_directory):
                     config_text = config_text.replace("<<offset_y>>", str(screen_offset_y))
                     config_text = config_text.replace("<<offset_x>>", str(screen_offset_x))
                     config_text = config_text.replace("<<43aspect>>", str(aspect_ratio))
+                    config_text = config_text.replace("<<frameskip>>", str(use_frameskip))                 
                     config_text = config_text.replace("<<ntsc>>", str(bool(0 - use_ntsc)))
 
                     # memory
@@ -837,8 +851,8 @@ parser.add_argument('--scandirs', '-s',  # command line argument
                     )
 
 parser.add_argument('--outputdir', '-o',  # command line argument
-                    help='Target output path',
-                    default=['/home/pi/RetroPie/roms/amiga/']  # Default directory if none supplied
+                    help='Target output path for .uae files',
+                    default='/home/pi/RetroPie/roms/amiga/'  # Default directory if none supplied
                     )
 
 parser.add_argument('--no-update', '-n',  # command line argument
@@ -846,14 +860,19 @@ parser.add_argument('--no-update', '-n',  # command line argument
                     help="Disable the updater"
                     )
 
+parser.add_argument('--ignore-output-path', # command line argument
+                    action="store_true",  # if argument present, store value as True otherwise False
+                    help="Use input path as output location"
+                    )
+
 parser.add_argument('--force-config-overwrite',  # command line argument
                     action="store_true",  # if argument present, store value as True otherwise False
-                    help="Force Overwrite of the UAE configs"
+                    help="Force Overwrite of the .uae config files"
                     )
 
 parser.add_argument('--force-pi-paths',  # command line argument
                     action="store_true",  # if argument present, store value as True otherwise False
-                    help="Force Retropie Paths"
+                    help="Force RetroPie Paths"
                     )
 
 # Parse all command line arguments
@@ -873,30 +892,41 @@ if find_host_option("scandir") !="":
 # Check Directories are valid
 inputdirs = general_utils.check_inputdirs(inputdirs)
 
-# set an output follder for .uae location
+# >> Setup Bool Constant for use input as output
+INPUT_AS_OUTPUT = args.ignore_output_path
+
+# if hostconfig specifies no_update, use as override
+if text_utils.str2bool(find_host_option("no-output-path")) == True : INPUT_AS_OUTPUT = True
+
+# >> set an output follder for .uae location
 outputdir = args.outputdir
 
 # Check Directories are valid
-outputdir = general_utils.check_singledir(outputdir)
+if INPUT_AS_OUTPUT==False:
+    outputdir = general_utils.check_singledir(outputdir)
 
 
-# Setup Bool Constant for No Update
+
+# >> Setup Bool Constant for No Update
 NO_UPDATE = args.no_update
 
 # if hostconfig specifies no_update, use as override
 if text_utils.str2bool(find_host_option("no_update")) == True : NO_UPDATE = True
 
-# Setup Bool Constant for Config Overwrite
+
+# >> Setup Bool Constant for Config Overwrite
 FORCE_OVERWRITE = args.force_config_overwrite
 
 # if hostconfig specifies force_config_overwrite, use as override
 if text_utils.str2bool(find_host_option("force_config_overwrite")) == True : FORCE_OVERWRITE = True
 
-# Setup Bool Constant for Pi Paths
+
+# >> Setup Bool Constant for Pi Paths
 FORCE_PI_PATHS = args.force_pi_paths
 
 # if hostconfig specifies force_config_overwrite, use as override
 if text_utils.str2bool(find_host_option("force_pi_paths")) == True : FORCE_PI_PATHS = True
+
 
 # paths/folders if needed
 os.makedirs("settings", exist_ok=True)
@@ -923,6 +953,10 @@ if os.path.isfile("uaeconfig.uaetemp") is False:
 print()
 
 for inputdir in inputdirs:
+    
+    if INPUT_AS_OUTPUT==True:
+        outputdir = inputdir
+        
     do_scan_base(inputdir,outputdir)
 
 raise SystemExit
