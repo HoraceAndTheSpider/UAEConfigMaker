@@ -248,6 +248,7 @@ def do_scan(input_directory, pathname,output_directory):
 
             elif answer == "S":
                 skip_all = -1
+                create_config = False 
 
             # what to do 'automatically'
             if skip_all == 1:
