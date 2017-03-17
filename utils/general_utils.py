@@ -46,7 +46,7 @@ def check_singledir(inputdirs):
     """
    # for i, directory in enumerate(inputdirs):
 
-    print(" in dir: "+ str(inputdirs))
+    
         # Format Directory string for this OS
     directory = os.path.abspath(inputdirs)
 
