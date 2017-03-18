@@ -663,6 +663,9 @@ def do_scan(input_directory, pathname,output_directory):
                     config_text = config_text.replace("<<quitbutton>>", str(quit_button))
                     config_text = config_text.replace("<<menubutton>>", str(menu_button))
 
+                    config_text = config_text.replace("<<quitkey>>", str(quit_key))
+                    config_text = config_text.replace("<<menukey>>", str(menu_key))
+
                     # screens
                     config_text = config_text.replace("<<screenheight>>", str(screen_height))
                     if screen_width < 321:
