@@ -10,8 +10,9 @@ This program can be used to build .uae config files for UAE4Arm/Amiberry from a 
 Pre-defined paths are 'scanned' and various scanning modes used to recognise different file setups.
 - WHDLoad folder mode
 - WHDLoad .zip mode
+- WHDLoad HDF (data only) mode
 - CD32 ISO/CUE mode
-- HDF mode
+- Self-Booting HDF mode
 
 Specific settings can be applied to games, by including the scanned folder/file for the game in one of the many Settings/ text files.
 
@@ -26,17 +27,17 @@ Specific settings can be applied to games, by including the scanned folder/file 
   * *Specify which path the .uae files are to be outputted to*
   	* *Defaults to /home/pi/RetroPie/roms/amiga/ if not stated.*
   	
-  
 * **--no-update -n**
-  * *stop config maker from downloading the text data from github (for development purposes)*
+  	* *stop config maker from downloading the text data from github (for development purposes)*
 
-
+* **--ignore-output-path**
+  	* *Use input path as output location*
+  
 * **--force-pi-paths**
   * *forces input paths to be made into '/home/pi/RetroPie/roms/amiga-data/' within .uae file regardless of source.*
   	* *Defaults to using actual path*
-  
-
-* **--force-config-overwrite**
+   
+  * **--force-config-overwrite**
 	* *don't wait for user input before wiping all Config Files with new ones. This may be used for integration with RetroPie*
   
   
