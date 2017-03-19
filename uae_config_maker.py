@@ -900,7 +900,7 @@ inputdirs = general_utils.check_inputdirs(inputdirs)
 INPUT_AS_OUTPUT = args.ignore_output_path
 
 # if hostconfig specifies no_update, use as override
-if text_utils.str2bool(find_host_option("no-output-path")) == True : INPUT_AS_OUTPUT = True
+if text_utils.str2bool(find_host_option("ignore_output_path")) == True : INPUT_AS_OUTPUT = True
 
 # >> set an output follder for .uae location
 outputdir = args.outputdir
