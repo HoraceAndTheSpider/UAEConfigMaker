@@ -347,7 +347,7 @@ def do_scan(input_directory, pathname,output_directory):
                                     have_found_slave = True
 
                             
-                            if have_found_slave == True and web_slave.modified_time > this_slave.modified_time:
+                            if have_found_slave == True and web_slave.modified_time.date() > this_slave.modified_time.date():
                                 print()
                                 print("     Slave file: " + FontColours.OKBLUE + whd_realname + FontColours.ENDC + " is an older version.")
                                 print("     This version: " + FontColours.FAIL + str(this_slave.modified_time) + FontColours.ENDC
