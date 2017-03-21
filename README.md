@@ -28,19 +28,42 @@ Specific settings can be applied to games, by including the scanned folder/file 
   	* *Defaults to /home/pi/RetroPie/roms/amiga/ if not stated.*
   	
 * **--no-update -n**
-  	* *stop config maker from downloading the text data from github (for development purposes)*
+  * *stop config maker from downloading the text data from github (for development purposes)*
 
 * **--ignore-output-path**
-  	* *Use input path as output location*
+  * *Use input path as output location*
   
 * **--force-pi-paths**
   * *forces input paths to be made into '/home/pi/RetroPie/roms/amiga-data/' within .uae file regardless of source.*
   	* *Defaults to using actual path*
    
-  * **--force-config-overwrite**
-	* *don't wait for user input before wiping all Config Files with new ones. This may be used for integration with RetroPie*
+* **--force-config-overwrite**
+  * *don't wait for user input before wiping all Config Files with new ones. This may be used for integration with RetroPie*
   
   
+## hostconfig.uaetemp Options
+  
+  The following options can be set in the file `hostconfig.uaetemp` and will be inherited by all generated configurations, and exist to be set by the user in order to tailor the generated .uae configurations to the user's requirements.
+  
+* **button_for_menu= [number]**
+	* *Pick the input/controller button to enter the emulator (Amiberry) menu.*
+	
+* **button_for_quit= [number]**
+	* *Pick the input/controller button to quit the emulator (Amiberry) back to RetroPie.*
+
+* **key_for_menu= [number]**
+	* *Pick the keyboard input to enter the emulator (Amiberry) menu.*
+
+* **key_for_quit= [number]**
+	* *Pick the keyboard input to quit the emulator (Amiberry) back to RetroPie.*
+
+* **gfx_correct_aspect= [True / False]**
+	* *Select whether the 4:3 aspect ratio is maintained with a screen size change.v
+
+* **gfx_framerate= [0 / 1]**
+	* *Select whether or not frameskip should be switched on (1) or off (0).*
+
+
 ## Installation
   
   https://www.facebook.com/groups/1854320841462593?view=permalink&id=1940407532853923
