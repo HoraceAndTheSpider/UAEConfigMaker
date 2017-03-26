@@ -1,3 +1,11 @@
+##  TEXT UTILS
+##   V1.0    (can we put this in a constant here??)
+##
+##    now with numbering so that file can be shared between programs.
+##     please increment the number for each function added, 
+##       and increment the sub-number for each revision of existing function 
+
+
 import os
 
 class FontColours:
