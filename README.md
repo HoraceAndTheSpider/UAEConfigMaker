@@ -16,6 +16,10 @@ Pre-defined paths are 'scanned' and various scanning modes used to recognise dif
 
 Specific settings can be applied to games, by including the scanned folder/file for the game in one of the many Settings/ text files.
 
+## A note on KickStart ROMs: 
+The Generated UAE files assume that KickStart files are to be located in /home/pi/RetroPie/BIOS/Amiga  (be aware, this is case-sensitive) , and the minimum requirement is for an A1200 Kickstart 3.1 rom file to be located there as 'kick31.rom'.
+
+CD32 KickStarts files are required for CD32 ISO/CUE scanning, and should be named cd32kick31.rom (main v3.1 KickStart) and cd32ext.rom (Extended Rom)
 
 ## Command Line Options
 
