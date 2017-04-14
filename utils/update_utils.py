@@ -33,7 +33,7 @@ def run_updater():
     print()
 
     # and these are the files to update
-    download_update("ConfigMaker.py")
+    download_update("uae_config_maker.py")
     download_update("README.md")
     download_update("TODO.md")
     download_update("whdload/whdload_slave.py")
