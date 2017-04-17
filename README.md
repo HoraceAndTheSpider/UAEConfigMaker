@@ -70,17 +70,22 @@ CD32 KickStarts files are required for CD32 ISO/CUE scanning, and should be name
 
 ## Installation
   
-  https://www.facebook.com/groups/1854320841462593?view=permalink&id=1940407532853923
-  
 From Linux Command Line or via SSH, use the following:
 
-### Install/ Running
+### Install Direct
 ```bash
 cd /home/pi
 wget https://github.com/HoraceAndTheSpider/UAEConfigMaker/archive/master.zip
 unzip master.zip
 rm master.zip
 mv UAEConfigMaker-master .uaeconfigmaker
+```
+
+### Alternative Install to the RetroPie Menu
+```
+cd /home/pi/RetroPie/retropiemenu/ 
+wget http://www.ultimateamiga.co.uk/HostedProjects/RetroPieAmiga/downloads/UAE%20Config%20Maker.sh 
+chmod +x "Auto-Amiga Install.sh"
 ```
 
 ### Updating/Running:
