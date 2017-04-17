@@ -11,14 +11,26 @@
 A BCMonday Night Football|ABC Monday Night Football 
 Aot GSA FP 27b 6|Attack of the Green Smelly Aliens from Planet 27b-6
 Raiders 01|Raiders-01
-A V 8 BHarrier Assault|AV8B Harrier Assault& Mstr Trcks|(Master Tracks)
-Abandoned Places|Abandoned Places - A Time for Heroes3DAGA|3D AGA
-Advanced Destroyer Sim|ADS - Advanced Destroyer Simulator4x 4 Off Road Racing|4X4 Off-Road RacingA 10 Tank Killer (3 Disk)|A-10 Tank Killer (3 Disk)A 10 Tank Killer (2 Disk)|A-10 Tank Killer (2 Disk)
-A PBImage|APB (Image)A Train|A-Train
+A V 8 BHarrier Assault|AV8B Harrier Assault
+& Mstr Trcks|(Master Tracks)
+Abandoned Places|Abandoned Places - A Time for Heroes
+3DAGA|3D AGA
+Advanced Destroyer Sim|ADS - Advanced Destroyer Simulator
+4x 4 Off Road Racing|4X4 Off-Road Racing
+A 10 Tank Killer (3 Disk)|A-10 Tank Killer (3 Disk)
+A 10 Tank Killer (2 Disk)|A-10 Tank Killer (2 Disk)
+A PBImage|APB (Image)
+A Train|A-Train
 A Train & Construction Set|A-Train (& Construction Set)
-A TF 2|ATF II - Advanced Tactical Fighter IIAGAFixed|AGA (Fixed)
-AGE|A.G.E. (Advanced Galactic Empire)Alien Breed Story|Alien Breed (Story)Allan Borders Cricket|Allan Border's CricketAlpha 1|Alpha-1
-All Terrain Racing|ATR - All Terrain RacingApidya Audios|Apidya (Audios)Apidya Kaiko|Apidya (Kaiko)
+A TF 2|ATF II - Advanced Tactical Fighter II
+AGAFixed|AGA (Fixed)
+AGE|A.G.E. (Advanced Galactic Empire)
+Alien Breed Story|Alien Breed (Story)
+Allan Borders Cricket|Allan Border's Cricket
+Alpha 1|Alpha-1
+All Terrain Racing|ATR - All Terrain Racing
+Apidya Audios|Apidya (Audios)
+Apidya Kaiko|Apidya (Kaiko)
 Blasta Ball Arcadia|BlastaBall (Arcadia)
 Classic & Baby Arcadia|Classic & Baby (Arcadia)
 Delta Command Arcadia|Delta Command (Arcadia)
@@ -28,14 +40,26 @@ Space Ranger Arcadia|Space Ranger (Arcadia)
 Table Hockey Arcadia|Table Hockey (Arcadia)
 Ten Pin Bowling Arcadia|Ten Pin Bowling (Arcadia)
 World Trophy Soccer Arcadia|World Trophy Soccer (Arcadia)
-Aquanaut F 1 Licenceware|Aquanaut (F1 Licenceware)Archer Macleans Billard Amcn|Archer Macleans's Le Billard AmericainArcher Macleans|Archer Maclean'sArkanoidReve|Arkanoid - ReveArmour Geddon|Armour-Geddon
+Aquanaut F 1 Licenceware|Aquanaut (F1 Licenceware)
+Archer Macleans Billard Amcn|Archer Macleans's Le Billard Americain
+Archer Macleans|Archer Maclean's
+ArkanoidReve|Arkanoid - Reve
+Armour Geddon|Armour-Geddon
 Armour Geddon 2|Armour-Geddon 2
 Asterix Op Getafix|Asterix - Operation Getafix
-Alien Breed 2|Alien Breed II - The Horror ContinuesA TF2|Advanced Tactical Fighter II
+Alien Breed 2|Alien Breed II - The Horror Continues
+A TF2|Advanced Tactical Fighter II
 ATF2|Advanced Tactical Fighter II
 APBImage|APB (Image)
-Atomic Robo Kid|Atomic Robo-KidAxels Magic Hammer|Axel's Magic Hammer
-Arena|Arena (Psygnosis)Beneath A Stl Sky|Beneath a Steel SkyAlien Breed Special Edition|Alien Breed Special Edition '92Alien Breed TA|Alien Breed Tower AssaultAfter Burner Activision|After Burner (Activision)After Burner Sega|After Burner (Sega)Destroyer Sim|Destroyer Simulator
+Atomic Robo Kid|Atomic Robo-Kid
+Axels Magic Hammer|Axel's Magic Hammer
+Arena|Arena (Psygnosis)
+Beneath A Stl Sky|Beneath a Steel Sky
+Alien Breed Special Edition|Alien Breed Special Edition '92
+Alien Breed TA|Alien Breed Tower Assault
+After Burner Activision|After Burner (Activision)
+After Burner Sega|After Burner (Sega)
+Destroyer Sim|Destroyer Simulator
 Bubble & Squeak|Bubble and Squeak
 Bubble & Squeak [AGA]|Bubble and Squeak [AGA]
 B 17 Flying Fortress|B-17 Flying Fortress
@@ -133,8 +157,10 @@ Dick Tracy Adventure|Dick Tracy (Adventure)
 Discovery Micro Illusions|Discovery (MicroIllusions)
 Discovery|Discovery - In The Steps of Columbus
 Dizzys Excellent Adventures|Dizzy's Excellent Adventures
-Dizzy Prince Of The Yolkfolk|Dizzy - Prince Of The YolkfolkDonalds Alphabet Chase|Donald's Alphabet Chase
-Dr Dooms Revenge (1 Disk)|Dr Doom's Revenge (1 Disk)Dragons Lair|Dragon's Lair
+Dizzy Prince Of The Yolkfolk|Dizzy - Prince Of The Yolkfolk
+Donalds Alphabet Chase|Donald's Alphabet Chase
+Dr Dooms Revenge (1 Disk)|Dr Doom's Revenge (1 Disk)
+Dragons Lair|Dragon's Lair
 Dragons Lair Escape (Fast)|Dragon's Lair - Escape From Singe's Castle (Fast)
 Dragons Lair Escape|Dragon's Lair - Escape From Singe's Castle
 Dragon Scape|DragonScape
@@ -149,10 +175,12 @@ Face Off|Face Off (Krisalis)
 Encounter|Amiga Encounter
 Emlyn Hughes Intl Soccer|Emlyn Hughes International Soccer
 Enemy 2 Missing In Action|Enemy 2 - Missing In Action
-Enemy TOVEasy Play|Enemy - Tempest Of Violence (Easy Play)Enemy Tempest Of Violence|Enemy - Tempest Of Violence
+Enemy TOVEasy Play|Enemy - Tempest Of Violence (Easy Play)
+Enemy Tempest Of Violence|Enemy - Tempest Of Violence
 Enemy - Easy Play|Enemy (Easy Play)
 Entity No Intro|Entity (No Intro)
-EOB1AGA|Eye of the Beholder [AGA]EOB2AGA|Eye of the Beholder 2 [AGA]
+EOB1AGA|Eye of the Beholder [AGA]
+EOB2AGA|Eye of the Beholder 2 [AGA]
 Epic & Mission Disk|Epic (& Mission Disk)
 England Champ Special|England Championship Special
 Escape FTPOTRobot Monsters|Escape From The Planet Of The Robot Monsters
@@ -190,24 +218,35 @@ Flight Sim 2 & Scenery Disk 14|Flight Simulator II (& Scenery Disk 14)
 Flight Simulator 2|Flight Simulator II
 Flight Simulator 2 & Hawaiian|Flight Simulator II (Hawaiian Odyssey)
 Flight Sim 2|Flight Simulator II
-Flimbos Quest|Flimbo's QuestFlipit & Magnose|Flip-it & Magnose
+Flimbos Quest|Flimbo's Quest
+Flipit & Magnose|Flip-it & Magnose
 Fools Errand|Fool's Errand
-Freedom|Freedom - Rebels In The DarknessFootball Manager WCEd|Football Manager - World Cup Edition
-Fuzzball No Intro|Fuzzball (No Intro)Gadget Lost In Time|Gadget - Lost In Time
-Galactic The Xmas Edition|Galactic - The Xmas EditionGalaga 92|Galaga '92
-Galdregons Domain|Galdregon's DomainGames Summer Edition|Games - Summer Edition
+Freedom|Freedom - Rebels In The Darkness
+Football Manager WCEd|Football Manager - World Cup Edition
+Fuzzball No Intro|Fuzzball (No Intro)
+Gadget Lost In Time|Gadget - Lost In Time
+Galactic The Xmas Edition|Galactic - The Xmas Edition
+Galaga 92|Galaga '92
+Galdregons Domain|Galdregon's Domain
+Games Summer Edition|Games - Summer Edition
 Games Winter Edition|Games - Winter Edition
 Garfield Big Fat Hairy Deal|Garfield - Big, Fat, Hairy Deal
-Gary Linekers Hot Shot|Gary Lineker's Hot ShotGateway To Savage Frontier|Gateway To The Savage Frontier
-GBA Championship BB|GBA Championship BasketballGhosts NGoblins|Ghosts 'n Goblins
-Ghouls NGhosts|Ghouls 'n' GhostsGiddy 2 Hero In An Egg Shell|Giddy II - Hero In An Egg Shell
-GLOCR 360|G-LOC R360GNius|G.Nius
+Gary Linekers Hot Shot|Gary Lineker's Hot Shot
+Gateway To Savage Frontier|Gateway To The Savage Frontier
+GBA Championship BB|GBA Championship Basketball
+Ghosts NGoblins|Ghosts 'n Goblins
+Ghouls NGhosts|Ghouls 'n' Ghosts
+Giddy 2 Hero In An Egg Shell|Giddy II - Hero In An Egg Shell
+GLOCR 360|G-LOC R360
+GNius|G.Nius
 Goldrunner 2 & Scenery Disks|Goldrunner 2 (& Scenery Disks)
 Goofys Railway Express|Goofy's Railway Express
-Graeme Souness Soccer Managr|Graeme Souness Soccer ManagerGraham Gooch Second Innings|Graham Gooch's Second Innings
+Graeme Souness Soccer Managr|Graeme Souness Soccer Manager
+Graham Gooch Second Innings|Graham Gooch's Second Innings
 Graham Gooch WCCricket SE|Graham Gooch World Class Cricket Test Match Special Edition
 Graham Gooch WCCricket|Graham Gooch World Class Cricket
-Grannys Garden|Granny's GardenGTSoccer Challenge|Graham Taylors Soccer Challenge
+Grannys Garden|Granny's Garden
+GTSoccer Challenge|Graham Taylors Soccer Challenge
 HA TE|H.A.T.E
 Hacker 2|Hacker II
 Hard Drivin|Hard Drivin'
@@ -216,25 +255,33 @@ Hilt 2|Hilt II
 Hard Ball 2|HardBall II
 Hard Ball|HardBall
 Hellbent|Hell Bent
-Hilt|Hilt - Against the HoardesHero Quest|HeroQuest
-Hell Raisers|Hell RaiserHarpoon & Battleset 2|Harpoon (& Battleset 2)
+Hilt|Hilt - Against the Hoardes
+Hero Quest|HeroQuest
+Hell Raisers|Hell Raiser
+Harpoon & Battleset 2|Harpoon (& Battleset 2)
 Harpoon & Battleset 3|Harpoon (& Battleset 3)
 Harpoon & Battleset 4|Harpoon (& Battleset 4)
 Hitchhikers Guide TTG|Hitchhiker's Guide To The Galaxy
-Hole In One & Data Disks|Hole In One (& Data Disks)Hunt For Red October The Movie|Hunt For Red October (Grandslam)
+Hole In One & Data Disks|Hole In One (& Data Disks)
+Hunt For Red October The Movie|Hunt For Red October (Grandslam)
 Hunt For Red October|Hunt For Red October (Oxford Digital)
 Ian Bothams Cricket|Ian Botham's Cricket
-Indiana Jones Atlantis Act|Indiana Jones and the Fate of Atlantis (Action Game)Indiana Jones Atlantis Adv|Indiana Jones and the Fate of Atlantis (Adventure Game)
+Indiana Jones Atlantis Act|Indiana Jones and the Fate of Atlantis (Action Game)
+Indiana Jones Atlantis Adv|Indiana Jones and the Fate of Atlantis (Adventure Game)
 Indiana Jones Last Crus Act|Indiana Jones and the Last Crusade (Action Game)
-Indiana Jones Last Crus Adv|Indiana Jones and the Last Crusade (Adventure Game)Indiana Jones Temple Of Doom|Indiana Jones and the Temple Of Doom
+Indiana Jones Last Crus Adv|Indiana Jones and the Last Crusade (Adventure Game)
+Indiana Jones Temple Of Doom|Indiana Jones and the Temple Of Doom
 Ingrids Back|Ingrid's Back
 Ishar|Ishar - Legend of the Fortress
-Insector Hecti Inter Change|Insector Hecti in the InterchangeInt Sports Challenge|International Sports Challenge
+Insector Hecti Inter Change|Insector Hecti in the Interchange
+Int Sports Challenge|International Sports Challenge
 Intact 15 MB|Intact (15 MB)
 International 3 DTennis|International 3D Tennis
-Interphase Amiga Format|Interphase (Amiga Format Edition)Into The Eagles Nest|Into The Eagle's Nest
+Interphase Amiga Format|Interphase (Amiga Format Edition)
+Into The Eagles Nest|Into The Eagle's Nest
 Italy 1990 Winners Edition|Italy 1990 - Winners Edition
-Jabato|Jabato Vs Imperio LibertadJaguar XJ 220|Jaguar XJ220
+Jabato|Jabato Vs Imperio Libertad
+Jaguar XJ 220|Jaguar XJ220
 Jahangir Khans WChamp Squash|Jahangir Khan's World Championship Squash
 James Bond The Stealth Affair|James Bond - The Stealth Affair
 James Pond 2|James Pond 2 - Robocod
@@ -246,12 +293,15 @@ Jet & Scenery Disk 12|Jet (& Scenery Disk 12)
 Jet & Scenery Disk 13|Jet (& Scenery Disk 13)
 Jet & Scenery Disk 14|Jet (& Scenery Disk 14)
 Jet & Hawaiian Scenery|Jet (Hawaiian Odyssey)
-Jimmy Whites Snooker|Jimmy White's SnookerJimmys Fantastic Journey|Jimmy's Fantastic Journey
+Jimmy Whites Snooker|Jimmy White's Snooker
+Jimmys Fantastic Journey|Jimmy's Fantastic Journey
 Jocky Wilsons Dart Challenge|Jocky Wilson's Darts Challenge
 John Barnes Euro Football|John Barnes European Football
-Jump NRoll|Jump 'n' RollJupiters Masterdrive|Jupiter's Masterdrive
+Jump NRoll|Jump 'n' Roll
+Jupiters Masterdrive|Jupiter's Masterdrive
 K 240|K-240
-Krusty's Super Fun House|Krusty's Fun HouseKajko IKokosz|Kajko i Kokosz
+Krusty's Super Fun House|Krusty's Fun House
+Kajko IKokosz|Kajko i Kokosz
 Kingpin 1 Mb|Kingpin (1MB)
 Kings Quest|King's Quest
 Kings Quest 2|King's Quest II
@@ -260,33 +310,44 @@ Kings Quest 4|King's Quest IV
 Kings Quest 5|King's Quest V
 Kings Quest 5|King's Quest VI
 Kings Quest (Enhanced)|King's Quest I (Remake)
-Kalas Puff Expressen Se (1MB)|Kalas Puff Expressen (Svenska) (1MB)Kick Off 2 CV|Kick Off 2 (Competition Version)
+Kalas Puff Expressen Se (1MB)|Kalas Puff Expressen (Svenska) (1MB)
+Kick Off 2 CV|Kick Off 2 (Competition Version)
 Kick Off 2 Final Whistle CV|Kick Off 2 - Final Whistle (Competition Version)
 Kick Off & Extra Time (1 Disk)|Kick Off (& Extra Time)
-Kick Off 2 Plus WC 90|Kick Off 2 (Plus World Cup '90)Kick Off 2 Return To Europe|Kick Off 2 - Return To Europe
+Kick Off 2 Plus WC 90|Kick Off 2 (Plus World Cup '90)
+Kick Off 2 Return To Europe|Kick Off 2 - Return To Europe
 Kick Off 3 EC|Kick Off 3 - European Challenge
 Kick Off 216|Kick Off 2 (16)
 Kings Quest Enhanced|Kings Quest (Enhanced)
-Kiros Quest|Kiro's QuestKrustys Super Fun House|Krusty's Super Fun House
-Lamborghini American Chllng|Lamborghini American ChallengeLeader Board TD 1|Leader Board (Tournament Disk 1)
+Kiros Quest|Kiro's Quest
+Krustys Super Fun House|Krusty's Super Fun House
+Lamborghini American Chllng|Lamborghini American Challenge
+Leader Board TD 1|Leader Board (Tournament Disk 1)
 Leading Lap MPVCUAmiga|Leading Lap MPV CU Amiga)
-Leavin Teramis|Leavin' TeramisLEDStorm|LED Storm
+Leavin Teramis|Leavin' Teramis
+LEDStorm|LED Storm
 Legend Mindscape|Legend (Mindscape)
 Lemmings 21 MB|Lemmings 2 (1MB)
 Locomotion|Locomotion (Kingsoft)
-Lotus|Lotus Esprit Turbo ChallengeLeonardo DOS|Leonardo (DOS)
+Lotus|Lotus Esprit Turbo Challenge
+Leonardo DOS|Leonardo (DOS)
 Leonardo High Density|Leonardo (High Density)
 Les Manley Search For The King|Les Manley In - Search For The King
-Links & Data Disks|Links (& Data Disks)Lombard RA CRally (2 Disk)|Lombard RAC Rally (2 Disk)
+Links & Data Disks|Links (& Data Disks)
+Lombard RA CRally (2 Disk)|Lombard RAC Rally (2 Disk)
 Lombard RA CRally (3 Disk)|Lombard RAC Rally (3 Disk)
-Loom Kick 31|Loom (Kick 3.1)Lothar Matthaus Fussball|Lothar Matthaus - Die Interaktive Fussballsimulation
+Loom Kick 31|Loom (Kick 3.1)
+Lothar Matthaus Fussball|Lothar Matthaus - Die Interaktive Fussballsimulation
 M 1 Tank Platoon|M1 Tank Platoon
 Magic Johnsons Basketball|Magic Johnson's Basketball
-Magic Lines Cracked|Magic Lines (Cracked)Manchester United Europe 23|Manchester United Europe (v2.3)
+Magic Lines Cracked|Magic Lines (Cracked)
+Manchester United Europe 23|Manchester United Europe (v2.3)
 Manchester Utd PLC & Data|Manchester United Premier League Champions (& Data Disk)
 Manchester United PLC|Manchester United Premier League Champions
 Manchester United The Double|Manchester United - The Double
-Manhunter|Manhunter - New YorkMarias Xmas Box|Maria's Xmas BoxMc Donald Land|McDonald Land
+Manhunter|Manhunter - New York
+Marias Xmas Box|Maria's Xmas Box
+Mc Donald Land|McDonald Land
 Mouse Quest|MouseQuest
 Mental (Image) 1|Mental Image Game Disk 1
 Mental (Image) 2|Mental Image Game Disk 2
@@ -309,90 +370,201 @@ Might & Magic 2|Might and Magic II
 Might And Magic 3|Might And Magic III
 Mighty Bomb Jack|Mighty BombJack
 Mike Reads Computer Pop Quiz|Mike Read's Computer Pop Quiz
-Millennium 22|Millennium 2.2Mortal Kombat 22 MB|Mortal Kombat 2 (2MB)Mortal Kombat Censored|Mortal Kombat (Censored)
-MPythons Flying Circus|Monty Python's Flying CircusMUDS|M.U.D.S
-Myth History In The Making|Myth - History In The MakingNam 19651975|Nam 1965-1975
+Millennium 22|Millennium 2.2
+Mortal Kombat 22 MB|Mortal Kombat 2 (2MB)
+Mortal Kombat Censored|Mortal Kombat (Censored)
+MPythons Flying Circus|Monty Python's Flying Circus
+MUDS|M.U.D.S
+Myth History In The Making|Myth - History In The Making
+Nam 19651975|Nam 1965-1975
 Never Ending Story 2|Neverending Story II
-New Year Lemmings 199192|New Year Lemmings 1991-92Nick Faldos Champ Golf|Nick Faldo's Championship GolfNigel Mansells Grand Prix|Nigel Mansell's Grand Prix
+New Year Lemmings 199192|New Year Lemmings 1991-92
+Nick Faldos Champ Golf|Nick Faldo's Championship Golf
+Nigel Mansells Grand Prix|Nigel Mansell's Grand Prix
 Night Hawk F 117 A|F-117A NightHawk Stealth Fighter
-Nightbreed Action|Nightbreed - The Action GameNightbreed Movie|Nightbreed - The Interactive Movie
-Operation Cleanstreets|Operation - CleanstreetsOperation Combat 2|Operation Combat II
+Nightbreed Action|Nightbreed - The Action Game
+Nightbreed Movie|Nightbreed - The Interactive Movie
+Operation Cleanstreets|Operation - Cleanstreets
+Operation Combat 2|Operation Combat II
 Ork Attack The Return|Ork Attack - The Return
-Os WA LDOf The Ice Floes|OsWALD - Of The Ice FloesOut Run Sega|Out Run (Sega)
+Os WA LDOf The Ice Floes|OsWALD - Of The Ice Floes
+Out Run Sega|Out Run (Sega)
 Out Run USGold|Out Run (US Gold)
 Overdrive Infacto|Overdrive (Infacto)
-Overdrive Team 17|Overdrive (Team 17)Overlord Rowan|Overlord (Rowan)
+Overdrive Team 17|Overdrive (Team 17)
+Overlord Rowan|Overlord (Rowan)
 Overlander|Overlander (Elite)
 on Escapee|onEscapee
-P 47 Thunderbolt|P47 ThunderboltPac Land|Pac-LandPac Mania|Pac-Mania
-Paradroid 901 MB|Paradroid 90 (1MB)Peter Beardsleys IFCracked|Peter Beardsley's International Football (Cracked)
-Peter Beardsleys IF|Peter Beardsley's International FootballPGA Tour Golf & Tour Disk|PGA Tour Golf (& Tour Disk)
+P 47 Thunderbolt|P47 Thunderbolt
+Pac Land|Pac-Land
+Pac Mania|Pac-Mania
+Paradroid 901 MB|Paradroid 90 (1MB)
+Peter Beardsleys IFCracked|Peter Beardsley's International Football (Cracked)
+Peter Beardsleys IF|Peter Beardsley's International Football
+PGA Tour Golf & Tour Disk|PGA Tour Golf (& Tour Disk)
 Pick NPile|Pick'n' Pile
-Pharaohs Match Arcadia|Pharaohs Match (Arcadia)Pinball Fntsies|Pinball Fantasies
-Pipeline Nomad|Pipeline (Nomad)Pipeline Oracle|Pipeline (Oracle)Populous & Data Disks|Populous (& Data Disks)
-Populous 2 & Challenge Games|Populous 2 (& Challenge Games)Populous World Editor|Populous - World EditorPowermonger WW 1 Edition|Powermonger - WW1 Edition
-PPHammer|P.P. HammerPremier Manager 3 Deluxe|Premier Manager 3 (Deluxe)
-Pro Power Boat Simulator|Pro Powerboat SimulatorProject Xv 2|Project-X (v2)Project XSE|Project-X (Special Edition)
+Pharaohs Match Arcadia|Pharaohs Match (Arcadia)
+Pinball Fntsies|Pinball Fantasies
+Pipeline Nomad|Pipeline (Nomad)
+Pipeline Oracle|Pipeline (Oracle)
+Populous & Data Disks|Populous (& Data Disks)
+Populous 2 & Challenge Games|Populous 2 (& Challenge Games)
+Populous World Editor|Populous - World Editor
+Powermonger WW 1 Edition|Powermonger - WW1 Edition
+PPHammer|P.P. Hammer
+Premier Manager 3 Deluxe|Premier Manager 3 (Deluxe)
+Pro Power Boat Simulator|Pro Powerboat Simulator
+Project Xv 2|Project-X (v2)
+Project XSE|Project-X (Special Edition)
 Project X|Project-X
 Pro Soccer 2190|ProSoccer 2190 
 Robo Sport|RoboSport
-Prophecy 1 Viking Child|Prophecy I - Viking ChildPuffys Saga|Puffy's Saga
-QBic|Q-BicQuest For Glory 2|Quest For Glory IIQuik Thunder Rabbit|Quik - The Thunder Rabbit
-Questron 2|Questron IIRType 2|R-Type IIRType|R-TypeRackneys Island|Rackney's Island
-Rage CA D|Rage (CAD)Rage V 2|Rage (v2.0)
+Prophecy 1 Viking Child|Prophecy I - Viking Child
+Puffys Saga|Puffy's Saga
+QBic|Q-Bic
+Quest For Glory 2|Quest For Glory II
+Quik Thunder Rabbit|Quik - The Thunder Rabbit
+Questron 2|Questron II
+RType 2|R-Type II
+RType|R-Type
+Rackneys Island|Rackney's Island
+Rage CA D|Rage (CAD)
+Rage V 2|Rage (v2.0)
 Ran X|Ranx
-Rogue|Rogue - The Adventure GameRBI 2 Baseball|R.B.I. Two BaseballRick Dangerous 25|Rick Dangerous 2.5
-Robin Hood Legend Quest|Robin Hood - Legend QuestRobinsons Requiem|Robinson's RequiemRobo Cop|RoboCop
+Rogue|Rogue - The Adventure Game
+RBI 2 Baseball|R.B.I. Two Baseball
+Rick Dangerous 25|Rick Dangerous 2.5
+Robin Hood Legend Quest|Robin Hood - Legend Quest
+Robinsons Requiem|Robinson's Requiem
+Robo Cop|RoboCop
 Robo Cop 2|RoboCop 2
 Robo Cop 3|RoboCop 3
 Robot Reader Aesops Fables|Robot Readers - Aesop's Fables
-Robot Reader Chicken Little|Robot Readers - Chicken LittleRock NRoll|Rock 'n' RollRockstar NTRT|Rockstar - Never Trust Rotten Tangerines
+Robot Reader Chicken Little|Robot Readers - Chicken Little
+Rock NRoll|Rock 'n' Roll
+Rockstar NTRT|Rockstar - Never Trust Rotten Tangerines
 Rod Land|Rod-Land
 Rome A D 92|Rome AD92
-Ruff NTumble|Ruff 'N' TumbleRVFHonda|RVF Honda
-SA SCombat Simulator QArcade|SAS Combat Simulator (Quattro Arcade)SA SCombat Simulator QFight|SAS Combat Simulator (Quattro Fighters)Salmon Pink Max|Salmon-Pink MaxSantas Xmas Caper|Santa's Xmas Caper
-SDICinemaware|SDI (Cinemaware)Sensible Soccer 9293|Sensible Soccer - European Champions (92-93 Edition)Sensible Soccer Bulldog Blty|Sensible Soccer 92-93 Meets Bulldog BlightySensible Soccer Euro|Sensible Soccer - European ChampionsSensible Soccer Int Ed|Sensible Soccer - International EditionSensible World Of Soccer 9596|Sensible World Of Soccer 95-96Sensible World Of Soccer 9697|Sensible World Of Soccer 96-97Sensible World Of Soccer 1617|Sensible World Of Soccer 16-17Sensible World Of Soccer Euro|Sensible World Of Soccer 95-96 - European Championship EditionSharkeys Moll|Sharkey's Moll
+Ruff NTumble|Ruff 'N' Tumble
+RVFHonda|RVF Honda
+SA SCombat Simulator QArcade|SAS Combat Simulator (Quattro Arcade)
+SA SCombat Simulator QFight|SAS Combat Simulator (Quattro Fighters)
+Salmon Pink Max|Salmon-Pink Max
+Santas Xmas Caper|Santa's Xmas Caper
+SDICinemaware|SDI (Cinemaware)
+Sensible Soccer 9293|Sensible Soccer - European Champions (92-93 Edition)
+Sensible Soccer Bulldog Blty|Sensible Soccer 92-93 Meets Bulldog Blighty
+Sensible Soccer Euro|Sensible Soccer - European Champions
+Sensible Soccer Int Ed|Sensible Soccer - International Edition
+Sensible World Of Soccer 9596|Sensible World Of Soccer 95-96
+Sensible World Of Soccer 9697|Sensible World Of Soccer 96-97
+Sensible World Of Soccer 1617|Sensible World Of Soccer 16-17
+Sensible World Of Soccer Euro|Sensible World Of Soccer 95-96 - European Championship Edition
+Sharkeys Moll|Sharkey's Moll
 Shock Wave|ShockWave
 Side Show|Sideshow
-Sky Chase|SkyChaseSherman M 4|Sherman M4Side Winder 2|SideWinder IISide Winder|SideWinderSilent Service 2|Silent Service IISim Ant Hi Res|Sim Ant (HiRes)Sim Ant Lo Res|Sim Ant (LoRes)Sim City 12|Sim City (v1.2)Sim Earth Hi Res|Sim Earth (HiRes)Sim Earth Lo Res|Sim Earth (LoRes)Skyfox 2|Skyfox IISleepwalker Comic Relief|Sleepwalker (Comic Relief)Sly Spy Secret Agent|Sly Spy - Secret AgentSootys Fun With Numbers|Sooty's Fun With NumbersSorcerors Apprentice|Sorceror's ApprenticeSorcery +|Sorcery+Space Crusade & Voyage Beyond|Space Crusade (& The Voyage Beyond)Space Harrier & Retrn Fnt Zone|Space Harrier (& Return to the Fantasy Zone)Space Harrier & RFantasy Zone|Space Harrier (& Return to the Fantasy Zone)
-Space Harrier 2|Space Harrier IISpace Quest Enhanced|Space Quest (Enhanced)Speedboat Assassins|Speedboat AssassinSpell Bound|Spell Bound (Psyclapse)
-SpellBound|SpellBound (Pygnosis)Spy Vs Spy 2 The Island Caper|Spy vs. Spy 2 - The Island CaperSpy Vs Spy 3 Arctic Antics|Spy vs. Spy 3 - Arctic AnticsSpy Vs Spy|Spy vs. SpyStir Crazy Featuring Bobo|Bobo (Stir Crazy)Stormlord Prerelease|Stormlord (Pre-release)Spider Man|Spider-Man
+Sky Chase|SkyChase
+Sherman M 4|Sherman M4
+Side Winder 2|SideWinder II
+Side Winder|SideWinder
+Silent Service 2|Silent Service II
+Sim Ant Hi Res|Sim Ant (HiRes)
+Sim Ant Lo Res|Sim Ant (LoRes)
+Sim City 12|Sim City (v1.2)
+Sim Earth Hi Res|Sim Earth (HiRes)
+Sim Earth Lo Res|Sim Earth (LoRes)
+Skyfox 2|Skyfox II
+Sleepwalker Comic Relief|Sleepwalker (Comic Relief)
+Sly Spy Secret Agent|Sly Spy - Secret Agent
+Sootys Fun With Numbers|Sooty's Fun With Numbers
+Sorcerors Apprentice|Sorceror's Apprentice
+Sorcery +|Sorcery+
+Space Crusade & Voyage Beyond|Space Crusade (& The Voyage Beyond)
+Space Harrier & Retrn Fnt Zone|Space Harrier (& Return to the Fantasy Zone)
+Space Harrier & RFantasy Zone|Space Harrier (& Return to the Fantasy Zone)
+Space Harrier 2|Space Harrier II
+Space Quest Enhanced|Space Quest (Enhanced)
+Speedboat Assassins|Speedboat Assassin
+Spell Bound|Spell Bound (Psyclapse)
+SpellBound|SpellBound (Pygnosis)
+Spy Vs Spy 2 The Island Caper|Spy vs. Spy 2 - The Island Caper
+Spy Vs Spy 3 Arctic Antics|Spy vs. Spy 3 - Arctic Antics
+Spy Vs Spy|Spy vs. Spy
+Stir Crazy Featuring Bobo|Bobo (Stir Crazy)
+Stormlord Prerelease|Stormlord (Pre-release)
+Spider Man|Spider-Man
 Space Quest (Enhanced)|Space Quest I (Enhanced)
 Space Quest 2|Space Quest II
 Space Quest 3|Space Quest III
 Space Quest 4|Space Quest IV
 Strip Poker|Strip Poker (Artworx)
-Strip Poker 2 + & Data Disk 1|Strip Poker II+ (& Data Disk 1)Strip Poker 2 +|Strip Poker II+
+Strip Poker 2 + & Data Disk 1|Strip Poker II+ (& Data Disk 1)
+Strip Poker 2 +|Strip Poker II+
 Star Ray (2 Disk)|StarRay (2 Disk)
 She Fox|She-Fox
 Street Fighter 2|Street Fighter II - The World Warrior
-Super Street Fighter 2|Super Street Fighter 2 - The New ChallengersSTUNRunner|STUN RunnerStunt Car Racer TNT|Stunt Car Racer - The New TracksSuper Hang On|Super Hang-On
-Super Off Road|Super Off RoadSuper Seymour Saves Planet|Super Seymour Saves the PlanetSuper Ski 2|Super Ski II
-Subtrade|Sub Trade - Return To IrataSupr Tennis Chmps & Data Disks|Super Tennis Champs (& Data Disks)
+Super Street Fighter 2|Super Street Fighter 2 - The New Challengers
+STUNRunner|STUN Runner
+Stunt Car Racer TNT|Stunt Car Racer - The New Tracks
+Super Hang On|Super Hang-On
+Super Off Road|Super Off Road
+Super Seymour Saves Planet|Super Seymour Saves the Planet
+Super Ski 2|Super Ski II
+Subtrade|Sub Trade - Return To Irata
+Supr Tennis Chmps & Data Disks|Super Tennis Champs (& Data Disks)
 Supr Tennis Chmps|Super Tennis Champs
 Super Seymour Saves the Planet|Super Seymour
-Switchblade 2|Switchblade IITake Em Out|Take 'Em OutTBird|T-Bird
-Teenage Mtnt Hero Turtles COp|Teenage Mutant Hero Turtles - The Coin-OpTeenage Mtnt Hero Turtles|Teenage Mutant Hero TurtlesTeenage Mtnt Ninja Turtles|Teenage Mutant Ninja TurtlesTennis Cup 1 Mb|Tennis Cup (1MB)
-Terminator 2 Arcade Game|Terminator 2 - The Arcade GameTerminator 2 Judgment Day|Terminator 2 - Judgment DayTerrys Big Adventure|Terry's Big AdventureTest Drive 2 & Data Disks|Test Drive 2 (& Data Disks)
-Tennis Cup 2|Tennis Cup IITetris Infogrames|Tetris (Infogrames)Tetris Mirrorsoft|Tetris (Mirrorsoft)Their Finest Hour & Missions|Their Finest Hour (& Missions)
+Switchblade 2|Switchblade II
+Take Em Out|Take 'Em Out
+TBird|T-Bird
+Teenage Mtnt Hero Turtles COp|Teenage Mutant Hero Turtles - The Coin-Op
+Teenage Mtnt Hero Turtles|Teenage Mutant Hero Turtles
+Teenage Mtnt Ninja Turtles|Teenage Mutant Ninja Turtles
+Tennis Cup 1 Mb|Tennis Cup (1MB)
+Terminator 2 Arcade Game|Terminator 2 - The Arcade Game
+Terminator 2 Judgment Day|Terminator 2 - Judgment Day
+Terrys Big Adventure|Terry's Big Adventure
+Test Drive 2 & Data Disks|Test Drive 2 (& Data Disks)
+Tennis Cup 2|Tennis Cup II
+Tetris Infogrames|Tetris (Infogrames)
+Tetris Mirrorsoft|Tetris (Mirrorsoft)
+Their Finest Hour & Missions|Their Finest Hour (& Missions)
 Thunder Cats|ThunderCats
 Thunder Strike|ThunderStrike
-Thunder Hawk A H 73 M|Thunder Hawk AH-73MTime Runners Series|Time Runners (Series)
+Thunder Hawk A H 73 M|Thunder Hawk AH-73M
+Time Runners Series|Time Runners (Series)
 Tom Landry Football|Tom Landry Strategy Football
-Tom Landry Strategy Football|Tom Landry Strategy Football DeluxeToyota Celica GTRally|Toyota Celica GT RallyTRacer|T-Racer
-Traps NTreasures|Traps 'n' TreasuresTrian GO|TrianGoTrivial Pursuit New Begin|Trivial Pursuit - A New BeginningTubular Worlds ECS|Tubular Worlds
-Turbo Trax Arcane|Turbo Trax (Arcane)Turn NBurn|Turn 'n' Burn
+Tom Landry Strategy Football|Tom Landry Strategy Football Deluxe
+Toyota Celica GTRally|Toyota Celica GT Rally
+TRacer|T-Racer
+Traps NTreasures|Traps 'n' Treasures
+Trian GO|TrianGo
+Trivial Pursuit New Begin|Trivial Pursuit - A New Beginning
+Tubular Worlds ECS|Tubular Worlds
+Turbo Trax Arcane|Turbo Trax (Arcane)
+Turn NBurn|Turn 'n' Burn
 Triple X|Tripple X
-Toyota Celica GT Rally|Celica GT RallyTVSports Baseball|TV Sports Baseball
-TVSports Basketball|TV Sports BasketballTVSports Boxing|TV Sports BoxingTVSports Football|TV Sports FootballUMS 2 Nations At War|UMS II - Nations At War
-Ultimate Golf|Greg Norman's Ultimate GolfUFO Enemy Unknown|UFO - Enemy Unknown
+Toyota Celica GT Rally|Celica GT Rally
+TVSports Baseball|TV Sports Baseball
+TVSports Basketball|TV Sports Basketball
+TVSports Boxing|TV Sports Boxing
+TVSports Football|TV Sports Football
+UMS 2 Nations At War|UMS II - Nations At War
+Ultimate Golf|Greg Norman's Ultimate Golf
+UFO Enemy Unknown|UFO - Enemy Unknown
 Universal Military Sim|UMS (Universal Military Simulator)
-UNSquadron|U.N. SquadronUridium 22 MB|Uridium 2 (2MB)
-USSJohn Young|USS John YoungUtopia & New Worlds|Utopia (& New Worlds)Venus The Flytrap No Intro|Venus The Flytrap (No Intro)
-Vroom & Data Disk|Vroom (& Data Disk)Vroom Multi Player|Vroom (Multi Player)
-Valhalla Before The War|Valhalla - Before The WarValhalla Lord Of Infinity|Valhalla and the Lord Of Infinity
+UNSquadron|U.N. Squadron
+Uridium 22 MB|Uridium 2 (2MB)
+USSJohn Young|USS John Young
+Utopia & New Worlds|Utopia (& New Worlds)
+Venus The Flytrap No Intro|Venus The Flytrap (No Intro)
+Vroom & Data Disk|Vroom (& Data Disk)
+Vroom Multi Player|Vroom (Multi Player)
+Valhalla Before The War|Valhalla - Before The War
+Valhalla Lord Of Infinity|Valhalla and the Lord Of Infinity
 Vampires Empire|Vampire's Empire
-Walker Decrunched|Walker (Decrunched)War Zone Core|War Zone (Core Design)
+Walker Decrunched|Walker (Decrunched)
+War Zone Core|War Zone (Core Design)
 War Zone Paradox|War Zone (Paradox)
 Wanderer 3 D|Wanderer 3D
 Way Of The Little Dragon A Star|Way Of The Little Dragon (Amiga Star Collection)
@@ -404,13 +576,16 @@ WIEurope Is Carmen Sandiego|Where in Europe is Carmen Sandiego
 WITUSA Is Carmen Sandiego|Where in the USA is Carmen Sandiego
 WITWIs Carmen Sandiego|Where in The World is Carmen Sandiego
 Wiz NLiz|Wiz 'n' Liz
-Wizardry 6 Bane Cosmic Forg|Wizardry - Bane of the Cosmic Forge Woodys World|Woody's World
+Wizardry 6 Bane Cosmic Forg|Wizardry - Bane of the Cosmic Forge 
+Woodys World|Woody's World
 Wonderland|Wonderland - Dream the Dream
 World Champ Boxing Manager|World Championship Boxing Manager
 World Class Rugby 95|World Class Rugby '95
 World Class Rugby 5 Nations|World Class Rugby - 5 Nations
 WWFEuropean Rampage Tour|WWF European Rampage Tour
-WWFWrestle Mania|WWF Wrestle ManiaXenon 22 Disk|Xenon 2 (2 Disk)
+WWFWrestle Mania|WWF Wrestle Mania
+Xenon 21 Disk|Xenon 2 (1 Disk)
+Xenon 22 Disk|Xenon 2 (2 Disk)
 West Phaser|Westphaser
 XP 8|XP8
 XR 35|XR35
