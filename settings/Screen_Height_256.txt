@@ -38,4 +38,5 @@ Switchblade2
 TennisChamps
 TipOff
 Turrican
+Vyrus
 WizNLiz
