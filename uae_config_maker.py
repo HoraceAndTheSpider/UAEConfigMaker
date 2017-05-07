@@ -705,8 +705,8 @@ def do_scan(input_directory, pathname,output_directory):
 
                     config_text = config_text.replace("<<clockspeed>>", str(clock_speed))
                     config_text = config_text.replace("<<cpucompatible>>", str(bool(0 - compatible_cpu)))
-                    config_text = config_text.replace("<<cycleexact>>", str(bool(0 - compatible_cpu)))
-                    config_text = config_text.replace("<<24bitaddress>>", str(bool(0 - cycle_exact)))
+                    config_text = config_text.replace("<<cycleexact>>", str(bool(0 - cycle_exact)))
+                    config_text = config_text.replace("<<24bitaddress>>", str(bool(0 - _24_bit_address)))
                     if use_jit is False:
                         config_text = config_text.replace("<<jitcache>>", "0")
                     else:
