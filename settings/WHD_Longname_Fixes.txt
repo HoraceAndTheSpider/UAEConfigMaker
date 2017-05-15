@@ -712,7 +712,6 @@ Turrican 3 Demo|Turrican 3 (Demo)
 Turrican Demo|Turrican (Demo)
 Virtual Karting 2 Demo [AGA]|Virtual Karting 2 (Demo) [AGA]
 Virtual Karting Demo [AGA]|Virtual Karting (Demo) [AGA]
-Wrath Of The Demon|Wrath Of The (Demo)n
 Xenon 2 Demo|Xenon 2 (Demo)
 Xmas Lemmings Demo 1991|Xmas Lemmings (1991 Demo)
 Xmas Lemmings Demo 1992|Xmas Lemmings (1992 Demo)

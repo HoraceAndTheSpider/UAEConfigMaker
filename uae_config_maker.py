@@ -274,7 +274,7 @@ def do_scan(input_directory, pathname,output_directory):
                 whd_page = ""
                
                # note that this *only* works with WHDLoad folder scanning.
-                if scan_mode == "WHDLoad":
+                if scan_mode == "WHDLoad" and WHDLOAD_UPDATE==True:
                     
                     whd_update_message = ""
                     for slave_file in glob.glob(file + "/*"):
@@ -324,8 +324,8 @@ def do_scan(input_directory, pathname,output_directory):
 #                             print(whd_realname + " === " + str(whd_infoname) + " === " + whd_page)
 
                             if whd_page == "":
-                                whd_update_message += whd_realname + " not found on master WHDLoad page list" + chr(10)
-                                print ("     Slave file: " + FontColours.OKBLUE + whd_realname + FontColours.ENDC + " not found on master WHDLoad page list" + chr(10))
+                                whd_update_message += whd_realname + " not found on master WHDLoad page list."  + chr(10) + "UAE Config Maker could not verify slave updates." + chr(10)
+                                print ("     Slave file: " + FontColours.OKBLUE + whd_realname + FontColours.ENDC + " not found on master WHDLoad page list." + chr(10))
                                 break
                             
                             # here's where we start checking again the WHDload page (OLLY!!!)
@@ -353,7 +353,10 @@ def do_scan(input_directory, pathname,output_directory):
                                 print("     This version: " + FontColours.FAIL + str(this_slave.modified_time) + FontColours.ENDC
                                                             + "  New Version: " +  FontColours.OKGREEN + str(web_slave.modified_time) + FontColours.ENDC)
                                 print()
-                                
+
+                                whd_update_message = whd_update_message + "     Slave file:  " + whd_realname + " is an older version." + chr(10) + chr(10)
+                                whd_update_message = whd_update_message + "     This version: " + str(this_slave.modified_time) + "" + chr(10)
+                                whd_update_message = whd_update_message + "     Detected Version: " +str(web_slave.modified_time) + "" + chr(10)
                                 # delete old slave
 
                                 # copy in new slave
@@ -606,7 +609,7 @@ def do_scan(input_directory, pathname,output_directory):
                 use_mouse2 = check_list("Control_Port1_Mouse.txt", this_file)
                 use_cd32_pad = check_list("Control_CD32.txt", this_file)
 
-                if scan_mode == "CD32":
+                if scan_mode == "CD32" or full_game_name.lower().find("[cd32]") > -1:
                     use_cd32_pad = True
 
                 # '======== MISC SETTINGS =======
@@ -838,7 +841,7 @@ def do_scan_base(inputdir,outputdir):
 print()
 print(
     FontColours.BOLD + FontColours.OKBLUE + "HoraceAndTheSpider" + FontColours.ENDC + "'s " + FontColours.BOLD +
-    "UAE Configuration Maker" + FontColours.ENDC + FontColours.OKGREEN + " (v2.1)" + FontColours.ENDC + " | " + "" +
+    "UAE Configuration Maker" + FontColours.ENDC + FontColours.OKGREEN + " (2.2)" + FontColours.ENDC + " | " + "" +
     FontColours.FAIL + "www.ultimateamiga.co.uk" + FontColours.ENDC)
 print()
 
@@ -877,6 +880,11 @@ parser.add_argument('--force-config-overwrite',  # command line argument
 parser.add_argument('--force-pi-paths',  # command line argument
                     action="store_true",  # if argument present, store value as True otherwise False
                     help="Force RetroPie Paths"
+                    )
+
+parser.add_argument('--whdload-update',  # command line argument
+                    action="store_true",  # if argument present, store value as True otherwise False
+                    help="Check for WHDLoad Updates"
                     )
 
 # Parse all command line arguments
@@ -928,8 +936,16 @@ if text_utils.str2bool(find_host_option("force_config_overwrite")) == True : FOR
 # >> Setup Bool Constant for Pi Paths
 FORCE_PI_PATHS = args.force_pi_paths
 
-# if hostconfig specifies force_config_overwrite, use as override
+# if hostconfig specifies ..., use as override
 if text_utils.str2bool(find_host_option("force_pi_paths")) == True : FORCE_PI_PATHS = True
+
+
+# >> Setup Bool Constant for WHDLOAD Slave updating
+WHDLOAD_UPDATE = args.whdload_update
+
+# if hostconfig specifies ...., use as override
+if text_utils.str2bool(find_host_option("whdload_update")) == True : WHDLOAD_UPDATE = True
+
 
 
 # paths/folders if needed
