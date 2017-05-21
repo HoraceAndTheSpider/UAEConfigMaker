@@ -85,7 +85,7 @@ mv UAEConfigMaker-master .uaeconfigmaker
 ```
 cd /home/pi/RetroPie/retropiemenu/ 
 wget http://www.ultimateamiga.co.uk/HostedProjects/RetroPieAmiga/downloads/UAE%20Config%20Maker.sh 
-chmod +x "Auto-Amiga Install.sh"
+chmod +x "UAE Config Maker.sh"
 ```
 
 ### Updating/Running:
