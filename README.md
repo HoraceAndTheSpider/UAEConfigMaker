@@ -1,4 +1,4 @@
-# UAEConfigMaker
+# UAEConfigMaker (Version 2.3)
 
 Amiga UAE Configuration Maker, primarily for UAE4ARM/Amiberry on the Raspberry Pi. 
 
@@ -40,10 +40,12 @@ CD32 KickStarts files are required for CD32 ISO/CUE scanning, and should be name
 * **--force-pi-paths**
   * *forces input paths to be made into '/home/pi/RetroPie/roms/amiga-data/' within .uae file regardless of source.*
   	* *Defaults to using actual path*
-   
+
 * **--force-config-overwrite**
   * *don't wait for user input before wiping all Config Files with new ones. This may be used for integration with RetroPie*
   
+* **--create-autostartup**
+  * *Generate auto-startup script file for WHDLoad folders
   
 ## hostconfig.uaetemp Options
   
