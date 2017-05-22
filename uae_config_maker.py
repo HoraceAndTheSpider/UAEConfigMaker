@@ -634,16 +634,16 @@ def do_scan(input_directory, pathname,output_directory):
                 # ' ....
 
                 # print("we are making a config ....")
-                file = output_directory + full_game_name + ".uae"
-                shutil.copyfile("uaeconfig.uaetemp", file)
+                config_file = output_directory + full_game_name + ".uae"
+                shutil.copyfile("uaeconfig.uaetemp", config_file)
 
-                if os.path.isfile(file) is False:
+                if os.path.isfile(config_file) is False:
                     print(FontColours.FAIL + "Error creating config." + FontColours.ENDC)
                 else:
-                    print("     Editing File: " + FontColours.HEADER + file + FontColours.ENDC)
+                    print("     Editing File: " + FontColours.HEADER + config_file + FontColours.ENDC)
 
                     # put the text from the file into a string
-                    text_file = open(file, "r")
+                    text_file = open(config_file, "r")
                     config_text = text_file.read()
                     text_file.close()
 
@@ -792,10 +792,67 @@ def do_scan(input_directory, pathname,output_directory):
                         config_text = config_text.replace("<<port1mode>>", "djoy")
 
                     # save out the config changes
-                    text_file = open(file, "w")
+                    text_file = open(config_file, "w")
                     text_file.write(config_text)
                     text_file.close()
+                    
+                ## this point we can jump in, having created a config.
 
+                # we'll need to check we are on WHDLoad mode and creation of auto-startup is ON
+                if scan_mode == "WHDLoad" and CREATE_AUTOSTARTUP == True:                   
+                    slave_count = 0
+                    for slave_file in glob.glob(file + "/*"):
+                        if slave_file.lower().endswith(".slave"):
+                            
+                            this_slave = whdload_slave.whdload_factory(slave_file)
+                            slave_count += 1
+
+                # then check that there is 1 slave file only
+                    if slave_count == 1 and os.path.isfile(file + "/auto-startup") == False:
+
+                    # if so, we can make an auto-startup file
+                        data_path = (this_slave.current_dir)
+                        if data_path !="": data_path += "/"
+                        
+                        autostart_text = 'CD "WHDLoadGame:"' + chr(10)
+                        autostart_text += 'WHDLOAD SLAVE="WHDLoadGame:' + this_slave.file_name
+                        autostart_text += ' PRELOAD NOWRITECACHE NOREQ SPLASHDELAY=0'
+                        autostart_text += ' data="WHDLoadGame:' + data_path +'"'
+                        autostart_text += ' NOREQ >"WHDLoadGame:whdscript_debug"' + chr(10)
+                        autostart_text += 'uae-configuration SPC_QUIT 1' + chr(10)
+
+                        #print (autostart_text)
+                        
+                        text_file = open(file + "/auto-startup", "w+")
+                        text_file.write(autostart_text)
+                        text_file.close()
+
+
+                    # we will also leave a message about kickstarts
+                        if len(this_slave.kickstarts) > 0:
+                            kick_text = ""
+
+                            kick_text += "This WHDLoad slave cannot be run without one of the " + chr(10)
+                            kick_text += "following kickstart roms in BootWHD:devs/kickstarts/" + chr(10) + chr(10)
+                            
+                            for kick in (this_slave.kickstarts):
+                                kick_text += "kick" + kick.name + chr(10)
+
+                            kick_text += chr(10) + "Should this game fail to load, please check for these files." + chr(10)
+                            #print (kick_text)
+                            
+                            text_file = open(file + "/whdkickstarts_message", "w+")
+                            text_file.write(kick_text)
+                            text_file.close()
+  
+                            #whdupdate_message
+                            #whdscript_debug
+
+                        print()
+                        print (FontColours.OKBLUE + "     Created 'auto-startup' file." + FontColours.ENDC)
+                                   
+            # this point we can jump in, config creation or not
+            
             print()
             count += 1
 
@@ -887,6 +944,11 @@ parser.add_argument('--whdload-update',  # command line argument
                     help="Check for WHDLoad Updates"
                     )
 
+parser.add_argument('--create-autostartup',  # command line argument
+                    action="store_true",  # if argument present, store value as True otherwise False
+                    help="Generate auto-startup file for WHDLoad folders"
+                    )
+
 # Parse all command line arguments
 args = parser.parse_args()
 
@@ -946,6 +1008,12 @@ WHDLOAD_UPDATE = args.whdload_update
 # if hostconfig specifies ...., use as override
 if text_utils.str2bool(find_host_option("whdload_update")) == True : WHDLOAD_UPDATE = True
 
+
+# >> Setup Bool Constant for WHDLOAD Slave updating
+CREATE_AUTOSTARTUP = args.create_autostartup
+
+# if hostconfig specifies ...., use as override
+if text_utils.str2bool(find_host_option("create_autostartup")) == True : CREATE_AUTOSTARTUP = True
 
 
 # paths/folders if needed
