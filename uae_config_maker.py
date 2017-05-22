@@ -898,7 +898,7 @@ def do_scan_base(inputdir,outputdir):
 print()
 print(
     FontColours.BOLD + FontColours.OKBLUE + "HoraceAndTheSpider" + FontColours.ENDC + "'s " + FontColours.BOLD +
-    "UAE Configuration Maker" + FontColours.ENDC + FontColours.OKGREEN + " (2.2)" + FontColours.ENDC + " | " + "" +
+    "UAE Configuration Maker" + FontColours.ENDC + FontColours.OKGREEN + " (2.3)" + FontColours.ENDC + " | " + "" +
     FontColours.FAIL + "www.ultimateamiga.co.uk" + FontColours.ENDC)
 print()
 
