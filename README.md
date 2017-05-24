@@ -86,7 +86,7 @@ mv UAEConfigMaker-master .uaeconfigmaker
 ### Alternative Install to the RetroPie Menu
 ```
 cd /home/pi/RetroPie/retropiemenu/ 
-wget http://www.ultimateamiga.co.uk/HostedProjects/RetroPieAmiga/downloads/UAE%20Config%20Maker.sh 
+wget https://raw.githubusercontent.com/HoraceAndTheSpider/UAEConfigMaker/master/UAE%20Config%20Maker.sh
 chmod +x "UAE Config Maker.sh"
 ```
 
