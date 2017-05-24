@@ -1026,10 +1026,10 @@ if NO_UPDATE is True:
 else:
     # we can go through all files in 'settings' and attempt a download of the file
     for filename in glob.glob('settings/*.txt'):
-        update_utils.download_update(filename)
+        update_utils.download_update(filename,"")
 
     # do similar for
-    update_utils.download_update("uaeconfig.uaetemp")
+    update_utils.download_update("uaeconfig.uaetemp","")
 
 
 if os.path.isfile("uaeconfig.uaetemp") is False:
