@@ -653,10 +653,18 @@ def do_scan(input_directory, pathname,output_directory):
                     #    to force //home/pi/RetroPie/roms/amiga/ on
                     #      external machines (allowing WHD packs to be created on external machines)
 
-                    if FORCE_PI_PATHS is False:
-                        config_text = config_text.replace("<<inputdir>>", input_directory)
-                    else:
+                    if FORCE_PATHS.lower() == "pi":
                         config_text = config_text.replace("<<inputdir>>", "/home/pi/RetroPie/roms/amiga-data/")
+                        
+                    elif FORCE_PATHS.lower()  == "android":
+                        config_text = config_text.replace("<<inputdir>>", "/storage/emulated/0/roms/")
+                        
+                    elif FORCE_PATHS != "":
+                        config_text = config_text.replace("<<inputdir>>", FORCE_PATHS)
+                        
+                    else:
+                        config_text = config_text.replace("<<inputdir>>", input_directory)
+
 
                     # game / path
                     config_text = config_text.replace("<<game>>", this_file)
@@ -934,9 +942,9 @@ parser.add_argument('--force-config-overwrite',  # command line argument
                     help="Force Overwrite of the .uae config files"
                     )
 
-parser.add_argument('--force-pi-paths',  # command line argument
-                    action="store_true",  # if argument present, store value as True otherwise False
-                    help="Force RetroPie Paths"
+parser.add_argument('--force-paths',  # command line argument
+                    default='',
+                    help="Force Specific Paths"
                     )
 
 parser.add_argument('--whdload-update',  # command line argument
@@ -996,10 +1004,10 @@ if text_utils.str2bool(find_host_option("force_config_overwrite")) == True : FOR
 
 
 # >> Setup Bool Constant for Pi Paths
-FORCE_PI_PATHS = args.force_pi_paths
+FORCE_PATHS = args.force_paths
 
 # if hostconfig specifies ..., use as override
-if text_utils.str2bool(find_host_option("force_pi_paths")) == True : FORCE_PI_PATHS = True
+if find_host_option("force_paths") != "" : FORCE_PATHS = find_host_option("force_paths") 
 
 
 # >> Setup Bool Constant for WHDLOAD Slave updating
