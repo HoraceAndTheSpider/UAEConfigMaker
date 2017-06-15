@@ -678,7 +678,7 @@ def do_scan(input_directory, pathname,output_directory):
                         config_text = config_text.replace("<<romdir>>", "/home/pi/RetroPie/BIOS/Amiga/")
 
                     elif ROM_PATH.lower()  == "android":
-                        config_text = config_text.replace("<<romdir>>", "/storage/emulated/0/roms/")
+                        config_text = config_text.replace("<<romdir>>", "/storage/emulated/0/roms/kickstarts/")
 
                     else:
                         config_text = config_text.replace("<<romdir>>", ROM_PATH)
@@ -969,7 +969,6 @@ parser.add_argument('--rom-path',  # command line argument
                     default='/home/pi/RetroPie/BIOS/Amiga/',# Default directory if none supplied
                     help="Optional Kickstart ROM path"
                     )
-
 
 parser.add_argument('--whdload-update',  # command line argument
                     action="store_true",  # if argument present, store value as True otherwise False
