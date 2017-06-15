@@ -222,7 +222,14 @@ def do_scan(input_directory, pathname,output_directory):
             create_config = True
             answer = ""
 
-            if os.path.isfile(output_directory + full_game_name + ".uae") == True and skip_all == 0:
+            # create the full name of output file
+            if NO_FILENAME_SPACES == False:                    
+                config_file = output_directory + full_game_name + ".uae"
+            else:
+                config_file = output_directory + full_game_name.replace(" ","_") + ".uae"
+                    
+
+            if os.path.isfile(config_file) == True and skip_all == 0:
                 while answer != "Y" and answer != "N" and answer != "S" and answer != "A":
                     answer = input(
                         FontColours.OKBLUE + "     Config already exists - overwrite? " + "(Yes/No/Always/Skip) "
@@ -231,7 +238,7 @@ def do_scan(input_directory, pathname,output_directory):
                         answer = answer.upper()
                     print()
 
-            elif os.path.isfile(output_directory + full_game_name + ".uae") == True and skip_all == -1:
+            elif os.path.isfile(config_file) == True and skip_all == -1:
                 create_config = False
                 print(FontColours.OKBLUE + "     Skipping existing file." + FontColours.ENDC)
                 print()
@@ -634,7 +641,8 @@ def do_scan(input_directory, pathname,output_directory):
                 # ' ....
 
                 # print("we are making a config ....")
-                config_file = output_directory + full_game_name + ".uae"
+
+                    
                 shutil.copyfile("uaeconfig.uaetemp", config_file)
 
                 if os.path.isfile(config_file) is False:
@@ -957,6 +965,11 @@ parser.add_argument('--create-autostartup',  # command line argument
                     help="Generate auto-startup file for WHDLoad folders"
                     )
 
+parser.add_argument('--no-filename-spaces',  # command line argument
+                    action="store_true",  # if argument present, store value as True otherwise False
+                    help="Replace 'spaces' in output filenames with underscores"
+                    )
+
 # Parse all command line arguments
 args = parser.parse_args()
 
@@ -1024,8 +1037,20 @@ CREATE_AUTOSTARTUP = args.create_autostartup
 if text_utils.str2bool(find_host_option("create_autostartup")) == True : CREATE_AUTOSTARTUP = True
 
 
+# >> Setup Bool Constant for using underscores
+NO_FILENAME_SPACES = args.no_filename_spaces
+
+# if hostconfig specifies ...., use as override
+if text_utils.str2bool(find_host_option("no_filename_spaces")) == True : NO_FILENAME_SPACES = True
+
+
+
+
+
+
 # paths/folders if needed
 os.makedirs("settings", exist_ok=True)
+
 
 # If we're developing don't overwrite our changes.
 if NO_UPDATE is True:
