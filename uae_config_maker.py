@@ -673,6 +673,16 @@ def do_scan(input_directory, pathname,output_directory):
                     else:
                         config_text = config_text.replace("<<inputdir>>", input_directory)
 
+                    # do somthing almost the same, for rom/kickpath
+                    if ROM_PATH.lower() == "pi":
+                        config_text = config_text.replace("<<romdir>>", "/home/pi/RetroPie/BIOS/Amiga/")
+
+                    elif ROM_PATH.lower()  == "android":
+                        config_text = config_text.replace("<<romdir>>", "/storage/emulated/0/roms/")
+
+                    else:
+                        config_text = config_text.replace("<<romdir>>", ROM_PATH)
+                        
 
                     # game / path
                     config_text = config_text.replace("<<game>>", this_file)
@@ -955,6 +965,12 @@ parser.add_argument('--force-paths',  # command line argument
                     help="Force Specific Paths"
                     )
 
+parser.add_argument('--rom-path',  # command line argument
+                    default='/home/pi/RetroPie/BIOS/Amiga/',# Default directory if none supplied
+                    help="Optional Kickstart ROM path"
+                    )
+
+
 parser.add_argument('--whdload-update',  # command line argument
                     action="store_true",  # if argument present, store value as True otherwise False
                     help="Check for WHDLoad Updates"
@@ -1045,6 +1061,11 @@ if text_utils.str2bool(find_host_option("no_filename_spaces")) == True : NO_FILE
 
 
 
+# >> Setup Bool Constant for Pi Paths
+ROM_PATH = args.rom_path
+
+# if hostconfig specifies ..., use as override
+if find_host_option("rom_path") != "" : ROM_PATH = find_host_option("rom_path") 
 
 
 
