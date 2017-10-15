@@ -31,7 +31,7 @@ input.analog_joystick_multiplier=15
 input.analog_joystick_offset=-1
 input.mouse_speed=100
 input.autofire_speed=2496
-input.autofire=8
+input.autofire=0
 
 ; host-specific
 key_for_menu=<<menukey>>
