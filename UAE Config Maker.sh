@@ -11,6 +11,6 @@ fi
 	cd .uaeconfigmaker
 
 	sudo python3 update_config_maker.py
-     	sudo python3 uae_config_maker.py --force-config-overwrite --whdload-update --create-autostarup
+     	sudo python3 uae_config_maker.py --force-config-overwrite --whdload-update --create-autostartup
 	sudo chown -hR pi:pi /home/pi/RetroPie/roms/amiga-data
 popd
