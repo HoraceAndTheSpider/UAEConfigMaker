@@ -25,8 +25,8 @@ joyportname1=JOY1
 input.config=0
 input.joymouse_speed_analog=2
 input.joymouse_speed_digital=10
-input.joymouse_deadzone=33
-input.joystick_deadzone=33
+input.joymouse_deadzone=20
+input.joystick_deadzone=20
 input.analog_joystick_multiplier=15
 input.analog_joystick_offset=-1
 input.mouse_speed=100
@@ -72,7 +72,6 @@ kickstart_rom_file=$(FILE_PATH)/<<kickstart>>
 kickstart_ext_rom_file=$(FILE_PATH)/<<extkickstart>>
 
 ; Floppy Drives
-
 ;floppy0=<<inputdir>><<diskpath0>>/<<disk0>>
 ;floppy0type=<<disktype0>>
 ;floppy1=<<inputdir>><<diskpath1>>/<<disk1>>
@@ -102,10 +101,10 @@ cdimage0=<<inputdir>><<hdpath>>/<<game>>/<<game>>.cue,image
 gfx_framerate=<<frameskip>>
 gfx_width=<<screenwidth>>
 gfx_height=<<screenheight>>
-gfx_width_windowed=320
-gfx_height_windowed=240
-gfx_width_fullscreen=640
-gfx_height_fullscreen=480
+gfx_width_windowed=<<screenwidth>>
+gfx_height_windowed=<<screenheight>>
+gfx_width_fullscreen=<<screenwidth>>
+gfx_height_fullscreen=<<screenheight>>
 gfx_lores=false
 gfx_resolution=hires
 gfx_correct_aspect=<<43aspect>>
@@ -120,7 +119,6 @@ cpu_compatible=<<cpucompatible>>
 cpu_24bit_addressing=<<24bitaddress>>
 cachesize=<<jitcache>>
 cpu_cycle_exact=<<cycleexact>>
-
 
 ; Memory 
 a1000ram=false
@@ -152,13 +150,12 @@ kbd_led_cap=-1
 ; Sound
 sound_output=exact
 sound_channels=stereo
-sound_stereo_separation=7
+sound_stereo_separation=3
 sound_stereo_mixing_delay=0
 sound_frequency=44100
-sound_interpol=none
-sound_filter=off
+sound_interpol=crux
+sound_filter=emulated
 sound_filter_type=standard
 sound_volume_cd=20
 sound_auto=yes
 synchronize_clock=yes
-
