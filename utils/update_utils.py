@@ -11,7 +11,8 @@ except:
 
 def download_update(in_file,put_file):
     # get_file = "http://www.djcresswell.com/RetroPie/ConfigMaker/" +infile
-    get_file = "https://raw.githubusercontent.com/HoraceAndTheSpider/UAEConfigMaker/master/" + in_file
+    # get_file = "https://raw.githubusercontent.com/HoraceAndTheSpider/UAEConfigMaker/master/" + in_file
+    get_file = "https://raw.githubusercontent.com/tednilsen/UAEConfigMaker/master/" + in_file
 
     if put_file == "":
         put_file = "" + in_file
