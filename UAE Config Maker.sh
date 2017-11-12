@@ -2,7 +2,8 @@
 pushd /home/pi/
 
 if [ ! -d ".uaeconfigmaker" ]; then
-	wget https://github.com/HoraceAndTheSpider/UAEConfigMaker/archive/master.zip
+	wget https://github.com/tednilsen/UAEConfigMaker/archive/master.zip
+	# wget https://github.com/HoraceAndTheSpider/UAEConfigMaker/archive/master.zip
 	unzip master.zip
 	rm master.zip
 	mv UAEConfigMaker-master .uaeconfigmaker
