@@ -596,8 +596,8 @@ def do_scan(input_directory, pathname,output_directory):
                     screen_height = 262
                 if check_list("Screen_Height_256.txt", this_file) is True:
                     screen_height = 256
-                if check_list("Screen_Height_240.txt", this_file) is True:
-                    screen_height = 240
+                #if check_list("Screen_Height_240.txt", this_file) is True:
+                #    screen_height = 240
                 if check_list("Screen_Height_224.txt", this_file) is True:
                     screen_height = 224
                 if check_list("Screen_Height_216.txt", this_file) is True:
@@ -606,7 +606,7 @@ def do_scan(input_directory, pathname,output_directory):
                     screen_height = 200
 
                 # ' screen widths
-                screen_width = 320
+                screen_width = 640
                 if check_list("Screen_Width_384.txt", this_file) is True:
                     screen_width = 384
                 if check_list("Screen_Width_352.txt", this_file) is True:
@@ -617,8 +617,8 @@ def do_scan(input_directory, pathname,output_directory):
                     screen_width = 768
                 if check_list("Screen_Width_704.txt", this_file) is True:
                     screen_width = 704
-                if check_list("Screen_Width_640.txt", this_file) is True:
-                    screen_width = 640
+                #if check_list("Screen_Width_640.txt", this_file) is True:
+                #    screen_width = 640
 
                 # ' extras
                 aspect_ratio = bool(check_list("Screen_Force43Aspect.txt", this_file))
@@ -647,15 +647,15 @@ def do_scan(input_directory, pathname,output_directory):
                 # ' BSD Socket / Floppy Speed etc
 
                 use_bsd_socket = check_list("Misc_BSDSocket.txt", this_file)
-                floppy_speed = 800
+                floppy_speed = 400
                 disk = ["", "", "", ""]
 
                 if check_list("Floppy_Speed_100.txt", this_file) is True:
                     floppy_speed = 100
                 if check_list("Floppy_Speed_200.txt", this_file) is True:
                     floppy_speed = 200
-                if check_list("Floppy_Speed_400.txt", this_file) is True:
-                    floppy_speed = 400
+                #if check_list("Floppy_Speed_400.txt", this_file) is True:
+                #    floppy_speed = 400
                 if check_list("Floppy_Speed_800.txt", this_file) is True:
                     floppy_speed = 800
 
@@ -720,8 +720,8 @@ def do_scan(input_directory, pathname,output_directory):
 
                     # screens
                     config_text = config_text.replace("<<screenheight>>", str(screen_height))
-                    if screen_width < 321:
-                        screen_width *= 2
+                    if screen_width < 320:
+                        screen_width == 640
                     config_text = config_text.replace("<<screenwidth>>", str(screen_width))
                     config_text = config_text.replace("<<offset_y>>", str(screen_offset_y))
                     config_text = config_text.replace("<<offset_x>>", str(screen_offset_x))
