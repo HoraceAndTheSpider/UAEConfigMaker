@@ -1,6 +1,6 @@
+3DPool
+3DWorldTennis
 AlienBreed
-AlienBreed2
-AlienBreed2AGA
 AlienBreed3D2AGA4MB
 AlienBreed3D2AGA4MB
 AlienBreed3DAGAFixed
@@ -10,12 +10,18 @@ AlienBreedTowerAssaultAGA
 ApidyaKaiko
 Arkanoid
 AttackOfTheGreenSmellyAliens
+Atomix
 BansheeAGA
+BansheeCD32
 BaseJumpers
+BaseJumpersCD32
 BattleSquadron
 BattleSquadronDemo
 Benefactor
 BenefactorCD32
+ClockwiserAGA
+ClockwiserCD32
+ColonizationAGA
 Coloris
 Commando
 DeluxeGalaga
@@ -32,6 +38,7 @@ SensibleGolf
 SensibleWorldOfSoccer
 SensibleWorldOfSoccer9596
 SensibleWorldOfSoccer9697
+SlamTiltAGA
 SolomonsKey2
 SuperfrogCD32
 SuprTennisChmps
