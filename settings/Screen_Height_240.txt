@@ -1,8 +1,13 @@
+AbandonedPlaces
 Agony
 AlfredChicken
+AlfredChickenAGA
+AlfredChickenCD32
+AllNewWorldOfLemmingsAGA
 Anarchy
 Apidya
 ArcadePoolAGA
+ArcadePoolCD32
 ArcadeSnookerAGA
 BartVsTheWorld
 BodyBlowsAGA
@@ -13,6 +18,8 @@ CannonFodder
 CannonFodder2
 CiscoHeat
 DGeneration
+Fire&Ice
+Fire&IceCD32
 Flashback
 Gods
 GoldenAxe
@@ -30,6 +37,7 @@ Pirates
 PrinceOfPersia
 ProTennisTour2
 PsychoSanta
+PuttySquadAGA
 Qwak
 RickDangerous
 RickDangerous2
