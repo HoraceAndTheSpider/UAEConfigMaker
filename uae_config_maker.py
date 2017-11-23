@@ -455,7 +455,7 @@ def do_scan(input_directory, pathname,output_directory):
                     kickstart = "kick30.rom"
                     kickstart_ext = ""
                     chip_ram = 4
-                    fast_ram = 0
+                    fast_ram = 8
                     clock_speed = 14
 
                 elif machine_type == "A1200/020":
@@ -464,7 +464,7 @@ def do_scan(input_directory, pathname,output_directory):
                     kickstart = "kick31.rom"
                     kickstart_ext = ""
                     chip_ram = 4
-                    fast_ram = 4
+                    fast_ram = 8
                     clock_speed = 14
 
                 elif machine_type == "A4000":
@@ -482,9 +482,17 @@ def do_scan(input_directory, pathname,output_directory):
                     kickstart = "cd32kick31.rom"
                     kickstart_ext = "cd32ext.rom"
                     chip_ram = 4
-                    fast_ram = 0
+                    fast_ram = 8
                     clock_speed = 14
 
+                elif machine_type == "A1200/32":
+                    chipset = "AGA"
+                    a_cpu = "68ec020"
+                    kickstart = "cd32kick31.rom"
+                    kickstart_ext = "cd32ext.rom"
+                    chip_ram = 4
+                    fast_ram = 8
+                    clock_speed = 14
 
                 # '======== MEMORY SETTINGS =======
                 # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -566,6 +574,11 @@ def do_scan(input_directory, pathname,output_directory):
                     clock_speed = 14
                 if check_list("CPU_ClockSpeed_28.txt", this_file) is True:
                     clock_speed = 28
+
+                # ' cpu model 040
+                if check_list("CPU_040.txt", this_file) is True:
+                    a_cpu = "68040"
+                    _24_bit_address = False
 
                 # ' 24 bit addressing / compatible CPU / JIT Cache
                 _24_bit_address = not check_list("CPU_No24BitAddress.txt", this_file)
@@ -743,16 +756,20 @@ def do_scan(input_directory, pathname,output_directory):
                     config_text = config_text.replace("<<immediateblitter>>", str(bool(0 - immediate_blits)))
 
                     # cpu
+                    if a_cpu_speed == "max":
+                        config_text = config_text.replace("finegrain_cpu_speed=", ";finegrain_cpu_speed=")
+                    else:
+                        if clock_speed == 14:
+                            clock_speed = 1024
+                        elif clock_speed == 28:
+                            clock_speed = 128
+                        else:
+                            clock_speed = 0
+
                     config_text = config_text.replace("<<kickstart>>", kickstart)
                     config_text = config_text.replace("<<extkickstart>>", kickstart_ext)
                     config_text = config_text.replace("<<cputype>>", a_cpu)
                     config_text = config_text.replace("<<cpuspeed>>", a_cpu_speed)
-                    if clock_speed == 14:
-                        clock_speed = 1024
-                    elif clock_speed == 28:
-                        clock_speed = 128
-                    else:
-                        clock_speed = 0
 
                     config_text = config_text.replace("<<clockspeed>>", str(clock_speed))
                     config_text = config_text.replace("<<cpucompatible>>", str(bool(0 - compatible_cpu)))
