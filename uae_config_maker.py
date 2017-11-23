@@ -11,6 +11,29 @@ from utils.text_utils import FontColours
 from whdload import whdload_slave
 
 
+def value_list(in_file, game_name):
+    file_name = "settings/" + in_file
+
+    if os.path.isfile(file_name) is False:
+        return 0
+
+    with open(file_name) as f:
+        content = f.readlines()
+        content = [x.strip() for x in content]
+    f.close()
+
+    answer = 0
+
+    for this_line in content:
+        if not this_line == "":
+            this_word = this_line.split()
+            if this_word[0] == game_name:
+                answer = this_word[1]
+                break
+
+    return answer
+
+
 def check_list(in_file, game_name):
     file_name = "settings/" + in_file
 
@@ -555,15 +578,15 @@ def do_scan(input_directory, pathname,output_directory):
                 # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 # ' screen Y/X Offsets
 
-                screen_offset_y = 0
-                for Z in range(-16, 16):
-                    if check_list("Screen_OffsetY_" + str(Z) + ".txt", this_file) is True:
-                        screen_offset_y = Z
+                screen_offset_y = value_list("Screen_OffsetY.txt", this_file)
+                #for Z in range(-16, 16):
+                #    if check_list("Screen_OffsetY_" + str(Z) + ".txt", this_file) is True:
+                #        screen_offset_y = Z
 
-                screen_offset_x = 0
-                for Z in range(-16, 16):
-                    if check_list("Screen_OffsetX_" + str(Z) + ".txt", this_file) is True:
-                        screen_offset_x = Z
+                screen_offset_x = value_list("Screen_OffsetX.txt", this_file)
+                #for Z in range(-16, 16):
+                #    if check_list("Screen_OffsetX_" + str(Z) + ".txt", this_file) is True:
+                #        screen_offset_x = Z
 
                 # ' screen heights
                 screen_height = 240
@@ -583,7 +606,7 @@ def do_scan(input_directory, pathname,output_directory):
                     screen_height = 200
 
                 # ' screen widths
-                screen_width = 320
+                screen_width = 640
                 if check_list("Screen_Width_384.txt", this_file) is True:
                     screen_width = 384
                 if check_list("Screen_Width_352.txt", this_file) is True:
@@ -624,7 +647,7 @@ def do_scan(input_directory, pathname,output_directory):
                 # ' BSD Socket / Floppy Speed etc
 
                 use_bsd_socket = check_list("Misc_BSDSocket.txt", this_file)
-                floppy_speed = 800
+                floppy_speed = 400
                 disk = ["", "", "", ""]
 
                 if check_list("Floppy_Speed_100.txt", this_file) is True:
@@ -696,8 +719,8 @@ def do_scan(input_directory, pathname,output_directory):
 
                     # screens
                     config_text = config_text.replace("<<screenheight>>", str(screen_height))
-                    if screen_width < 321:
-                        screen_width *= 2
+                    if screen_width < 320:
+                        screen_width == 640
                     config_text = config_text.replace("<<screenwidth>>", str(screen_width))
                     config_text = config_text.replace("<<offset_y>>", str(screen_offset_y))
                     config_text = config_text.replace("<<offset_x>>", str(screen_offset_x))
