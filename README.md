@@ -87,7 +87,9 @@ CD32 KickStarts files are required for CD32 ISO/CUE scanning, and should be name
 * **gfx_framerate= [0 / 1]**
 	* *Select whether or not frameskip should be switched on (1) or off (0).*
 
-* **ignore_output_path / no_update / force_config_overwrite / force_paths / whdload_update / create_autostartup / no_filename_spaces**
+* **no_update / ignore_output_path / force_paths / rom_path**
+* ** / force_config_overwrite / whdload_update / create_autostartup / no_filename_spaces**
+
 	* *These command-line options can also be entered into hostconfig and will take priority*
 
 ## Installation
