@@ -222,7 +222,14 @@ def do_scan(input_directory, pathname,output_directory):
             create_config = True
             answer = ""
 
-            if os.path.isfile(output_directory + full_game_name + ".uae") == True and skip_all == 0:
+            # create the full name of output file
+            if NO_FILENAME_SPACES == False:                    
+                config_file = output_directory + full_game_name + ".uae"
+            else:
+                config_file = output_directory + full_game_name.replace(" ","_") + ".uae"
+                    
+
+            if os.path.isfile(config_file) == True and skip_all == 0:
                 while answer != "Y" and answer != "N" and answer != "S" and answer != "A":
                     answer = input(
                         FontColours.OKBLUE + "     Config already exists - overwrite? " + "(Yes/No/Always/Skip) "
@@ -231,7 +238,7 @@ def do_scan(input_directory, pathname,output_directory):
                         answer = answer.upper()
                     print()
 
-            elif os.path.isfile(output_directory + full_game_name + ".uae") == True and skip_all == -1:
+            elif os.path.isfile(config_file) == True and skip_all == -1:
                 create_config = False
                 print(FontColours.OKBLUE + "     Skipping existing file." + FontColours.ENDC)
                 print()
@@ -634,7 +641,7 @@ def do_scan(input_directory, pathname,output_directory):
                 # ' ....
 
                 # print("we are making a config ....")
-                config_file = output_directory + full_game_name + ".uae"
+      
                 shutil.copyfile("uaeconfig.uaetemp", config_file)
 
                 if os.path.isfile(config_file) is False:
@@ -653,10 +660,28 @@ def do_scan(input_directory, pathname,output_directory):
                     #    to force //home/pi/RetroPie/roms/amiga/ on
                     #      external machines (allowing WHD packs to be created on external machines)
 
-                    if FORCE_PI_PATHS is False:
-                        config_text = config_text.replace("<<inputdir>>", input_directory)
-                    else:
+                    if FORCE_PATHS.lower() == "pi":
                         config_text = config_text.replace("<<inputdir>>", "/home/pi/RetroPie/roms/amiga-data/")
+                        
+                    elif FORCE_PATHS.lower()  == "android":
+                        config_text = config_text.replace("<<inputdir>>", "/storage/emulated/0/roms/")
+                        
+                    elif FORCE_PATHS != "":
+                        config_text = config_text.replace("<<inputdir>>", FORCE_PATHS)
+                        
+                    else:
+                        config_text = config_text.replace("<<inputdir>>", input_directory)
+
+                    # do somthing almost the same, for rom/kickpath
+                    if ROM_PATH.lower() == "pi":
+                        config_text = config_text.replace("<<romdir>>", "/home/pi/RetroPie/BIOS/Amiga/")
+
+                    elif ROM_PATH.lower()  == "android":
+                        config_text = config_text.replace("<<romdir>>", "/storage/emulated/0/roms/kickstarts/")
+
+                    else:
+                        config_text = config_text.replace("<<romdir>>", ROM_PATH)
+                        
 
                     # game / path
                     config_text = config_text.replace("<<game>>", this_file)
@@ -934,9 +959,29 @@ parser.add_argument('--force-config-overwrite',  # command line argument
                     help="Force Overwrite of the .uae config files"
                     )
 
-parser.add_argument('--force-pi-paths',  # command line argument
+parser.add_argument('--force-paths',  # command line argument
+                    default='',
+                    help="Force Specific Paths"
+                    )
+
+parser.add_argument('--rom-path',  # command line argument
+                    default='/home/pi/RetroPie/BIOS/Amiga/',# Default directory if none supplied
+                    help="Optional Kickstart ROM path"
+                    )
+
+parser.add_argument('--whdload-update',  # command line argument
                     action="store_true",  # if argument present, store value as True otherwise False
-                    help="Force RetroPie Paths"
+                    help="Check for WHDLoad Updates"
+                    )
+
+parser.add_argument('--create-autostartup',  # command line argument
+                    action="store_true",  # if argument present, store value as True otherwise False
+                    help="Generate auto-startup file for WHDLoad folders"
+                    )
+
+parser.add_argument('--no-filename-spaces',  # command line argument
+                    action="store_true",  # if argument present, store value as True otherwise False
+                    help="Replace 'spaces' in output filenames with underscores"
                     )
 
 parser.add_argument('--whdload-update',  # command line argument
@@ -996,10 +1041,40 @@ if text_utils.str2bool(find_host_option("force_config_overwrite")) == True : FOR
 
 
 # >> Setup Bool Constant for Pi Paths
-FORCE_PI_PATHS = args.force_pi_paths
+FORCE_PATHS = args.force_paths
 
 # if hostconfig specifies ..., use as override
-if text_utils.str2bool(find_host_option("force_pi_paths")) == True : FORCE_PI_PATHS = True
+if find_host_option("force_paths") != "" : FORCE_PATHS = find_host_option("force_paths") 
+
+
+# >> Setup Bool Constant for WHDLOAD Slave updating
+WHDLOAD_UPDATE = args.whdload_update
+
+# if hostconfig specifies ...., use as override
+if text_utils.str2bool(find_host_option("whdload_update")) == True : WHDLOAD_UPDATE = True
+
+
+# >> Setup Bool Constant for WHDLOAD Slave updating
+CREATE_AUTOSTARTUP = args.create_autostartup
+
+# if hostconfig specifies ...., use as override
+if text_utils.str2bool(find_host_option("create_autostartup")) == True : CREATE_AUTOSTARTUP = True
+
+
+# >> Setup Bool Constant for using underscores
+NO_FILENAME_SPACES = args.no_filename_spaces
+
+# if hostconfig specifies ...., use as override
+if text_utils.str2bool(find_host_option("no_filename_spaces")) == True : NO_FILENAME_SPACES = True
+
+
+
+# >> Setup Bool Constant for Pi Paths
+ROM_PATH = args.rom_path
+
+# if hostconfig specifies ..., use as override
+if find_host_option("rom_path") != "" : ROM_PATH = find_host_option("rom_path") 
+
 
 
 # >> Setup Bool Constant for WHDLOAD Slave updating
@@ -1019,6 +1094,7 @@ if text_utils.str2bool(find_host_option("create_autostartup")) == True : CREATE_
 # paths/folders if needed
 os.makedirs("settings", exist_ok=True)
 
+
 # If we're developing don't overwrite our changes.
 if NO_UPDATE is True:
      print(FontColours.FAIL + "No update requests. (Manual override)"+ FontColours.ENDC)
@@ -1026,10 +1102,10 @@ if NO_UPDATE is True:
 else:
     # we can go through all files in 'settings' and attempt a download of the file
     for filename in glob.glob('settings/*.txt'):
-        update_utils.download_update(filename)
+        update_utils.download_update(filename,"")
 
     # do similar for
-    update_utils.download_update("uaeconfig.uaetemp")
+    update_utils.download_update("uaeconfig.uaetemp","")
 
 
 if os.path.isfile("uaeconfig.uaetemp") is False:

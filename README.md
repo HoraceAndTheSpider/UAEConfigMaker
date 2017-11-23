@@ -1,4 +1,4 @@
-# UAEConfigMaker
+# UAEConfigMaker (Version 2.3)
 
 Amiga UAE Configuration Maker, primarily for UAE4ARM/Amiberry on the Raspberry Pi. 
 
@@ -23,7 +23,7 @@ CD32 KickStarts files are required for CD32 ISO/CUE scanning, and should be name
 
 ## Command Line Options
 
-* **[none]**  
+* **--scandirs -s**  
   * *Specify any paths which are wanted to be scanned.*
   	* *Defaults to /home/pi/RetroPie/roms/amiga-data/ if not stated.*
 
@@ -35,16 +35,36 @@ CD32 KickStarts files are required for CD32 ISO/CUE scanning, and should be name
   * *stop config maker from downloading the text data from github (for development purposes)*
 
 * **--ignore-output-path**
-  * *Use input path as output location*
+  * *Use scanned input path as output location for saving of .uae files*
   
-* **--force-pi-paths**
-  * *forces input paths to be made into '/home/pi/RetroPie/roms/amiga-data/' within .uae file regardless of source.*
-  	* *Defaults to using actual path*
-   
+* **--force-paths**
+  * *forces input paths to be made into a specific location within .uae file regardless of source location.*
+  	* *If unspecified, defaults to using actual scan path*
+  * * `--force-paths=pi` will shortcut to '/home/pi/RetroPie/roms/amiga-data/'
+  * * `--force-paths=android` will shortcut to '/storage/emulated/0/roms/'
+
+* **--rom-path**
+  * *forces kickstart rom path to be made into a specific location within .uae file*
+  	* *If unspecified, defaults to pi locationh*
+  * * `--rom-path=pi` will shortcut to '/home/pi/RetroPie/BIOS/Amiga/'
+  * * `--rom-path=android` will shortcut to 'storage/emulated/0/roms/kickstarts/'
+
 * **--force-config-overwrite**
   * *don't wait for user input before wiping all Config Files with new ones. This may be used for integration with RetroPie*
+
+
+* **--whdload-update**
+  * *WHDLoad scanning will check for .slave files requiring update and provide message on game loading.
+ 
+* **--create-autostartup**
+  * *Generate auto-startup script file for WHDLoad folders
+ 
+* **--no-filename-spaces**
+  * *Spaces in file-names will be replaced with underscores to assist on Android systems.
   
-  
+   
+
+
 ## hostconfig.uaetemp Options
   
   The following options can be set in the file `hostconfig.uaetemp` and will be inherited by all generated configurations, and exist to be set by the user in order to tailor the generated .uae configurations to the user's requirements.
@@ -67,6 +87,10 @@ CD32 KickStarts files are required for CD32 ISO/CUE scanning, and should be name
 * **gfx_framerate= [0 / 1]**
 	* *Select whether or not frameskip should be switched on (1) or off (0).*
 
+* **no_update / ignore_output_path / force_paths / rom_path**
+* ** / force_config_overwrite / whdload_update / create_autostartup / no_filename_spaces**
+
+	* *These command-line options can also be entered into hostconfig and will take priority*
 
 ## Installation
   
@@ -84,8 +108,8 @@ mv UAEConfigMaker-master .uaeconfigmaker
 ### Alternative Install to the RetroPie Menu
 ```
 cd /home/pi/RetroPie/retropiemenu/ 
-wget http://www.ultimateamiga.co.uk/HostedProjects/RetroPieAmiga/downloads/UAE%20Config%20Maker.sh 
-chmod +x "Auto-Amiga Install.sh"
+wget https://raw.githubusercontent.com/HoraceAndTheSpider/UAEConfigMaker/master/UAE%20Config%20Maker.sh
+chmod +x "UAE Config Maker.sh"
 ```
 
 ### Updating/Running:
