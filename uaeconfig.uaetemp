@@ -1,77 +1,72 @@
 config_description=<<fullgame>>
 config_hardware=true
 config_host=true
-config_version=2.8.1
-
-; original paths
+config_version=3.5.0
+; 
+; *** Unknown Options
+; 
+; *** Original paths
+; 
 pandora.rom_path=<<romdir>>
 pandora.floppy_path=<<inputdir>>Games_ADF/
 pandora.hardfile_path=<<inputdir>>Games_HDF/
 pandora.cd_path=<<inputdir>>Games_CD32/
-
-; Controller Config
+; 
+; *** Controller/Input Configuration
+; 
 joyport0=<<port0>>
 joyport0autofire=none
 joyport0mode=<<port0mode>>
-joyportname0=JOY2
-;joyportfriendlyname0=A SPEED-LINK Competition Pro
-
+; 
 joyport1=<<port1>>
 joyport1autofire=none
 joyport1mode=<<port1mode>>
-joyportname1=JOY1
-;joyportfriendlyname1=A SPEED-LINK Competition Pro
+; 
+joyport2=<<port2>>
+; 
+joyport2=<<port3>>
+; 
+<<custom_controls>>
+;
 
-input.config=0
+key_for_menu=<<menukey>>
+key_for_quit=<<quitkey>>
+amiberry_use_retroarch_quit=<<retroarch_quit>>
+amiberry_use_retroarch_menu=<<retroarch_menu>>
+amiberry_use_retroarch_reset=<<retroarch_reset>>
 input.joymouse_speed_analog=2
 input.joymouse_speed_digital=10
-input.joymouse_deadzone=33
-input.joystick_deadzone=33
+input.joymouse_deadzone=<<deadzone>>
+input.joystick_deadzone=<<deadzone>>
 input.analog_joystick_multiplier=15
 input.analog_joystick_offset=-1
 input.mouse_speed=100
 input.autofire_speed=2496
-input.autofire=0
-
-; host-specific
-key_for_menu=<<menukey>>
-key_for_quit=<<quitkey>>
-button_for_menu=<<menubutton>>
-button_for_quit=<<quitbutton>>
-
+kbd_lang=us
+; 
+; *** Host-Specific
+; 
 pandora.cpu_speed=600
-pandora.joy_conf=0
-pandora.joy_port=0
-pandora.stylus_offset=0
+pandora.hide_idle_led=0
 pandora.tap_delay=10
-pandora.custom_controls=0
-pandora.custom_dpad=0
-pandora.custom_up=-5
-pandora.custom_down=-6
-pandora.custom_left=-7
-pandora.custom_right=-8
-pandora.custom_a=-3
-pandora.custom_b=-4
-pandora.custom_x=0
-pandora.custom_y=0
-pandora.custom_l=0
-pandora.custom_r=0
-
-pandora.move_x=<<offset_x>>
-pandora.move_y=<<offset_y>>
-
-pandora.button1=2
-pandora.button2=1
-pandora.autofire_button=3
-
-pandora.jump=-1
-
-; Common
+gfx_correct_aspect=0
+gfx_fullscreen_ratio=100
+show_leds=false
+kbd_led_num=-1
+kbd_led_scr=-1
+kbd_led_cap=-1
+; 
+; *** Common / Paths
+; 
 use_gui=no
 kickstart_rom_file=$(FILE_PATH)/<<kickstart>>
 kickstart_ext_rom_file=$(FILE_PATH)/<<extkickstart>>
-
-; Floppy Drives
+ide_mb_rom_file=:ENABLED
+flash_file=
+cart_file=
+; 
+; *** Floppy Drives
+; 
 ;floppy0=<<inputdir>><<diskpath0>>/<<disk0>>
 ;floppy0type=<<disktype0>>
 ;floppy1=<<inputdir>><<diskpath1>>/<<disk1>>
@@ -82,22 +77,25 @@ kickstart_ext_rom_file=$(FILE_PATH)/<<extkickstart>>
 ;floppy3type=<<disktype3>>
 nr_floppies=<<totaldisks>>
 floppy_speed=<<floppyspeed>>
-
-; Hard Drives
+; 
+; *** Hard Drives
+; 
 filesystem2=rw,DH0:DH0:<<inputdir>>_BootWHD/,10
 uaehf1=dir,rw,DH0:DH0:<<inputdir>>_BootWHD/,10
-
 filesystem2=rw,DH1:games:<<inputdir>><<hdpath>>/<<game>>/,0
 uaehf0=dir,rw,DH1:games:<<inputdir>><<hdpath>>/<<game>>/,0
-
 filesystem2=rw,DH2:HDFGame:<<inputdir>><<hdpath>>/<<game>>,32,1,2,512,50,,uae
 hardfile2=dir,rw,DH2:HDFGame:<<inputdir>><<hdpath>>/<<game>>,32,1,2,512,50,,uae
 
-; CD32
+; 
+; *** CD / CD32
+; 
+cd_speed=100
 cd32cd=<<cd32mode>>
 cdimage0=<<inputdir>><<hdpath>>/<<game>>/<<game>>.cue,image
-
-; Display / Screen Setup
+; 
+; *** Display / Screen Setup
+; 
 gfx_framerate=<<frameskip>>
 gfx_width=<<screenwidth>>
 gfx_height=<<screenheight>>
@@ -105,57 +103,65 @@ gfx_width_windowed=<<screenwidth>>
 gfx_height_windowed=<<screenheight>>
 gfx_width_fullscreen=<<screenwidth>>
 gfx_height_fullscreen=<<screenheight>>
+gfx_vsync=autoswitch
 gfx_lores=false
 gfx_resolution=hires
 gfx_correct_aspect=<<43aspect>>
-ntsc=<<ntsc>>
-
-; CPU options
-cpu_type=<<cputype>>
-cpu_speed=<<cpuspeed>>
-finegrain_cpu_speed=<<clockspeed>>
-;cpu_model=<<cpumodel>>
-cpu_compatible=<<cpucompatible>>
-cpu_24bit_addressing=<<24bitaddress>>
-cachesize=<<jitcache>>
-cpu_cycle_exact=<<cycleexact>>
-
-; Memory 
-a1000ram=false
-chipmem_size=<<chipmem>>
-bogomem_size=0
-fastmem_size=<<fastmem>>
-z3mem_size=<<z3mem>>
-z3mem_start=0x1000000
-
-; Chipset 
-chipset=<<chipset>>
-chipset_refreshrate=0.000000
-collision_level=<<spritecollision>>
-fast_copper=<<fastcopper>>
-immediate_blits=<<immediateblitter>>
-
-rtg_nocustom=true
-rtg_modes=0x502
-gfxcard_size=0
-gfxcard_type=ZorroIII
-
-; Misc
-bsdsocket_emu=<<bsdsocket>>
-show_leds=false
+gfx_fullscreen_ratio=100
 kbd_led_num=-1
 kbd_led_scr=-1
 kbd_led_cap=-1
-
-; Sound
+ntsc=<<ntsc>>
+; 
+; *** CPU options
+; 
+finegrain_cpu_speed=<<clockspeed>>
+cpu_type=<<cputype>>
+cpu_speed=<<cpuspeed>>
+cpu_model=<<cpumodel>>
+cpu_compatible=<<cpucompatible>>
+cpu_24bit_addressing=<<24bitaddress>>
+fpu_strict=false
+cachesize=<<jitcache>>
+;cpu_cycle_exact=<<cycleexact>>
+; 
+; *** Memory
+; 
+chipmem_size=<<chipmem>>
+fastmem_size=<<fastmem>>
+a3000mem_size=0
+mbresmem_size=0
+z3mapping=real
+z3mem_size=<<z3mem>>
+z3mem_start=0x40000000
+bogomem_size=0
+rtg_modes=0x502
+; 
+; *** Chipset
+; 
+chipset=<<chipset>>
+chipset_refreshrate=50.000000
+collision_level=<<spritecollision>>
+chipset_compatible=Generic
+fatgary=0
+ramsey=15
+immediate_blits=<<immediateblitter>>
+fast_copper=<<fastcopper>>
+; 
+; *** Sound Options
+; 
 sound_output=exact
 sound_channels=stereo
-sound_stereo_separation=3
+sound_stereo_separation=<<stereo_seperation>>
 sound_stereo_mixing_delay=0
 sound_frequency=44100
-sound_interpol=crux
-sound_filter=emulated
+sound_interpol=none
+sound_filter= emulated
 sound_filter_type=standard
 sound_volume_cd=20
 sound_auto=yes
 synchronize_clock=yes
+; 
+; *** Misc. Options
+; 
+bsdsocket_emu=<<bsdsocket>>
