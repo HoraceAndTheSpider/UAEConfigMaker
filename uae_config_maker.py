@@ -3,6 +3,7 @@ import glob
 import math
 import os
 import shutil
+import platform
 
 from utils import general_utils
 from utils import text_utils
@@ -124,20 +125,22 @@ def do_scan(input_directory, pathname,output_directory):
     count = 1
     skip_all = 0
 
+    # VARIOUS SETTINGS FROM HOST CONFIG ONLY
+    #
     # command line forcing of overwrite of files
     if FORCE_OVERWRITE is True:
         skip_all = 1
 
-    quit_button = find_host_option("button_for_quit")
-    menu_button = find_host_option("button_for_menu")
+#    quit_button = find_host_option("button_for_quit")#
+#    menu_button = find_host_option("button_for_menu")
     quit_key = find_host_option("key_for_quit")
     menu_key = find_host_option("key_for_menu")
     
-    if quit_button == "":
-        quit_button = -1
+#    if quit_button == "":
+#        quit_button = -1
 
-    if menu_button == "":
-        menu_button = -1
+#    if menu_button == "":
+#        menu_button = -1
 
     if quit_key == "":
         quit_key = 0
@@ -146,6 +149,38 @@ def do_scan(input_directory, pathname,output_directory):
         menu_key = 293
 
 
+
+    # sort out the input items
+    input_1 = find_host_option("controller_1")
+    input_2 = find_host_option("controller_2")
+    input_3 = find_host_option("controller_3")
+    input_4 = find_host_option("controller_4")
+    
+    if input_1 == "":
+        input_1 = "joy1"
+
+    if input_2 == "":
+        input_2 = "joy2"
+        
+    if input_3 == "":
+        input_3 = "None"
+        
+    if input_4 == "":
+        input_4 = "None"
+
+    # retroarch toggles
+    
+    retroarch_quit = find_host_option("retroarch_quit")
+    retroarch_menu = find_host_option("retroarch_menu")
+    retroarch_reset = find_host_option("retroarch_reset")
+
+    if retroarch_quit == "":
+        retroarch_quit = "True"
+    if retroarch_menu == "":
+        retroarch_menu = "True"
+    if retroarch_reset == "":
+        retroarch_reset = "False"
+    
     # cycle through all folders / files
     for file in glob.glob(input_directory + pathname + "/*"):
 
@@ -204,11 +239,10 @@ def do_scan(input_directory, pathname,output_directory):
 
             # standard 'expand name' for WHDLoad folders
             if scan_mode == "WHDLoadHDF":
-               full_game_name = text_utils.make_full_name(this_file)
-                               
-               if this_file.lower().endswith(".hdf"):
-                    full_game_name = text_utils.left(this_file, len(this_file) - 4)
 
+               full_game_name = text_utils.make_full_name(text_utils.left(this_file, len(this_file) - 4))
+               full_game_name = full_game_name + " [WHDLoad HDF]"
+               
             # there is an alternative name changing for TOSEC CD32 images....
             elif scan_mode == "CD32":
                 full_game_name = text_utils.make_full_cd32_name(this_file)
@@ -724,8 +758,12 @@ def do_scan(input_directory, pathname,output_directory):
 
                     config_text = config_text.replace("<<fullgame>>", full_game_name)
                     config_text = config_text.replace("<<hdpath>>", pathname)
-                    config_text = config_text.replace("<<quitbutton>>", str(quit_button))
-                    config_text = config_text.replace("<<menubutton>>", str(menu_button))
+ #                   config_text = config_text.replace("<<quitbutton>>", str(quit_button))
+#                    config_text = config_text.replace("<<menubutton>>", str(menu_button))
+
+                    config_text = config_text.replace("<<retroarch_quit>>", str(retroarch_quit))
+                    config_text = config_text.replace("<<retroarch_menu>>", str(retroarch_menu))
+                    config_text = config_text.replace("<<retroarch_reset>>", str(retroarch_reset))
 
                     config_text = config_text.replace("<<quitkey>>", str(quit_key))
                     config_text = config_text.replace("<<menukey>>", str(menu_key))
@@ -837,7 +875,6 @@ def do_scan(input_directory, pathname,output_directory):
 
                         # controls (TO BE WORKED ON)
                     if use_mouse1 is True:
-                        config_text = config_text.replace("pandora.custom_dpad=1", pathname)
                         config_text = config_text.replace("<<port0>>", "mouse")
                         config_text = config_text.replace("<<port0mode>>", "mousenowheel")
 
@@ -856,6 +893,9 @@ def do_scan(input_directory, pathname,output_directory):
                         config_text = config_text.replace("<<port1>>", "joy1")
                         config_text = config_text.replace("<<port1mode>>", "djoy")
 
+                    config_text = config_text.replace("<<port2>>", input_3)
+                    config_text = config_text.replace("<<port3>>", input_4)
+                    
                     # save out the config changes
                     text_file = open(config_file, "w")
                     text_file.write(config_text)
@@ -963,7 +1003,7 @@ def do_scan_base(inputdir,outputdir):
 print()
 print(
     FontColours.BOLD + FontColours.OKBLUE + "HoraceAndTheSpider" + FontColours.ENDC + "'s " + FontColours.BOLD +
-    "UAE Configuration Maker" + FontColours.ENDC + FontColours.OKGREEN + " (2.3)" + FontColours.ENDC + " | " + "" +
+    "UAE Configuration Maker" + FontColours.ENDC + FontColours.OKGREEN + " (3.0)" + FontColours.ENDC + " | " + "" +
     FontColours.FAIL + "www.ultimateamiga.co.uk" + FontColours.ENDC)
 print()
 
@@ -1024,15 +1064,15 @@ parser.add_argument('--no-filename-spaces',  # command line argument
                     help="Replace 'spaces' in output filenames with underscores"
                     )
 
-parser.add_argument('--whdload-update',  # command line argument
-                    action="store_true",  # if argument present, store value as True otherwise False
-                    help="Check for WHDLoad Updates"
-                    )
-
-parser.add_argument('--create-autostartup',  # command line argument
-                    action="store_true",  # if argument present, store value as True otherwise False
-                    help="Generate auto-startup file for WHDLoad folders"
-                    )
+#parser.add_argument('--whdload-update',  # command line argument
+#                    action="store_true",  # if argument present, store value as True otherwise False
+#                    help="Check for WHDLoad Updates"
+#                    )
+#
+#parser.add_argument('--create-autostartup',  # command line argument
+#                    action="store_true",  # if argument present, store value as True otherwise False
+#                    help="Generate auto-startup file for WHDLoad folders"
+#                    )
 
 # Parse all command line arguments
 args = parser.parse_args()
@@ -1045,8 +1085,8 @@ if find_host_option("scandir") !="":
     inputdirs = [find_host_option("scandir")]
 
 # Dom's special directory override :P
-#if platform.system() == "Darwin":
-#    inputdirs = ["/Users/horaceandthespider/Documents/Gaming/AmigaWHD/WorkingFolder2/Test/"]
+if platform.system() == "Darwin":
+    inputdirs = ["/Users/horaceandthespider/Documents/Gaming/AmigaWHD/WorkingFolder2/Test/"]
 
 # Check Directories are valid
 inputdirs = general_utils.check_inputdirs(inputdirs)
