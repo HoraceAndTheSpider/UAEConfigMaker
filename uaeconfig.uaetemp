@@ -24,7 +24,7 @@ joyport1mode=<<port1mode>>
 ; 
 joyport2=<<port2>>
 ; 
-joyport2=<<port3>>
+joyport3=<<port3>>
 ; 
 <<custom_controls>>
 ;
@@ -118,7 +118,7 @@ ntsc=<<ntsc>>
 finegrain_cpu_speed=<<clockspeed>>
 cpu_type=<<cputype>>
 cpu_speed=<<cpuspeed>>
-cpu_model=<<cpumodel>>
+;cpu_model=<<cpumodel>>
 cpu_compatible=<<cpucompatible>>
 cpu_24bit_addressing=<<24bitaddress>>
 fpu_strict=false

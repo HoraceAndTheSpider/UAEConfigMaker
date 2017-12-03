@@ -272,6 +272,10 @@ def do_scan(input_directory, pathname,output_directory):
 
             elif full_game_name.find("AGA") > -1:
                 machine_type = "A1200/020"
+                
+            elif scan_mode == "WHDLoad" and full_game_name.find("CD32") > -1:
+                machine_type = "A1200/020"
+                
             else:
                 machine_type = "A600+"
 
@@ -481,7 +485,7 @@ def do_scan(input_directory, pathname,output_directory):
                     kickstart_ext = ""
                     chip_ram = 4
                     fast_ram = 8
-                    clock_speed = 14
+                    clock_speed = 0
 
                 elif machine_type == "A1200":
                     chipset = "AGA"
@@ -618,6 +622,7 @@ def do_scan(input_directory, pathname,output_directory):
                 _24_bit_address = not check_list("CPU_No24BitAddress.txt", this_file)
                 compatible_cpu = check_list("CPU_Compatible.txt", this_file)
                 cycle_exact = check_list("CPU_CycleExact.txt", this_file)
+                
                 use_jit = not check_list("CPU_NoJIT.txt", this_file)
                 # use_jit =ChexList("CPU_ForceJIT.txt",this_file)
 
@@ -895,6 +900,26 @@ def do_scan(input_directory, pathname,output_directory):
 
                     config_text = config_text.replace("<<port2>>", input_3)
                     config_text = config_text.replace("<<port3>>", input_4)
+
+
+                    # put the text from the file into a string
+
+                    custom_file = "customcontrols/" + full_game_name + ".controls"
+                    custom_text = ""
+                    
+                    if os.path.isfile(custom_file) == True:
+
+                        # remove any items which are not amiberry custom settings
+                        with open(custom_file) as f:
+                            content = f.readlines()
+                        f.close()
+                        
+                        for this_line in content:
+                            if this_line.find("amiberry_custom") > -1:
+                                custom_text += this_line
+
+                    config_text = config_text.replace("<<custom_controls>>", custom_text)
+
                     
                     # save out the config changes
                     text_file = open(config_file, "w")
@@ -920,7 +945,7 @@ def do_scan(input_directory, pathname,output_directory):
                         if data_path !="": data_path += "/"
                         
                         autostart_text = 'CD "WHDLoadGame:"' + chr(10)
-                        autostart_text += 'WHDLOAD SLAVE="WHDLoadGame:' + this_slave.file_name
+                        autostart_text += 'WHDLOAD SLAVE="WHDLoadGame:' + this_slave.file_name +'"'
                         autostart_text += ' PRELOAD NOWRITECACHE NOREQ SPLASHDELAY=0'
                         autostart_text += ' data="WHDLoadGame:' + data_path +'"'
                         autostart_text += ' NOREQ >"WHDLoadGame:whdscript_debug"' + chr(10)
