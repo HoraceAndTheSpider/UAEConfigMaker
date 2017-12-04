@@ -149,7 +149,6 @@ def do_scan(input_directory, pathname,output_directory):
         menu_key = 293
 
 
-
     # sort out the input items
     input_1 = find_host_option("controller_1")
     input_2 = find_host_option("controller_2")
@@ -168,6 +167,15 @@ def do_scan(input_directory, pathname,output_directory):
     if input_4 == "":
         input_4 = "None"
 
+    deadzone = find_host_option("joymouse_deadzone")
+    if deadzone == "":
+        deadzone = "33"
+
+    stereo_seperation = find_host_option("stereo_seperation")
+    if stereo_seperation == "":
+        stereo_seperation = "7"
+
+
     # retroarch toggles
     
     retroarch_quit = find_host_option("retroarch_quit")
@@ -180,6 +188,9 @@ def do_scan(input_directory, pathname,output_directory):
         retroarch_menu = "True"
     if retroarch_reset == "":
         retroarch_reset = "False"
+
+
+
     
     # cycle through all folders / files
     for file in glob.glob(input_directory + pathname + "/*"):
@@ -835,6 +846,7 @@ def do_scan(input_directory, pathname,output_directory):
                         config_text = config_text.replace("<<diskpath0>>", pathname)
                         config_text = config_text.replace("<<disk0>>", this_file.replace(".hdf", "") + "_savedisk.adf")
                         config_text = config_text.replace("<<disktype0>>", "0")
+                        
                     # WHDLoad HDF scanning
                     elif scan_mode == "WHDLoadHDF":
 
@@ -900,7 +912,8 @@ def do_scan(input_directory, pathname,output_directory):
 
                     config_text = config_text.replace("<<port2>>", input_3)
                     config_text = config_text.replace("<<port3>>", input_4)
-
+                    config_text = config_text.replace("<<deadzone>>", deadzone)
+                    config_text = config_text.replace("<<stereo_seperation>>", stereo_seperation)
 
                     # put the text from the file into a string
 
