@@ -851,19 +851,18 @@ def do_scan(input_directory, pathname,output_directory):
                     elif scan_mode == "WHDLoadHDF":
 
                         # remove the file-system (folder) DH1:
-                        config_text = config_text.replace("uaehf0=dir,rw,DH1", ";uaehf0=dir,rw,DH1")
+                        config_text = config_text.replace("uaehf1=dir,rw,DH1", ";uaehf1=dir,rw,DH1")
                         config_text = config_text.replace("filesystem2=rw,DH1", ";filesystem2=rw,DH1")
 
                         # adjust parameters for DH2 to become DH1:
-                        config_text = config_text.replace(",32,1,2,512,50,,uae", ",0,1,2,512,50,,uae")
-                        config_text = config_text.replace("filesystem2=rw,DH2:HDFGame", "filesystem2=rw,DH1:games")
-                        config_text = config_text.replace("hardfile2=dir,rw,DH2:HDFGame", "hardfile2=dir,rw,DH1:games")
-
-                               
+##                        config_text = config_text.replace(",32,1,2,512,50,,uae", ",0,1,2,512,50,,uae")
+                        config_text = config_text.replace("uaehf1=hdf,rw,DH2:HDFGame", "uaehf1=hdf,rw,DH1:games")
+                        config_text = config_text.replace("hardfile2=dir,rw,DH2:HDFGame", "hardfile2=dir,rw,games")
+     
                     # disable the HDF parameter
                     else:
                         config_text = config_text.replace("hardfile2=", ";hardfile2=")
-                        config_text = config_text.replace("filesystem2=rw,DH2", ";filesystem2=rw,DH2")
+                        config_text = config_text.replace("uaehf1=hdf,rw,DH2:HDFGame", ";uaehf1=hdf,rw,DH2:HDFGame")
 
                     for i in range(disk_nr, 4):
                         config_text = config_text.replace("<<diskpath" + str(i) + ">>", pathname)
