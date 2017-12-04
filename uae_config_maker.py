@@ -1221,9 +1221,22 @@ else:
     for filename in glob.glob('settings/*.txt'):
         update_utils.download_update(filename,"")
 
-    # do similar for
-    update_utils.download_update("uaeconfig.uaetemp","")
+    # do similar for main template
+ #   update_utils.download_update("uaeconfig.uaetemp","")
 
+    # lets download all of the custom configs
+    if os.path.isfile("settings/Control_Custom_Gamelist.txt") == True:
+        
+        # remove any items which are not amiberry custom settings
+        with open("settings/Control_Custom_Gamelist.txt") as f:
+             content = f.readlines()
+             content = [x.strip() for x in content]
+        f.close()
+                            
+        for this_line in content:
+            update_utils.download_update("customcontrols/" + this_line,"")
+
+    
 
 if os.path.isfile("uaeconfig.uaetemp") is False:
     print(
