@@ -856,13 +856,13 @@ def do_scan(input_directory, pathname,output_directory):
 
                         # adjust parameters for DH2 to become DH1:
 ##                        config_text = config_text.replace(",32,1,2,512,50,,uae", ",0,1,2,512,50,,uae")
-                        config_text = config_text.replace("uaehf1=hdf,rw,DH2:HDFGame", "uaehf1=hdf,rw,DH1:games")
+                        config_text = config_text.replace("uaehf1=hdf,rw,DH2:HDFGame:", "uaehf1=hdf,rw,DH1:games:")
                         config_text = config_text.replace("hardfile2=dir,rw,DH2:HDFGame", "hardfile2=dir,rw,games")
      
                     # disable the HDF parameter
                     else:
                         config_text = config_text.replace("hardfile2=", ";hardfile2=")
-                        config_text = config_text.replace("uaehf1=hdf,rw,DH2:HDFGame", ";uaehf1=hdf,rw,DH2:HDFGame")
+                        config_text = config_text.replace("uaehf1=hdf,rw,DH2:HDFGame:", ";uaehf1=hdf,rw,DH2:HDFGame:")
 
                     for i in range(disk_nr, 4):
                         config_text = config_text.replace("<<diskpath" + str(i) + ">>", pathname)
