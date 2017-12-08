@@ -111,6 +111,9 @@ kbd_led_num=-1
 kbd_led_scr=-1
 kbd_led_cap=-1
 ntsc=<<ntsc>>
+amiberry.move_x=<<offset_x>>
+amiberry.move_y=<<offset_y>>
+
 ; 
 ; *** CPU options
 ; 

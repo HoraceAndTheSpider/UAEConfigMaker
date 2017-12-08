@@ -36,6 +36,17 @@ def value_list(in_file, game_name):
 
 
 def check_list(in_file, game_name):
+
+    temp_game = game_name
+
+    if text_utils.right(temp_game.lower(),4) == ".iso" or text_utils.right(temp_game.lower(),4) == ".cue":
+        temp_game = text_utils.left(temp_game,len(temp_game)-4)
+        
+    if text_utils.right(temp_game.lower(),4) == ".adf" or text_utils.right(temp_game.lower(),4) == ".hdf":
+        temp_game = text_utils.left(temp_game,len(temp_game)-4)
+
+
+    
     file_name = "settings/" + in_file
 
     if os.path.isfile(file_name) is False:
@@ -49,7 +60,7 @@ def check_list(in_file, game_name):
     answer = False
 
     for this_line in content:
-        if this_line == game_name:
+        if this_line == temp_game:
             answer = True
             break
 
