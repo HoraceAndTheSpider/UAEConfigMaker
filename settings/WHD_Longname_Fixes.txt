@@ -622,6 +622,7 @@ Street Racer [CD32]|Street Racer (AmigaCD)
 Project XSECD32|Project X - Special Edition [CD32]
 A CSYSDemo [AGA]|ACSYS (Demo) [AGA]
 Alien Breed 3 D 2 [AGA]|Alien Breed 3D 2 - The Killing Grounds [AGA]
+Alien Breed 3 D 2 [AGA] 4MB|Alien Breed 3D 2 - The Killing Grounds [4MB] [AGA]
 Alien Breed 3 DAGA Fixed|Alien Breed 3D [AGA] (Fixed)
 Alien Breed 3 DAGA|Alien Breed 3D [AGA]
 Alien Breed TA [AGA]|Alien Breed Tower Assault [AGA]
@@ -629,7 +630,7 @@ Alien Breed TA 11 [AGA]|Alien Breed Tower Assault (v1.1) [AGA]
 Charlie JCool [AGA]|Charlie J Cool [AGA]
 Dennis [AGA] Desktop Dynamite|Dennis [AGA] (Desktop Dynamite)
 Dream Web [AGA]|DreamWeb [AGA]
-James Pond 2 [AGA]|James Pond 2 - Robocod[AGA]
+James Pond 2 [AGA]|James Pond 2 - Robocod [AGA]
 James Pond 3 [AGA]|James Pond 3 - Operation Starfish [AGA]
 Kick Off 3 EC_ [AGA]|Kick Off 3 - European Challenge [AGA]
 Leading Lap MPVAGA|Leading Lap (MPV) [AGA]
