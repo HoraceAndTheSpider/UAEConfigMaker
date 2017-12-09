@@ -464,7 +464,7 @@ def do_scan(input_directory, pathname,output_directory):
                         #continue
                             
 # ===================
-
+                
                 #  check other parameters
                 #  hardware options
 
@@ -835,6 +835,8 @@ def do_scan(input_directory, pathname,output_directory):
                     config_text = config_text.replace("<<extkickstart>>", kickstart_ext)
                     config_text = config_text.replace("<<cputype>>", a_cpu)
                     config_text = config_text.replace("<<cpuspeed>>", a_cpu_speed)
+                    if a_cpu_speed == "real":
+                        config_text = config_text.replace("cpu_speed=real", ";cpu_speed=real")                        
 
                     config_text = config_text.replace("<<clockspeed>>", str(clock_speed))
                     config_text = config_text.replace("<<cpucompatible>>", str(bool(0 - compatible_cpu)))
@@ -857,6 +859,19 @@ def do_scan(input_directory, pathname,output_directory):
                         config_text = config_text.replace("<<diskpath0>>", pathname)
                         config_text = config_text.replace("<<disk0>>", this_file.replace(".hdf", "") + "_savedisk.adf")
                         config_text = config_text.replace("<<disktype0>>", "0")
+
+                    if scan_mode == "HDF":
+
+                        # remove the boot drive-system (folder) DH0:
+                        config_text = config_text.replace("uaehf0=dir,rw,DH0:DH0:", ";uaehf0=dir,rw,DH0:DH0:")
+                        config_text = config_text.replace("filesystem2=rw,DH0:DH0:", ";filesystem2=rw,DH0:DH0:")
+                        
+                        # remove the file-system (folder) DH1:
+                        config_text = config_text.replace("uaehf1=dir,rw,DH1", ";uaehf1=dir,rw,DH1")
+                        config_text = config_text.replace("filesystem2=rw,DH1", ";filesystem2=rw,DH1")
+
+                        config_text = config_text.replace("uaehf1=hdf,rw,DH2", "uaehf0=hdf,rw,DH0")
+                        config_text = config_text.replace("hardfile2=rw,DH2", "hardfile2=rw,DH0")                        
                         
                     # WHDLoad HDF scanning
                     elif scan_mode == "WHDLoadHDF":
@@ -866,14 +881,14 @@ def do_scan(input_directory, pathname,output_directory):
                         config_text = config_text.replace("filesystem2=rw,DH1", ";filesystem2=rw,DH1")
 
                         # adjust parameters for DH2 to become DH1:
-##                        config_text = config_text.replace(",32,1,2,512,50,,uae", ",0,1,2,512,50,,uae")
-                        config_text = config_text.replace("uaehf1=hdf,rw,DH2:HDFGame:", "uaehf1=hdf,rw,DH1:games:")
-                        config_text = config_text.replace("hardfile2=dir,rw,DH2:HDFGame", "hardfile2=dir,rw,games")
+                        config_text = config_text.replace(",32,1,2,512,50,,uae", ",32,1,2,512,-50,,uae")
+                        config_text = config_text.replace("uaehf1=hdf,rw,DH2:", "uaehf1=hdf,rw,DH1:")
+                        config_text = config_text.replace("hardfile2=rw,DH2", "hardfile2=rw,DH1")
      
                     # disable the HDF parameter
                     else:
                         config_text = config_text.replace("hardfile2=", ";hardfile2=")
-                        config_text = config_text.replace("uaehf1=hdf,rw,DH2:HDFGame:", ";uaehf1=hdf,rw,DH2:HDFGame:")
+                        config_text = config_text.replace("uaehf1=hdf,rw,DH2:", ";uaehf1=hdf,rw,DH2:")
 
                     for i in range(disk_nr, 4):
                         config_text = config_text.replace("<<diskpath" + str(i) + ">>", pathname)
@@ -895,6 +910,7 @@ def do_scan(input_directory, pathname,output_directory):
                         config_text = config_text.replace("uaehf1=", ";uaehf1=")
                         config_text = config_text.replace("uaehf0=", ";uaehf0=")
                         config_text = config_text.replace("filesystem2=", ";filesystem2=")
+                        config_text = config_text.replace("hardfile2=", ";hardfile2=")
                         config_text = config_text.replace("<<cd32mode>>", "1")
                     else:
                         config_text = config_text.replace("<<cd32mode>>", "0")
