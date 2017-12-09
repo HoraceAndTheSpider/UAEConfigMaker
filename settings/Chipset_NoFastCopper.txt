@@ -4,6 +4,7 @@ DisposableHero
 DisposableHeroFast
 EmpireSoccer94
 Heimdall
+HollywoodPokerPro
 Hostages
 Humans
 HumansCD32
