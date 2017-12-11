@@ -11,8 +11,11 @@ except:
 
 def download_update(in_file,put_file):
     # get_file = "http://www.djcresswell.com/RetroPie/ConfigMaker/" +infile
-    get_file = "https://raw.githubusercontent.com/HoraceAndTheSpider/UAEConfigMaker/master/" + in_file
+    get_file = "https://raw.githubusercontent.com/HoraceAndTheSpider/UAEConfigMaker/develop/" + in_file
+    get_file = urllib.parse.quote(get_file)
+    get_file = str.replace(get_file,"https%3A","https:")
 
+    
     if put_file == "":
         put_file = "" + in_file
 
@@ -42,7 +45,5 @@ def run_updater():
     download_update("whdload/whdload_slave.py","")
     download_update("utils/general_utils.py","")
     download_update("utils/text_utils.py","")
-    download_update("utils/update_utils.py","")
-
-    
+    download_update("utils/update_utils.py","")    
     return

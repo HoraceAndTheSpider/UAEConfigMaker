@@ -3,6 +3,7 @@ import glob
 import math
 import os
 import shutil
+import platform
 
 from utils import general_utils
 from utils import text_utils
@@ -11,7 +12,41 @@ from utils.text_utils import FontColours
 from whdload import whdload_slave
 
 
+def value_list(in_file, game_name):
+    file_name = "settings/" + in_file
+
+    if os.path.isfile(file_name) is False:
+        return 0
+
+    with open(file_name) as f:
+        content = f.readlines()
+        content = [x.strip() for x in content]
+    f.close()
+
+    answer = 0
+
+    for this_line in content:
+        if not this_line == "":
+            this_word = this_line.split()
+            if this_word[0] == game_name:
+                answer = this_word[1]
+                break
+
+    return answer
+
+
 def check_list(in_file, game_name):
+
+    temp_game = game_name
+
+    if text_utils.right(temp_game.lower(),4) == ".iso" or text_utils.right(temp_game.lower(),4) == ".cue":
+        temp_game = text_utils.left(temp_game,len(temp_game)-4)
+        
+    if text_utils.right(temp_game.lower(),4) == ".adf" or text_utils.right(temp_game.lower(),4) == ".hdf":
+        temp_game = text_utils.left(temp_game,len(temp_game)-4)
+
+
+    
     file_name = "settings/" + in_file
 
     if os.path.isfile(file_name) is False:
@@ -25,7 +60,7 @@ def check_list(in_file, game_name):
     answer = False
 
     for this_line in content:
-        if this_line == game_name:
+        if this_line == temp_game:
             answer = True
             break
 
@@ -101,20 +136,22 @@ def do_scan(input_directory, pathname,output_directory):
     count = 1
     skip_all = 0
 
+    # VARIOUS SETTINGS FROM HOST CONFIG ONLY
+    #
     # command line forcing of overwrite of files
     if FORCE_OVERWRITE is True:
         skip_all = 1
 
-    quit_button = find_host_option("button_for_quit")
-    menu_button = find_host_option("button_for_menu")
+#    quit_button = find_host_option("button_for_quit")#
+#    menu_button = find_host_option("button_for_menu")
     quit_key = find_host_option("key_for_quit")
     menu_key = find_host_option("key_for_menu")
     
-    if quit_button == "":
-        quit_button = -1
+#    if quit_button == "":
+#        quit_button = -1
 
-    if menu_button == "":
-        menu_button = -1
+#    if menu_button == "":
+#        menu_button = -1
 
     if quit_key == "":
         quit_key = 0
@@ -123,6 +160,49 @@ def do_scan(input_directory, pathname,output_directory):
         menu_key = 293
 
 
+    # sort out the input items
+    input_1 = find_host_option("controller_1")
+    input_2 = find_host_option("controller_2")
+    input_3 = find_host_option("controller_3")
+    input_4 = find_host_option("controller_4")
+    
+    if input_1 == "":
+        input_1 = "joy1"
+
+    if input_2 == "":
+        input_2 = "joy2"
+        
+    if input_3 == "":
+        input_3 = "None"
+        
+    if input_4 == "":
+        input_4 = "None"
+
+    deadzone = find_host_option("joymouse_deadzone")
+    if deadzone == "":
+        deadzone = "33"
+
+    stereo_seperation = find_host_option("stereo_seperation")
+    if stereo_seperation == "":
+        stereo_seperation = "7"
+
+
+    # retroarch toggles
+    
+    retroarch_quit = find_host_option("retroarch_quit")
+    retroarch_menu = find_host_option("retroarch_menu")
+    retroarch_reset = find_host_option("retroarch_reset")
+
+    if retroarch_quit == "":
+        retroarch_quit = "True"
+    if retroarch_menu == "":
+        retroarch_menu = "True"
+    if retroarch_reset == "":
+        retroarch_reset = "False"
+
+
+
+    
     # cycle through all folders / files
     for file in glob.glob(input_directory + pathname + "/*"):
 
@@ -181,11 +261,10 @@ def do_scan(input_directory, pathname,output_directory):
 
             # standard 'expand name' for WHDLoad folders
             if scan_mode == "WHDLoadHDF":
-               full_game_name = text_utils.make_full_name(this_file)
-                               
-               if this_file.lower().endswith(".hdf"):
-                    full_game_name = text_utils.left(this_file, len(this_file) - 4)
 
+               full_game_name = text_utils.make_full_name(text_utils.left(this_file, len(this_file) - 4))
+               full_game_name = full_game_name + " [WHDLoad HDF]"
+               
             # there is an alternative name changing for TOSEC CD32 images....
             elif scan_mode == "CD32":
                 full_game_name = text_utils.make_full_cd32_name(this_file)
@@ -215,6 +294,10 @@ def do_scan(input_directory, pathname,output_directory):
 
             elif full_game_name.find("AGA") > -1:
                 machine_type = "A1200/020"
+                
+            elif scan_mode == "WHDLoad" and full_game_name.find("CD32") > -1:
+                machine_type = "A1200/020"
+                
             else:
                 machine_type = "A600+"
 
@@ -381,7 +464,7 @@ def do_scan(input_directory, pathname,output_directory):
                         #continue
                             
 # ===================
-
+                
                 #  check other parameters
                 #  hardware options
 
@@ -424,7 +507,7 @@ def do_scan(input_directory, pathname,output_directory):
                     kickstart_ext = ""
                     chip_ram = 4
                     fast_ram = 8
-                    clock_speed = 14
+                    clock_speed = 0
 
                 elif machine_type == "A1200":
                     chipset = "AGA"
@@ -432,7 +515,7 @@ def do_scan(input_directory, pathname,output_directory):
                     kickstart = "kick30.rom"
                     kickstart_ext = ""
                     chip_ram = 4
-                    fast_ram = 0
+                    fast_ram = 8
                     clock_speed = 14
 
                 elif machine_type == "A1200/020":
@@ -441,7 +524,7 @@ def do_scan(input_directory, pathname,output_directory):
                     kickstart = "kick31.rom"
                     kickstart_ext = ""
                     chip_ram = 4
-                    fast_ram = 4
+                    fast_ram = 8
                     clock_speed = 14
 
                 elif machine_type == "A4000":
@@ -459,9 +542,17 @@ def do_scan(input_directory, pathname,output_directory):
                     kickstart = "cd32kick31.rom"
                     kickstart_ext = "cd32ext.rom"
                     chip_ram = 4
-                    fast_ram = 0
+                    fast_ram = 8
                     clock_speed = 14
 
+                elif machine_type == "A1200/32":
+                    chipset = "AGA"
+                    a_cpu = "68ec020"
+                    kickstart = "cd32kick31.rom"
+                    kickstart_ext = "cd32ext.rom"
+                    chip_ram = 4
+                    fast_ram = 8
+                    clock_speed = 14
 
                 # '======== MEMORY SETTINGS =======
                 # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -544,10 +635,16 @@ def do_scan(input_directory, pathname,output_directory):
                 if check_list("CPU_ClockSpeed_28.txt", this_file) is True:
                     clock_speed = 28
 
+                # ' cpu model 040
+                if check_list("CPU_040.txt", this_file) is True:
+                    a_cpu = "68040"
+                    _24_bit_address = False
+
                 # ' 24 bit addressing / compatible CPU / JIT Cache
                 _24_bit_address = not check_list("CPU_No24BitAddress.txt", this_file)
                 compatible_cpu = check_list("CPU_Compatible.txt", this_file)
                 cycle_exact = check_list("CPU_CycleExact.txt", this_file)
+                
                 use_jit = not check_list("CPU_NoJIT.txt", this_file)
                 # use_jit =ChexList("CPU_ForceJIT.txt",this_file)
 
@@ -555,15 +652,15 @@ def do_scan(input_directory, pathname,output_directory):
                 # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 # ' screen Y/X Offsets
 
-                screen_offset_y = 0
-                for Z in range(-16, 16):
-                    if check_list("Screen_OffsetY_" + str(Z) + ".txt", this_file) is True:
-                        screen_offset_y = Z
+                screen_offset_y = value_list("Screen_OffsetY.txt", this_file)
+                #for Z in range(-16, 16):
+                #    if check_list("Screen_OffsetY_" + str(Z) + ".txt", this_file) is True:
+                #        screen_offset_y = Z
 
-                screen_offset_x = 0
-                for Z in range(-16, 16):
-                    if check_list("Screen_OffsetX_" + str(Z) + ".txt", this_file) is True:
-                        screen_offset_x = Z
+                screen_offset_x = value_list("Screen_OffsetX.txt", this_file)
+                #for Z in range(-16, 16):
+                #    if check_list("Screen_OffsetX_" + str(Z) + ".txt", this_file) is True:
+                #        screen_offset_x = Z
 
                 # ' screen heights
                 screen_height = 240
@@ -583,7 +680,7 @@ def do_scan(input_directory, pathname,output_directory):
                     screen_height = 200
 
                 # ' screen widths
-                screen_width = 320
+                screen_width = 640
                 if check_list("Screen_Width_384.txt", this_file) is True:
                     screen_width = 384
                 if check_list("Screen_Width_352.txt", this_file) is True:
@@ -624,7 +721,7 @@ def do_scan(input_directory, pathname,output_directory):
                 # ' BSD Socket / Floppy Speed etc
 
                 use_bsd_socket = check_list("Misc_BSDSocket.txt", this_file)
-                floppy_speed = 800
+                floppy_speed = 400
                 disk = ["", "", "", ""]
 
                 if check_list("Floppy_Speed_100.txt", this_file) is True:
@@ -641,8 +738,7 @@ def do_scan(input_directory, pathname,output_directory):
                 # ' ....
 
                 # print("we are making a config ....")
-
-                    
+      
                 shutil.copyfile("uaeconfig.uaetemp", config_file)
 
                 if os.path.isfile(config_file) is False:
@@ -689,16 +785,20 @@ def do_scan(input_directory, pathname,output_directory):
 
                     config_text = config_text.replace("<<fullgame>>", full_game_name)
                     config_text = config_text.replace("<<hdpath>>", pathname)
-                    config_text = config_text.replace("<<quitbutton>>", str(quit_button))
-                    config_text = config_text.replace("<<menubutton>>", str(menu_button))
+ #                   config_text = config_text.replace("<<quitbutton>>", str(quit_button))
+#                    config_text = config_text.replace("<<menubutton>>", str(menu_button))
+
+                    config_text = config_text.replace("<<retroarch_quit>>", str(retroarch_quit))
+                    config_text = config_text.replace("<<retroarch_menu>>", str(retroarch_menu))
+                    config_text = config_text.replace("<<retroarch_reset>>", str(retroarch_reset))
 
                     config_text = config_text.replace("<<quitkey>>", str(quit_key))
                     config_text = config_text.replace("<<menukey>>", str(menu_key))
 
                     # screens
                     config_text = config_text.replace("<<screenheight>>", str(screen_height))
-                    if screen_width < 321:
-                        screen_width *= 2
+                    if screen_width < 320:
+                        screen_width == 640
                     config_text = config_text.replace("<<screenwidth>>", str(screen_width))
                     config_text = config_text.replace("<<offset_y>>", str(screen_offset_y))
                     config_text = config_text.replace("<<offset_x>>", str(screen_offset_x))
@@ -721,16 +821,22 @@ def do_scan(input_directory, pathname,output_directory):
                     config_text = config_text.replace("<<immediateblitter>>", str(bool(0 - immediate_blits)))
 
                     # cpu
+                    if a_cpu_speed == "max":
+                        config_text = config_text.replace("finegrain_cpu_speed=", ";finegrain_cpu_speed=")
+                    else:
+                        if clock_speed == 14:
+                            clock_speed = 1024
+                        elif clock_speed == 28:
+                            clock_speed = 128
+                        else:
+                            clock_speed = 0
+
                     config_text = config_text.replace("<<kickstart>>", kickstart)
                     config_text = config_text.replace("<<extkickstart>>", kickstart_ext)
                     config_text = config_text.replace("<<cputype>>", a_cpu)
                     config_text = config_text.replace("<<cpuspeed>>", a_cpu_speed)
-                    if clock_speed == 14:
-                        clock_speed = 1024
-                    elif clock_speed == 28:
-                        clock_speed = 128
-                    else:
-                        clock_speed = 0
+                    if a_cpu_speed == "real":
+                        config_text = config_text.replace("cpu_speed=real", ";cpu_speed=real")                        
 
                     config_text = config_text.replace("<<clockspeed>>", str(clock_speed))
                     config_text = config_text.replace("<<cpucompatible>>", str(bool(0 - compatible_cpu)))
@@ -753,23 +859,36 @@ def do_scan(input_directory, pathname,output_directory):
                         config_text = config_text.replace("<<diskpath0>>", pathname)
                         config_text = config_text.replace("<<disk0>>", this_file.replace(".hdf", "") + "_savedisk.adf")
                         config_text = config_text.replace("<<disktype0>>", "0")
+
+                    if scan_mode == "HDF":
+
+                        # remove the boot drive-system (folder) DH0:
+                        config_text = config_text.replace("uaehf0=dir,rw,DH0:DH0:", ";uaehf0=dir,rw,DH0:DH0:")
+                        config_text = config_text.replace("filesystem2=rw,DH0:DH0:", ";filesystem2=rw,DH0:DH0:")
+                        
+                        # remove the file-system (folder) DH1:
+                        config_text = config_text.replace("uaehf1=dir,rw,DH1", ";uaehf1=dir,rw,DH1")
+                        config_text = config_text.replace("filesystem2=rw,DH1", ";filesystem2=rw,DH1")
+
+                        config_text = config_text.replace("uaehf1=hdf,rw,DH2", "uaehf0=hdf,rw,DH0")
+                        config_text = config_text.replace("hardfile2=rw,DH2", "hardfile2=rw,DH0")                        
+                        
                     # WHDLoad HDF scanning
                     elif scan_mode == "WHDLoadHDF":
 
                         # remove the file-system (folder) DH1:
-                        config_text = config_text.replace("uaehf0=dir,rw,DH1", ";uaehf0=dir,rw,DH1")
+                        config_text = config_text.replace("uaehf1=dir,rw,DH1", ";uaehf1=dir,rw,DH1")
                         config_text = config_text.replace("filesystem2=rw,DH1", ";filesystem2=rw,DH1")
 
                         # adjust parameters for DH2 to become DH1:
-                        config_text = config_text.replace(",32,1,2,512,50,,uae", ",0,1,2,512,50,,uae")
-                        config_text = config_text.replace("filesystem2=rw,DH2:HDFGame", "filesystem2=rw,DH1:games")
-                        config_text = config_text.replace("hardfile2=dir,rw,DH2:HDFGame", "hardfile2=dir,rw,DH1:games")
-
-                               
+                        config_text = config_text.replace(",32,1,2,512,50,,uae", ",32,1,2,512,-50,,uae")
+                        config_text = config_text.replace("uaehf1=hdf,rw,DH2:", "uaehf1=hdf,rw,DH1:")
+                        config_text = config_text.replace("hardfile2=rw,DH2", "hardfile2=rw,DH1")
+     
                     # disable the HDF parameter
                     else:
                         config_text = config_text.replace("hardfile2=", ";hardfile2=")
-                        config_text = config_text.replace("filesystem2=rw,DH2", ";filesystem2=rw,DH2")
+                        config_text = config_text.replace("uaehf1=hdf,rw,DH2:", ";uaehf1=hdf,rw,DH2:")
 
                     for i in range(disk_nr, 4):
                         config_text = config_text.replace("<<diskpath" + str(i) + ">>", pathname)
@@ -791,6 +910,7 @@ def do_scan(input_directory, pathname,output_directory):
                         config_text = config_text.replace("uaehf1=", ";uaehf1=")
                         config_text = config_text.replace("uaehf0=", ";uaehf0=")
                         config_text = config_text.replace("filesystem2=", ";filesystem2=")
+                        config_text = config_text.replace("hardfile2=", ";hardfile2=")
                         config_text = config_text.replace("<<cd32mode>>", "1")
                     else:
                         config_text = config_text.replace("<<cd32mode>>", "0")
@@ -798,7 +918,6 @@ def do_scan(input_directory, pathname,output_directory):
 
                         # controls (TO BE WORKED ON)
                     if use_mouse1 is True:
-                        config_text = config_text.replace("pandora.custom_dpad=1", pathname)
                         config_text = config_text.replace("<<port0>>", "mouse")
                         config_text = config_text.replace("<<port0mode>>", "mousenowheel")
 
@@ -817,6 +936,30 @@ def do_scan(input_directory, pathname,output_directory):
                         config_text = config_text.replace("<<port1>>", "joy1")
                         config_text = config_text.replace("<<port1mode>>", "djoy")
 
+                    config_text = config_text.replace("<<port2>>", input_3)
+                    config_text = config_text.replace("<<port3>>", input_4)
+                    config_text = config_text.replace("<<deadzone>>", deadzone)
+                    config_text = config_text.replace("<<stereo_seperation>>", stereo_seperation)
+
+                    # put the text from the file into a string
+
+                    custom_file = "customcontrols/" + full_game_name + ".controls"
+                    custom_text = ""
+                    
+                    if os.path.isfile(custom_file) == True:
+
+                        # remove any items which are not amiberry custom settings
+                        with open(custom_file) as f:
+                            content = f.readlines()
+                        f.close()
+                        
+                        for this_line in content:
+                            if this_line.find("amiberry_custom") > -1:
+                                custom_text += this_line
+
+                    config_text = config_text.replace("<<custom_controls>>", custom_text)
+
+                    
                     # save out the config changes
                     text_file = open(config_file, "w")
                     text_file.write(config_text)
@@ -841,7 +984,7 @@ def do_scan(input_directory, pathname,output_directory):
                         if data_path !="": data_path += "/"
                         
                         autostart_text = 'CD "WHDLoadGame:"' + chr(10)
-                        autostart_text += 'WHDLOAD SLAVE="WHDLoadGame:' + this_slave.file_name
+                        autostart_text += 'WHDLOAD SLAVE="WHDLoadGame:' + this_slave.file_name +'"'
                         autostart_text += ' PRELOAD NOWRITECACHE NOREQ SPLASHDELAY=0'
                         autostart_text += ' data="WHDLoadGame:' + data_path +'"'
                         autostart_text += ' NOREQ >"WHDLoadGame:whdscript_debug"' + chr(10)
@@ -924,7 +1067,7 @@ def do_scan_base(inputdir,outputdir):
 print()
 print(
     FontColours.BOLD + FontColours.OKBLUE + "HoraceAndTheSpider" + FontColours.ENDC + "'s " + FontColours.BOLD +
-    "UAE Configuration Maker" + FontColours.ENDC + FontColours.OKGREEN + " (2.3)" + FontColours.ENDC + " | " + "" +
+    "UAE Configuration Maker" + FontColours.ENDC + FontColours.OKGREEN + " (3.0)" + FontColours.ENDC + " | " + "" +
     FontColours.FAIL + "www.ultimateamiga.co.uk" + FontColours.ENDC)
 print()
 
@@ -985,6 +1128,16 @@ parser.add_argument('--no-filename-spaces',  # command line argument
                     help="Replace 'spaces' in output filenames with underscores"
                     )
 
+#parser.add_argument('--whdload-update',  # command line argument
+#                    action="store_true",  # if argument present, store value as True otherwise False
+#                    help="Check for WHDLoad Updates"
+#                    )
+#
+#parser.add_argument('--create-autostartup',  # command line argument
+#                    action="store_true",  # if argument present, store value as True otherwise False
+#                    help="Generate auto-startup file for WHDLoad folders"
+#                    )
+
 # Parse all command line arguments
 args = parser.parse_args()
 
@@ -996,8 +1149,8 @@ if find_host_option("scandir") !="":
     inputdirs = [find_host_option("scandir")]
 
 # Dom's special directory override :P
-#if platform.system() == "Darwin":
-#    inputdirs = ["/Users/horaceandthespider/Documents/Gaming/AmigaWHD/WorkingFolder2/Test/"]
+if platform.system() == "Darwin":
+    inputdirs = ["/Users/horaceandthespider/Documents/Gaming/AmigaWHD/WorkingFolder2/Test/"]
 
 # Check Directories are valid
 inputdirs = general_utils.check_inputdirs(inputdirs)
@@ -1068,6 +1221,20 @@ if find_host_option("rom_path") != "" : ROM_PATH = find_host_option("rom_path")
 
 
 
+# >> Setup Bool Constant for WHDLOAD Slave updating
+WHDLOAD_UPDATE = args.whdload_update
+
+# if hostconfig specifies ...., use as override
+if text_utils.str2bool(find_host_option("whdload_update")) == True : WHDLOAD_UPDATE = True
+
+
+# >> Setup Bool Constant for WHDLOAD Slave updating
+CREATE_AUTOSTARTUP = args.create_autostartup
+
+# if hostconfig specifies ...., use as override
+if text_utils.str2bool(find_host_option("create_autostartup")) == True : CREATE_AUTOSTARTUP = True
+
+
 # paths/folders if needed
 os.makedirs("settings", exist_ok=True)
 
@@ -1081,9 +1248,22 @@ else:
     for filename in glob.glob('settings/*.txt'):
         update_utils.download_update(filename,"")
 
-    # do similar for
-    update_utils.download_update("uaeconfig.uaetemp","")
+    # do similar for main template
+ #   update_utils.download_update("uaeconfig.uaetemp","")
 
+    # lets download all of the custom configs
+    if os.path.isfile("settings/Control_Custom_Gamelist.txt") == True:
+        
+        # remove any items which are not amiberry custom settings
+        with open("settings/Control_Custom_Gamelist.txt") as f:
+             content = f.readlines()
+             content = [x.strip() for x in content]
+        f.close()
+                            
+        for this_line in content:
+            update_utils.download_update("customcontrols/" + this_line,"")
+
+    
 
 if os.path.isfile("uaeconfig.uaetemp") is False:
     print(
