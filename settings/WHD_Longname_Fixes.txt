@@ -121,6 +121,7 @@ Charlie JCool|Charlie J. Cool
 Chrono Quest 2|Chrono Quest II
 Chase HQ|Chase H.Q.
 Chase HQ 2|Chase H.Q. II
+Classic & Baby Arcadia|Classic Arcadia & Baby Arcadia
 Clue|Clue, The
 Crackdown|Crack Down
 Centrefold Squares|Centerfold Squares
@@ -564,6 +565,7 @@ Thunder Hawk A H 73 M|Thunder Hawk AH-73M
 Time Runners Series|Time Runners (Series)
 Tom Landry Football|Tom Landry Strategy Football
 Tom Landry Football Deluxe|Tom Landry Strategy Football Deluxe
+Tom Landry Strategy Football|Tom Landry Strategy Football Deluxe
 Toyota Celica GTRally|Toyota Celica GT Rally
 TRacer|T-Racer
 Traps NTreasures|Traps 'n' Treasures
