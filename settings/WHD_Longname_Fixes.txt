@@ -693,7 +693,7 @@ Marvins Marvellous Adv [AGA]|Marvin's Marvellous Adventure [AGA]
 XP 8 [AGA]|XP8 [AGA]
 Agony Demo|Agony (Demo)
 Alchemy Demo|Alchemy (Demo)
-All Terrain Racing Xmas Demo|All Terrain Racing (Xmas Demo)
+All Terrain Racing Xmas Demo|ATR - All Terrain Racing (Xmas Demo)
 Awesome Demo|Awesome (Demo)
 Alien Breed 3 DDemo Latest [AGA]|Alien Breed 3D (Demo) (Latest) [AGA]
 Alien Breed 3 DDemo Play [AGA]|Alien Breed 3D (Playable Demo) [AGA]
