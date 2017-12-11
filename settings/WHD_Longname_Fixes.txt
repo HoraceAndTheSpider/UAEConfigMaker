@@ -8,6 +8,7 @@
 4 DSports Boxing|4D Sports Boxing
 4 DSports Driving|4D Sports Driving
 4 DSports Driving & Mstr Trcks|4D Sports Driving (& Master Tracks)
+Aaargh! Arcadia|Aaargh (Arcadia)
 A BCMonday Night Football|ABC Monday Night Football 
 Aot GSA FP 27b 6|Attack of the Green Smelly Aliens from Planet 27b-6
 Raiders 01|Raiders-01
@@ -29,10 +30,10 @@ Alien Breed Story|Alien Breed (Story)
 Allan Borders Cricket|Allan Border's Cricket
 Alpha 1|Alpha-1
 All Terrain Racing|ATR - All Terrain Racing
+Another World Lost Level|Another World (Lost Level)
 Apidya Audios|Apidya (Audios)
 Apidya Kaiko|Apidya (Kaiko)
 Blasta Ball Arcadia|BlastaBall (Arcadia)
-Classic & Baby Arcadia|Classic & Baby (Arcadia)
 Delta Command Arcadia|Delta Command (Arcadia)
 Fast Break Arcadia|Fast Break (Arcadia)
 Pharaoh's Match Arcadia|Pharaoh's Match (Arcadia)
@@ -42,12 +43,13 @@ Ten Pin Bowling Arcadia|Ten Pin Bowling (Arcadia)
 World Trophy Soccer Arcadia|World Trophy Soccer (Arcadia)
 Aquanaut F 1 Licenceware|Aquanaut (F1 Licenceware)
 Archer Macleans Billard Amcn|Archer Macleans's Le Billard Americain
-Archer Macleans|Archer Maclean's
+Archer Mac Leans Pool|Archer MacLean's Pool
 ArkanoidReve|Arkanoid - Reve
 Armour Geddon|Armour-Geddon
 Armour Geddon 2|Armour-Geddon 2
 Asterix Op Getafix|Asterix - Operation Getafix
 Alien Breed 2|Alien Breed II - The Horror Continues
+Alien Breed 2 [AGA]|Alien Breed II - The Horror Continues [AGA]
 A TF2|Advanced Tactical Fighter II
 ATF2|Advanced Tactical Fighter II
 APBImage|APB (Image)
@@ -163,6 +165,7 @@ Dr Dooms Revenge (1 Disk)|Dr Doom's Revenge (1 Disk)
 Dragons Lair|Dragon's Lair
 Dragons Lair Escape (Fast)|Dragon's Lair - Escape From Singe's Castle (Fast)
 Dragons Lair Escape|Dragon's Lair - Escape From Singe's Castle
+Dragons Lair & Escape (Fast)|Dragon's Lair & Escape From Singe's Castle (Fast)
 Dragon Scape|DragonScape
 Eagles Rider|Eagle's Rider
 Elf Micro Value|Elf (MicroValue)
@@ -199,12 +202,15 @@ F 17 Challenge|F17 Challenge
 F 19 Stealth Fighter|F-19 Stealth Fighter 
 F 29 Retaliator|F-29 Retaliator
 F 40 Pursuit Simulator|F40 Pursuit Simulator
+Formula One 3 D|Formula 1 3D
 Frontier|Frontier - Elite II
 Foundations Waste|Foundation's Waste
 FA 18 Interceptor|FA-18 Interceptor
 Falcon & Mission Disks|Falcon (& Mission Disks)
 Fatman Caped Consumer|Fatman - Caped Consumer
+Fatman Caped Consumer [AGA]|Fatman - Caped Consumer [AGA]
 Fate Gates Of Dawn|Fate - Gates Of Dawn
+Femme Fatale & Data Disk|Femme Fatale (& Data Disk)
 Fiendish Freddys Big Top OFun|Fiendish Freddy's Big Top O' Fun
 Fighter Bomber A M|Fighter Bomber (Advanced Mission Disk)
 Fightin Spirit|Fightin' Spirit
@@ -257,6 +263,7 @@ Hard Ball|HardBall
 Hellbent|Hell Bent
 Hilt|Hilt - Against the Hoardes
 Hero Quest|HeroQuest
+Hero Quest & Return Witch Lord|Hero Quest (& Return Of The Witch Lord)
 Hell Raisers|Hell Raiser
 Harpoon & Battleset 2|Harpoon (& Battleset 2)
 Harpoon & Battleset 3|Harpoon (& Battleset 3)
@@ -279,9 +286,11 @@ Intact 15 MB|Intact (15 MB)
 International 3 DTennis|International 3D Tennis
 Interphase Amiga Format|Interphase (Amiga Format Edition)
 Into The Eagles Nest|Into The Eagle's Nest
+IK +|IK+
 Italy 1990 Winners Edition|Italy 1990 - Winners Edition
 Jabato|Jabato Vs Imperio Libertad
 Jaguar XJ 220|Jaguar XJ220
+Jaguar XJ 220 (Image)|Jaguar XJ220 (Image)
 Jahangir Khans WChamp Squash|Jahangir Khan's World Championship Squash
 James Bond The Stealth Affair|James Bond - The Stealth Affair
 James Pond 2|James Pond 2 - Robocod
@@ -300,6 +309,7 @@ John Barnes Euro Football|John Barnes European Football
 Jump NRoll|Jump 'n' Roll
 Jupiters Masterdrive|Jupiter's Masterdrive
 K 240|K-240
+K 2401 MB|K-240 (1MB)
 Krusty's Super Fun House|Krusty's Fun House
 Kajko IKokosz|Kajko i Kokosz
 Kingpin 1 Mb|Kingpin (1MB)
@@ -308,7 +318,7 @@ Kings Quest 2|King's Quest II
 Kings Quest 3|King's Quest III
 Kings Quest 4|King's Quest IV
 Kings Quest 5|King's Quest V
-Kings Quest 5|King's Quest VI
+Kings Quest 6|King's Quest VI
 Kings Quest (Enhanced)|King's Quest I (Remake)
 Kalas Puff Expressen Se (1MB)|Kalas Puff Expressen (Svenska) (1MB)
 Kick Off 2 CV|Kick Off 2 (Competition Version)
@@ -317,7 +327,7 @@ Kick Off & Extra Time (1 Disk)|Kick Off (& Extra Time)
 Kick Off 2 Plus WC 90|Kick Off 2 (Plus World Cup '90)
 Kick Off 2 Return To Europe|Kick Off 2 - Return To Europe
 Kick Off 3 EC|Kick Off 3 - European Challenge
-Kick Off 216|Kick Off 2 (16)
+Kick Off 216|Kick Off 2 (v1.6)
 Kings Quest Enhanced|Kings Quest (Enhanced)
 Kiros Quest|Kiro's Quest
 Krustys Super Fun House|Krusty's Super Fun House
@@ -329,6 +339,7 @@ LEDStorm|LED Storm
 Legend Mindscape|Legend (Mindscape)
 Lemmings 21 MB|Lemmings 2 (1MB)
 Locomotion|Locomotion (Kingsoft)
+Lords Of Chaos & Data Disk|Lords Of Chaos (& Data Disk)
 Lotus|Lotus Esprit Turbo Challenge
 Leonardo DOS|Leonardo (DOS)
 Leonardo High Density|Leonardo (High Density)
@@ -354,8 +365,8 @@ Mental (Image) 2|Mental Image Game Disk 2
 Mercenary 3|Mercenary III
 Mercenary|Mercenary - Escape from Targ and the Second City
 MFTanks|MF Tanks
-Mr Do Run Run (Files)|DO - Run Run(Files)
-Mr Do Run Run (Image)|DO - Run Run(Image)
+Mr Do Run Run (Files)|DO - Run Run (Files)
+Mr Do Run Run (Image)|DO - Run Run (Image)
 Mi G 29 Fulcrum|MiG-29 Fulcrum
 Mi G 29 MSuper Fulcrum|MiG-29M Super Fulcrum
 Mickey Mouse Computer Game|Mickey Mouse - The Computer Game
@@ -365,7 +376,7 @@ Mickeys Jigsaw Puzzles|Mickey's Jigsaw Puzzles
 Mickeys Memory Challenge|Mickey's Memory Challenge
 Micro Prose Golf|MicroProse Golf
 Micro Prose Soccer|MicroProse Soccer
-Mig 29 Soviet Fighter|Mig 29 - Soviet Fighter
+Mi G 29 Soviet Fighter|MIG 29 - Soviet Fighter
 Might & Magic 2|Might and Magic II
 Might And Magic 3|Might And Magic III
 Mighty Bomb Jack|Mighty BombJack
@@ -374,8 +385,12 @@ Millennium 22|Millennium 2.2
 Mortal Kombat 22 MB|Mortal Kombat 2 (2MB)
 Mortal Kombat Censored|Mortal Kombat (Censored)
 MPythons Flying Circus|Monty Python's Flying Circus
+Monty Pythons Fly Cir|Monty Python's Flying Circus
 MUDS|M.U.D.S
 Myth History In The Making|Myth - History In The Making
+Myth System 3|Myth - History In The Making
+Myth Magnetic Scrolls|Myth (Magnetic Scrolls)
+Ninja Mission Arcadia|Ninja Mission (Arcadia)
 Nam 19651975|Nam 1965-1975
 Never Ending Story 2|Neverending Story II
 New Year Lemmings 199192|New Year Lemmings 1991-92
@@ -404,6 +419,7 @@ Peter Beardsleys IF|Peter Beardsley's International Football
 PGA Tour Golf & Tour Disk|PGA Tour Golf (& Tour Disk)
 Pick NPile|Pick'n' Pile
 Pharaohs Match Arcadia|Pharaohs Match (Arcadia)
+Pierre Is Out To Lunch [AGA]|Pierre Le Chef Is Out To Lunch [AGA]
 Pinball Fntsies|Pinball Fantasies
 Pipeline Nomad|Pipeline (Nomad)
 Pipeline Oracle|Pipeline (Oracle)
@@ -417,6 +433,7 @@ Pro Power Boat Simulator|Pro Powerboat Simulator
 Project Xv 2|Project-X (v2)
 Project XSE|Project-X (Special Edition)
 Project X|Project-X
+Project XBonus Level|Project-X (Bonus Level)
 Pro Soccer 2190|ProSoccer 2190 
 Robo Sport|RoboSport
 Prophecy 1 Viking Child|Prophecy I - Viking Child
@@ -429,8 +446,10 @@ RType 2|R-Type II
 RType|R-Type
 Rackneys Island|Rackney's Island
 Rage CA D|Rage (CAD)
+Rage V 1|Rage (CAD)
 Rage V 2|Rage (v2.0)
 Ran X|Ranx
+Road Wars Arcadia|Road Wars (Arcadia)
 Rogue|Rogue - The Adventure Game
 RBI 2 Baseball|R.B.I. Two Baseball
 Rick Dangerous 25|Rick Dangerous 2.5
@@ -453,13 +472,19 @@ Salmon Pink Max|Salmon-Pink Max
 Santas Xmas Caper|Santa's Xmas Caper
 SDICinemaware|SDI (Cinemaware)
 Sensible Soccer 9293|Sensible Soccer - European Champions (92-93 Edition)
+Sensible Soccer 92931 MB|Sensible Soccer - European Champions (92-93 Edition) (1MB)
 Sensible Soccer Bulldog Blty|Sensible Soccer 92-93 Meets Bulldog Blighty
 Sensible Soccer Euro|Sensible Soccer - European Champions
+Sensible Soccer Euro (1MB)|Sensible Soccer - European Champions (1MB)
 Sensible Soccer Int Ed|Sensible Soccer - International Edition
+Sensible Soccer Int Ed (1MB)|Sensible Soccer - International Edition (1MB)
 Sensible World Of Soccer 9596|Sensible World Of Soccer 95-96
 Sensible World Of Soccer 9697|Sensible World Of Soccer 96-97
+Sensible World Of Soccer 9798|Sensible World Of Soccer 97-98
 Sensible World Of Soccer 1617|Sensible World Of Soccer 16-17
 Sensible World Of Soccer Euro|Sensible World Of Soccer 95-96 - European Championship Edition
+Sensible World Of Soccer 11|Sensible World Of Soccer (v1.1)
+Sensible World Of Soccer WC 98|Sensible World Of Soccer - World Cup 98
 Sharkeys Moll|Sharkey's Moll
 Shock Wave|ShockWave
 Side Show|Sideshow
@@ -467,6 +492,7 @@ Sky Chase|SkyChase
 Sherman M 4|Sherman M4
 Side Winder 2|SideWinder II
 Side Winder|SideWinder
+Side Winder Arcadia|Side Winder (Arcadia)
 Silent Service 2|Silent Service II
 Sim Ant Hi Res|Sim Ant (HiRes)
 Sim Ant Lo Res|Sim Ant (LoRes)
@@ -475,6 +501,7 @@ Sim Earth Hi Res|Sim Earth (HiRes)
 Sim Earth Lo Res|Sim Earth (LoRes)
 Skyfox 2|Skyfox II
 Sleepwalker Comic Relief|Sleepwalker (Comic Relief)
+Sleepwalker [AGA] Comic Relief|Sleepwalker (Comic Relief) [AGA]
 Sly Spy Secret Agent|Sly Spy - Secret Agent
 Sootys Fun With Numbers|Sooty's Fun With Numbers
 Sorcerors Apprentice|Sorceror's Apprentice
@@ -487,6 +514,8 @@ Space Quest Enhanced|Space Quest (Enhanced)
 Speedboat Assassins|Speedboat Assassin
 Spell Bound|Spell Bound (Psyclapse)
 SpellBound|SpellBound (Pygnosis)
+Spitting (Image)|Spitting Image
+Spot Arcadia|Spot (Arcadia)
 Spy Vs Spy 2 The Island Caper|Spy vs. Spy 2 - The Island Caper
 Spy Vs Spy 3 Arctic Antics|Spy vs. Spy 3 - Arctic Antics
 Spy Vs Spy|Spy vs. Spy
@@ -534,7 +563,7 @@ Thunder Strike|ThunderStrike
 Thunder Hawk A H 73 M|Thunder Hawk AH-73M
 Time Runners Series|Time Runners (Series)
 Tom Landry Football|Tom Landry Strategy Football
-Tom Landry Strategy Football|Tom Landry Strategy Football Deluxe
+Tom Landry Football Deluxe|Tom Landry Strategy Football Deluxe
 Toyota Celica GTRally|Toyota Celica GT Rally
 TRacer|T-Racer
 Traps NTreasures|Traps 'n' Treasures
@@ -554,6 +583,9 @@ Ultimate Golf|Greg Norman's Ultimate Golf
 UFO Enemy Unknown|UFO - Enemy Unknown
 Universal Military Sim|UMS (Universal Military Simulator)
 UNSquadron|U.N. Squadron
+UNSquadron Earok|U.N. Squadron (Hack by Earok)
+Untouchables SE|Untouchables Special Edition (Hack by Earok)
+Up Scope Arcadia|Up Scope (Arcadia)
 Uridium 22 MB|Uridium 2 (2MB)
 USSJohn Young|USS John Young
 Utopia & New Worlds|Utopia (& New Worlds)
@@ -565,6 +597,7 @@ Valhalla Lord Of Infinity|Valhalla and the Lord Of Infinity
 Vampires Empire|Vampire's Empire
 Walker Decrunched|Walker (Decrunched)
 War Zone Core|War Zone (Core Design)
+War Zone Core Design|War Zone (Core Design)
 War Zone Paradox|War Zone (Paradox)
 Wanderer 3 D|Wanderer 3D
 Way Of The Little Dragon A Star|Way Of The Little Dragon (Amiga Star Collection)
@@ -582,16 +615,21 @@ Wonderland|Wonderland - Dream the Dream
 World Champ Boxing Manager|World Championship Boxing Manager
 World Class Rugby 95|World Class Rugby '95
 World Class Rugby 5 Nations|World Class Rugby - 5 Nations
+World Darts Arcadia|World Darts (Arcadia)
 WWFEuropean Rampage Tour|WWF European Rampage Tour
 WWFWrestle Mania|WWF Wrestle Mania
 Xenon 21 Disk|Xenon 2 (1 Disk)
 Xenon 22 Disk|Xenon 2 (2 Disk)
+Xenon Arcadia|Xenon (Arcadia)
 West Phaser|Westphaser
 XP 8|XP8
 XR 35|XR35
+XR35|XR-35 Fighter Mission
 XOut|X-Out
+XOut (2 Disk)|X-Out (2 Disk)
 XIt|X-It
-Yogis|Yogi's
+Yogis Big Clean Up|Yogi's Big Clean Up
+Yogis Great Escape|Yogi's Great Escape
 Zak Mc Kracken|Zak McKracken
 ZOut|Z-Out
 Alien Breed 3 DCD32|Alien Breed 3D [CD32]
@@ -626,6 +664,7 @@ Alien Breed 3 D 2 [AGA] 4MB|Alien Breed 3D 2 - The Killing Grounds [4MB] [AGA]
 Alien Breed 3 DAGA Fixed|Alien Breed 3D [AGA] (Fixed)
 Alien Breed 3 DAGA|Alien Breed 3D [AGA]
 Alien Breed TA [AGA]|Alien Breed Tower Assault [AGA]
+Alien Breed TA 11|Alien Breed Tower Assault (v1.1)
 Alien Breed TA 11 [AGA]|Alien Breed Tower Assault (v1.1) [AGA]
 Charlie JCool [AGA]|Charlie J Cool [AGA]
 Dennis [AGA] Desktop Dynamite|Dennis [AGA] (Desktop Dynamite)
@@ -654,7 +693,7 @@ Marvins Marvellous Adv [AGA]|Marvin's Marvellous Adventure [AGA]
 XP 8 [AGA]|XP8 [AGA]
 Agony Demo|Agony (Demo)
 Alchemy Demo|Alchemy (Demo)
-All Terrain Racing Xmas Demo|All Terrain Racing (Xmas Demo)
+All Terrain Racing Xmas Demo|ATR - All Terrain Racing (Xmas Demo)
 Awesome Demo|Awesome (Demo)
 Alien Breed 3 DDemo Latest [AGA]|Alien Breed 3D (Demo) (Latest) [AGA]
 Alien Breed 3 DDemo Play [AGA]|Alien Breed 3D (Playable Demo) [AGA]
@@ -707,6 +746,7 @@ Superfrog Demo The One|Superfrog (The One Demo)
 Superhero Demo|Superhero (Demo)
 T-Zer 0 Demo|T-Zer0 (Demo)
 T-Zer 0 Demo [AGA]|T-Zer0 (Demo) [AGA]
+TZer 0 Demo [AGA]|T-Zer0 (Demo) [AGA]
 Tensai Demo|Tensai (Demo)
 Turrican 2 Demo|Turrican 2 (Demo)
 Turrican 3 Demo|Turrican 3 (Demo)
