@@ -8,6 +8,7 @@
 4 DSports Boxing|4D Sports Boxing
 4 DSports Driving|4D Sports Driving
 4 DSports Driving & Mstr Trcks|4D Sports Driving (& Master Tracks)
+Aaargh! Arcadia|Aaargh (Arcadia)
 A BCMonday Night Football|ABC Monday Night Football 
 Aot GSA FP 27b 6|Attack of the Green Smelly Aliens from Planet 27b-6
 Raiders 01|Raiders-01
@@ -29,10 +30,10 @@ Alien Breed Story|Alien Breed (Story)
 Allan Borders Cricket|Allan Border's Cricket
 Alpha 1|Alpha-1
 All Terrain Racing|ATR - All Terrain Racing
+Another World Lost Level|Another World (Lost Level)
 Apidya Audios|Apidya (Audios)
 Apidya Kaiko|Apidya (Kaiko)
 Blasta Ball Arcadia|BlastaBall (Arcadia)
-Classic & Baby Arcadia|Classic & Baby (Arcadia)
 Delta Command Arcadia|Delta Command (Arcadia)
 Fast Break Arcadia|Fast Break (Arcadia)
 Pharaoh's Match Arcadia|Pharaoh's Match (Arcadia)
@@ -42,7 +43,7 @@ Ten Pin Bowling Arcadia|Ten Pin Bowling (Arcadia)
 World Trophy Soccer Arcadia|World Trophy Soccer (Arcadia)
 Aquanaut F 1 Licenceware|Aquanaut (F1 Licenceware)
 Archer Macleans Billard Amcn|Archer Macleans's Le Billard Americain
-Archer Macleans|Archer Maclean's
+Archer Mac Leans Pool|Archer MacLean's Pool
 ArkanoidReve|Arkanoid - Reve
 Armour Geddon|Armour-Geddon
 Armour Geddon 2|Armour-Geddon 2
@@ -163,6 +164,7 @@ Dr Dooms Revenge (1 Disk)|Dr Doom's Revenge (1 Disk)
 Dragons Lair|Dragon's Lair
 Dragons Lair Escape (Fast)|Dragon's Lair - Escape From Singe's Castle (Fast)
 Dragons Lair Escape|Dragon's Lair - Escape From Singe's Castle
+Dragons Lair & Escape (Fast)|Dragon's Lair & Escape From Singe's Castle (Fast)
 Dragon Scape|DragonScape
 Eagles Rider|Eagle's Rider
 Elf Micro Value|Elf (MicroValue)
@@ -199,12 +201,15 @@ F 17 Challenge|F17 Challenge
 F 19 Stealth Fighter|F-19 Stealth Fighter 
 F 29 Retaliator|F-29 Retaliator
 F 40 Pursuit Simulator|F40 Pursuit Simulator
+Formula One 3 D|Formula 1 3D
 Frontier|Frontier - Elite II
 Foundations Waste|Foundation's Waste
 FA 18 Interceptor|FA-18 Interceptor
 Falcon & Mission Disks|Falcon (& Mission Disks)
 Fatman Caped Consumer|Fatman - Caped Consumer
+Fatman Caped Consumer [AGA]|Fatman - Caped Consumer [AGA]
 Fate Gates Of Dawn|Fate - Gates Of Dawn
+Femme Fatale & Data Disk|Femme Fatale (& Data Disk)
 Fiendish Freddys Big Top OFun|Fiendish Freddy's Big Top O' Fun
 Fighter Bomber A M|Fighter Bomber (Advanced Mission Disk)
 Fightin Spirit|Fightin' Spirit
@@ -257,6 +262,7 @@ Hard Ball|HardBall
 Hellbent|Hell Bent
 Hilt|Hilt - Against the Hoardes
 Hero Quest|HeroQuest
+Hero Quest & Return Witch Lord|Hero Quest (& Return Of The Witch Lord)
 Hell Raisers|Hell Raiser
 Harpoon & Battleset 2|Harpoon (& Battleset 2)
 Harpoon & Battleset 3|Harpoon (& Battleset 3)
@@ -279,9 +285,11 @@ Intact 15 MB|Intact (15 MB)
 International 3 DTennis|International 3D Tennis
 Interphase Amiga Format|Interphase (Amiga Format Edition)
 Into The Eagles Nest|Into The Eagle's Nest
+IK +|IK+
 Italy 1990 Winners Edition|Italy 1990 - Winners Edition
 Jabato|Jabato Vs Imperio Libertad
 Jaguar XJ 220|Jaguar XJ220
+Jaguar XJ 220 (Image)|Jaguar XJ220 (Image)
 Jahangir Khans WChamp Squash|Jahangir Khan's World Championship Squash
 James Bond The Stealth Affair|James Bond - The Stealth Affair
 James Pond 2|James Pond 2 - Robocod
@@ -300,6 +308,7 @@ John Barnes Euro Football|John Barnes European Football
 Jump NRoll|Jump 'n' Roll
 Jupiters Masterdrive|Jupiter's Masterdrive
 K 240|K-240
+K 2401 MB|K-240 (1MB)
 Krusty's Super Fun House|Krusty's Fun House
 Kajko IKokosz|Kajko i Kokosz
 Kingpin 1 Mb|Kingpin (1MB)
@@ -308,7 +317,7 @@ Kings Quest 2|King's Quest II
 Kings Quest 3|King's Quest III
 Kings Quest 4|King's Quest IV
 Kings Quest 5|King's Quest V
-Kings Quest 5|King's Quest VI
+Kings Quest 6|King's Quest VI
 Kings Quest (Enhanced)|King's Quest I (Remake)
 Kalas Puff Expressen Se (1MB)|Kalas Puff Expressen (Svenska) (1MB)
 Kick Off 2 CV|Kick Off 2 (Competition Version)
@@ -317,7 +326,7 @@ Kick Off & Extra Time (1 Disk)|Kick Off (& Extra Time)
 Kick Off 2 Plus WC 90|Kick Off 2 (Plus World Cup '90)
 Kick Off 2 Return To Europe|Kick Off 2 - Return To Europe
 Kick Off 3 EC|Kick Off 3 - European Challenge
-Kick Off 216|Kick Off 2 (16)
+Kick Off 216|Kick Off 2 (v1.6)
 Kings Quest Enhanced|Kings Quest (Enhanced)
 Kiros Quest|Kiro's Quest
 Krustys Super Fun House|Krusty's Super Fun House
@@ -329,6 +338,7 @@ LEDStorm|LED Storm
 Legend Mindscape|Legend (Mindscape)
 Lemmings 21 MB|Lemmings 2 (1MB)
 Locomotion|Locomotion (Kingsoft)
+Lords Of Chaos & Data Disk|Lords Of Chaos (& Data Disk)
 Lotus|Lotus Esprit Turbo Challenge
 Leonardo DOS|Leonardo (DOS)
 Leonardo High Density|Leonardo (High Density)
@@ -354,8 +364,8 @@ Mental (Image) 2|Mental Image Game Disk 2
 Mercenary 3|Mercenary III
 Mercenary|Mercenary - Escape from Targ and the Second City
 MFTanks|MF Tanks
-Mr Do Run Run (Files)|DO - Run Run(Files)
-Mr Do Run Run (Image)|DO - Run Run(Image)
+Mr Do Run Run (Files)|DO - Run Run (Files)
+Mr Do Run Run (Image)|DO - Run Run (Image)
 Mi G 29 Fulcrum|MiG-29 Fulcrum
 Mi G 29 MSuper Fulcrum|MiG-29M Super Fulcrum
 Mickey Mouse Computer Game|Mickey Mouse - The Computer Game
@@ -365,7 +375,7 @@ Mickeys Jigsaw Puzzles|Mickey's Jigsaw Puzzles
 Mickeys Memory Challenge|Mickey's Memory Challenge
 Micro Prose Golf|MicroProse Golf
 Micro Prose Soccer|MicroProse Soccer
-Mig 29 Soviet Fighter|Mig 29 - Soviet Fighter
+Mi G 29 Soviet Fighter|MIG 29 - Soviet Fighter
 Might & Magic 2|Might and Magic II
 Might And Magic 3|Might And Magic III
 Mighty Bomb Jack|Mighty BombJack
@@ -374,8 +384,12 @@ Millennium 22|Millennium 2.2
 Mortal Kombat 22 MB|Mortal Kombat 2 (2MB)
 Mortal Kombat Censored|Mortal Kombat (Censored)
 MPythons Flying Circus|Monty Python's Flying Circus
+Monty Pythons Fly Cir|Monty Python's Flying Circus
 MUDS|M.U.D.S
 Myth History In The Making|Myth - History In The Making
+Myth System 3|Myth - History In The Making
+Myth Magnetic Scrolls|Myth (Magnetic Scrolls)
+Ninja Mission Arcadia|Ninja Mission (Arcadia)
 Nam 19651975|Nam 1965-1975
 Never Ending Story 2|Neverending Story II
 New Year Lemmings 199192|New Year Lemmings 1991-92
@@ -626,6 +640,7 @@ Alien Breed 3 D 2 [AGA] 4MB|Alien Breed 3D 2 - The Killing Grounds [4MB] [AGA]
 Alien Breed 3 DAGA Fixed|Alien Breed 3D [AGA] (Fixed)
 Alien Breed 3 DAGA|Alien Breed 3D [AGA]
 Alien Breed TA [AGA]|Alien Breed Tower Assault [AGA]
+Alien Breed TA 11|Alien Breed Tower Assault (v1.1)
 Alien Breed TA 11 [AGA]|Alien Breed Tower Assault (v1.1) [AGA]
 Charlie JCool [AGA]|Charlie J Cool [AGA]
 Dennis [AGA] Desktop Dynamite|Dennis [AGA] (Desktop Dynamite)
