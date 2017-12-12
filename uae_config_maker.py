@@ -648,6 +648,7 @@ def do_scan(input_directory, pathname,output_directory):
                 use_jit = False
                 if ChexList("CPU_ForceJIT.txt",this_file) == True:
                         use_jit = True
+                        a_cpu_speed = "max"
                 else if check_list("CPU_NoJIT.txt", this_file) == False:
                         use_jit = False
 
