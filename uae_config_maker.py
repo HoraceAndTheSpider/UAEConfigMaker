@@ -655,10 +655,10 @@ def do_scan(input_directory, pathname,output_directory):
                 cycle_exact = check_list("CPU_CycleExact.txt", this_file)
 
                 use_jit = False
-                if ChexList("CPU_ForceJIT.txt",this_file) == True:
+                if check_list("CPU_ForceJIT.txt",this_file) == True:
                         use_jit = True
                         a_cpu_speed = "max"
-                else if check_list("CPU_NoJIT.txt", this_file) == False:
+                elif check_list("CPU_NoJIT.txt", this_file) == False:
                         use_jit = False
 
                 # '======== DISPLAY SETTINGS =======
@@ -945,7 +945,7 @@ def do_scan(input_directory, pathname,output_directory):
                         ## joystick port on mouse games
                         if input_mouse == input_1:
                             config_text = config_text.replace("<<port1>>",input_2)
-                        else
+                        else:
                             config_text = config_text.replace("<<port1>>",input_1)
                                
                         config_text = config_text.replace("<<port1mode>>","djoy")                           
