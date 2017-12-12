@@ -644,9 +644,12 @@ def do_scan(input_directory, pathname,output_directory):
                 _24_bit_address = not check_list("CPU_No24BitAddress.txt", this_file)
                 compatible_cpu = check_list("CPU_Compatible.txt", this_file)
                 cycle_exact = check_list("CPU_CycleExact.txt", this_file)
-                
-                use_jit = not check_list("CPU_NoJIT.txt", this_file)
-                # use_jit =ChexList("CPU_ForceJIT.txt",this_file)
+
+                use_jit = False
+                if ChexList("CPU_ForceJIT.txt",this_file) == True:
+                        use_jit = True
+                else if check_list("CPU_NoJIT.txt", this_file) == False:
+                        use_jit = False
 
                 # '======== DISPLAY SETTINGS =======
                 # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
