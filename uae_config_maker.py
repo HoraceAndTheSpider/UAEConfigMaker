@@ -45,7 +45,6 @@ def check_list(in_file, game_name):
     if text_utils.right(temp_game.lower(),4) == ".adf" or text_utils.right(temp_game.lower(),4) == ".hdf":
         temp_game = text_utils.left(temp_game,len(temp_game)-4)
 
-
     
     file_name = "settings/" + in_file
 
@@ -173,11 +172,21 @@ def do_scan(input_directory, pathname,output_directory):
         input_2 = "joy2"
         
     if input_3 == "":
-        input_3 = "None"
+        input_3 = "joy0"
         
     if input_4 == "":
-        input_4 = "None"
+        input_4 = "none"
 
+    input_mouse = find_host_option("controller_mouse")
+
+    if input_mouse == "":
+        input_mouse = "joy1"
+
+
+    mouse_map = find_host_option("mouse_map")
+    if mouse_map == "":
+        mouse_map = "left"
+    
     deadzone = find_host_option("joymouse_deadzone")
     if deadzone == "":
         deadzone = "33"
@@ -920,28 +929,44 @@ def do_scan(input_directory, pathname,output_directory):
                         config_text = config_text.replace("<<cd32mode>>", "0")
                         config_text = config_text.replace("cdimage0=", ";cdimage0=")
 
-                        # controls (TO BE WORKED ON)
-                    if use_mouse1 is True:
-                        config_text = config_text.replace("<<port0>>", "mouse")
-                        config_text = config_text.replace("<<port0mode>>", "mousenowheel")
 
-                    #    if use_mouse2==True:
-                    #      config_text = config_text.replace("<<port1>>","mouse")
-                    #      config_text = config_text.replace("<<port1mode>>","mousenowheel")
+                    # controls (TO BE WORKED ON)
+                    if use_mouse1 is True:
+                        config_text = config_text.replace("<<port0>>", input_mouse)
+
+                        if text_utils.left(input_mouse,3).lower() == "joy":
+                            config_text = config_text.replace("<<port0mode>>", "mousenowheel")
+                        else:
+                            config_text = config_text.replace("<<port0mode>>", "djoy")
+
+                        ## second mouse support will only use controller at the moment, so this is not required                       
+                        #if use_mouse2==True:
+                            
+                        ## joystick port on mouse games
+                        if input_mouse == input_1:
+                            config_text = config_text.replace("<<port1>>",input_2)
+                        else
+                            config_text = config_text.replace("<<port1>>",input_1)
+                               
+                        config_text = config_text.replace("<<port1mode>>","djoy")                           
 
                     if use_cd32_pad is True:
-                        config_text = config_text.replace("<<port0>>", "joy2")
+                        config_text = config_text.replace("<<port0>>", input_2)
                         config_text = config_text.replace("<<port0mode>>", "cd32joy")
-                        config_text = config_text.replace("<<port1>>", "joy1")
+                        config_text = config_text.replace("<<port1>>", input_1)
                         config_text = config_text.replace("<<port1mode>>", "cd32joy")
                     else:
-                        config_text = config_text.replace("<<port0>>", "joy2")
+                        config_text = config_text.replace("<<port0>>", input_2)
                         config_text = config_text.replace("<<port0mode>>", "djoy")
-                        config_text = config_text.replace("<<port1>>", "joy1")
+                        config_text = config_text.replace("<<port1>>", input_1)
                         config_text = config_text.replace("<<port1mode>>", "djoy")
 
                     config_text = config_text.replace("<<port2>>", input_3)
                     config_text = config_text.replace("<<port3>>", input_4)
+
+                    config_text = config_text.replace("<<port0mousemap>>", mouse_map)
+                    config_text = config_text.replace("<<port1mousemap>>", mouse_map)
+                                                
                     config_text = config_text.replace("<<deadzone>>", deadzone)
                     config_text = config_text.replace("<<stereo_seperation>>", stereo_seperation)
 
