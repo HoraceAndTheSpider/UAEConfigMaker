@@ -1,3 +1,4 @@
+1943|1943 - The Battle of Midway
 3 DConstruction Kit|3D Construction Kit
 3 DPool|3D Pool
 3 DGalax|3D Galax
@@ -8,7 +9,7 @@
 4 DSports Boxing|4D Sports Boxing
 4 DSports Driving|4D Sports Driving
 4 DSports Driving & Mstr Trcks|4D Sports Driving (& Master Tracks)
-Aaargh! Arcadia|Aaargh (Arcadia)
+Aaargh! Arcadia|Aaargh! (Arcadia)
 A BCMonday Night Football|ABC Monday Night Football 
 Aot GSA FP 27b 6|Attack of the Green Smelly Aliens from Planet 27b-6
 Raiders 01|Raiders-01
@@ -16,6 +17,7 @@ A V 8 BHarrier Assault|AV8B Harrier Assault
 & Mstr Trcks|(Master Tracks)
 Abandoned Places|Abandoned Places - A Time for Heroes
 3DAGA|3D AGA
+Academy|Academy - Tau Ceti II
 Advanced Destroyer Sim|ADS - Advanced Destroyer Simulator
 4x 4 Off Road Racing|4X4 Off-Road Racing
 A 10 Tank Killer (3 Disk)|A-10 Tank Killer (3 Disk)
@@ -45,11 +47,15 @@ Aquanaut F 1 Licenceware|Aquanaut (F1 Licenceware)
 Archer Macleans Billard Amcn|Archer Macleans's Le Billard Americain
 Archer Mac Leans Pool|Archer MacLean's Pool
 ArkanoidReve|Arkanoid - Reve
+Arkanoid Revenge Of Doh|Arkanoid - Revenge Of Doh
+Armalyte|Armalyte - The Final Run
 Armour Geddon|Armour-Geddon
-Armour Geddon 2|Armour-Geddon 2
+Armour Geddon 2|Armour-Geddon II - Codename Hellfire
 Asterix Op Getafix|Asterix - Operation Getafix
+Astaroth|Astaroth - The Angel of Death
 Alien Breed 2|Alien Breed II - The Horror Continues
 Alien Breed 2 [AGA]|Alien Breed II - The Horror Continues [AGA]
+Alien Drug Lords|Alien Drug Lords - The Chyropian Connection
 A TF2|Advanced Tactical Fighter II
 ATF2|Advanced Tactical Fighter II
 APBImage|APB (Image)
@@ -58,7 +64,11 @@ Axels Magic Hammer|Axel's Magic Hammer
 Arena|Arena (Psygnosis)
 Beneath A Stl Sky|Beneath a Steel Sky
 Alien Breed Special Edition|Alien Breed Special Edition '92
-Alien Breed TA|Alien Breed Tower Assault
+Alien Breed TA|Alien Breed - Tower Assault
+Allo Allo|Allo Allo! Cartoon Fun!
+Aquatic Games|Aquatic Games - Starring James Pond and the Aquabats
+Archon|Archon - The Light and the Dark
+Archon 2|Archon II - Adept
 After Burner Activision|After Burner (Activision)
 After Burner Sega|After Burner (Sega)
 Destroyer Sim|Destroyer Simulator
@@ -72,24 +82,38 @@ Bad Dudes Vs Dragon Ninja|Bad Dudes vs. DragonNinja
 Baby Jo In Going Home|Baby Jo - Going Home
 Balance Of Power|Balance of Power - Geopolitics in the Nuclear Age
 Balance Of Power 1990 Ed|Balance of Power - The 1990 Edition
+Bandit Kings|Bandit Kings of Ancient China
 Barbarian Palace|Barbarian - The Ultimate Warrior
 Barbarian Psygnosis|Barbarian (Psygnosis)
 Barbarian 2 Palace|Barbarian II - The Dungeon of Drax
 Barbarian 2 Psygnosis|Barbarian 2 (Psygnosis)
 Bards Tale|Bard's Tale - Tales of the Unknown
+Bards Tale 2|Bard's Tale II - The Destiny Knight
+Bards Tale 3|Bard's Tale III - Thief of Fate
 Bart Vs Sp Mutants|Bart Vs The Space Mutants
+Bart Vs Space Mutants (2 Disk)|Simpsons - Bart Vs The Space Mutants (2 Disk)
+Bart Vs The World|Simpsons - Bart Vs The World
 Batman Caped Crusader|Batman - The Caped Crusader
 Batman The Movie|Batman - The Movie
 Battle Isle & Data Disks|Battle Isle (& Data Disks)
+Battle Chess 2|Battle Chess II - Chinese Chess
+Battle For Ashes|Battle For The Ashes
+Battletech|BattleTech - The Crescent Hawk's Inception
+Best Of The Best|Best Of The Best - Championship Karate
 BCKid|BC Kid
+Block Shock|Block Shock - The Last Chance
+Blood Net|BloodNet - A Cyberpunk Gothic
+Blood Net [AGA]|BloodNet - A Cyberpunk Gothic [AGA]
 Bloodwych & Extended Levels|Bloodwych (& Extended Levels)
 Blinkys Scary School|Blinky's Scary School
 Black Goldre LINE|Black Gold (reLINE)
 Bills Tomato Game|Bill's Tomato Game
-Bloodwych & Extended Levels|Bloodwych (& Extended Levels)
+Blue Angels|Blue Angels - Formation Flight Simulation
+Blue Max|Blue Max - Aces of the Great War
 BMXSimulator|BMX Simulator
 Bobs Bad Day|Bob's Bad Day
 Bobs Garden|Bob's Garden
+Borobodur|Borobodur - The Planet of Doom
 Boulder Dash Constr Kit|BoulderDash Construction Kit
 Brian Laras Cricket|Brian Lara's Cricket
 Brian Laras Cricket 96|Brian Lara's Cricket '96
@@ -98,6 +122,8 @@ Bubba NStix|Bubba'N'Stix
 Bubble +|Bubble +
 Buffalo Bills Wild West Show|Buffalo Bill's Wild West Show
 Buck Rogers Countdown Dday|Buck Rogers - Countdown To Doomsday
+Budokan|Budokan - The Martial Spirit
+Builderland|Builderland - The Story of Melba
 Bundesliga Manager Hatt|Bundesliga Manager Hattrick
 Bump NBurn|Bump 'N' Burn
 Cabaret Asteroids Repacked|Cabaret Asteroids
@@ -352,6 +378,7 @@ Loom Kick 31|Loom (Kick 3.1)
 Lothar Matthaus Fussball|Lothar Matthaus - Die Interaktive Fussballsimulation
 M 1 Tank Platoon|M1 Tank Platoon
 Magic Johnsons Basketball|Magic Johnson's Basketball
+Magic Johnson Fst Brk Arcadia|Magic Johnson's Fast Break (Arcadia)
 Magic Lines Cracked|Magic Lines (Cracked)
 Manchester United Europe 23|Manchester United Europe (v2.3)
 Manchester Utd PLC & Data|Manchester United Premier League Champions (& Data Disk)
@@ -660,14 +687,14 @@ Worms [CD32]1 MB|Worms [CD32] (1 MB)
 Worms [CD32]2 MB|Worms [CD32] (2 MB)
 Street Racer [CD32]|Street Racer (AmigaCD)
 Project XSECD32|Project X - Special Edition [CD32]
-A CSYSDemo [AGA]|ACSYS (Demo) [AGA]
+A CSYSDemo [AGA]|ACSYS - Autonomous Cybernetic System (Demo) [AGA]
 Alien Breed 3 D 2 [AGA]|Alien Breed 3D 2 - The Killing Grounds [AGA]
 Alien Breed 3 D 2 [AGA] 4MB|Alien Breed 3D 2 - The Killing Grounds [4MB] [AGA]
 Alien Breed 3 DAGA Fixed|Alien Breed 3D [AGA] (Fixed)
 Alien Breed 3 DAGA|Alien Breed 3D [AGA]
-Alien Breed TA [AGA]|Alien Breed Tower Assault [AGA]
-Alien Breed TA 11|Alien Breed Tower Assault (v1.1)
-Alien Breed TA 11 [AGA]|Alien Breed Tower Assault (v1.1) [AGA]
+Alien Breed TA [AGA]|Alien Breed - Tower Assault [AGA]
+Alien Breed TA 11|Alien Breed - Tower Assault (v1.1)
+Alien Breed TA 11 [AGA]|Alien Breed - Tower Assault (v1.1) [AGA]
 Charlie JCool [AGA]|Charlie J Cool [AGA]
 Dennis [AGA] Desktop Dynamite|Dennis [AGA] (Desktop Dynamite)
 Dream Web [AGA]|DreamWeb [AGA]
