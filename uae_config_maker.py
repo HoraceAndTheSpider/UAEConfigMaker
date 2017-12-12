@@ -1215,7 +1215,6 @@ NO_FILENAME_SPACES = args.no_filename_spaces
 if text_utils.str2bool(find_host_option("no_filename_spaces")) == True : NO_FILENAME_SPACES = True
 
 
-
 # >> Setup Bool Constant for Pi Paths
 ROM_PATH = args.rom_path
 
@@ -1223,19 +1222,6 @@ ROM_PATH = args.rom_path
 if find_host_option("rom_path") != "" : ROM_PATH = find_host_option("rom_path") 
 
 
-
-# >> Setup Bool Constant for WHDLOAD Slave updating
-WHDLOAD_UPDATE = args.whdload_update
-
-# if hostconfig specifies ...., use as override
-if text_utils.str2bool(find_host_option("whdload_update")) == True : WHDLOAD_UPDATE = True
-
-
-# >> Setup Bool Constant for WHDLOAD Slave updating
-CREATE_AUTOSTARTUP = args.create_autostartup
-
-# if hostconfig specifies ...., use as override
-if text_utils.str2bool(find_host_option("create_autostartup")) == True : CREATE_AUTOSTARTUP = True
 
 
 # paths/folders if needed
