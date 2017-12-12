@@ -248,6 +248,7 @@ LeisureSuitLarry5
 LeisureSuitLarryEnhanced
 Lemmings
 Lemmings2
+Lemmings2Disk
 Lemmings21MB
 LemmingsFiles
 Links

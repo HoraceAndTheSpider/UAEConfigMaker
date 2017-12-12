@@ -935,9 +935,9 @@ def do_scan(input_directory, pathname,output_directory):
                         config_text = config_text.replace("<<port0>>", input_mouse)
 
                         if text_utils.left(input_mouse,3).lower() == "joy":
-                            config_text = config_text.replace("<<port0mode>>", "mousenowheel")
-                        else:
                             config_text = config_text.replace("<<port0mode>>", "djoy")
+                        else:
+                            config_text = config_text.replace("<<port0mode>>", "mousenowheel")
 
                         ## second mouse support will only use controller at the moment, so this is not required                       
                         #if use_mouse2==True:
@@ -1157,15 +1157,6 @@ parser.add_argument('--no-filename-spaces',  # command line argument
                     help="Replace 'spaces' in output filenames with underscores"
                     )
 
-#parser.add_argument('--whdload-update',  # command line argument
-#                    action="store_true",  # if argument present, store value as True otherwise False
-#                    help="Check for WHDLoad Updates"
-#                    )
-#
-#parser.add_argument('--create-autostartup',  # command line argument
-#                    action="store_true",  # if argument present, store value as True otherwise False
-#                    help="Generate auto-startup file for WHDLoad folders"
-#                    )
 
 # Parse all command line arguments
 args = parser.parse_args()
