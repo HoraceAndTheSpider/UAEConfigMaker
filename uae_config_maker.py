@@ -11,6 +11,14 @@ from utils import update_utils
 from utils.text_utils import FontColours
 from whdload import whdload_slave
 
+def fix_ownership(path):
+    """Change the owner of the file to SUDO_UID"""
+
+    uid = os.environ.get('SUDO_UID')
+    gid = os.environ.get('SUDO_GID')
+    if uid is not None:
+        os.chown(path, int(uid), int(gid))
+        
 
 def value_list(in_file, game_name):
     file_name = "settings/" + in_file
@@ -89,6 +97,7 @@ def find_host_option(in_option):
 
 
 def do_scan(input_directory, pathname,output_directory):
+    
     if os.path.isdir(input_directory + pathname):
         print("Config Save Path: " + FontColours.OKBLUE + output_directory + FontColours.ENDC)
         print("Games Files Path: " + FontColours.BOLD + FontColours.OKBLUE + pathname + FontColours.ENDC)
@@ -472,6 +481,7 @@ def do_scan(input_directory, pathname,output_directory):
                         text_file = open(file + "/whdupdate_message", "w+")
                         text_file.write(whd_update_message)
                         text_file.close()
+                        fix_ownership(file + "/whdupdate_message")
                         print()
                         #print("     "+whd_update_message)                                            
                         #continue
@@ -1006,6 +1016,7 @@ def do_scan(input_directory, pathname,output_directory):
                     text_file = open(config_file, "w")
                     text_file.write(config_text)
                     text_file.close()
+                    fix_ownership(config_file)
                     
                 ## this point we can jump in, having created a config.
 
@@ -1037,6 +1048,7 @@ def do_scan(input_directory, pathname,output_directory):
                         text_file = open(file + "/auto-startup", "w+")
                         text_file.write(autostart_text)
                         text_file.close()
+                        fix_ownership(file + "/auto-startup")
 
 
                     # we will also leave a message about kickstarts
@@ -1055,6 +1067,8 @@ def do_scan(input_directory, pathname,output_directory):
                             text_file = open(file + "/whdkickstarts_message", "w+")
                             text_file.write(kick_text)
                             text_file.close()
+                            fix_ownership(file + "/whdkickstarts_message")
+
   
                             #whdupdate_message
                             #whdscript_debug
