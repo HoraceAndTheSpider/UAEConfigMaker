@@ -85,8 +85,8 @@ floppy_speed=<<floppyspeed>>
 ; 
 filesystem2=rw,DH0:DH0:<<inputdir>>_BootWHD/,10
 uaehf0=dir,rw,DH0:DH0:<<inputdir>>_BootWHD/,10
-filesystem2=rw,DH1:WHDLoadGame:<<inputdir>><<hdpath>>/<<game>>/,0
-uaehf1=dir,rw,DH1:WHDLoadGame:<<inputdir>><<hdpath>>/<<game>>/,0
+filesystem2=rw,DH1:games:<<inputdir>><<hdpath>>/<<game>>/,0
+uaehf1=dir,rw,DH1:games:<<inputdir>><<hdpath>>/<<game>>/,0
 hardfile2=rw,DH2:<<inputdir>><<hdpath>>/<<game>>,32,1,2,512,50,,uae
 uaehf1=hdf,rw,DH2:<<inputdir>><<hdpath>>/<<game>>,32,1,2,512,50,,uae
 ; 
