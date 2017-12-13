@@ -17,13 +17,13 @@ pandora.cd_path=<<inputdir>>Games_CD32/
 joyport0=<<port0>>
 joyport0_autofire=none
 joyport0_mode=<<port0mode>>
-joyport0_mousemode=<<port0mousemap>>
+joyport0_mousemap=<<port0mousemap>>
 
 ; 
 joyport1=<<port1>>
 joyport1_autofire=none
 joyport1_mode=<<port1mode>>
-joyport1_mousemode=<<port1mousemap>>
+joyport1_mousemap=<<port1mousemap>>
 ; 
 joyport2=<<port2>>
 ; 
