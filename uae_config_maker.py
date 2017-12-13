@@ -195,6 +195,10 @@ def do_scan(input_directory, pathname,output_directory):
     if stereo_seperation == "":
         stereo_seperation = "7"
 
+    mouse_speed = find_host_option("mouse_speed")
+    if mouse_speed == "":
+        mouse_speed = "5"
+
 
     # retroarch toggles
     
@@ -948,7 +952,11 @@ def do_scan(input_directory, pathname,output_directory):
                         else:
                             config_text = config_text.replace("<<port1>>",input_1)
                                
-                        config_text = config_text.replace("<<port1mode>>","djoy")                           
+                        config_text = config_text.replace("<<port1mode>>","djoy")
+
+                    # switch off mouse map if we are on  
+                    else:
+                        mouse_map = "none"
 
                     if use_cd32_pad is True:
                         config_text = config_text.replace("<<port0>>", input_2)
@@ -966,9 +974,10 @@ def do_scan(input_directory, pathname,output_directory):
 
                     config_text = config_text.replace("<<port0mousemap>>", mouse_map)
                     config_text = config_text.replace("<<port1mousemap>>", mouse_map)
-                                                
+
+                    config_text = config_text.replace("<<mouse_speed>>", mouse_speed)                                                
                     config_text = config_text.replace("<<deadzone>>", deadzone)
-                    config_text = config_text.replace("<<stereo_seperation>>", stereo_seperation)
+                    config_text = config_text.replace("<<stereo_seperation>", stereo_seperation)
 
                     # put the text from the file into a string
 
