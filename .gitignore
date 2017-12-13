@@ -5,3 +5,4 @@ __pycache__/
 
 # PyCharm settings
 .idea/
+.com.apple.timemachine.supported
