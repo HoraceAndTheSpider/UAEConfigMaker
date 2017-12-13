@@ -350,7 +350,6 @@ PoliceQuest2
 PoliceQuest3
 Populous
 Populous&DataDisks
-Populous2
 PortsOfCall
 PrinceOfPersia
 ProTennisTour
