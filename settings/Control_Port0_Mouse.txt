@@ -424,6 +424,7 @@ Wings
 Wolfpack
 Wonderland
 WorldCircuit
+WorldsOfLegend
 Worms
 Worms2MB
 WrathOfTheDemon
