@@ -1268,7 +1268,7 @@ else:
         update_utils.download_update(filename,"")
 
     # do similar for main template
- #   update_utils.download_update("uaeconfig.uaetemp","")
+    update_utils.download_update("uaeconfig.uaetemp","")
 
     # lets download all of the custom configs
     if os.path.isfile("settings/Control_Custom_Gamelist.txt") == True:
