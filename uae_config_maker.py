@@ -937,26 +937,29 @@ def do_scan(input_directory, pathname,output_directory):
                     # controls (TO BE WORKED ON)
                     if use_mouse1 is True:
                         config_text = config_text.replace("<<port0>>", input_mouse)
+                        config_text = config_text.replace("<<port0mousemap>>", mouse_map)
 
                         if text_utils.left(input_mouse,3).lower() == "joy":
                             config_text = config_text.replace("<<port0mode>>", "djoy")
                         else:
                             config_text = config_text.replace("<<port0mode>>", "mousenowheel")
 
-                        ## second mouse support will only use controller at the moment, so this is not required                       
-                        #if use_mouse2==True:
+                        ## second mouse support will only use controller at the moment
                             
                         ## joystick port on mouse games
+                        config_text = config_text.replace("<<port1mode>>","djoy")
+
                         if input_mouse == input_1:
                             config_text = config_text.replace("<<port1>>",input_2)
                         else:
                             config_text = config_text.replace("<<port1>>",input_1)
-                               
-                        config_text = config_text.replace("<<port1mode>>","djoy")
 
-                    # switch off mouse map if we are on  
-                    else:
-                        mouse_map = "none"
+                        # we only mousemap port 1 if 2nd mouse is needed (e.g. Lemmings), otherwise we leave as joystick
+                        if use_mouse2==True:                           
+                            config_text = config_text.replace("<<port1mousemap>>", mouse_map)
+                        else:
+                            config_text = config_text.replace("<<port1mousemap>>", "none")
+                            
 
                     if use_cd32_pad is True:
                         config_text = config_text.replace("<<port0>>", input_2)
@@ -972,8 +975,9 @@ def do_scan(input_directory, pathname,output_directory):
                     config_text = config_text.replace("<<port2>>", input_3)
                     config_text = config_text.replace("<<port3>>", input_4)
 
-                    config_text = config_text.replace("<<port0mousemap>>", mouse_map)
-                    config_text = config_text.replace("<<port1mousemap>>", mouse_map)
+                    # switch off mouse map if we are on joystick mode
+                    config_text = config_text.replace("<<port0mousemap>>", "none")
+                    config_text = config_text.replace("<<port1mousemap>>", "none")
 
                     config_text = config_text.replace("<<mouse_speed>>", mouse_speed)                                                
                     config_text = config_text.replace("<<deadzone>>", deadzone)
