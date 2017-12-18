@@ -186,7 +186,7 @@ Centrefold Squares|Centerfold Squares
 Centurion|Centurion - Defender of Rome
 Chamber Sci Mutant Priestess|Chamber Of The Sci-Mutant Priestess
 Chaos Engine Demo|Chaos Engine (Demo)
-Chaos in Andromeda|Chaos in Andromeda - Eyes of the Eagle
+Chaos In Andromeda|Chaos in Andromeda - Eyes of the Eagle
 Chaos Strikes Back & De Util|Chaos Strikes Back (& Utility Disk) (Deutsch)
 Chaos Strikes Back & En Util|Chaos Strikes Back (& Utility Disk)
 Chaos Strikes Back & Fr Util|Chaos Strikes Back (& Utility Disk) (Francais)
@@ -288,11 +288,11 @@ Dream Web|DreamWeb
 Drivin Force|Drivin' Force
 Duck Tales|DuckTales - The Quest for Gold
 Dune 2|Dune II - The Battle for Arrakis
-Dungeons of Avalon 2|Dungeons of Avalon II - The Island of Darkness
+Dungeons Of Avalon 2|Dungeons of Avalon II - The Island of Darkness
 Dylan Dog The Murderers|Dylan Dog - The Murderers
 Dyter 07|Dyter-07
 Eagles Rider|Eagle's Rider
-Edd the Duck 2|Edd the Duck 2 - Back with a Quack
+Edd The Duck 2|Edd the Duck 2 - Back with a Quack
 Elf Micro Value|Elf (MicroValue)
 Elf Ocean|Elf (Ocean)
 Elvira Arcade|Elvira - The Arcade Game
@@ -434,8 +434,8 @@ Hired Guns Demo 512 KB|Hired Guns (Demo) (512KB)
 Historyline|Historyline 1914-1918
 Hitchhikers Guide TTG|Hitchhiker's Guide To The Galaxy
 Hole In One & Data Disks|Hole In One (& Data Disks)
-Hugo 1 (Dansk)|Hugo - Pa Nye Eventyr (Danish)
-Hugo 2 (Dansk)|Hugo - Pa Nye Eventyr Del 2 (Danish)
+Hugo 1 Dk|Hugo - Pa Nye Eventyr (Danish)
+Hugo 2 Dk|Hugo - Pa Nye Eventyr Del 2 (Danish)
 Humans 2|Humans 2 - Jurassic Levels
 Humans 3 [AGA]|Humans 3 - Evolution - Lost In Time [AGA]
 Hunt For Red October The Movie|Hunt For Red October (Grandslam)
@@ -564,7 +564,7 @@ Lombard RA CRally (2 Disk)|Lombard RAC Rally (2 Disk)
 Lombard RA CRally (3 Disk)|Lombard RAC Rally (3 Disk)
 Loom Kick 31|Loom (Kick 3.1)
 Lords Of Chaos & Data Disk|Lords Of Chaos (& Data Disk)
-Lost In Mine (Polski)|Lost In Mine (Polish)
+Lost In Mine Pl|Lost In Mine (Polish)
 Lothar Matthaus Fussball|Lothar Matthaus - Die Interaktive Fussballsimulation
 Lotus|Lotus Esprit Turbo Challenge
 Lotus 2|Lotus Turbo Challenge 2
@@ -593,7 +593,7 @@ Mercenary|Mercenary - Escape from Targ and the Second City
 MFTanks|MF Tanks
 Mi G 29 Fulcrum|MiG-29 Fulcrum
 Mi G 29 MSuper Fulcrum|MiG-29M Super Fulcrum
-Mi G 29 Soviet Fighter|MIG 29 - Soviet Fighter
+Mi G 29 Soviet Fighter|MIG 29 Soviet Fighter
 Mickey Mouse Computer Game|Mickey Mouse - The Computer Game
 Mickeys A BC s|Mickey's ABC's - A Day at the Fair
 Mickeys A BCs|Mickey's ABC's - A Day at the Fair
@@ -720,7 +720,7 @@ Raiders 01|Raiders-01
 Rambo 3|Rambo III
 Ran X|Ranx - The Video Game
 RBI 2 Baseball|R.B.I. Two Baseball
-Realms of Arkania|Realms of Arkania - Blade of Destiny
+Realms Of Arkania|Realms of Arkania - Blade of Destiny
 Renegade 3|Renegade III
 Return Of The Jedi|Star Wars - Return Of The Jedi
 Revenge Of Mutant Camels|Revenge Of The Mutant Camels
@@ -792,7 +792,7 @@ Sim Earth Hi Res|Sim Earth (HiRes)
 Sim Earth Lo Res|Sim Earth (LoRes)
 Sinbad|Sinbad and the Throne of the Falcon
 Sir Fred The Legend|Sir Fred - The Legend
-Skaermtrolden Hugo (Dansk)|Skaermtrolden Hugo (Danish)
+Skaermtrolden Hugo Dk|Skaermtrolden Hugo (Danish)
 Sky Chase|SkyChase
 Skyfox 2|Skyfox II - The Cygnus Conflict
 Slam Tilt Demo [AGA]|Slam Tilt (Demo) [AGA]
