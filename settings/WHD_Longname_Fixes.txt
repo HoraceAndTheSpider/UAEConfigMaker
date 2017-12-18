@@ -523,7 +523,7 @@ Kings Quest 4|King's Quest IV - The Perils of Rosella
 Kings Quest 5|King's Quest V - Absence Makes The Heart Go Yonder
 Kings Quest 6|King's Quest VI - Heir Today, Gone Tomorrow
 Kings Quest Enhanced|King's Quest I - Quest for the Crown (Enhanced)
-Kings Quest|King's Quest
+Kings Quest|King's Quest - Quest for the Crown
 Kiros Quest|Kiro's Quest
 Krusty's Super Fun House|Krusty's Fun House
 Krustys Super Fun House|Krusty's Super Fun House
@@ -607,6 +607,7 @@ Might And Magic 3|Might and Magic III - Isles of Terra
 Mighty Bomb Jack|Mighty BombJack
 Mike Reads Computer Pop Quiz|Mike Read's Computer Pop Quiz
 Millennium 22|Millennium 2.2
+Moebius Goatlizard|Incredible Adventures of Moebius Goatlizard
 Monkey Island 2|Monkey Island 2 - LeChuck's Revenge
 Monty Pythons Fly Cir|Monty Python's Flying Circus
 Moonstone|Moonstone - A Hard Days Knight
@@ -918,7 +919,6 @@ Time Runners Series|Time Runners (Series)
 Titus The Fox|Titus the Fox - To Marrakech and Back
 Tom Landry Football Deluxe|Tom Landry Strategy Football Deluxe
 Tom Landry Football|Tom Landry Strategy Football
-Tom Landry Strategy Football|Tom Landry Strategy Football Deluxe
 Toobin|Toobin'
 Toyota Celica GT Rally|Toyota Celica GT Rally
 Toyota Celica GTRally|Toyota Celica GT Rally
