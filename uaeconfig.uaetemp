@@ -7,10 +7,10 @@ config_version=3.5.0
 ; 
 ; *** Original paths
 ; 
-pandora.rom_path=<<romdir>>
-pandora.floppy_path=<<inputdir>>Games_ADF/
-pandora.hardfile_path=<<inputdir>>Games_HDF/
-pandora.cd_path=<<inputdir>>Games_CD32/
+amiberry.rom_path=<<romdir>>
+amiberry.floppy_path=<<inputdir>>Games_ADF/
+amiberry.hardfile_path=<<inputdir>>Games_HDF/
+amiberry.cd_path=<<inputdir>>Games_CD32/
 ; 
 ; *** Controller/Input Configuration
 ; 
@@ -31,12 +31,6 @@ joyport3=<<port3>>
 ; 
 <<custom_controls>>
 ;
-
-key_for_menu=<<menukey>>
-key_for_quit=<<quitkey>>
-amiberry_use_retroarch_quit=<<retroarch_quit>>
-amiberry_use_retroarch_menu=<<retroarch_menu>>
-amiberry_use_retroarch_reset=<<retroarch_reset>>
 input.joymouse_speed_analog=<<mouse_speed>>
 input.joymouse_speed_digital=<<mouse_speed>>
 input.joymouse_deadzone=<<deadzone>>
@@ -49,15 +43,19 @@ kbd_lang=us
 ; 
 ; *** Host-Specific
 ; 
-pandora.cpu_speed=600
-pandora.hide_idle_led=0
-pandora.tap_delay=10
-gfx_correct_aspect=0
-gfx_fullscreen_ratio=100
+amiberry.gfx_correct_aspect=0
+amiberry/gfx_fullscreen_ratio=100
 show_leds=false
-kbd_led_num=-1
-kbd_led_scr=-1
-kbd_led_cap=-1
+amiberry.kbd_led_num=-1
+amiberry.kbd_led_scr=-1
+;amiberry.kbd_led_cap=-1
+amiberry.open_gui=<<menukey>>
+amiberry.quit_amiberry=<<quitkey>>
+amiberry.use_retroarch_quit=<<retroarch_quit>>
+amiberry.use_retroarch_menu=<<retroarch_menu>>
+amiberry.use_retroarch_reset=<<retroarch_reset>>
+amiberry.move_x=<<offset_x>>
+amiberry.move_y=<<offset_y>>
 ; 
 ; *** Common / Paths
 ; 
@@ -114,9 +112,6 @@ kbd_led_num=-1
 kbd_led_scr=-1
 kbd_led_cap=-1
 ntsc=<<ntsc>>
-amiberry.move_x=<<offset_x>>
-amiberry.move_y=<<offset_y>>
-
 ; 
 ; *** CPU options
 ; 
