@@ -43,8 +43,8 @@ kbd_lang=us
 ; 
 ; *** Host-Specific
 ; 
-amiberry.gfx_correct_aspect=0
-amiberry/gfx_fullscreen_ratio=100
+amiberry.gfx_correct_aspect=<<43aspect>>
+amiberry.gfx_fullscreen_ratio=100
 show_leds=false
 amiberry.kbd_led_num=-1
 amiberry.kbd_led_scr=-1
@@ -108,9 +108,7 @@ gfx_lores=false
 gfx_resolution=hires
 gfx_correct_aspect=<<43aspect>>
 gfx_fullscreen_ratio=100
-kbd_led_num=-1
-kbd_led_scr=-1
-kbd_led_cap=-1
+
 ntsc=<<ntsc>>
 ; 
 ; *** CPU options
@@ -159,8 +157,6 @@ sound_interpol=none
 sound_filter= emulated
 sound_filter_type=standard
 sound_volume_cd=20
-sound_auto=yes
-synchronize_clock=yes
 ; 
 ; *** Misc. Options
 ; 
