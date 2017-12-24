@@ -637,6 +637,10 @@ def do_scan(input_directory, pathname,output_directory):
                 if check_list("Chipset_CollisionLevel_full.txt", this_file) is True:
                     sprite_collisions = "full"
 
+                chipset_compatible = "Generic"
+                if scanmode = "CD32":
+                    chipset_compatible = "CD32"                    
+                
                 # ' imm. blits & fast copper
 
                 fast_copper = not check_list("Chipset_NoFastCopper.txt", this_file)
@@ -844,6 +848,7 @@ def do_scan(input_directory, pathname,output_directory):
                     # chipset
                     config_text = config_text.replace("<<chipset>>", chipset)
                     config_text = config_text.replace("<<spritecollision>>", sprite_collisions)
+                    config_text = config_text.replace("<<chipsetcompatible>>", chipset_compatible)
                     config_text = config_text.replace("<<fastcopper>>", str(bool(0 - fast_copper)))
                     config_text = config_text.replace("<<immediateblitter>>", str(bool(0 - immediate_blits)))
 
@@ -938,9 +943,11 @@ def do_scan(input_directory, pathname,output_directory):
                         config_text = config_text.replace("uaehf0=", ";uaehf0=")
                         config_text = config_text.replace("filesystem2=", ";filesystem2=")
                         config_text = config_text.replace("hardfile2=", ";hardfile2=")
-                        config_text = config_text.replace("<<cd32mode>>", "1")
+                        config_text = config_text.replace("flash_file=", ";flash_file==")
+                        config_text = config_text.replace("<<cd32mode>>", "true")
+                        
                     else:
-                        config_text = config_text.replace("<<cd32mode>>", "0")
+                        config_text = config_text.replace("<<cd32mode>>", "false")
                         config_text = config_text.replace("cdimage0=", ";cdimage0=")
 
 

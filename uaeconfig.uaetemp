@@ -63,7 +63,7 @@ use_gui=no
 kickstart_rom_file=$(FILE_PATH)/<<kickstart>>
 kickstart_ext_rom_file=$(FILE_PATH)/<<extkickstart>>
 ide_mb_rom_file=:ENABLED
-flash_file=
+flash_file=<<inputdir>>cd32.nvr
 cart_file=
 ; 
 ; *** Floppy Drives
@@ -92,6 +92,8 @@ uaehf1=hdf,rw,DH2:<<inputdir>><<hdpath>>/<<game>>,32,1,2,512,50,,uae
 ; 
 cd_speed=100
 cd32cd=<<cd32mode>>
+cd32c2p=<<cd32mode>>
+cd32nvram=<<cd32mode>>
 cdimage0=<<inputdir>><<hdpath>>/<<game>>/<<game>>.cue,image
 ; 
 ; *** Display / Screen Setup
@@ -140,7 +142,7 @@ rtg_modes=0x502
 chipset=<<chipset>>
 chipset_refreshrate=50.000000
 collision_level=<<spritecollision>>
-chipset_compatible=Generic
+chipset_compatible=<<chipsetcompatible>>
 fatgary=0
 ramsey=15
 immediate_blits=<<immediateblitter>>
