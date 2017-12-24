@@ -581,13 +581,13 @@ def do_scan(input_directory, pathname,output_directory):
 
                 rom_check = True
                 if IGNORE_ROM_REQUIREMENT == False:
-                    if os.path.isfile(ROM_PATH.lower() + kickstart) == False:
+                    if os.path.isfile(ROM_PATH + kickstart) == False:
                         print ("")
-                        print ("     Kickstart file: " + FontColours.FAIL + ROM_PATH.lower() + kickstart + FontColours.ENDC + " is missing!")
+                        print ("     Kickstart file: " + FontColours.FAIL + ROM_PATH + kickstart + FontColours.ENDC + " is missing!")
                         rom_check = False
 
-                    if os.path.isfile(ROM_PATH.lower() + kickstart_ext) == False and kickstart_ext !="" :
-                        print ("     Extended Kickstart file: " + FontColours.FAIL + ROM_PATH.lower() + kickstart_ext + FontColours.ENDC + " is missing!")
+                    if os.path.isfile(ROM_PATH + kickstart_ext) == False and kickstart_ext !="" :
+                        print ("     Extended Kickstart file: " + FontColours.FAIL + ROM_PATH + kickstart_ext + FontColours.ENDC + " is missing!")
                         rom_check = False
                         
 
