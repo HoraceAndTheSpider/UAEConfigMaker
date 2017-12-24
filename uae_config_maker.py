@@ -638,7 +638,7 @@ def do_scan(input_directory, pathname,output_directory):
                     sprite_collisions = "full"
 
                 chipset_compatible = "Generic"
-                if scanmode = "CD32":
+                if machine_type == "CD32":
                     chipset_compatible = "CD32"                    
                 
                 # ' imm. blits & fast copper
