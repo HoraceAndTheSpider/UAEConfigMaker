@@ -577,6 +577,22 @@ def do_scan(input_directory, pathname,output_directory):
                     fast_ram = 8
                     clock_speed = 14
 
+                # check rom requirement
+
+                rom_check = True
+                if IGNORE_ROM_REQUIREMENT == False:
+                    if os.path.isfile(ROM_PATH.lower() + kickstart) == False:
+                        print ("")
+                        print ("     Kickstart file: " + FontColours.FAIL + ROM_PATH.lower() + kickstart + FontColours.ENDC + " is missing!")
+                        rom_check = False
+
+                    if os.path.isfile(ROM_PATH.lower() + kickstart_ext) == False and kickstart_ext !="" :
+                        print ("     Extended Kickstart file: " + FontColours.FAIL + ROM_PATH.lower() + kickstart_ext + FontColours.ENDC + " is missing!")
+                        rom_check = False
+                        
+
+                        
+
                 # '======== MEMORY SETTINGS =======
                 # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 # ' when we want different chip ram!!
@@ -769,11 +785,20 @@ def do_scan(input_directory, pathname,output_directory):
                 # ' ....
 
                 # print("we are making a config ....")
-      
-                shutil.copyfile("uaeconfig.uaetemp", config_file)
+
+
+                if rom_check == True:
+                    shutil.copyfile("uaeconfig.uaetemp", config_file)
+                else:
+                    print(FontColours.FAIL + "     Kickstart ROM(s) not present - no config created." + FontColours.ENDC)
 
                 if os.path.isfile(config_file) is False:
-                    print(FontColours.FAIL + "Error creating config." + FontColours.ENDC)
+                    print(FontColours.FAIL + "     Error creating config." + FontColours.ENDC)
+
+                # fall-back check for exising file that is with no kickstart
+                elif os.path.isfile(config_file) is True and rom_check == False:
+                    os.remove (config_file)
+                    
                 else:
                     print("     Editing File: " + FontColours.HEADER + config_file + FontColours.ENDC)
 
@@ -1018,12 +1043,15 @@ def do_scan(input_directory, pathname,output_directory):
 
                     config_text = config_text.replace("<<custom_controls>>", custom_text)
 
-                    
-                    # save out the config changes
-                    text_file = open(config_file, "w")
-                    text_file.write(config_text)
-                    text_file.close()
-                    fix_ownership(config_file)
+                    if rom_check == True:                                       
+                        # save out the config changes
+                        text_file = open(config_file, "w")
+                        text_file.write(config_text)
+                        text_file.close()
+                        fix_ownership(config_file)
+                        
+                    else:
+                        os.remove(config_file)
                     
                 ## this point we can jump in, having created a config.
 
@@ -1176,6 +1204,11 @@ parser.add_argument('--rom-path',  # command line argument
                     help="Optional Kickstart ROM path"
                     )
 
+parser.add_argument('--ignore-rom-requirement',  # command line argument
+                    action="store_true",  # if argument present, store value as True otherwise False
+                    help="Create Config regarless of kickstart ROM being present"
+                    )
+
 parser.add_argument('--whdload-update',  # command line argument
                     action="store_true",  # if argument present, store value as True otherwise False
                     help="Check for WHDLoad Updates"
@@ -1272,7 +1305,8 @@ ROM_PATH = args.rom_path
 # if hostconfig specifies ..., use as override
 if find_host_option("rom_path") != "" : ROM_PATH = find_host_option("rom_path") 
 
-
+# >> Setup Bool Constant for rom requirement
+IGNORE_ROM_REQUIREMENT = args.ignore_rom_requirement
 
 
 # paths/folders if needed
