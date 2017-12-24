@@ -54,8 +54,8 @@ amiberry.quit_amiberry=<<quitkey>>
 amiberry.use_retroarch_quit=<<retroarch_quit>>
 amiberry.use_retroarch_menu=<<retroarch_menu>>
 amiberry.use_retroarch_reset=<<retroarch_reset>>
-amiberry.move_x=<<offset_x>>
-amiberry.move_y=<<offset_y>>
+amiberry.horizontal_offset=<<offset_x>>
+amiberry.vertical_offset=<<offset_y>>
 ; 
 ; *** Common / Paths
 ; 
