@@ -968,10 +968,10 @@ def do_scan(input_directory, pathname,output_directory):
                         config_text = config_text.replace("uaehf0=", ";uaehf0=")
                         config_text = config_text.replace("filesystem2=", ";filesystem2=")
                         config_text = config_text.replace("hardfile2=", ";hardfile2=")
-                        config_text = config_text.replace("flash_file=", ";flash_file==")
                         config_text = config_text.replace("<<cd32mode>>", "true")
                         
                     else:
+                        config_text = config_text.replace("flash_file=", ";flash_file=")
                         config_text = config_text.replace("<<cd32mode>>", "false")
                         config_text = config_text.replace("cdimage0=", ";cdimage0=")
 
