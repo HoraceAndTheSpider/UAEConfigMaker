@@ -1,6 +1,9 @@
 Alien Breed Tower Assault (v1.1) [AGA].controls
 Alien Breed Tower Assault [AGA].controls
+Eye Of The Beholder.controls
+Indy Heat.controls
+Ivan 'Ironman' Stewart's Super Off Road.controls
+Legend (Mindscape).controls
 Populous 2.controls
 Populous.controls
 Worlds Of Legend.controls
-Legend (Mindscape).controls
