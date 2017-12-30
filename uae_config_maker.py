@@ -678,8 +678,13 @@ def do_scan(input_directory, pathname,output_directory):
                 if check_list("CPU_ClockSpeed_28.txt", this_file) is True:
                     clock_speed = 28
 
-                # ' cpu model 040
-                if check_list("CPU_040.txt", this_file) is True:
+
+                # ' cpu model 68000
+                if check_list("CPU_68000.txt", this_file) is True:
+                    a_cpu = "68000"
+                    
+                # ' cpu model 68040
+                if check_list("CPU_68040.txt", this_file) is True:
                     a_cpu = "68040"
                     _24_bit_address = False
 
