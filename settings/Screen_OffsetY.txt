@@ -69,8 +69,8 @@ BlackViperCD32 3
 BloodMoney 3
 Bloodnet 3
 BloodnetAGA 3
-Bloodwych 14
-Bloodwych&ExtendedLevels 14
+Bloodwych 12
+Bloodwych&ExtendedLevels 12
 BombPacCD32 3
 BombPacCD32AGA 3
 BrutalFootball 3
@@ -341,7 +341,7 @@ Indianapolis500 3
 IndyHeat 3
 Infestation 3
 Intact15MB 3
-InternationalKarate+ 11
+InternationalKarate+ 9
 Interphase 17
 InterphaseAmigaFormat 17
 IntoTheEaglesNest 3
