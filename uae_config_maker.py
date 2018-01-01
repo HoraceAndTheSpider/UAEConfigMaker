@@ -108,38 +108,6 @@ def do_scan(input_directory, pathname,output_directory):
             " does not exist")
         return
 
-    # what type of scan is it  --  default , WHDLOAD folder
-    if pathname.find("WHDLoad") > -1 and pathname.find("_HDF") > -1:
-        scan_mode = "WHDLoadHDF"
-        hdsettings = ",0"
-
-    elif pathname.find("WHDLoad") > -1:
-        scan_mode = "WHDLoad"
-        hdsettings = ",0"
-
-    elif pathname.find("_HDF") > -1:
-        scan_mode = "HDF"
-        hdsettings = ",32,1,2,512,50,,uae"
-
-##    elif pathname.lower().find(".hdf") > -1:
-##        scan_mode = "HDF"
-##        hdsettings = ",32,1,2,512,50,,uae"
-
-    elif pathname.lower().find("_ADF") > -1:
-        scan_mode = "ADF"
-
-    elif pathname.lower().find("cd32") > -1:
-        scan_mode = "CD32"
-
-    elif pathname.lower().find("cdtv") > -1:
-        scan_mode = "CD32"
-
-    else:
-        scan_mode = "WHDLoad"
-        hdsettings = ",0"
-
-    print("Scan Mode: " + FontColours.BOLD + FontColours.HEADER + scan_mode + FontColours.ENDC)
-    print()
     the_filter = ""
     count = 1
     skip_all = 0
@@ -221,47 +189,72 @@ def do_scan(input_directory, pathname,output_directory):
         retroarch_menu = "True"
     if retroarch_reset == "":
         retroarch_reset = "False"
-
-
-
     
-    # cycle through all folders / files
-    for file in glob.glob(input_directory + pathname + "/*"):
+    # cycle through all >>> files<<
+#    for file in glob.glob(input_directory + pathname + "/*"):
+    for file in glob.iglob(input_directory + pathname + '/**/*.*', recursive=True):
 
-        # remove the long filepath 
-        this_file = os.path.basename(file)
 
-        # Set criteria for each scan type
         scan_pass = False
+        # Set criteria for each scan type
+        
+        # use the extension to determine what we are working on.
 
-        # WHDLOAD scanmode needs folders, mostly
-        if (scan_mode == "WHDLoad" and os.path.isdir(file) is True):
+        # WHDLOAD scanmode finds .slave files but uses folders
+        if file.lower().find(".slave") > -1 and pathname.find("WHDLoad") > -1:
+            scan_mode = "WHDLoad"
             scan_pass = True
             
         # WHDLOAD scanmode will accept .zip
-        if (scan_mode == "WHDLoad" and os.path.isfile(file) is True
-            and text_utils.right(this_file.lower(), 4) == ".zip"):
+        elif file.lower().find(".zip") > -1 and pathname.find("WHDLoad") > -1:
+            scan_mode = "WHDLoad"
             scan_pass = True
 
-        # WHDLOAD HDF scanmode must have file extension as .hdf
-        if (scan_mode == "WHDLoadHDF" and os.path.isfile(file) is True
-            and text_utils.right(this_file.lower(), 4) == ".hdf"):
+        # WHDLOAD HDF scanmode must have file extension as .hdf           
+        elif file.lower().find(".hdf") > -1 and pathname.find("WHDLoad")  > -1 and pathname.find("_HDF") > -1:
+            scan_mode = "WHDLoadHDF"
             scan_pass = True
-                               
-        # HDF scanmode must have file extension as .hdf
-        if (scan_mode == "HDF" and os.path.isfile(file) is True
-            and text_utils.right(this_file.lower(), 4) == ".hdf"):
+            
+
+        # CD32 folders prefer sub file with extension as .cue
+        elif file.lower().find(".cue") > -1 and pathname.find("CD32") > -1:
+            scan_mode = "CD32"
+            scan_pass = True
+           
+        # CD32 folders prefer sub file with extension as .cue
+        elif file.lower().find(".iso") > -1 and pathname.find("CD32") > -1:
+            scan_mode = "CD32"
             scan_pass = True
 
-        # CD32 scanmode can have file extension as .iso
-        if (scan_mode == "CD32" and os.path.isfile(file) is True
-            and text_utils.right(this_file.lower(), 4) == ".iso"):
+        # CD folders prefer sub file with extension as .cue
+        elif file.lower().find(".cue") > -1:
+            scan_mode = "A1200CD"
+            scan_pass = True
+           
+        # CD32 folders prefer sub file with extension as .cue
+        elif file.lower().find(".iso") > -1:
+            scan_mode = "A1200CD"
             scan_pass = True
 
-        # CD32 folders need sub file with extension as .cue
-        if (scan_mode == "CD32" and os.path.isdir(file) is True
-            and os.path.isfile(file + "/" + this_file + ".cue") is True):
+        # regular HDF scanmode must have file extension as .hdf            
+        elif file.lower().find(".hdf") > -1 and pathname.find("_HDF") > -1:
+            scan_mode = "HDF"
             scan_pass = True
+            
+        else:
+            scan_mode = "None"
+
+        # clear out the cue/iso confusion
+        if file.lower().find(".iso") > -1 and os.path.isfile(file.replace(".iso",".cue")):
+            scan_pass = False
+
+        if  file.lower().find("track 01 of") > -1 and file.lower().find(".iso") > -1:
+            scan_pass = False
+            
+        # remove the long filepath 
+        this_file = os.path.basename(file)
+
+
 
         # name filter applies
         if the_filter != '' and this_file.find(the_filter) < 0:
@@ -269,37 +262,54 @@ def do_scan(input_directory, pathname,output_directory):
 
         # we passed the 'type' scan
         elif scan_pass is True:
+
             # horrible work around for annoying game name
             temp_name = this_file.replace("R³sselsheim", "Russelsheim")
-            print(FontColours.OKBLUE + str(count) + FontColours.ENDC +
-                  ": Processing Game: " + FontColours.BOLD + temp_name + FontColours.ENDC)
 
-            if this_file.lower().endswith(".zip"):
+            # inform the user how this is being processed
+            print(FontColours.OKBLUE + str(count) + FontColours.ENDC +
+                  ": Processing File: " + FontColours.BOLD + temp_name + FontColours.ENDC +
+                  " - " + FontColours.HEADER + scan_mode + FontColours.ENDC )
+
+            game_path = file.replace(os.path.basename(file),"").replace(input_directory + pathname + "/","")            
+            game_file = this_file
+            
+            # remove extensions zip / iso /cue / adf / hdf
+            if this_file.lower().endswith(".zip") or this_file.lower().endswith(".cue") or this_file.lower().endswith(".iso") or this_file.lower().endswith(".hdf") or this_file.lower().endswith(".adf"):
                 this_file = text_utils.left(this_file, len(this_file) - 4)
 
+            # remove extensions slave
+            if this_file.lower().endswith(".slave"):
+                this_file = text_utils.left(this_file, len(this_file) - 6)
+
+
+            # Sort the naming out
             # standard 'expand name' for WHDLoad folders
             if scan_mode == "WHDLoad":
                 full_game_name = text_utils.make_full_name(this_file)
-
+                
             # standard 'expand name' for WHDLoad folders
-            if scan_mode == "WHDLoadHDF":
+            elif scan_mode == "WHDLoadHDF":
 
-               full_game_name = text_utils.make_full_name(text_utils.left(this_file, len(this_file) - 4))
+               #full_game_name = text_utils.make_full_name(text_utils.left(this_file, len(this_file) - 4))
+               full_game_name = text_utils.make_full_name(this_file)
                full_game_name = full_game_name + " [WHDLoad HDF]"
                
             # there is an alternative name changing for TOSEC CD32 images....
             elif scan_mode == "CD32":
                 full_game_name = text_utils.make_full_cd32_name(this_file)
 
-            # stock name for HDF files
-            elif scan_mode == "HDF":
-                if this_file.lower().endswith(".hdf"):
-                    full_game_name = text_utils.left(this_file, len(this_file) - 4)
-
             # there will probably an alternative name changing for TOSEC ADF files if we ever add it....
             elif scan_mode == "ADF":
+                full_game_name = this_file
                 continue
 
+            else:
+                full_game_name = this_file
+
+
+            
+                
             # DISPLAY!
             print()
             print("     Full Name: " + FontColours.OKGREEN + full_game_name + FontColours.ENDC)
@@ -317,7 +327,7 @@ def do_scan(input_directory, pathname,output_directory):
             elif full_game_name.find("AGA") > -1:
                 machine_type = "A1200/020"
                 
-            elif scan_mode == "WHDLoad" and full_game_name.find("CD32") > -1:
+            elif full_game_name.find("CD32") > -1:
                 machine_type = "A1200/020"
                 
             else:
@@ -333,6 +343,7 @@ def do_scan(input_directory, pathname,output_directory):
             else:
                 config_file = output_directory + full_game_name.replace(" ","_") + ".uae"
                     
+
 
             if os.path.isfile(config_file) == True and skip_all == 0:
                 while answer != "Y" and answer != "N" and answer != "S" and answer != "A":
@@ -365,6 +376,13 @@ def do_scan(input_directory, pathname,output_directory):
             # what to do 'automatically'
             if skip_all == 1:
                 create_config = True
+
+
+            # black list
+            if check_list("UAEConfigMaker_BlackList.txt", game_file) is True:
+                print(FontColours.FAIL + "     Skipping black-listed file." + FontColours.ENDC)
+                create_config = False
+                
 
             # this is where we start the code to actually build the config with changes
             if create_config is True:
@@ -843,7 +861,9 @@ def do_scan(input_directory, pathname,output_directory):
 
                     # game / path
                     config_text = config_text.replace("<<game>>", this_file)
-
+                    config_text = config_text.replace("<<gamepath>>", game_path)
+                    config_text = config_text.replace("<<gamefile>>", game_file)
+                    
                     config_text = config_text.replace("<<fullgame>>", full_game_name)
                     config_text = config_text.replace("<<hdpath>>", pathname)
  #                   config_text = config_text.replace("<<quitbutton>>", str(quit_button))
