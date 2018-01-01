@@ -841,7 +841,7 @@ def do_scan(input_directory, pathname,output_directory):
                         if data_path !="": data_path += "/"
                         
                         autostart_text = 'CD "WHDLoadGame:"' + chr(10)
-                        autostart_text += 'WHDLOAD SLAVE="WHDLoadGame:' + this_slave.file_name
+                        autostart_text += 'WHDLOAD SLAVE="WHDLoadGame:' + this_slave.file_name + '"'
                         autostart_text += ' PRELOAD NOWRITECACHE NOREQ SPLASHDELAY=0'
                         autostart_text += ' data="WHDLoadGame:' + data_path +'"'
                         autostart_text += ' NOREQ >"WHDLoadGame:whdscript_debug"' + chr(10)
