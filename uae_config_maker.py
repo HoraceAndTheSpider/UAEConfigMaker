@@ -1344,8 +1344,19 @@ if NO_UPDATE is True:
    
 else:
     # we can go through all files in 'settings' and attempt a download of the file
-    for filename in glob.glob('settings/*.txt'):
-        update_utils.download_update(filename,"")
+
+#    for filename in glob.glob('settings/*.txt'):
+ #      update_utils.download_update(filename,"")
+        
+    # remove any items which are not amiberry custom settings
+    with open("settings/UAEConfigMaker_UpdateList.txt") as f:
+        content = f.readlines()
+        content = [x.strip() for x in content]
+    f.close()
+                                    
+    for this_line in content:
+        update_utils.download_update("settings/" + this_line,"")
+
 
     # do similar for main template
     update_utils.download_update("uaeconfig.uaetemp","")
