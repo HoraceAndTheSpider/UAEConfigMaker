@@ -1149,6 +1149,7 @@ def do_scan(input_directory, pathname,output_directory):
 def do_scan_base(inputdir,outputdir):
     # go through the paths
 
+
     # DoScan(inputdir,"Games_WHDLoad_DomTest")
     # DoScan(inputdir,"Games_CDTV")
     # DoScan(inputdir,"Games_ADF")
@@ -1343,19 +1344,17 @@ if NO_UPDATE is True:
      print(FontColours.FAIL + "No update requests. (Manual override)"+ FontColours.ENDC)
    
 else:
-    # we can go through all files in 'settings' and attempt a download of the file
 
-#    for filename in glob.glob('settings/*.txt'):
- #      update_utils.download_update(filename,"")
-        
-    # remove any items which are not amiberry custom settings
-    with open("settings/UAEConfigMaker_UpdateList.txt") as f:
-        content = f.readlines()
-        content = [x.strip() for x in content]
-    f.close()
-                                    
-    for this_line in content:
-        update_utils.download_update("settings/" + this_line,"")
+    # download all files recorded on the update list
+    if os.path.isfile("settings/UAEConfigMaker_UpdateList.txt") == True:
+            
+        with open("settings/UAEConfigMaker_UpdateList.txt") as f:
+            content = f.readlines()
+            content = [x.strip() for x in content]
+        f.close()
+                                        
+        for this_line in content:
+            update_utils.download_update("settings/" + this_line,"")
 
 
     # do similar for main template
