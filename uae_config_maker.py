@@ -768,7 +768,15 @@ def do_scan(input_directory, pathname,output_directory):
                 aspect_ratio = bool(check_list("Screen_Force43Aspect.txt", this_file))
                 if find_host_option("gfx_correct_aspect") != "":
                     aspect_ratio = find_host_option("gfx_correct_aspect")
+                    
+                linemode = ""
+                if find_host_option("gfx_linemode") != "":
+                    linemode = find_host_option("gfx_linemode")
 
+                if linemode.lower() != "double" and linemode.lower()  != "none":
+                    linemode = "double"
+
+                
                 use_frameskip = 0
                 if find_host_option("gfx_framerate") != "":
                     use_frameskip = find_host_option("gfx_framerate")
@@ -884,7 +892,8 @@ def do_scan(input_directory, pathname,output_directory):
                     config_text = config_text.replace("<<offset_y>>", str(screen_offset_y))
                     config_text = config_text.replace("<<offset_x>>", str(screen_offset_x))
                     config_text = config_text.replace("<<43aspect>>", str(aspect_ratio))
-                    config_text = config_text.replace("<<frameskip>>", str(use_frameskip))                 
+                    config_text = config_text.replace("<<frameskip>>", str(use_frameskip))
+                    config_text = config_text.replace("<<linemode>>", str(linemode))
                     config_text = config_text.replace("<<ntsc>>", str(bool(0 - use_ntsc)))
 
                     # memory
