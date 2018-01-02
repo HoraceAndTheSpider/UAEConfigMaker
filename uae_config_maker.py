@@ -1148,36 +1148,19 @@ def do_scan(input_directory, pathname,output_directory):
 
 def do_scan_base(inputdir,outputdir):
     # go through the paths
-
-
-    # DoScan(inputdir,"Games_WHDLoad_DomTest")
-    # DoScan(inputdir,"Games_CDTV")
-    # DoScan(inputdir,"Games_ADF")
-    # DoScan(inputdir,"Games_Script_Unreleased")
-
-    do_scan(inputdir, "Games_WHDLoad", outputdir)
-    do_scan(inputdir, "Games_WHDLoad_AGA", outputdir)
-    do_scan(inputdir, "Games_WHDLoad_CDTV", outputdir)
-    do_scan(inputdir, "Games_WHDLoad_CD32", outputdir)
-    do_scan(inputdir, "Games_WHDLoad_DemoVersions", outputdir)
     
-    do_scan(inputdir, "Games_WHDLoad_AltVersions", outputdir)
-    do_scan(inputdir, "Games_WHDLoad_AltLanguage", outputdir)
-    do_scan(inputdir, "Games_WHDLoad_AGACD32_AltLanguage", outputdir)
-    do_scan(inputdir, "Games_WHDLoad_AGACD32_AltVersions", outputdir)
-    do_scan(inputdir, "Games_WHDLoad_Unofficial", outputdir)
+    # do scanning of folders listed in scanpaths
+    if os.path.isfile("settings/UAEConfigMaker_ScanPaths.txt") == True:
+            
+        with open("settings/UAEConfigMaker_ScanPaths.txt") as f:
+            content = f.readlines()
+            content = [x.strip() for x in content]
+        f.close()
+                                        
+        for this_line in content:
+            if this_line != "" and text_utils.left(this_line,1) != "#":
+                do_scan(inputdir, this_line, outputdir)
 
-    do_scan(inputdir, "Games_WHDLoad_HDF", outputdir)
-    do_scan(inputdir, "Games_WHDLoad_HDF_AGA", outputdir)
-    do_scan(inputdir, "Games_WHDLoad_HDF_CDTV", outputdir)
-    do_scan(inputdir, "Games_WHDLoad_HDF_DemoVersions", outputdir)
-    do_scan(inputdir, "Games_WHDLoad_HDF_AltLanguage", outputdir)
-    
-    do_scan(inputdir, "Games_HDF", outputdir)
-    do_scan(inputdir, "Games_CD32", outputdir)
-
-    do_scan(inputdir, "Demos_WHDLoad", outputdir)
-    # raise SystemExit
 
 # main section starting here...
 

@@ -47,6 +47,7 @@ System_A500.txt
 System_CD32.txt
 UAEConfigMaker_BlackList.txt
 UAEConfigMaker_CD32ISO_Longname_Fixes.txt
+UAEConfigMaker_ScanPaths.txt
 UAEConfigMaker_UpdateList.txt
 UAEConfigMaker_WHD_Longname_Fixes.txt
 UAEConfigMaker_WHD_PageList.txt
