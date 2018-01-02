@@ -595,8 +595,11 @@ def do_scan(input_directory, pathname,output_directory):
                     fast_ram = 8
                     clock_speed = 14
 
+                # pre-check for alt-kickstart
+                if check_list("CPU_68000.txt", this_file) is True:
+                    kickstart = "kick205.rom"
+                    
                 # check rom requirement
-
                 rom_check = True
                 if IGNORE_ROM_REQUIREMENT == False:
                     if os.path.isfile(ROM_PATH + kickstart) == False:
@@ -608,7 +611,6 @@ def do_scan(input_directory, pathname,output_directory):
                         print ("     Extended Kickstart file: " + FontColours.FAIL + ROM_PATH + kickstart_ext + FontColours.ENDC + " is missing!")
                         rom_check = False
                         
-
                         
 
                 # '======== MEMORY SETTINGS =======
@@ -700,7 +702,7 @@ def do_scan(input_directory, pathname,output_directory):
                 # ' cpu model 68000
                 if check_list("CPU_68000.txt", this_file) is True:
                     a_cpu = "68000"
-                    
+
                 # ' cpu model 68040
                 if check_list("CPU_68040.txt", this_file) is True:
                     a_cpu = "68040"
