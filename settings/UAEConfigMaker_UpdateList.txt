@@ -16,7 +16,6 @@ Chipset_CollisionLevel_sprites.txt
 Chipset_ImmediateBlitter.txt
 Chipset_NoFastCopper.txt
 Control_CD32.txt
-Control_Custom_Gamelist.txt
 Control_Port0_Mouse.txt
 Control_Port1_Mouse.txt
 Floppy_Speed_100.txt
@@ -47,7 +46,9 @@ System_A500.txt
 System_CD32.txt
 UAEConfigMaker_BlackList.txt
 UAEConfigMaker_CD32ISO_Longname_Fixes.txt
+UAEConfigMaker_CustomControl_Gamelist.txt
 UAEConfigMaker_ScanPaths.txt
+UAEConfigMaker_TemplateList.txt
 UAEConfigMaker_UpdateList.txt
 UAEConfigMaker_WHD_Longname_Fixes.txt
 UAEConfigMaker_WHD_PageList.txt
