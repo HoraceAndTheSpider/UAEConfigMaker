@@ -39,7 +39,7 @@ def run_updater():
 
     # and these are the files to update
     download_update("uae_config_maker.py","")
-    download_update("UAE Config Maker.sh","/home/pi/RetroPie/retropiemenu/")
+    download_update("UAE%20Config%20Maker.sh","/home/pi/RetroPie/retropiemenu/")
     download_update("README.md","")
     download_update("TODO.md","")
     download_update("whdload/whdload_slave.py","")
