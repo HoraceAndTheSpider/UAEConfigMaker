@@ -1374,7 +1374,8 @@ else:
         f.close()
                                         
         for this_line in content:
-            update_utils.download_update("settings/" + this_line,"")
+            if this_line != "":
+                update_utils.download_update("settings/" + this_line,"")
 
 
    # lets download all of the custom templates
@@ -1386,7 +1387,8 @@ else:
         f.close()
                             
         for this_line in content:
-            update_utils.download_update("templates/" + this_line,"")
+            if this_line != "":
+                update_utils.download_update("templates/" + this_line,"")
 
 
 
@@ -1394,13 +1396,14 @@ else:
     if os.path.isfile("settings/UAEConfigMaker_CustomControl_Gamelist.txt") == True:
         
         # remove any items which are not amiberry custom settings
-        with open("settings/Control_Custom_Gamelist.txt") as f:
+        with open("settings/UAEConfigMaker_CustomControl_Gamelist.txt") as f:
              content = f.readlines()
              content = [x.strip() for x in content]
         f.close()
                             
         for this_line in content:
-            update_utils.download_update("customcontrols/" + this_line,"")
+            if this_line != "":
+                update_utils.download_update("customcontrols/" + this_line,"")
 
     
 
