@@ -5,6 +5,8 @@ import os
 import shutil
 import platform
 
+from pathlib import Path
+
 from utils import general_utils
 from utils import text_utils
 from utils import update_utils
@@ -189,12 +191,16 @@ def do_scan(input_directory, pathname,output_directory):
         retroarch_menu = "True"
     if retroarch_reset == "":
         retroarch_reset = "False"
-    
-    # cycle through all >>> files<<
-#    for file in glob.glob(input_directory + pathname + "/*"):
-    for file in glob.iglob(input_directory + pathname + '/**/*.*', recursive=True):
 
+ #  cycle through all >>> files<<
 
+ # python 3.5+ only
+ #   for file in glob.iglob(input_directory + pathname + '/**/*.*', recursive=True):
+
+ # python 3.4
+    for file2 in Path(input_directory + pathname + "/").glob('**/*.*'):
+        file = str(file2)
+        
         scan_pass = False
         # Set criteria for each scan type
         
@@ -250,12 +256,15 @@ def do_scan(input_directory, pathname,output_directory):
 
         if  file.lower().find("track 01 of") > -1 and file.lower().find(".iso") > -1:
             scan_pass = False
-            
+
         # remove the long filepath 
         this_file = os.path.basename(file)
 
 
-
+        # remove stupid OSX, UAE or badly renamed files
+        if text_utils.left(this_file.lower(),2) == "._" or text_utils.right(this_file.lower(),4) == "uaem" or this_file.lower()=="game.slave":
+             scan_pass = False
+             
         # name filter applies
         if the_filter != '' and this_file.find(the_filter) < 0:
             pass
