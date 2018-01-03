@@ -77,7 +77,7 @@ def check_list(in_file, game_name):
 
 
 def find_host_option(in_option):
-    file_name = "hostconfig.uaetemp"
+    file_name = "templates/hostconfig.uaetemp"
 
     if os.path.isfile(file_name) is False:
         return ""
@@ -99,7 +99,9 @@ def find_host_option(in_option):
 
 
 def do_scan(input_directory, pathname,output_directory):
-    
+
+    print()
+        
     if os.path.isdir(input_directory + pathname):
         print("Config Save Path: " + FontColours.OKBLUE + output_directory + FontColours.ENDC)
         print("Games Files Path: " + FontColours.BOLD + FontColours.OKBLUE + pathname + FontColours.ENDC)
@@ -316,9 +318,8 @@ def do_scan(input_directory, pathname,output_directory):
             else:
                 full_game_name = this_file
 
-
+            full_game_path = input_directory + pathname + "/" + game_path
             
-                
             # DISPLAY!
             print()
             print("     Full Name: " + FontColours.OKGREEN + full_game_name + FontColours.ENDC)
@@ -397,7 +398,7 @@ def do_scan(input_directory, pathname,output_directory):
             if create_config is True:
 
                 # lets do some work, based on what slave files we find.
-# ===================                
+                # ===================                
 
                 whd_chip_ram = 0
                 whd_fast_ram = 0
@@ -414,14 +415,14 @@ def do_scan(input_directory, pathname,output_directory):
                
                # note that this *only* works with WHDLoad folder scanning.
                 if scan_mode == "WHDLoad" and WHDLOAD_UPDATE==True:
-                    
+                
                     whd_update_message = ""
-                    for slave_file in glob.glob(file + "/*"):
+                    for slave_file in glob.glob(full_game_path + "*"):
                         if slave_file.lower().endswith(".slave"):
-                        
+
                             this_slave = whdload_slave.whdload_factory(slave_file)
                             # print (this_slave.name)
-                            
+
                             # minimum chip ram
                             round_up = int(this_slave.base_mem_size/524288) + (this_slave.base_mem_size % 524288 > 0)
                             if round_up >= whd_chip_ram:
@@ -505,10 +506,10 @@ def do_scan(input_directory, pathname,output_directory):
 
                     # web_slaveslave loop is finished
                     if whd_update_message !="":
-                        text_file = open(file + "/whdupdate_message", "w+")
+                        text_file = open(full_game_path + "whdupdate_message", "w+")
                         text_file.write(whd_update_message)
                         text_file.close()
-                        fix_ownership(file + "/whdupdate_message")
+                        fix_ownership(full_game_path + "whdupdate_message")
                         print()
                         #print("     "+whd_update_message)                                            
                         #continue
@@ -830,7 +831,7 @@ def do_scan(input_directory, pathname,output_directory):
 
 
                 if rom_check == True:
-                    shutil.copyfile("uaeconfig.uaetemp", config_file)
+                    shutil.copyfile("templates/" + config_name + ".uaetemp", config_file)
                 else:
                     print(FontColours.FAIL + "     Kickstart ROM(s) not present - no config created." + FontColours.ENDC)
 
@@ -1101,23 +1102,32 @@ def do_scan(input_directory, pathname,output_directory):
                 ## this point we can jump in, having created a config.
 
                 # we'll need to check we are on WHDLoad mode and creation of auto-startup is ON
-                if scan_mode == "WHDLoad" and CREATE_AUTOSTARTUP == True:                   
-                    slave_count = 0
-                    for slave_file in glob.glob(file + "/*"):
-                        if slave_file.lower().endswith(".slave"):
-                            
-                            this_slave = whdload_slave.whdload_factory(slave_file)
-                            slave_count += 1
+                if scan_mode == "WHDLoad" and CREATE_AUTOSTARTUP == True:
+
+                    #print(" >>>" + file)
+                    if game_file.lower().find(".slave") >-1:
+                        this_slave = whdload_slave.whdload_factory(file)
+                        slave_count = 1                       
+
+#                    slave_count = 0
+#                    for slave_file in glob.glob(file + "/*"):
+#                        if slave_file.lower().endswith(".slave"):                            
+#                            this_slave = whdload_slave.whdload_factory(slave_file)
+#                            slave_count += 1
+
 
                 # then check that there is 1 slave file only
-                    if slave_count == 1 and os.path.isfile(file + "/auto-startup") == False:
+                    if (slave_count == 1 and os.path.isfile(full_game_path + "auto-startup") == False):
+
+                    # actually, with the new file scan, we can just work with this...
+                    #if game_file.lower().find(".slave") >-1:
 
                     # if so, we can make an auto-startup file
                         data_path = (this_slave.current_dir)
                         if data_path !="": data_path += "/"
                         
                         autostart_text = 'CD "WHDLoadGame:"' + chr(10)
-                        autostart_text += 'WHDLOAD SLAVE="WHDLoadGame:' + this_slave.file_name +'"'
+                        autostart_text += 'WHDLOAD SLAVE="WHDLoadGame:' + game_file +'"'
                         autostart_text += ' PRELOAD NOWRITECACHE NOREQ SPLASHDELAY=0'
                         autostart_text += ' data="WHDLoadGame:' + data_path +'"'
                         autostart_text += ' NOREQ >"WHDLoadGame:whdscript_debug"' + chr(10)
@@ -1125,10 +1135,10 @@ def do_scan(input_directory, pathname,output_directory):
 
                         #print (autostart_text)
                         
-                        text_file = open(file + "/auto-startup", "w+")
+                        text_file = open(full_game_path + "auto-startup", "w+")
                         text_file.write(autostart_text)
                         text_file.close()
-                        fix_ownership(file + "/auto-startup")
+                        fix_ownership(full_game_path + "auto-startup")
 
 
                     # we will also leave a message about kickstarts
@@ -1144,10 +1154,10 @@ def do_scan(input_directory, pathname,output_directory):
                             kick_text += chr(10) + "Should this game fail to load, please check for these files." + chr(10)
                             #print (kick_text)
                             
-                            text_file = open(file + "/whdkickstarts_message", "w+")
+                            text_file = open(full_game_path + "/whdkickstarts_message", "w+")
                             text_file.write(kick_text)
                             text_file.close()
-                            fix_ownership(file + "/whdkickstarts_message")
+                            fix_ownership(full_game_path + "/whdkickstarts_message")
 
   
                             #whdupdate_message
@@ -1206,6 +1216,11 @@ parser.add_argument('--scandirs', '-s',  # command line argument
 parser.add_argument('--outputdir', '-o',  # command line argument
                     help='Target output path for .uae files',
                     default='/home/pi/RetroPie/roms/amiga/'  # Default directory if none supplied
+                    )
+
+parser.add_argument('--config-template', '-t',  # command line argument
+                    help='UAE tempate to be used',
+                    default='amiberry'  # Default config if none supplied
                     )
 
 parser.add_argument('--no-update', '-n',  # command line argument
@@ -1284,7 +1299,9 @@ outputdir = args.outputdir
 if INPUT_AS_OUTPUT==False:
     outputdir = general_utils.check_singledir(outputdir)
 
-
+# >> set an template .uae file
+CONFIG_TEMPLATE = args.config_template
+config_name = str(CONFIG_TEMPLATE)
 
 # >> Setup Bool Constant for No Update
 NO_UPDATE = args.no_update
@@ -1360,11 +1377,21 @@ else:
             update_utils.download_update("settings/" + this_line,"")
 
 
-    # do similar for main template
-    update_utils.download_update("uaeconfig.uaetemp","")
+   # lets download all of the custom templates
+    if os.path.isfile("settings/UAEConfigMaker_TemplateList.txt") == True:
+        
+        with open("settings/UAEConfigMaker_TemplateList.txt") as f:
+             content = f.readlines()
+             content = [x.strip() for x in content]
+        f.close()
+                            
+        for this_line in content:
+            update_utils.download_update("templates/" + this_line,"")
+
+
 
     # lets download all of the custom configs
-    if os.path.isfile("settings/Control_Custom_Gamelist.txt") == True:
+    if os.path.isfile("settings/UAEConfigMaker_CustomControl_Gamelist.txt") == True:
         
         # remove any items which are not amiberry custom settings
         with open("settings/Control_Custom_Gamelist.txt") as f:
@@ -1377,9 +1404,9 @@ else:
 
     
 
-if os.path.isfile("uaeconfig.uaetemp") is False:
+if os.path.isfile("templates/" + config_name + ".uaetemp") is False:
     print(
-        FontColours.FAIL + "Essential file: " + FontColours.BOLD + FontColours.OKBLUE + "uaeconfig.uaetemp" +
+        FontColours.FAIL + "Template file: " + FontColours.BOLD + FontColours.OKBLUE + config_name + ".uaetemp" +
         FontColours.FAIL + FontColours.ENDC + " missing." + FontColours.ENDC)
     raise SystemExit
 

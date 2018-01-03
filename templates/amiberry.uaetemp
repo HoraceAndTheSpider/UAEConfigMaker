@@ -99,6 +99,7 @@ cdimage0=<<inputdir>><<hdpath>>/<<gamepath>><<gamefile>>,image
 ; *** Display / Screen Setup
 ; 
 gfx_framerate=<<frameskip>>
+gfx_linemode=<<linemode>>
 gfx_width=<<screenwidth>>
 gfx_height=<<screenheight>>
 gfx_width_windowed=<<screenwidth>>
