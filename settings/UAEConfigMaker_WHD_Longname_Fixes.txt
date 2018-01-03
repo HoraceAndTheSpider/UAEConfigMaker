@@ -312,6 +312,8 @@ Enlightenment|Enlightenment - Druid II
 Entity No Intro|Entity (No Intro)
 EOB1AGA|Eye of the Beholder [AGA]
 EOB2AGA|Eye of the Beholder 2 [AGA]
+EOB 1-AGA|Eye of the Beholder [AGA]
+EOB 2-AGA|Eye of the Beholder 2 [AGA]
 Epic & Mission Disk|Epic (& Mission Disk)
 Escape FTPOTRobot Monsters|Escape From The Planet Of The Robot Monsters
 Espana The Games 92|Espana - The Games '92
@@ -855,7 +857,6 @@ Supr Strt Ftr 2 Trbo [AGA]|Super Street Fighter 2 Turbo [AGA]
 Supr Strt Ftr 2 Trbo [CD32]|Super Street Fighter 2 Turbo [CD32]
 Supr Tennis Chmps & Data Disks|Super Tennis Champs (& Data Disks)
 Supr Tennis Chmps|Super Tennis Champs
-Supremacy|Supremacy - Your Will Be Done
 Switchblade 2|Switchblade II
 T-Zer 0 Demo [AGA]|T-Zer0 (Demo) [AGA]
 T-Zer 0 Demo|T-Zer0 (Demo)
