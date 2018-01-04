@@ -52,6 +52,7 @@ GreatGianaSisters
 HATE
 Harlequin1MB
 Heimdall
+IK+
 JamesPond2
 JungleStrike
 JungleStrikeCD32
@@ -104,6 +105,7 @@ SuperOffRoad
 SuperSki
 SuperSkweek
 SuspiciousCargo
+Switchblade
 TennisCup1Mb
 TestDrive2
 ThemePark
