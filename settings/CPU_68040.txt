@@ -8,4 +8,5 @@ GuardianCD32
 Gunship2000AGA
 Gunship2000CD32
 StarCrusaderAGA
+TZer0DemoAGA
 WingCommanderCD32
