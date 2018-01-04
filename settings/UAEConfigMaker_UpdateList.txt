@@ -27,7 +27,9 @@ Memory_ChipRam_1.txt
 Memory_FastRam_1.txt
 Memory_FastRam_2.txt
 Memory_FastRam_4.txt
+Memory_Z3Ram_128.txt
 Memory_Z3Ram_16.txt
+Memory_Z3Ram_32.txt
 Memory_Z3Ram_64.txt
 Screen_Force43Aspect.txt
 Screen_ForceNTSC.txt
