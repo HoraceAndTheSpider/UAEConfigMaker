@@ -16,6 +16,7 @@ Necronom
 RuffNTumble
 RType2
 ShadowFighter
+ShadowOfTheBeast
 ShadowOfTheBeast3
 SuperStardustAGA
 Wolfchild
