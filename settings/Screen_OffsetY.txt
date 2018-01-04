@@ -128,7 +128,7 @@ Chessmaster2000 3
 ChipsChallengeEpyx 3
 ChronoQuest -6
 ChronoQuest2 3
-ChuckRock 3
+ChuckRock -3
 ChuckRock2 0
 ChuckieEgg 3
 ChuckieEgg2 3
@@ -152,7 +152,7 @@ Corruption 3
 CovertAction 3
 CrazyCars 3
 CrazyCars2 3
-CrazyCars3 3
+CrazyCars3 0
 CrazyCars3NoIntro 3
 CrazySue 0
 CrazySueGoesOn 0
@@ -305,6 +305,8 @@ Gunship2000AGA 3
 Gunship2000CD32 3
 HardBall 3
 HardBall2 3
+HardDrivin 16
+HardDrivin2 16
 HardNHeavy 3
 Harlequin 14
 Harlequin1MB 14
@@ -592,7 +594,7 @@ RuffNTumble 20
 SabreTeam 3
 SabreTeamAGA 3
 SecondSamurai 8
-SecretOfMonkeyIsland 16
+SecretOfMonkeyIsland 12
 SensibleSoccer -3
 SensibleWorldOfSoccer -3
 SensibleWorldOfSoccer11 -3
@@ -600,7 +602,7 @@ SensibleWorldOfSoccer9596 -3
 SensibleWorldOfSoccer9697 -3
 Settlers 3
 ShadowFighter 3
-ShadowOfTheBeast 3
+ShadowOfTheBeast 0
 ShadowOfTheBeast2 3
 ShadowOfTheBeast3 3
 ShadowWarriors -12
@@ -626,6 +628,8 @@ StarCrusader 5
 StarCrusaderAGA 5
 SuperStardust 3
 SuperStardustAGA 3
+Switchblade 16
+Syndicate 10
 TVSportsBasketball 3
 TanksFurry 5
 Targhan 20
@@ -640,6 +644,7 @@ Terminator2Arcade 3
 TheirFinestHour 3
 TheirFinestHour&Missions 3
 ThemePark 13
+Thunderbirds 7
 ThunderHawkAH73M 3
 ThunderStrike 9
 Time 3
