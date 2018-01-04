@@ -187,6 +187,8 @@ Gunship2000AGA
 Gunship2000CD32
 HardBall
 HardBall2
+HardDrivin
+HardDrivin2
 HardNHeavy
 Harlequin
 Harlequin1MB
@@ -205,6 +207,7 @@ Hunter
 IkariWarriors
 Immortal
 Imperium
+ImpossibleMission2
 ImpossibleMission2025
 ImpossibleMission2025AGA
 IndianaJonesAtlantisAdv
@@ -364,6 +367,7 @@ RType2
 RailroadTycoon
 RainbowIslands
 Rambo3
+Rampage
 Rampart
 Realms
 RealmsOfArkania
@@ -397,8 +401,10 @@ SimonTheSorcererAGA
 Simulcra
 SirFredTheLegend
 SoldierOfLight
+Speedball2
 StarCrusader
 StarCrusaderAGA
+Syndicate
 TVSportsBasketball
 Targhan
 TarghanFast
@@ -409,9 +415,12 @@ TennisCup
 TennisCup1Mb
 TennisCup2
 Terminator2Arcade
+TestDrive2&DataDisks
 TheirFinestHour
 TheirFinestHour&Missions
 ThemePark
+Thunderbirds
+ThunderCats
 ThunderHawkAH73M
 ThunderStrike
 Time
