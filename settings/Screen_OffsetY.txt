@@ -669,6 +669,7 @@ Turrican 3
 Turrican2 3
 Turrican3 3
 TwinWorld 13
+TZer0DemoAGA -3
 Ugh -6
 Ultima3 3
 Ultima4 3
