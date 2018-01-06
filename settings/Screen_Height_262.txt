@@ -43,6 +43,7 @@ PinballIllusionsCD32
 RevengeOfMutantCamels
 RevengeOfMutantCamels2
 Superfrog
+TZer0DemoAGA
 Worms
 Worms2MB
 Zarathrusta
