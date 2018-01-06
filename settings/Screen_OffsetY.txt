@@ -331,6 +331,7 @@ Humans3AGA 0
 HuntForRedOctober 3
 Hunter 3
 Hybris -2
+IK+ 8
 IkariWarriors 3
 Immortal 3
 Impact 3
@@ -343,7 +344,7 @@ Indianapolis500 3
 IndyHeat 3
 Infestation 3
 Intact15MB 3
-InternationalKarate+ 9
+InternationalKarate+ 8
 Interphase 17
 InterphaseAmigaFormat 17
 IntoTheEaglesNest 3
