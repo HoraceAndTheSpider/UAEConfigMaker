@@ -61,7 +61,7 @@ amiberry.vertical_offset=<<offset_y>>
 ; 
 use_gui=no
 kickstart_rom_file=<<romdir>>/<<kickstart>>
-kickstart_ext_rom_file=$(FILE_PATH)/<<extkickstart>>
+kickstart_ext_rom_file=<<romdir>>/<<extkickstart>>
 ide_mb_rom_file=:ENABLED
 flash_file=<<inputdir>>cd32.nvr
 cart_file=
