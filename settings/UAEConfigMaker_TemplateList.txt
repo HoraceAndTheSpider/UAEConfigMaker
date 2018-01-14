@@ -1,2 +1,3 @@
 amiberry.uaetemp
+amiberry-hardrompath.uaetemp
 uae4arm.uaetemp
