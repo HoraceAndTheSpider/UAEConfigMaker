@@ -660,7 +660,7 @@ def do_scan(input_directory, pathname,output_directory):
 
                 for i in range(0, 8):
                     z3_ram = int(math.pow(2, i))
-                    print (z3_ram)
+ #                   print (z3_ram)
                     if check_list("Memory_Z3Ram_" + str(z3_ram) + ".txt", this_file) is True:
                         break
                     z3_ram = 0
