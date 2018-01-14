@@ -1,0 +1,167 @@
+config_description=<<fullgame>>
+config_hardware=true
+config_host=true
+config_version=3.5.0
+; 
+; *** Unknown Options
+; 
+; *** Original paths
+; 
+amiberry.rom_path=<<romdir>>
+amiberry.floppy_path=<<inputdir>>Games_ADF/
+amiberry.hardfile_path=<<inputdir>>Games_HDF/
+amiberry.cd_path=<<inputdir>>Games_CD32/
+; 
+; *** Controller/Input Configuration
+; 
+joyport0=<<port0>>
+joyport0_autofire=none
+joyport0_mode=<<port0mode>>
+joyport0_mousemap=<<port0mousemap>>
+
+; 
+joyport1=<<port1>>
+joyport1_autofire=none
+joyport1_mode=<<port1mode>>
+joyport1_mousemap=<<port1mousemap>>
+; 
+joyport2=<<port2>>
+; 
+joyport3=<<port3>>
+; 
+<<custom_controls>>
+;
+input.joymouse_speed_analog=<<mouse_speed>>
+input.joymouse_speed_digital=<<mouse_speed>>
+input.joymouse_deadzone=<<deadzone>>
+input.joystick_deadzone=<<deadzone>>
+input.analog_joystick_multiplier=15
+input.analog_joystick_offset=-1
+input.mouse_speed=100
+input.autofire_speed=2496
+kbd_lang=us
+; 
+; *** Host-Specific
+; 
+amiberry.gfx_correct_aspect=<<43aspect>>
+amiberry.gfx_fullscreen_ratio=100
+show_leds=false
+amiberry.kbd_led_num=-1
+amiberry.kbd_led_scr=-1
+;amiberry.kbd_led_cap=-1
+amiberry.open_gui=<<menukey>>
+amiberry.quit_amiberry=<<quitkey>>
+amiberry.use_retroarch_quit=<<retroarch_quit>>
+amiberry.use_retroarch_menu=<<retroarch_menu>>
+amiberry.use_retroarch_reset=<<retroarch_reset>>
+amiberry.horizontal_offset=<<offset_x>>
+amiberry.vertical_offset=<<offset_y>>
+; 
+; *** Common / Paths
+; 
+use_gui=no
+kickstart_rom_file=<<romdir/<<kickstart>>
+kickstart_ext_rom_file=$(FILE_PATH)/<<extkickstart>>
+ide_mb_rom_file=:ENABLED
+flash_file=<<inputdir>>cd32.nvr
+cart_file=
+; 
+; *** Floppy Drives
+; 
+;floppy0=<<inputdir>><<diskpath0>>/<<disk0>>
+;floppy0type=<<disktype0>>
+;floppy1=<<inputdir>><<diskpath1>>/<<disk1>>
+;floppy1type=<<disktype1>>
+;floppy2=<<inputdir>><<diskpath2>>/<<disk2>>
+;floppy2type=<<disktype2>>
+;floppy3=<<inputdir>><<diskpath3>>/<<disk3>>
+;floppy3type=<<disktype3>>
+nr_floppies=<<totaldisks>>
+floppy_speed=<<floppyspeed>>
+; 
+; *** Hard Drives
+; 
+filesystem2=rw,DH0:DH0:<<inputdir>>_BootWHD/,10
+uaehf0=dir,rw,DH0:DH0:<<inputdir>>_BootWHD/,10
+filesystem2=rw,DH1:games:<<inputdir>><<hdpath>>/<<gamepath>>,0
+uaehf1=dir,rw,DH1:games:<<inputdir>><<hdpath>>/<<gamepath>>,0
+hardfile2=rw,DH2:<<inputdir>><<hdpath>>/<<gamepath>>/<<gamefile>>,32,1,2,512,50,,uae
+uaehf1=hdf,rw,DH2:<<inputdir>><<hdpath>>/<<gamepath>>/<<gamefile>>,32,1,2,512,50,,uae
+; 
+; *** CD / CD32
+; 
+cd_speed=100
+cd32cd=<<cd32mode>>
+cd32c2p=<<cd32mode>>
+cd32nvram=<<cd32mode>>
+cdimage0=<<inputdir>><<hdpath>>/<<gamepath>><<gamefile>>,image
+; 
+; *** Display / Screen Setup
+; 
+gfx_framerate=<<frameskip>>
+gfx_linemode=<<linemode>>
+gfx_width=<<screenwidth>>
+gfx_height=<<screenheight>>
+gfx_width_windowed=<<screenwidth>>
+gfx_height_windowed=<<screenheight>>
+gfx_width_fullscreen=<<screenwidth>>
+gfx_height_fullscreen=<<screenheight>>
+gfx_vsync=autoswitch
+gfx_lores=false
+gfx_resolution=hires
+gfx_correct_aspect=<<43aspect>>
+gfx_fullscreen_ratio=100
+
+ntsc=<<ntsc>>
+; 
+; *** CPU options
+; 
+finegrain_cpu_speed=<<clockspeed>>
+cpu_type=<<cputype>>
+cpu_speed=<<cpuspeed>>
+;cpu_model=<<cpumodel>>
+cpu_compatible=<<cpucompatible>>
+cpu_24bit_addressing=<<24bitaddress>>
+fpu_strict=false
+cachesize=<<jitcache>>
+;cpu_cycle_exact=<<cycleexact>>
+; 
+; *** Memory
+; 
+chipmem_size=<<chipmem>>
+fastmem_size=<<fastmem>>
+a3000mem_size=0
+mbresmem_size=0
+z3mapping=real
+z3mem_size=<<z3mem>>
+z3mem_start=0x40000000
+bogomem_size=0
+rtg_modes=0x502
+; 
+; *** Chipset
+; 
+chipset=<<chipset>>
+chipset_refreshrate=50.000000
+collision_level=<<spritecollision>>
+chipset_compatible=<<chipsetcompatible>>
+fatgary=0
+ramsey=15
+immediate_blits=<<immediateblitter>>
+;waiting_blits=automatic
+fast_copper=<<fastcopper>>
+; 
+; *** Sound Options
+; 
+sound_output=exact
+sound_channels=stereo
+sound_stereo_separation=<<stereo_seperation>>
+sound_stereo_mixing_delay=0
+sound_frequency=44100
+sound_interpol=none
+sound_filter= emulated
+sound_filter_type=standard
+sound_volume_cd=20
+; 
+; *** Misc. Options
+; 
+bsdsocket_emu=<<bsdsocket>>
