@@ -54,7 +54,7 @@ def str2bool(v):
 
 def make_full_cd32_name(in_name):
     # check the txt file
-    file_name = "settings/CD32ISO_Longname_Fixes.txt"
+    file_name = "settings/UAEConfigMaker_CD32ISO_Longname_Fixes.txt"
     content = ""
 
     if os.path.isfile(file_name):
@@ -159,7 +159,7 @@ def make_full_name(in_name):
     in_name = in_name.replace("R³sselsheim", "Russelsheim")
 
     # check the txt file
-    file_name = "settings/WHD_Longname_Fixes.txt"
+    file_name = "settings/UAEConfigMaker_WHD_Longname_Fixes.txt"
     content = ""
 
     if os.path.isfile(file_name) is True:
@@ -203,7 +203,7 @@ def make_full_name(in_name):
 
 def get_whdload_page(in_name):
     # check the txt file
-    file_name = "settings/WHD_PageList.txt"
+    file_name = "settings/UAEConfigMaker_WHD_PageList.txt"
     content = ""
     out_page = ""
 

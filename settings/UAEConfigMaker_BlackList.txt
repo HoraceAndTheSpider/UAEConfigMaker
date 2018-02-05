@@ -1,0 +1,2 @@
+getlegendsavedisk.slave
+Intro1MB.slave

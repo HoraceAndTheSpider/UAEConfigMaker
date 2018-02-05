@@ -5,40 +5,41 @@ config_version=2.8.1
 
 ; original paths
 pandora.rom_path=<<romdir>>
-pandora.floppy_path=<<inputdir>>Games_ADF/
-pandora.hardfile_path=<<inputdir>>Games_HDF/
-pandora.cd_path=<<inputdir>>Games_CD32/
+pandora.floppy_path=/opt/retropie/emulators/uae4arm/disks/
+pandora.hardfile_path=/opt/retropie/emulators/uae4arm/
+pandora.cd_path=/opt/retropie/emulators/uae4arm/cd32/
 
 ; Controller Config
 joyport0=<<port0>>
 joyport0autofire=none
 joyport0mode=<<port0mode>>
 joyportname0=JOY2
-;joyportfriendlyname0=A SPEED-LINK Competition Pro
-
 joyport1=<<port1>>
 joyport1autofire=none
 joyport1mode=<<port1mode>>
 joyportname1=JOY1
+;joyportfriendlyname0=A SPEED-LINK Competition Pro
 ;joyportfriendlyname1=A SPEED-LINK Competition Pro
 
 input.config=0
-input.joymouse_speed_analog=2
-input.joymouse_speed_digital=10
-input.joymouse_deadzone=33
-input.joystick_deadzone=33
+input.joymouse_speed_analog=<<mouse_speed>>
+input.joymouse_speed_digital=<<mouse_speed>>
+input.joymouse_deadzone=<<deadzone>>
+input.joystick_deadzone=<<deadzone>>
 input.analog_joystick_multiplier=15
 input.analog_joystick_offset=-1
 input.mouse_speed=100
 input.autofire_speed=2496
-input.autofire=0
+input.autofire=8
+input.joymouse_speed_analog=<<mouse_speed>>
 
-; host-specific
 key_for_menu=<<menukey>>
-key_for_quit=<<quitkey>>
+key_for_quit<<quitkey>>
 button_for_menu=<<menubutton>>
 button_for_quit=<<quitbutton>>
 
+
+; host-specific
 pandora.cpu_speed=600
 pandora.joy_conf=0
 pandora.joy_port=0
@@ -72,31 +73,27 @@ kickstart_rom_file=$(FILE_PATH)/<<kickstart>>
 kickstart_ext_rom_file=$(FILE_PATH)/<<extkickstart>>
 
 ; Floppy Drives
-
-;floppy0=<<inputdir>><<diskpath0>>/<<disk0>>
-;floppy0type=<<disktype0>>
-;floppy1=<<inputdir>><<diskpath1>>/<<disk1>>
-;floppy1type=<<disktype1>>
-;floppy2=<<inputdir>><<diskpath2>>/<<disk2>>
-;floppy2type=<<disktype2>>
-;floppy3=<<inputdir>><<diskpath3>>/<<disk3>>
-;floppy3type=<<disktype3>>
+floppy0=/home/pi/RetroPie/roms/amiga/<<diskpath1>>/<<disk1>>
+floppy0type=<<disktype1>>
+floppy1=/home/pi/RetroPie/roms/amiga/<<diskpath2>>/<<disk2>>
+floppy1type=<<disktype2>>
+floppy2=/home/pi/RetroPie/roms/amiga/<<diskpath3>>/<<disk3>>
+floppy2type=<<disktype3>>
+floppy3=/home/pi/RetroPie/roms/amiga/<<diskpath4>>/<<disk4>>
+floppy3type=<<disktype4>>
 nr_floppies=<<totaldisks>>
 floppy_speed=<<floppyspeed>>
 
 ; Hard Drives
-filesystem2=rw,DH0:DH0:<<inputdir>>_BootWHD/,10
-uaehf1=dir,rw,DH0:DH0:<<inputdir>>_BootWHD/,10
+filesystem2=rw,DH0:DH0:/home/pi/RetroPie/roms/amiga/_BootWHD/,10
+uaehf1=dir,rw,DH0:DH0:/home/pi/RetroPie/roms/amiga/_BootWHD/,10
 
-filesystem2=rw,DH1:games:<<inputdir>><<hdpath>>/<<game>>/,0
-uaehf0=dir,rw,DH1:games:<<inputdir>><<hdpath>>/<<game>>/,0
+filesystem2=rw,DH1:games:/home/pi/RetroPie/roms/amiga/<<hdpath>>/<<game>>/,0
+uaehf0=dir,rw,DH1:games:/home/pi/RetroPie/roms/amiga/<<hdpath>>/<<game>>/,0
 
-filesystem2=rw,DH2:HDFGame:<<inputdir>><<hdpath>>/<<game>>,32,1,2,512,50,,uae
-hardfile2=dir,rw,DH2:HDFGame:<<inputdir>><<hdpath>>/<<game>>,32,1,2,512,50,,uae
+filesystem2=rw,DH2:HDFGame:/home/pi/RetroPie/roms/amiga/<<hdpath>>/<<game>>,32,1,2,512,50,,uae
+hardfile2=dir,rw,DH2:HDFGame:/home/pi/RetroPie/roms/amiga/<<hdpath>>/<<game>>,32,1,2,512,50,,uae
 
-; CD32
-cd32cd=<<cd32mode>>
-cdimage0=<<inputdir>><<hdpath>>/<<game>>/<<game>>.cue,image
 
 ; Display / Screen Setup
 gfx_framerate=<<frameskip>>
@@ -119,8 +116,6 @@ finegrain_cpu_speed=<<clockspeed>>
 cpu_compatible=<<cpucompatible>>
 cpu_24bit_addressing=<<24bitaddress>>
 cachesize=<<jitcache>>
-cpu_cycle_exact=<<cycleexact>>
-
 
 ; Memory 
 a1000ram=false
