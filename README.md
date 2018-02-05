@@ -4,6 +4,7 @@ Amiga UAE Configuration Maker, primarily for UAE4ARM/Amiberry on the Raspberry P
 
 Concept by HoraceAndTheSpider (Dom Cresswell)
 Additions by Olly Ainger (oainger) and Chris Dyken (cdyk)
+Credit for many submissions to Ted Roberth Nilsen (tnilsen)
 
 This program can be used to build .uae config files for UAE4Arm/Amiberry from a template file.
 
@@ -100,6 +101,13 @@ mv UAEConfigMaker-master .uaeconfigmaker
 cd /home/pi/RetroPie/retropiemenu/ 
 wget https://raw.githubusercontent.com/HoraceAndTheSpider/UAEConfigMaker/master/UAE%20Config%20Maker.sh
 chmod +x "UAE Config Maker.sh"
+```
+
+**NOTE: For Version 3.0 it is recommended that you remove any previous install before updating/running
+
+```
+cd /home/pi
+sudo rm -R .uaeconfigmaker
 ```
 
 ### Updating/Running:
