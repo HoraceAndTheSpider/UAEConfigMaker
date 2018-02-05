@@ -1,4 +1,4 @@
-# UAEConfigMaker (Version 2.3)
+# UAEConfigMaker (Version 3.0)
 
 Amiga UAE Configuration Maker, primarily for UAE4ARM/Amiberry on the Raspberry Pi. 
 
@@ -30,7 +30,12 @@ CD32 KickStarts files are required for CD32 ISO/CUE scanning, and should be name
 * **--outputdir -o**
   * *Specify which path the .uae files are to be outputted to*
   	* *Defaults to /home/pi/RetroPie/roms/amiga/ if not stated.*
-  	
+ 
+ * **--config-template -t**
+   * *Specify which template .uae files should be used when generating the configs*
+   * *The user can create their own choice of template in the folder `/templates/` usnig a plain text file labeled as X.uaetemp*
+   	* *Defaults to amiberry format .uae file (amiberry.uaetemp) if not stated.*
+ 
 * **--no-update -n**
   * *stop config maker from downloading the text data from github (for development purposes)*
 
@@ -52,7 +57,6 @@ CD32 KickStarts files are required for CD32 ISO/CUE scanning, and should be name
 * **--force-config-overwrite**
   * *don't wait for user input before wiping all Config Files with new ones. This may be used for integration with RetroPie*
 
-
 * **--whdload-update**
   * *WHDLoad scanning will check for .slave files requiring update and provide message on game loading.
  
@@ -67,25 +71,11 @@ CD32 KickStarts files are required for CD32 ISO/CUE scanning, and should be name
 
 ## hostconfig.uaetemp Options
   
-  The following options can be set in the file `hostconfig.uaetemp` and will be inherited by all generated configurations, and exist to be set by the user in order to tailor the generated .uae configurations to the user's requirements.
-  
-* **button_for_menu= [number]**
-	* *Pick the input/controller button to enter the emulator (Amiberry) menu.*
-	
-* **button_for_quit= [number]**
-	* *Pick the input/controller button to quit the emulator (Amiberry) back to RetroPie.*
+  The options which can be set in the file `hostconfig.uaetemp` and will be inherited by all generated configurations, and exist to be set by the user in order to tailor the generated .uae configurations to the user's requirements, are detailed in the following wiki page:
 
-* **key_for_menu= [number]**
-	* *Pick the keyboard input to enter the emulator (Amiberry) menu.*
+https://github.com/HoraceAndTheSpider/UAEConfigMaker/wiki/Settings:-Host-Options
 
-* **key_for_quit= [number]**
-	* *Pick the keyboard input to quit the emulator (Amiberry) back to RetroPie.*
 
-* **gfx_correct_aspect= [True / False]**
-	* *Select whether the 4:3 aspect ratio is maintained with a screen size change.v
-
-* **gfx_framerate= [0 / 1]**
-	* *Select whether or not frameskip should be switched on (1) or off (0).*
 
 * **no_update / ignore_output_path / force_paths / rom_path**
 * ** / force_config_overwrite / whdload_update / create_autostartup / no_filename_spaces**
