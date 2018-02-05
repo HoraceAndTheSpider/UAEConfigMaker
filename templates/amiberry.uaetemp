@@ -147,6 +147,7 @@ chipset_compatible=<<chipsetcompatible>>
 fatgary=0
 ramsey=15
 immediate_blits=<<immediateblitter>>
+;waiting_blits=automatic
 fast_copper=<<fastcopper>>
 ; 
 ; *** Sound Options
