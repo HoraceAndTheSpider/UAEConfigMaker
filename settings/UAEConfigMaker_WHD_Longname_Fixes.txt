@@ -71,6 +71,7 @@ Archer Macleans Billard Amcn|Archer Macleans's Le Billard Americain
 Archon 2|Archon II - Adept
 Archon|Archon - The Light and the Dark
 Arena|Arena (Psygnosis)
+Arkanoid Revengeof Doh|Arkanoid - Revenge Of Doh
 Arkanoid Revenge Of Doh|Arkanoid - Revenge Of Doh
 ArkanoidReve|Arkanoid - Reve
 Armalyte|Armalyte - The Final Run
@@ -100,10 +101,13 @@ Barbarian 2 Palace|Barbarian II - The Dungeon of Drax
 Barbarian 2 Psygnosis|Barbarian 2 (Psygnosis)
 Barbarian Palace|Barbarian - The Ultimate Warrior
 Barbarian Psygnosis|Barbarian (Psygnosis)
+Bards Tale II_v 1. 0|Bard's Tale - Tales of the Unknown
 Bards Tale 2|Bard's Tale II - The Destiny Knight
+Bards Tale II|Bard's Tale II - The Destiny Knight
 Bards Tale 3|Bard's Tale III - Thief of Fate
 Bards Tale|Bard's Tale - Tales of the Unknown
 Bart Vs Sp Mutants|Bart Vs The Space Mutants
+Bart Vs Sp Mutants (2 Disk)|Bart Vs The Space Mutants (2 Disk)
 Bart Vs Space Mutants (2 Disk)|Simpsons - Bart vs. The Space Mutants (2 Disk)
 Bart Vs The World|Simpsons - Bart vs. The World
 Basket Island Demo 1 [AGA]|Basket Island (Demo 1) [AGA]
@@ -311,6 +315,7 @@ England Champ Special|England Championship Special
 Enlightenment|Enlightenment - Druid II
 Entity No Intro|Entity (No Intro)
 EOB1AGA|Eye of the Beholder [AGA]
+EOB-AGA|Eye of the Beholder [AGA]
 EOB2AGA|Eye of the Beholder 2 [AGA]
 EOB 1-AGA|Eye of the Beholder [AGA]
 EOB 2-AGA|Eye of the Beholder 2 [AGA]
@@ -468,6 +473,7 @@ Ishar 3 [AGA]|Ishar 3 - The Seven Gates of Infinity [AGA]
 Ishar 3|Ishar 3 - The Seven Gates of Infinity
 ISS|ISS - Incredible Shrinking Sphere
 It Came From The Desert 2|It Came from the Desert II - Antheads
+It Came From Desert 2 Antheads|It Came from the Desert II - Antheads
 Italy 1990 Winners Edition|Italy 1990 - Winners Edition
 Jabato|Jabato Vs Imperio Libertad
 Jaguar XJ 220 (Image)|Jaguar XJ220 (Image)
@@ -610,6 +616,7 @@ Mighty Bomb Jack|Mighty BombJack
 Mike Reads Computer Pop Quiz|Mike Read's Computer Pop Quiz
 Millennium 22|Millennium 2.2
 Moebius Goatlizard|Incredible Adventures of Moebius Goatlizard
+Monkey Island|Secret of Monkey Island, The
 Monkey Island 2|Monkey Island 2 - LeChuck's Revenge
 Monty Pythons Fly Cir|Monty Python's Flying Circus
 Moonstone|Moonstone - A Hard Days Knight
