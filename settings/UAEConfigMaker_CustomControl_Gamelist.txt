@@ -1,9 +1,16 @@
+Alien Breed - Tower Assault (v1.1) [AGA].controls
+Alien Breed - Tower Assault [AGA].controls
 Alien Breed Tower Assault (v1.1) [AGA].controls
 Alien Breed Tower Assault [AGA].controls
 Eye Of The Beholder.controls
+Hammerfist.controls
 Indy Heat.controls
 Ivan 'Ironman' Stewart's Super Off Road.controls
 Legend (Mindscape).controls
+Lemmings 2 - The Tribes (1MB).controls
+Monkey Island 2 - LeChuck's Revenge.controls
+Monkey Island.controls
 Populous 2.controls
 Populous.controls
-Worlds Of Legend.controls
+Secret of Monkey Island, The.controls
+Worlds of Legend - Son of the Empire.controls
