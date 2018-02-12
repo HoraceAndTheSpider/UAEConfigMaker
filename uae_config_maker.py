@@ -134,10 +134,10 @@ def do_scan(input_directory, pathname,output_directory):
 #        menu_button = -1
 
     if quit_key == "":
-        quit_key = 0
+        quit_key = "Escape"
 
     if menu_key == "":
-        menu_key = 293
+        menu_key = "F12"
 
 
     # sort out the input items
